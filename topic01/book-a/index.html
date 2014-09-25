@@ -1,0 +1,374 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Android-Tools-01 </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">1: Activities & Layouts</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Android-Tools-01"> Android-Tools-01 </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="07"> 07 </a>
+          <a class="item" data-tab="08"> 08 </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Android-Tools-01" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<p>We will then install and set up effective tools for Android application development. This will include a specially equipped version of Eclipse + an emulator. The emulator we are using - Genymotion - is a third party application not strictly part of the android build tools. However it is considerably faster and more useful than the standard emulator provided with the Android SDK.</p>
+<p>With the Android SDK + the emulator up and running we will install and run some example applications. These applications are useful representatives of the type of application we will be learning how to build - including a specific application (donation) which we will be building from scratch in the first few weeks and anther application (MyRent) that will be a focus of much of the first half of the course</p>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Android SDK</h1>
+<p>This step describes how to download and install </p>
+<ul>
+<li>
+<p>Android Software Development Kit (SDK)</p>
+</li>
+<li>
+<p>Download the latest <a href="http://developer.android.com/sdk/index.html">Android SDK for an existing IDE</a> and save to a temporary folder. </p>
+<ul>
+<li>Do not download the <em>Eclipse ADT with Android SDK</em>. See Figure 1 and Figure 2.
+<img alt="Figure 1: Download a stand-alone-Android SDK appropriate to your operating system" src="img/01.png">
+<img alt="Figure 2: Download a stand-alone-Android SDK appropriate to your operating system" src="img/02.png"></li>
+</ul>
+</li>
+<li>
+<p>In the case of OSX (Mac) expand the Android SDK to a suitable location.</p>
+</li>
+<li>In the case of Windows double click on the downloaded installer, for example see Figure 3:<ul>
+<li>Then proceed through the various steps in the wizard such as those illustrated in Figures 4 to 9 inclusive.</li>
+<li>Untick the check box <em>Start SDK Manager</em> see Figure 8. We shall deal with this later during Eclipse configuration.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 3: Android installer for windows" src="img/02a.png">
+<img alt="Figure 4: Android installer" src="img/03.png">
+<img alt="Figure 5: Android installer" src="img/04.png">
+<img alt="Figure 7: Android installer" src="img/05.png">
+<img alt="Figure 7: Android installer" src="img/06.png">
+<img alt="Figure 8: Android installer" src="img/07.png">
+<img alt="Figure 9: Android installer" src="img/07a.png"></p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Eclipse IDE</h1>
+<p>This step describes how to download and install</p>
+<ul>
+<li>Eclipse Integrated Development Enviromnent (IDE)</li>
+<li>Android plugin<ul>
+<li>This will allow the Android SDK to be used within the IDE</li>
+</ul>
+</li>
+<li>Genymotion emulator plugin<ul>
+<li>This will substitute for an actual mobile device during development</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Download Eclipse Luna</em></strong></p>
+<ul>
+<li>Download <a href="https://www.eclipse.org/downloads/index-developer.php">Eclipse Luna IDE</a>, ensuring you chose the correct version for your operating system and save to a temporary folder. See Figure 1.</li>
+<li>Expand the downloaded archive to a suitable location.<ul>
+<li>In Windows this could be at the root of your primary drive (C:\).</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: Download Eclipse Luna" src="img/14.png"></p>
+<p><strong><em>Install Android SDK Plugin</em></strong></p>
+<ul>
+<li>Start Eclipse, then select <em>Help &gt; Install New Software</em>.</li>
+<li>Click <em>Add</em>, in the top-right corner.</li>
+<li>
+<p>In the Add Repository dialog that appears, enter "ADT Plugin" for the Name and the following URL for the Location:</p>
+<p>https://dl-ssl.google.com/android/eclipse/</p>
+</li>
+<li>
+<p>Click <em>OK</em>.</p>
+</li>
+<li>In the <em>Available Software</em> dialog, select the checkbox next to Developer Tools and click <em>Next</em>.</li>
+<li>In the next window, you'll see a list of the tools to be downloaded. Click <em>Next</em>.</li>
+<li>
+<p>Read and accept the license agreements, then click <em>Finish</em>.</p>
+</li>
+<li>
+<p>If you get a security warning saying that the authenticity or validity of the software can't be established, click <em>OK</em>.</p>
+</li>
+<li>When the installation completes, restart Eclipse.</li>
+</ul>
+<p><strong><em>Configure Android SDK Plugin</em></strong></p>
+<p>Once Eclipse restarts, you must specify the location of your Android SDK directory:</p>
+<ul>
+<li>In the "Welcome to Android Development" window that appears, select <em>Use existing SDKs</em>.</li>
+<li>Browse and select the location of the Android SDK directory you recently downloaded and unpacked.</li>
+<li>Click <em>Next</em>.</li>
+</ul>
+<p><strong><em>Download SDK Packages</em></strong></p>
+<ul>
+<li>In Eclipse, click on the Android SDK Manager icon. See Figure 2.</li>
+<li>
+<p>The manager will open and be something similar to that depicted in Figure 3.</p>
+</li>
+<li>
+<p>As a minimum when setting up the Android SDK, you should download the latest tools and Android platform:</p>
+<ul>
+<li>Open the Tools directory and select:<ul>
+<li>Android SDK Tools</li>
+<li>Android SDK Platform-tools</li>
+<li>Android SDK Build-tools (highest version)</li>
+</ul>
+</li>
+<li>Open the first Android X.X folder (the latest version) and select:<ul>
+<li>SDK Platform</li>
+<li>A system image for the emulator, such as ARM EABI v7a System Image</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 2: Android SDK Manager icon" src="img/11.png">
+<img alt="Figure 3: Android SDK Manager window" src="img/13.png"></p>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Emulator</h1>
+<p>This step briefly describes how to</p>
+<ul>
+<li>Download the Genymotion emulator ensuring, in the case of Windows, you select the version that includes VirtualBox.</li>
+<li>Install Genymotion plugin in Eclipse IDE<ul>
+<li>This emulator will substitute for an actual mobile device during development</li>
+</ul>
+</li>
+<li>Official documentation is available online on the <a href="https://cloud.genymotion.com/page/doc/">Genymotion</a> site.</li>
+</ul>
+<p><strong><em>Download Genymotion</em></strong></p>
+<p>Register an account with <a href="www.genymotion.com">Genymotion.com</a> and download the Free Genymotion emulator.
+<img alt="Figure 1: Genymotion" src="img/15.png">
+<img alt="Figure 2: Choose Genymotion for your platform" src="img/16.png"></p>
+<h3>Installing on a Windows platform</h3>
+<p>The following series of screenshots is indicative of the steps in installing on a Windows platform (collectively referred to as Figure 3):
+<img alt="Figure 3: Installing on a Windows platform" src="img/genymotion_000.png"></p>
+<p><img alt="" src="img/genymotion_000.png">
+<img alt="" src="img/genymotion_001.png">
+<img alt="" src="img/genymotion_002.png">
+<img alt="" src="img/genymotion_003.png">
+<img alt="" src="img/genymotion_004.png">
+<img alt="" src="img/genymotion_006.png">
+<img alt="" src="img/genymotion_007.png">
+<img alt="" src="img/genymotion_008.png">
+<img alt="" src="img/genymotion_009.png">
+<img alt="" src="img/genymotion_010.png">
+<img alt="" src="img/genymotion_011.png">
+<img alt="" src="img/genymotion_012.png">
+<img alt="" src="img/genymotion_013.png">
+<img alt="" src="img/genymotion_014.png"></p>
+<p>Finally, you may be prompted to add a new virtual device as indicated in Figure 4: press the No button.
+<img alt="Figure 4: Do not add a new virtual device" src="img/genymotion_015.png"></p>
+<h3>Installing on an OSX (Mac) platform</h3>
+<ul>
+<li>
+<p>Download and install <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> (if it is not already installed).</p>
+<ul>
+<li>A User Manual is also available on the VirtualBox download page.</li>
+</ul>
+</li>
+<li>
+<p>Double click on the downloaded dmg installer file file (example <em>genymotion-2.2.2.dmg</em>).</p>
+<ul>
+<li>Drag the Genymotion icon (at the left in Figure 4) to the Applications folder (see Figure 5).</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 5: Installing genymotion on OSX (Mac) platform" src="img/17.png"></p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Genymotion Plugin</h1>
+<p>To install the Genymotion plugin in Eclipse:</p>
+<ul>
+<li>Start Eclipse, then select <em>Help &gt; Install New Software</em>.</li>
+<li>Click <em>Add</em>, in the top-right corner.</li>
+<li>
+<p>In the Add Repository dialog that appears, enter <em>Genymotion</em> for the Name and the following URL for the Location:</p>
+<p>http://plugins.genymotion.com/eclipse</p>
+</li>
+<li>
+<p>Click <em>OK</em>.</p>
+</li>
+<li>In the <em>Available Software</em> dialog, select the checkbox next to Developer Tools and click <em>Next</em>.</li>
+<li>In the next window, you'll see a list of the tools to be downloaded. Click <em>Next</em>.</li>
+<li>
+<p>Read and accept the license agreements, then click <em>Finish</em>.</p>
+</li>
+<li>
+<p>If you get a security warning saying that the authenticity or validity of the software can't be established, click <em>OK</em>.</p>
+</li>
+<li>When the installation completes, restart Eclipse.</li>
+<li>After Eclipse's restart, you will see a new button on the toolbar as depicted in Figure 1.</li>
+<li>Set path to Genymotion installation directory by opening Eclipse Preferences and selecting <em>Genymotion</em> as shown in Figure 2.<ul>
+<li>In the <em>Genymotion application</em> text input window enter the path to the Genymotion application installation directory. This could be:<ul>
+<li>In Windows: C:\Program Files\Genymobile\Genymotion</li>
+<li>In Mac OSX: /Applications/Genymotion.app</li>
+</ul>
+</li>
+<li>Click <em>Apply</em> button and then <em>OK</em></li>
+</ul>
+</li>
+<li>Create a new Genymotion virtual device as follows:<ul>
+<li>Click the Genymotion icon on the toolbar (see Figure 1 again) which opens the Genymotion Virtual Devices Manager.<ul>
+<li>Click the New button on the right. This launces the <em>Virtual device creation wizard</em>.</li>
+<li>Follow the steps indicated in the wizard depicted in the series of images collectively referred to as Figure 3 below in which we have chosen a specific device from the list (Google Nexus 7).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: Genymotion icon on toolbar" src="img/12.png">
+<img alt="Figure 2: Configuring Genymotion plugin in Eclipse preferences" src="img/18.png">
+<img alt="Figure 3: Setting up a Genymotion virtual device" src="img/19.png">
+<img alt="" src="img/19a.png">
+<img alt="" src="img/20.png">
+<img alt="" src="img/21.png"></p>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Maps (Phone)</h1>
+<p>Connect your phone to your computer using the USB cable.</p>
+<p>The following apply to a Samsung phone and is not to be taken as applicable to all Android devices.</p>
+<p>When you first make a connection you may be presented with a message along the following lines, depending on the software on and the model of your phone:</p>
+<p>Attention
+Unable to find software on your PC that can recognise your device.
+Service pack 3, Windows Media Player, version 11 or higher or USB driver for Windows or Android file transfoer for Mac OS must be installed (see www.microsoft.com or www.android.com/filetransfer)</p>
+<p>When you open <em>www.android.com/filetransfer</em> on a Mac you will be presented with a screen as shown in Figure 1:</p>
+<p><img alt="Figure 1: Android file transfer" src="img/genymotion_016.png"></p>
+<p>Download and install the file <em>androidfiletransfer.dmg</em>:</p>
+<p><img alt="Figure 2: On Mac - Download and install androidfiletransfer.dmg" src="img/genymotion_017.png"></p>
+<p>On your phone, open settings and scroll to Debugging. Tick:</p>
+<ul>
+<li>USB debugging </li>
+<li>Allow mock locations</li>
+</ul>
+<p>Still on settings:</p>
+<ul>
+<li>Enable NFC (allow data exchange when device touches another device).</li>
+</ul>
+<p>You should receive a notification:</p>
+<ul>
+<li>Connected as a media device which indicates that you may now install an application directly from your computer.</li>
+</ul>
+<p>In Package Explorer in Eclipse select MyRent (or any other functioniong app of your choice) and run the menu command <em>Run | Run</em>:</p>
+<p><img alt="Figure 3: Launch the app" src="img/genymotion_018.png">.</p>
+<p>The <strong>Android Device Chooser</strong> window should open, displaying the tethered android phone:</p>
+<p><img alt="Figure 4: Android phone attached" src="img/genymotion_019.png"></p>
+<p>Select the device, in this case <em>samsung-gt_s6810p-...</em> and press OK.</p>
+<ul>
+<li>After a few moments the application should have been installed and launched on your phone.</li>
+</ul>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>Install Play Store</h1>
+<p>Following are instructions to install Google Play Store on the emulator.</p>
+<ul>
+<li>We are working with Google Nexus 4-4.3 API 18 - 768x1280.</li>
+</ul>
+<p>Browse to <a href="http://wiki.rootzwiki.com/Google_Apps#20110828">Google Apps wiki.rootzwiki</a>.</p>
+<ul>
+<li>Click on 20130813 which leads to a download link</li>
+<li>The file to download is<ul>
+<li>gapps-jb-20130813-signed.zip</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: Download gapps-jb-20130813-signed.zip" src="img/22.png"></p>
+<p>Start the Genymotion virtual device:</p>
+<p><img alt="Figure 2: Start Genymotion device" src="img/23.png"></p>
+<p>Drag the gapps zip file onto the virtual device.</p>
+<ul>
+<li>You will be asked if you wish to flash the archive onto the Genymotion device.</li>
+<li>
+<p>Press OK.
+  <img alt="" src="img/24.png"></p>
+</li>
+<li>
+<p>Play Services should now be installed on the virtual device.</p>
+</li>
+<li>
+<p>Click on the Play Store icon</p>
+</li>
+<li>Log into your Gmail account using an existing or new account.</li>
+<li>Locate Maps in Play Store</li>
+<li>Here we use a search string 'google maps engine'
+  <img alt="" src="img/25.png"></li>
+<li>Install Maps.</li>
+</ul>
+<p>Launch a map-enabled app such as MyRent and test that the map facility is now available.</p>
+<ul>
+<li>In the case of MyRent, create a new residence and enter an arbitrary geolocation, for example 52.25, - 7.19</li>
+</ul>
+<p><img alt="Figure 3: Sample map-enabled app using Google Maps application" src="img/26.png"></p>
+	  </section>
+	  <section data-tab="07" class="ui tab stacked moodle-book segment">
+	     <h1>Setup summary</h1>
+<p><img alt="" src="img/28.png"></p>
+	  </section>
+	  <section data-tab="08" class="ui tab stacked moodle-book segment">
+	     <h1>Sample Android apps</h1>
+<p>Download the following apps from the local achive to a temporary folder and, in turn, drag and drop each onto the GenyMotion emulator.</p>
+<ul>
+<li>This will install the apps on the virtual device.</li>
+</ul>
+<p><img alt="" src="img/27.png"></p>
+<ul>
+<li>
+<p><a href="archives/donation-android.apk">Donation</a></p>
+</li>
+<li>
+<p><a href="archives/MyRentV07.apk">MyRentV07</a></p>
+</li>
+<li>
+<p><a href="archives/MyRentV12.apk">MyRentV12</a></p>
+</li>
+<li>
+<p><a href="archives/SunshineFinal.apk">Sunshine</a></p>
+</li>
+<li>
+<p><a href="archives/CriminalIntent.apk">CriminalIntent</a></p>
+</li>
+</ul>
+<p>Launch the apps and experiment with their functionality.</p>
+	  </section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>
