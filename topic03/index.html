@@ -1,0 +1,171 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> 3: Widgets & Callbacks </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+<header class="ui middle aligned two column raised grid segment">
+  <div class="row">
+    <div class="column">
+      <h1><a href="../index.html"> Android Application Development </a></h1>
+      <h3> </h3>
+    </div>
+    <div class="column">
+      <img class="ui medium image floated right" src="./style/custom/logo.png"/>
+    </div>
+  </div>
+</header>
+
+<section class="ui grid">
+  
+  <section class="ui four column wide">
+    <nav class="ui vertical fluid pointing menu">
+      <div class="menu">
+        <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
+        <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
+        <a class="active item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
+      </div>
+    </nav>
+  </section>
+
+  <section class="ui twelve column wide">
+    <section class="ui stacked segment">
+      <h1>3: Widgets &amp; Callbacks</h1>
+      <div class="ui  middle aligned grid">
+          <div class="row">   
+            <div class="ten column wide">
+              <h3>The Android Stack</h3>
+<p>Android is a sophisticated, multi-layered operating system encompassing a wide range of features, capabilities and components. This is organised into a 'Stack', whereby each layer communicates with the layer immediately below. Here we review this stack and briefly examine the primary components at each layer.</p>
+            </div>
+            <div class="six vertical column wide">
+              <a href="./pdf/a-android-stack.pdf"> 
+                <img class="ui medium image" src="./pdf/a-android-stack.png"> 
+              </a>
+            </div>
+          </div>
+          <div class="row">   
+            <div class="ten column wide">
+              <h3>Navigation Principles</h3>
+<p>We have already explored the primary Android UX. Here we focus specifically on navigation within an android application, examining some typical patterns. In a multiple activity application, there certain conventions the user may be expecting, which your application will be expected to follow.</p>
+            </div>
+            <div class="six vertical column wide">
+              <a href="./pdf/b-navigation-principles.pdf"> 
+                <img class="ui medium image" src="./pdf/b-navigation-principles.png"> 
+              </a>
+            </div>
+          </div>
+          <div class="row">   
+            <div class="ten column wide">
+              <h3>MyRent V00</h3>
+<p>We should now begin to have a firm understanding of structure of an android project as presented in Eclipse. Here we review the MyRent v00 in detail, and review all its working parts</p>
+            </div>
+            <div class="six vertical column wide">
+              <a href="./pdf/c-myrent-v00.pdf"> 
+                <img class="ui medium image" src="./pdf/c-myrent-v00.png"> 
+              </a>
+            </div>
+          </div>
+          <div class="row">   
+            <div class="ten column wide">
+              <h3>MyRent V01</h3>
+<p>Although the app is still relatively simple, this app crosses a threshold in our understanding of Android.The Activity class implements multiple interfaces, each implementation responding to different widgits. Here we review this in detail, as it represents a pattern we will see in most of the application we develop.</p>
+            </div>
+            <div class="six vertical column wide">
+              <a href="./pdf/d-myrent-v01.pdf"> 
+                <img class="ui medium image" src="./pdf/d-myrent-v01.png"> 
+              </a>
+            </div>
+          </div>
+          <div class="row">   
+            <div class="ten column wide">
+              <h3>Event Handling</h3>
+            </div>
+            <div class="six vertical column wide">
+              <a href="./pdf/e-event-handling.pdf"> 
+                <img class="ui medium image" src="./pdf/e-event-handling.jpeg"> 
+              </a>
+            </div>
+          </div>
+          <div class="row">   
+            <div class="two six column wide center aligned">
+              <h1> MyRent-00 </h1>
+              <a  href="./book-a/index.html"> 
+                  <img class="ui medium image" src="./book-a/img/main.png" alt="Lab"> 
+              </a>
+            </div>
+            <div class="ten column wide">
+              <h1>Objectives</h1>
+<p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
+            </div>
+        </div>
+          <div class="row">   
+            <div class="two six column wide center aligned">
+              <h1> MyRent-01 </h1>
+              <a  href="./book-b/index.html"> 
+                  <img class="ui medium image" src="./book-b/img/main.png" alt="Lab"> 
+              </a>
+            </div>
+            <div class="ten column wide">
+              <h1>Layouts and Widgets</h1>
+<p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
+            </div>
+        </div>
+          <div class="row">   
+            <div class="two six column wide center aligned">
+              <h1> Event-Handling </h1>
+              <a  href="./book-c/index.html"> 
+                  <img class="ui medium image" src="./book-c/img/main.jpg" alt="Lab"> 
+              </a>
+            </div>
+            <div class="ten column wide">
+              <h1>Callback &amp; Listener</h1>
+<p>This is a short lab whose aim is to provide a detailed explanation of callbacks and listeners.</p>
+<ul>
+<li>A small project is developed to show how the callback and listener pattern works</li>
+<li>Three methods to implement listeners are demonstrated:<ul>
+<li>A verbose method</li>
+<li>The use of an anonymous class is demonstrated and explained.</li>
+</ul>
+</li>
+<li>The classes used in this lab have been designed to correspond closely to those used in MyRentFragment and briefly discussed in the previous UI Fragments topic.</li>
+<li>Before working on this lab it would help to revise the lab <em>Java Interface type</em> that was presented during the programming course.</li>
+</ul>
+            </div>
+        </div>
+      </div>
+    </section>
+  </section>
+  
+</section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>
