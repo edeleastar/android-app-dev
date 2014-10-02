@@ -1,0 +1,932 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> MyRent-04 </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/0.19.3/css/semantic.min.css">
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> 
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script src="http://cdn.jsdelivr.net/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
+ 
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size: 14px
+}
+
+code
+{
+	font-family: "Monaco";
+	font-size: 110%;
+}
+
+h1 
+{
+  font-style:italic;
+  font-size:120%;
+  border-bottom: thin solid black;
+}
+h2 
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3 
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+#footertext 
+{
+  font-size:70%
+}
+
+
+#title 
+{
+  font-size:120%;
+  color: black;
+  text-align: right;
+  background-color : white;
+}
+
+img 
+{
+   padding:1px;
+  /* border:1px solid black;*/
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+header img
+{
+	 padding:1px;
+   border:0px solid black;
+}
+
+header h1
+{
+  font-style:normal;
+  font-size:120%;
+  border-bottom: 0px;
+}
+
+header h2
+{
+  font-style:normal;
+  font-size:100%;
+  border-bottom: 0px;
+}
+
+header h3
+{
+  font-style:normal;
+  font-size:90%;
+  border-bottom: 0px;
+}
+
+    </style>
+
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">5: File IO & Implicit Intents</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="MyRent-04"> MyRent-04 </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="07"> 07 </a>
+          <a class="item" data-tab="08"> 08 </a>
+          <a class="item" data-tab="Archives"> Archives </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="MyRent-04" class="ui tab stacked moodle-book segment">
+	     <h1>File IO &amp; Menu Up Navigation</h1>
+<ul>
+<li>Enable the portfolio to be saved / retrieved from file</li>
+<li>Enable menu up navigation support</li>
+</ul>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h2>Residence</h2>
+<pre><code>import org.json.JSONException;
+import org.json.JSONObject;
+</code></pre>
+
+<pre><code>  private static final String JSON_ID             = &quot;id&quot;            ;
+  private static final String JSON_GEOLOCATION    = &quot;geolocation&quot;   ; 
+  private static final String JSON_DATE           = &quot;date&quot;          ; 
+  private static final String JSON_RENTED         = &quot;rented&quot;        ; 
+</code></pre>
+
+<pre><code>  public Residence(JSONObject json) throws JSONException
+  {
+    id            = UUID.fromString(json.getString(JSON_ID));
+    geolocation   = json.getString(JSON_GEOLOCATION);
+    date          = new Date(json.getLong(JSON_DATE));
+    rented        = json.getBoolean(JSON_RENTED);
+  }
+
+  public JSONObject toJSON() throws JSONException
+  {
+    JSONObject json = new JSONObject();
+    json.put(JSON_ID            , id.toString());  
+    json.put(JSON_GEOLOCATION   , geolocation);
+    json.put(JSON_DATE          , date.getTime());       
+    json.put(JSON_RENTED        , rented);         
+    return json;
+  }
+</code></pre>
+
+<h2>References purposes:</h2>
+<pre><code>package org.wit.myrent.models;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.UUID;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Residence
+{
+  public UUID id;
+
+  public String  geolocation;
+  public Date    date;
+  public boolean rented;
+
+  private static final String JSON_ID             = &quot;id&quot;            ;
+  private static final String JSON_GEOLOCATION    = &quot;geolocation&quot;   ; 
+  private static final String JSON_DATE           = &quot;date&quot;          ; 
+  private static final String JSON_RENTED         = &quot;rented&quot;        ; 
+
+  public Residence()
+  {
+    this.id          = UUID.randomUUID();
+    this.date        = new Date();
+    this.geolocation = &quot;&quot;;
+  }
+
+  public Residence(JSONObject json) throws JSONException
+  {
+    id            = UUID.fromString(json.getString(JSON_ID));
+    geolocation   = json.getString(JSON_GEOLOCATION);
+    date          = new Date(json.getLong(JSON_DATE));
+    rented        = json.getBoolean(JSON_RENTED);
+  }
+
+  public JSONObject toJSON() throws JSONException
+  {
+    JSONObject json = new JSONObject();
+    json.put(JSON_ID            , id.toString());  
+    json.put(JSON_GEOLOCATION   , geolocation);
+    json.put(JSON_DATE          , date.getTime());       
+    json.put(JSON_RENTED        , rented);         
+    return json;
+  }  
+
+  public String getDateString()
+  {
+    return &quot;Registered: &quot; + DateFormat.getDateTimeInstance().format(date);
+  }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h2>PortfolioSerializer</h2>
+<pre><code>package org.wit.myrent.models;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONTokener;
+
+import android.content.Context;
+
+public class PortfolioSerializer
+{
+  private Context mContext;
+  private String mFilename;
+
+  public PortfolioSerializer(Context c, String f)
+  {
+    mContext = c;
+    mFilename = f;
+  }
+
+  public void saveResidences(ArrayList&lt;Residence&gt; residences) throws JSONException, IOException
+  {
+    // build an array in JSON
+    JSONArray array = new JSONArray();
+    for (Residence c : residences)
+      array.put(c.toJSON());
+
+    // write the file to disk
+    Writer writer = null;
+    try
+    {
+      OutputStream out = mContext.openFileOutput(mFilename, Context.MODE_PRIVATE);
+      writer = new OutputStreamWriter(out);
+      writer.write(array.toString());
+    }
+    finally
+    {
+      if (writer != null)
+        writer.close();
+    }
+  }
+
+  public ArrayList&lt;Residence&gt; loadResidences() throws IOException, JSONException
+  {
+    ArrayList&lt;Residence&gt; residences = new ArrayList&lt;Residence&gt;();
+    BufferedReader reader = null;
+    try
+    {
+      // open and read the file into a StringBuilder
+      InputStream in = mContext.openFileInput(mFilename);
+      reader = new BufferedReader(new InputStreamReader(in));
+      StringBuilder jsonString = new StringBuilder();
+      String line = null;
+      while ((line = reader.readLine()) != null)
+      {
+        // line breaks are omitted and irrelevant
+        jsonString.append(line);
+      }
+      // parse the JSON using JSONTokener
+      JSONArray array = (JSONArray) new JSONTokener(jsonString.toString()).nextValue();
+      // build the array of residences from JSONObjects
+      for (int i = 0; i &lt; array.length(); i++)
+      {
+        residences.add(new Residence(array.getJSONObject(i)));
+      }
+    }
+    catch (FileNotFoundException e)
+    {
+      // we will ignore this one, since it happens when we start fresh
+    }
+    finally
+    {
+      if (reader != null)
+        reader.close();
+    }
+    return residences;
+  }
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Portfolio</h1>
+<pre><code>  private PortfolioSerializer   serializer;
+</code></pre>
+
+<pre><code>  public Portfolio(PortfolioSerializer serializer)
+  {
+    this.serializer = serializer;
+    try
+    {
+      residences = serializer.loadResidences();
+    }
+    catch (Exception e)
+    {
+      info(this, &quot;Error loading residences: &quot; + e.getMessage());
+      residences = new ArrayList&lt;Residence&gt;();
+    }
+  }
+
+  public boolean saveResidences()
+  {
+    try
+    {
+      serializer.saveResidences(residences);
+      info(this, &quot;Residences saved to file&quot;);
+      return true;
+    }
+    catch (Exception e)
+    {
+      info(this, &quot;Error saving residences: &quot; + e.getMessage());
+      return false;
+    }
+  }  
+</code></pre>
+
+<p>Add import statement for <em>info</em>:</p>
+<pre><code>import static org.wit.android.helpers.LogHelpers.info;
+</code></pre>
+
+<h2>Reference purposes:</h2>
+<pre><code>package org.wit.myrent.models;
+
+import static org.wit.android.helpers.LogHelpers.info;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+import android.util.Log;
+
+public class Portfolio
+{
+  public  ArrayList&lt;Residence&gt;  residences;
+  private PortfolioSerializer   serializer;
+
+  public Portfolio(PortfolioSerializer serializer)
+  {
+    this.serializer = serializer;
+    try
+    {
+      residences = serializer.loadResidences();
+    }
+    catch (Exception e)
+    {
+      info(this, &quot;Error loading residences: &quot; + e.getMessage());
+      residences = new ArrayList&lt;Residence&gt;();
+    }
+  }
+
+  public boolean saveResidences()
+  {
+    try
+    {
+      serializer.saveResidences(residences);
+      info(this, &quot;Residences saved to file&quot;);
+      return true;
+    }
+    catch (Exception e)
+    {
+      info(this, &quot;Error saving residences: &quot; + e.getMessage());
+      return false;
+    }
+  }
+
+  public void addResidence(Residence residence)
+  {
+    residences.add(residence);
+  }
+
+  public Residence getResidence(UUID id)
+  {
+    Log.i(this.getClass().getSimpleName(), &quot;UUID parameter id: &quot;+ id);
+
+    for (Residence res : residences)
+    {
+      if(id.equals(res.id))
+      {
+        return res; 
+      }
+    }
+    info(this, &quot;failed to find residence. returning first element array to avoid crash&quot;);
+    return null;
+  }
+
+  public void deleteResidence(Residence c)
+  {
+    residences.remove(c);
+  }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>MyRentApp</h1>
+<pre><code>  private static final String FILENAME = &quot;portfolio.json&quot;;
+</code></pre>
+
+<p>Delete <em>portfolio = new Portfolio()</em> in onCreate():</p>
+<p><del> portfolio = new portfolio();</p>
+<p>Replace with the following 2 statements in onCreate():</p>
+<pre><code>    PortfolioSerializer serializer = new PortfolioSerializer(this, FILENAME);
+    portfolio = new Portfolio(serializer);
+</code></pre>
+
+<p>Add an import statememtn for PortfolioSerializer:</p>
+<pre><code>import org.wit.myrent.models.PortfolioSerializer;
+</code></pre>
+
+<h2>Reference Purposes:</h2>
+<pre><code>package org.wit.myrent.app;
+
+import static org.wit.android.helpers.LogHelpers.info;
+
+import org.wit.myrent.models.Portfolio;
+import org.wit.myrent.models.PortfolioSerializer;
+
+import android.app.Application;
+
+public class MyRentApp extends Application
+{
+  private static final String FILENAME = &quot;portfolio.json&quot;;
+
+  public Portfolio portfolio;
+
+  @Override
+  public void onCreate()
+  {
+    super.onCreate();
+    PortfolioSerializer serializer = new PortfolioSerializer(this, FILENAME);
+    portfolio = new Portfolio(serializer);
+
+    info(this, &quot;RentControl app launched&quot;);
+  }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Residence Activity</h1>
+<pre><code>  public void onPause() 
+  {
+    super.onPause();
+    portfolio.saveResidences();
+  }
+</code></pre>
+
+<h2>Reference Purposes</h2>
+<pre><code>package org.wit.myrent.activities;
+
+
+import java.util.UUID;
+
+import org.wit.myrent.R;
+import org.wit.myrent.app.MyRentApp;
+import org.wit.myrent.models.Portfolio;
+import org.wit.myrent.models.Residence;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import android.app.DatePickerDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+public class ResidenceActivity extends Activity implements TextWatcher, OnCheckedChangeListener, OnClickListener, DatePickerDialog.OnDateSetListener
+{
+  private EditText geolocation;
+  private CheckBox rented;
+  private Button   dateButton;
+
+  private Residence residence;
+  private Portfolio portfolio; 
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_residence);
+
+    geolocation = (EditText) findViewById(R.id.geolocation);
+    dateButton  = (Button)   findViewById(R.id.registration_date);
+    rented      = (CheckBox) findViewById(R.id.isrented);
+
+    residence = new Residence();
+
+    geolocation.addTextChangedListener(this);
+    geolocation.setText(residence.geolocation);
+    rented     .setChecked(residence.rented);
+    rented     .setOnCheckedChangeListener(this);
+
+    MyRentApp app = (MyRentApp) getApplication();
+    portfolio = app.portfolio;
+
+    UUID resId = (UUID) getIntent().getExtras().getSerializable(&quot;RESIDENCE_ID&quot;);
+    residence = portfolio.getResidence(resId);
+    if (residence != null)
+    {
+      updateControls(residence);
+    }
+
+    dateButton  .setOnClickListener(this);
+  }
+
+  public void updateControls(Residence residence)
+  {
+    geolocation.setText(residence.geolocation);
+    rented.setChecked(residence.rented);
+    dateButton.setText(residence.getDateString());
+  }
+
+  @Override
+  public void onCheckedChanged(CompoundButton arg0, boolean isChecked)
+  {
+    Log.i(this.getClass().getSimpleName(), &quot;rented Checked&quot;);
+    residence.rented = isChecked;
+  }
+
+  @Override
+  public void afterTextChanged(Editable c)
+  {
+    Log.i(this.getClass().getSimpleName(), &quot;geolocation &quot; + c.toString());
+    residence.geolocation = c.toString();
+  }
+
+  @Override
+  public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+  {
+  }
+
+  @Override
+  public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+  {
+  }
+
+  @Override
+  public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+  {
+    Date date = new GregorianCalendar(year, monthOfYear, dayOfMonth).getTime();
+    residence.date = date;
+    dateButton.setText(residence.getDateString());
+  }
+
+
+  @Override
+  public void onClick(View v)
+  {
+    switch (v.getId())
+    {
+      case R.id.registration_date      : Calendar c = Calendar.getInstance();
+                                         DatePickerDialog dpd = new DatePickerDialog (this, this, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+                                         dpd.show();
+                                         break; 
+    }
+  }
+
+  public void onPause() 
+  {
+    super.onPause();
+    portfolio.saveResidences();
+  }
+
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>IntentHelper</h1>
+<pre><code>  public static void navigateUp(Activity parent)
+  {
+    Intent upIntent = NavUtils.getParentActivityIntent(parent);
+    NavUtils.navigateUpTo(parent, upIntent);
+  }
+</code></pre>
+
+<p>Add an import statement for NavUtils:</p>
+<pre><code>import android.support.v4.app.NavUtils;
+</code></pre>
+
+<p><img alt="Figure 1: New Residence menu item &amp; Up button" src="img/01.png"></p>
+<h2>Reference Purposes</h2>
+<pre><code>package org.wit.android.helpers;
+import java.io.Serializable;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.support.v4.app.NavUtils;
+
+public class IntentHelper
+{
+  public static void startActivity (Activity parent, Class classname)
+  {
+    Intent intent = new Intent(parent, classname);
+    parent.startActivity(intent);
+  }   
+
+  public static void startActivityWithData (Activity parent, Class classname, String extraID, Serializable extraData)
+  {
+    Intent intent = new Intent(parent, classname);
+    intent.putExtra(extraID, extraData);
+    parent.startActivity(intent);
+  }  
+
+  public static void startActivityWithDataForResult (Activity parent, Class classname, String extraID, Serializable extraData, int idForResult)
+  {
+    Intent intent = new Intent(parent, classname);
+    intent.putExtra(extraID, extraData);
+    parent.startActivityForResult(intent, idForResult);
+  }
+
+  public static void navigateUp(Activity parent)
+  {
+    Intent upIntent = NavUtils.getParentActivityIntent(parent);
+    NavUtils.navigateUpTo(parent, upIntent);
+  }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="07" class="ui tab stacked moodle-book segment">
+	     <h2>ResidenceActivity</h2>
+<pre><code>import static org.wit.android.helpers.IntentHelper.navigateUp;
+</code></pre>
+
+<p>Add the statement:</p>
+<pre><code>getActionBar().setDisplayHomeAsUpEnabled(true);
+</code></pre>
+
+<p>to onCreate following *setContentView(...) as indicated in the following code extract:</p>
+<pre><code>  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_residence);
+    getActionBar().setDisplayHomeAsUpEnabled(true);
+    ...
+  }
+</code></pre>
+
+<p>Override <em>onOptionsItemSelected</em>:</p>
+<pre><code>  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+      case android.R.id.home:  navigateUp(this);
+                               return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+</code></pre>
+
+<p>Reference Purposes</p>
+<pre><code>package org.wit.myrent.activities;
+
+
+import static org.wit.android.helpers.LogHelpers.info;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.UUID;
+
+import org.wit.myrent.R;
+import org.wit.myrent.app.MyRentApp;
+import org.wit.myrent.models.Portfolio;
+import org.wit.myrent.models.Residence;
+import static org.wit.android.helpers.IntentHelper.navigateUp;
+
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
+public class ResidenceActivity extends Activity implements TextWatcher, OnCheckedChangeListener, OnClickListener, DatePickerDialog.OnDateSetListener
+{
+  private EditText geolocation;
+  private CheckBox rented;
+  private Button   dateButton;
+
+  private Residence residence;
+  private Portfolio portfolio; 
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_residence);
+    getActionBar().setDisplayHomeAsUpEnabled(true);
+
+    geolocation = (EditText) findViewById(R.id.geolocation);
+    dateButton  = (Button)   findViewById(R.id.registration_date);
+    rented      = (CheckBox) findViewById(R.id.isrented);
+
+    geolocation.addTextChangedListener(this);
+    dateButton  .setOnClickListener(this);
+    rented     .setOnCheckedChangeListener(this);
+
+    MyRentApp app = (MyRentApp) getApplication();
+    portfolio = app.portfolio;    
+
+    UUID resId = (UUID) getIntent().getExtras().getSerializable(&quot;RESIDENCE_ID&quot;);
+    residence = portfolio.getResidence(resId);
+    if (residence != null)
+    {
+      updateControls(residence);
+    }   
+  }
+
+  public void updateControls(Residence residence)
+  {
+    geolocation.setText(residence.geolocation);
+    rented.setChecked(residence.rented);
+    dateButton.setText(residence.getDateString());
+  }
+
+  public void onPause() 
+  {
+    super.onPause();
+    portfolio.saveResidences();
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+      case android.R.id.home:  navigateUp(this);
+                               return true;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
+  @Override
+  public void onCheckedChanged(CompoundButton arg0, boolean isChecked)
+  {
+    info(this, &quot;rented Checked&quot;);
+    residence.rented = isChecked;
+  }
+
+  @Override
+  public void afterTextChanged(Editable c)
+  {
+    Log.i(this.getClass().getSimpleName(), &quot;geolocation &quot; + c.toString());
+    residence.geolocation = c.toString();
+  }
+
+  @Override
+  public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+  {
+  }
+
+  @Override
+  public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+  {
+  }
+
+  @Override
+  public void onClick(View v)
+  {
+    switch (v.getId())
+    {
+      case R.id.registration_date      : Calendar c = Calendar.getInstance();
+                                         DatePickerDialog dpd = new DatePickerDialog (this, this, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+                                         dpd.show();
+                                         break; 
+    }
+  }
+
+  @Override
+  public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+  {
+    Date date = new GregorianCalendar(year, monthOfYear, dayOfMonth).getTime();
+    residence.date = date;
+    dateButton.setText(residence.getDateString());
+  }
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="08" class="ui tab stacked moodle-book segment">
+	     <h2>AndroidManifest</h2>
+<pre><code>    &lt;activity
+      android:name=&quot;.activities.ResidenceActivity&quot;
+      android:label=&quot;@string/app_name&quot; &gt;  
+      &lt;meta-data android:name=&quot;android.support.PARENT_ACTIVITY&quot; android:value=&quot;.activities.ResidenceListActivity&quot;/&gt;  
+    &lt;/activity&gt; 
+</code></pre>
+
+<h2>Reference Purposes:</h2>
+<pre><code>&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+  package=&quot;org.wit.myrent&quot;
+  android:versionCode=&quot;1&quot;
+  android:versionName=&quot;1.0&quot; &gt;
+
+  &lt;uses-sdk
+    android:minSdkVersion=&quot;16&quot;
+    android:targetSdkVersion=&quot;19&quot; /&gt;
+
+  &lt;application
+    android:name=&quot;.app.MyRentApp&quot;
+    android:allowBackup=&quot;true&quot;
+    android:icon=&quot;@drawable/ic_launcher&quot;
+    android:label=&quot;@string/app_name&quot;
+    android:theme=&quot;@style/AppTheme&quot; &gt;
+
+    &lt;activity
+      android:name=&quot;.activities.ResidenceListActivity&quot;
+      android:label=&quot;@string/app_name&quot; &gt;
+      &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+      &lt;/intent-filter&gt;
+    &lt;/activity&gt;    
+
+    &lt;activity
+      android:name=&quot;.activities.ResidenceActivity&quot;
+      android:label=&quot;@string/app_name&quot; &gt;  
+      &lt;meta-data android:name=&quot;android.support.PARENT_ACTIVITY&quot; android:value=&quot;.activities.ResidenceListActivity&quot;/&gt;  
+    &lt;/activity&gt; 
+
+  &lt;/application&gt;
+
+&lt;/manifest&gt;
+</code></pre>
+	  </section>
+	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
+	     <h1>Archives</h1>
+<p>This is a version of MyRent complete to the end if this lab:</p>
+<ul>
+<li><a href="archives/MyRentV04.zip">MyRentV04</a></li>
+</ul>
+	  </section>
+<script>
+
+function addCaptions() {
+  var images = $(".moodle-book img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0) 
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+};
+
+// Need to check if we have already been loaded
+seen = 0;
+
+$(document).ready(function()
+{ 
+  if (seen == 0)
+  { 
+    // not loaded before - so do the restyling once (need to moodle book print)
+    $(".moodle-book img").addClass ("ui image");
+    $(".moodle-book pre").addClass ("ui segment");
+    addCaptions();
+    seen = 1;
+  }
+
+
+})</script>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  <script>
+    $(document).ready(function()
+    {  
+      $('.tab-menu.menu .item').tab();
+    });
+  </script>   
+  </body>
+ </html>
