@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> 5: File IO & Implicit Intents </title>
+     <title> 5: File IO, Navigation & Implicit Intents </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -125,35 +125,72 @@ header h3
         <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
         <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
-        <a class="active item" href=" ../topic05/index.html"> 5: File IO & Implicit Intents </a>
+        <a class="active item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
       </div>
     </nav>
   </section>
 
   <section class="ui twelve column wide">
     <section class="ui stacked segment">
-      <h1>5: File IO &amp; Implicit Intents</h1>
-<ul>
-<li>Chapter 17: Saving &amp; Loading Local Files</li>
-<li>Chapter 21: Implicit Intents</li>
-<li>Chapter 23: More About Intents &amp; Tasks</li>
-</ul>
+      <h1>5: File IO, Navigation &amp; Implicit Intents</h1>
       <div class="ui  middle aligned grid">
+          <div class="row">   
+            <div class="ten column wide">
+              <h4 class="ui center aligned header">
+               Navigation into Apps
+              </h4>
+              <div class="ui raised segment">
+                <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
+              </div>
+            </div>
+            <div class="six vertical column wide">
+              <a href="./pdf/a-navigation-into-apps.pdf"> 
+                <img class="ui medium image" src="./pdf/a-navigation-into-apps.png"> 
+              </a>
+            </div>
+          </div>
+          <div class="row">   
+            <div class="ten column wide">
+              <h4 class="ui center aligned header">
+               MyRent01-02
+              </h4>
+              <div class="ui raised segment">
+                <p>We review the structure, model and code in the MyRent 01 and 02 applications. The application at this stage has 2 views - sometimes called a 'Master-Detail' pattern. The Master presents a list of items which, if selected, will launch a detail view presenting the individual items. The List if items is randomly generated at application startup, and cannot be extended.</p>
+              </div>
+            </div>
+            <div class="six vertical column wide">
+              <a href="./pdf/b-myrent-01-02.pdf"> 
+                <img class="ui medium image" src="./pdf/b-myrent-01-02.png"> 
+              </a>
+            </div>
+          </div>
+          <div class="row">   
+            <div class="ten column wide">
+              <h4 class="ui center aligned header">
+               MyRent03
+              </h4>
+              <div class="ui raised segment">
+                <p>In this version we introduced an action bar, containing an option to enable a new Residence Item to be added. This residence is created in the ResidenceActivity, and will be added to the list. Additionally, the ResidenceActivity now supports a simple dialog to allow the user to select a date.</p>
+              </div>
+            </div>
+            <div class="six vertical column wide">
+              <a href="./pdf/c-myrent-03.pdf"> 
+                <img class="ui medium image" src="./pdf/c-myrent-03.png"> 
+              </a>
+            </div>
+          </div>
           <div class="row">   
             <div class="ten column wide">
              <h4 class="ui center aligned header">
                Lab: MyRent-04 
              </h4>
               <div class="ui raised segment">
-                <ul>
-<li>Enable the portfolio to be saved / retrieved from file</li>
-<li>Enable menu up navigation support</li>
-</ul>
+                <p>Introduce into MyRent a serialization mechanism to save/restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updates. In addition, continue to evolve the navigation support in the app, enabling a 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
               </div>
             </div>
             <div class="six column wide center aligned">
               <a  href="./book-a/index.html"> 
-                  <i class="massive settings icon"></i>
+                  <img class="ui medium image" src="./book-a/img/main.png" alt="Lab"> 
               </a>
             </div>
         </div>
@@ -168,7 +205,7 @@ header h3
             </div>
             <div class="six column wide center aligned">
               <a  href="./book-b/index.html"> 
-                  <i class="massive settings icon"></i>
+                  <img class="ui medium image" src="./book-b/img/main.png" alt="Lab"> 
               </a>
             </div>
         </div>

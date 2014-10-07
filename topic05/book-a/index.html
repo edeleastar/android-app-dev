@@ -104,7 +104,7 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">5: File IO & Implicit Intents</a></header>
+    <header class="header item"> <a href="../index.html">5: File IO, Navigation & Implicit Intents</a></header>
     <div class="right tab-menu menu">
           <a class="item" data-tab="MyRent-04"> MyRent-04 </a>
           <a class="item" data-tab="01"> 01 </a>
@@ -123,23 +123,27 @@ header h3
 
 	  <section data-tab="MyRent-04" class="ui tab stacked moodle-book segment">
 	     <h1>File IO &amp; Menu Up Navigation</h1>
-<ul>
-<li>Enable the portfolio to be saved / retrieved from file</li>
-<li>Enable menu up navigation support</li>
-</ul>
+<p>Introduce into MyRent a serialization mechanism to save/restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updates. In addition, continue to evolve the navigation support in the app, enabling a 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h2>Residence</h2>
+	     <h1>Residence</h1>
+<p>The residence class will need an ability to save and restore itself to some external format. A convenient choice for this format is JSON:</p>
+<ul>
+<li><a href="http://json.org/">http://json.org/</a></li>
+</ul>
+<p>The ADK has support for this format in the libaries:</p>
 <pre><code>import org.json.JSONException;
 import org.json.JSONObject;
 </code></pre>
 
+<p>.. we should define in our classes appropriate names for each of the fields we wish to serialize:</p>
 <pre><code>  private static final String JSON_ID             = &quot;id&quot;            ;
   private static final String JSON_GEOLOCATION    = &quot;geolocation&quot;   ; 
   private static final String JSON_DATE           = &quot;date&quot;          ; 
   private static final String JSON_RENTED         = &quot;rented&quot;        ; 
 </code></pre>
 
+<p>This Residence class will need a new constructor to load a Residence object from JSON:</p>
 <pre><code>  public Residence(JSONObject json) throws JSONException
   {
     id            = UUID.fromString(json.getString(JSON_ID));
@@ -147,8 +151,10 @@ import org.json.JSONObject;
     date          = new Date(json.getLong(JSON_DATE));
     rented        = json.getBoolean(JSON_RENTED);
   }
+</code></pre>
 
-  public JSONObject toJSON() throws JSONException
+<p>... and a corresponding method to save an object to JSON:</p>
+<pre><code>  public JSONObject toJSON() throws JSONException
   {
     JSONObject json = new JSONObject();
     json.put(JSON_ID            , id.toString());  
@@ -159,7 +165,7 @@ import org.json.JSONObject;
   }
 </code></pre>
 
-<h2>References purposes:</h2>
+<h2>Complete Revised Class for References purposes:</h2>
 <pre><code>package org.wit.myrent.models;
 
 import java.text.DateFormat;
@@ -215,7 +221,8 @@ public class Residence
 </code></pre>
 	  </section>
 	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h2>PortfolioSerializer</h2>
+	     <h1>PortfolioSerializer</h1>
+<p>In order to perform the actual serialization - we provide a new class to save / restore a list of Residences:</p>
 <pre><code>package org.wit.myrent.models;
 
 import java.io.BufferedReader;
@@ -303,14 +310,18 @@ public class PortfolioSerializer
     return residences;
   }
 }
-
 </code></pre>
+
+<p>Place this complete class in the 'models' package.</p>
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>Portfolio</h1>
+<p>The portfolio class will now be equipped with the capability to use the serializer to save / restore the Residences it is managing. It will use the Serializee we just developed to do this.</p>
+<p>First, introduce the serializer as a members of the Portfolio class:</p>
 <pre><code>  private PortfolioSerializer   serializer;
 </code></pre>
 
+<p>... then revise the constructor to take a serializer when it is being initialised:</p>
 <pre><code>  public Portfolio(PortfolioSerializer serializer)
   {
     this.serializer = serializer;
@@ -324,8 +335,10 @@ public class PortfolioSerializer
       residences = new ArrayList&lt;Residence&gt;();
     }
   }
+</code></pre>
 
-  public boolean saveResidences()
+<p>We can now introduce a new method to save all the residence to disk:</p>
+<pre><code>  public boolean saveResidences()
   {
     try
     {
@@ -341,11 +354,11 @@ public class PortfolioSerializer
   }  
 </code></pre>
 
-<p>Add import statement for <em>info</em>:</p>
+<p>The above will requite we add import statement for <em>info</em>:</p>
 <pre><code>import static org.wit.android.helpers.LogHelpers.info;
 </code></pre>
 
-<h2>Reference purposes:</h2>
+<h2>Complete Revised Class for References purposes:</h2>
 <pre><code>package org.wit.myrent.models;
 
 import static org.wit.android.helpers.LogHelpers.info;
@@ -418,21 +431,24 @@ public class Portfolio
 	  </section>
 	  <section data-tab="04" class="ui tab stacked moodle-book segment">
 	     <h1>MyRentApp</h1>
+<p>The entire loading process is initially triggered by the application object, which is the entry point for our application.</p>
+<p>First introduce a field to hold the file name we will use to store the portfolio:</p>
 <pre><code>  private static final String FILENAME = &quot;portfolio.json&quot;;
 </code></pre>
 
-<p>Delete <em>portfolio = new Portfolio()</em> in onCreate():</p>
-<p><del> portfolio = new portfolio();</p>
-<p>Replace with the following 2 statements in onCreate():</p>
+<p>Then we replace the current portfolio creation with the following:</p>
 <pre><code>    PortfolioSerializer serializer = new PortfolioSerializer(this, FILENAME);
     portfolio = new Portfolio(serializer);
 </code></pre>
 
-<p>Add an import statememtn for PortfolioSerializer:</p>
+<p>Add an import statement for PortfolioSerializer:</p>
 <pre><code>import org.wit.myrent.models.PortfolioSerializer;
 </code></pre>
 
-<h2>Reference Purposes:</h2>
+<p>Run the app now. See if you can create some Residences. Can you determine if they are being saved?</p>
+<p>To do this, it may not be enough to just exit the app and launch again - as you will be merely restoring the already active app. See if you can actually 'kill' the application.</p>
+<p>If you manage to do this, you might find that the data is not actually saved. We will fix this in the next step.</p>
+<h2>Complete class for Reference Purposes:</h2>
 <pre><code>package org.wit.myrent.app;
 
 import static org.wit.android.helpers.LogHelpers.info;
@@ -461,7 +477,8 @@ public class MyRentApp extends Application
 </code></pre>
 	  </section>
 	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h1>Residence Activity</h1>
+	     <h1>ResidenceActivity</h1>
+<p>One method of ensuring the data is in fact saved, will be to trigger a save when the user leaves the ResidenceActivity:</p>
 <pre><code>  public void onPause() 
   {
     super.onPause();
@@ -469,7 +486,8 @@ public class MyRentApp extends Application
   }
 </code></pre>
 
-<h2>Reference Purposes</h2>
+<p>You should now be able to save/load the residences. Verify that this works now - you will need to completely kill the app for this to be verified.</p>
+<h2>Full class for Reference Purposes</h2>
 <pre><code>package org.wit.myrent.activities;
 
 
@@ -603,6 +621,7 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 	  </section>
 	  <section data-tab="06" class="ui tab stacked moodle-book segment">
 	     <h1>IntentHelper</h1>
+<p>In order to support enhanced navigation, we define an additional Helper method in the IntentHeloer class:</p>
 <pre><code>  public static void navigateUp(Activity parent)
   {
     Intent upIntent = NavUtils.getParentActivityIntent(parent);
@@ -614,8 +633,7 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 <pre><code>import android.support.v4.app.NavUtils;
 </code></pre>
 
-<p><img alt="Figure 1: New Residence menu item &amp; Up button" src="img/01.png"></p>
-<h2>Reference Purposes</h2>
+<h2>Full Class for Reference Purposes</h2>
 <pre><code>package org.wit.android.helpers;
 import java.io.Serializable;
 
@@ -654,7 +672,10 @@ public class IntentHelper
 </code></pre>
 	  </section>
 	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     <h2>ResidenceActivity</h2>
+	     <h1>ResidenceActivity</h1>
+<p>New we can make use of the helper we just introduced. We wish to support the 'up' style navigation:</p>
+<p><img alt="Figure 1: New Residence menu item &amp; Up button" src="img/01.png"></p>
+<p>First introduce the helper method into ResidenceActivity:</p>
 <pre><code>import static org.wit.android.helpers.IntentHelper.navigateUp;
 </code></pre>
 
@@ -673,7 +694,7 @@ public class IntentHelper
   }
 </code></pre>
 
-<p>Override <em>onOptionsItemSelected</em>:</p>
+<p>Now we override the <em>onOptionsItemSelected</em> method:</p>
 <pre><code>  @Override
   public boolean onOptionsItemSelected(MenuItem item)
   {
@@ -686,7 +707,8 @@ public class IntentHelper
   }
 </code></pre>
 
-<p>Reference Purposes</p>
+<p>Try this now - does it work as in Figure 1 above. Not Yet! - we need one more step...</p>
+<h2>Full class for Reference Purposes</h2>
 <pre><code>package org.wit.myrent.activities;
 
 
@@ -826,7 +848,8 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 </code></pre>
 	  </section>
 	  <section data-tab="08" class="ui tab stacked moodle-book segment">
-	     <h2>AndroidManifest</h2>
+	     <h1>AndroidManifest</h1>
+<p>The final piece of the puzzle is to layout in the manifest the parent/child relationship between the ResidenceListActivity and ResidenceActivity classes:</p>
 <pre><code>    &lt;activity
       android:name=&quot;.activities.ResidenceActivity&quot;
       android:label=&quot;@string/app_name&quot; &gt;  
@@ -834,7 +857,8 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
     &lt;/activity&gt; 
 </code></pre>
 
-<h2>Reference Purposes:</h2>
+<p>In the above we are establishing this relationship. The navigation mechanism should work as expected now.</p>
+<h2>Full Manifest for Reference Purposes:</h2>
 <pre><code>&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
   package=&quot;org.wit.myrent&quot;
   android:versionCode=&quot;1&quot;
