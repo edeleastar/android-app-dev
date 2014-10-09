@@ -119,10 +119,13 @@ header h3
   <br>
 
 	  <section data-tab="MyRent-05" class="ui tab stacked moodle-book segment">
-	     <h1>Contactlist access and Email support</h1>
+	     <h1>Contact list &amp; Email support</h1>
+<p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
 	     <h1>Resources</h1>
+<p>In preparing for our new features, we define some strings to be used by the application. This step is not strictly necessary - but taking this approach is considered best practice, and enables the application to be internationalized more easily.</p>
+<p>These are the new strings:</p>
 <h2>res/strings.xml</h2>
 <pre><code>  &lt;string name=&quot;landlord&quot;&gt;Prospective Tenant&lt;/string&gt;
   &lt;string name=&quot;residence_report&quot;&gt;Send Residence Information&lt;/string&gt;
@@ -135,6 +138,9 @@ header h3
   &lt;string name=&quot;send_report&quot;&gt;Send residence report via&lt;/string&gt;   
 </code></pre>
 
+<p>We need 2 new buttons which will enable the user to select a contact, and send an email:</p>
+<p><img alt="Figure 1: Prospective Tenant &amp; Send Residence Information Buttons added" src="img/01.png"></p>
+<p>These are the button characteristics:</p>
 <h2>res/layout/activity_residence.xml</h2>
 <pre><code>    &lt;Button
         android:id=&quot;@+id/tenant&quot;
@@ -152,143 +158,10 @@ header h3
           android:text=&quot;@string/residence_report&quot;
         /&gt; 
 </code></pre>
-
-<p><img alt="Figure 1: Prospective Tenant &amp; Send Residence Information Buttons added" src="img/01.png"></p>
-<h2>Reference Purposes:</h2>
-<h2>res/strings.xml</h2>
-<pre><code>&lt;resources&gt;
-
-  &lt;string name=&quot;app_name&quot;&gt;MyRent&lt;/string&gt;
-  &lt;string name=&quot;geolocation_hint&quot;&gt;52.253456,-7.187162&lt;/string&gt;
-  &lt;string name=&quot;status&quot;&gt;Status&lt;/string&gt;
-  &lt;string name=&quot;rented_checkbox_text&quot;&gt;Rented?&lt;/string&gt;
-  &lt;string name=&quot;location&quot;&gt;Location&lt;/string&gt;
-  &lt;string name=&quot;new_residence&quot;&gt;New Residence&lt;/string&gt;
-  &lt;string name=&quot;settings&quot;&gt;Settings&lt;/string&gt;
-  &lt;string name=&quot;delete_residence&quot;&gt;Delete Residence&lt;/string&gt;   
-  &lt;string name=&quot;landlord&quot;&gt;Prospective Tenant&lt;/string&gt;
-  &lt;string name=&quot;residence_report&quot;&gt;Send Residence Information&lt;/string&gt;
-
-  &lt;string name=&quot;residence_report_rented&quot;&gt;The residence is already let.&lt;/string&gt;
-  &lt;string name=&quot;residence_report_not_rented&quot;&gt;The residence is still available.&lt;/string&gt;
-  &lt;string name=&quot;residence_report_nobody_interested&quot;&gt;there is no other prospective tentant at this time.&lt;/string&gt;
-  &lt;string name=&quot;residence_report_prospective_tenant&quot;&gt;the prospective tenant is %s.&lt;/string&gt;
-  &lt;string name=&quot;residence_report_subject&quot;&gt;Status Report on Residence Availability&lt;/string&gt;
-  &lt;string name=&quot;send_report&quot;&gt;Send residence report via&lt;/string&gt;   
-
-&lt;/resources&gt;
-</code></pre>
-
-<h2>res/layout/activity_residence.xml</h2>
-<pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:orientation=&quot;vertical&quot; &gt;
-
-    &lt;!-- LOCATION --&gt;
-
-    &lt;TextView
-        style=&quot;?android:listSeparatorTextViewStyle&quot;
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;@string/location&quot; /&gt;
-
-    &lt;LinearLayout
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:baselineAligned=&quot;false&quot;
-        android:orientation=&quot;horizontal&quot; &gt;
-
-        &lt;!-- Geolocation (GPS Coords) --&gt;
-
-        &lt;EditText
-            android:id=&quot;@+id/geolocation&quot;
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:hint=&quot;@string/geolocation_hint&quot; &gt;
-
-            &lt;requestFocus /&gt;
-        &lt;/EditText&gt;
-        &lt;!-- Show Map Button --&gt;
-
-    &lt;/LinearLayout&gt;
-
-    &lt;!-- STATUS --&gt;
-
-    &lt;TextView
-        style=&quot;?android:listSeparatorTextViewStyle&quot;
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;@string/status&quot; /&gt;
-
-    &lt;Button android:id=&quot;@+id/registration_date&quot;
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:layout_marginLeft=&quot;16dp&quot;
-        android:layout_marginRight=&quot;16dp&quot;
-        /&gt;    
-
-    &lt;CheckBox
-        android:id=&quot;@+id/isrented&quot;
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:enabled=&quot;true&quot;
-        android:focusable=&quot;false&quot;
-        android:gravity=&quot;center&quot;
-        android:text=&quot;@string/rented_checkbox_text&quot; /&gt;
-
-    &lt;Button
-        android:id=&quot;@+id/tenant&quot;
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:layout_marginLeft=&quot;16dp&quot;
-        android:layout_marginRight=&quot;16dp&quot;
-        android:text=&quot;@string/landlord&quot; /&gt;  
-
-    &lt;Button android:id=&quot;@+id/residence_reportButton&quot;
-          android:layout_width=&quot;match_parent&quot;
-          android:layout_height=&quot;wrap_content&quot;
-          android:layout_marginLeft=&quot;16dp&quot;
-          android:layout_marginRight=&quot;16dp&quot;
-          android:text=&quot;@string/residence_report&quot;
-        /&gt; 
-
-&lt;/LinearLayout&gt;
-</code></pre>
 	  </section>
 	  <section data-tab="02" class="ui tab stacked moodle-book segment">
 	     <h1>Helpers</h1>
-<h2>ContactHelper</h2>
-<pre><code>package org.wit.android.helpers;
-
-import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.provider.ContactsContract;
-
-public class ContactHelper
-{ 
-  public static String getContact(Context context, Intent data)
-  {
-    String contact = &quot;unable to find contact&quot;;
-    Uri contactUri = data.getData();
-    String[] queryFields = new String[] { ContactsContract.Contacts.DISPLAY_NAME };
-    Cursor c = context.getContentResolver().query(contactUri, queryFields, null, null, null);
-    if (c.getCount() == 0)
-    {
-      c.close();
-      return contact;
-    }
-    c.moveToFirst();
-    contact = c.getString(0);
-    c.close();
-
-    return contact;
-  }
-}
-</code></pre>
-
+<p>Our IntentHelper class is a useful location for methods that involved intents, either explicit or implicit. Here we introduce two new methods to trigger contact list and email access:</p>
 <h2>IntentHelper</h2>
 <pre><code>  public static void selectContact(Activity parent, int id)
   {
@@ -305,30 +178,101 @@ public class ContactHelper
   }
 </code></pre>
 
-<p>Add import statements:</p>
+<p>The import statements for the above:</p>
 <pre><code>import android.provider.ContactsContract;
 import android.content.Context;
 import android.net.Uri;
 </code></pre>
+
+<p>We will make use of these in the next step.</p>
+<h2>ContactHelper</h2>
+<p>Accessing the phone's contact list is can be complex - requiring us to engage with the 'Content Provider' API for the Contact List. Having this awkward code in our activities can make them hard to read - so we resort to another helper:</p>
+<pre><code>package org.wit.android.helpers;
+
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.ContactsContract;
+import android.content.ContentResolver;
+
+
+public class ContactHelper
+{ 
+  public static String getDisplayName(Context context, Intent data)
+  {
+    String contact = &quot;unable to find contact&quot;;
+    Uri contactUri = data.getData();
+    String[] queryFields = new String[] { ContactsContract.Contacts.DISPLAY_NAME };
+    Cursor c = context.getContentResolver().query(contactUri, queryFields, null, null, null);
+    if (c.getCount() == 0)
+    {
+      c.close();
+      return contact;
+    }
+    c.moveToFirst();
+    contact = c.getString(0);
+    c.close();
+
+    return contact;
+  }
+
+  public static String getEmail(Context context, Intent data)
+  {
+    String email = &quot;no email&quot;;
+
+    Uri contactUri = data.getData();
+    ContentResolver cr = context.getContentResolver();
+
+    Cursor cur = cr.query(contactUri, null, null, null, null);
+
+    if (cur.getCount() &gt; 0)
+    {
+      try
+      {
+        cur.moveToFirst();
+        String contactId = cur.getString(cur.getColumnIndex(ContactsContract.Contacts._ID));
+        Cursor emails = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null,
+            ContactsContract.CommonDataKinds.Email.CONTACT_ID + &quot; = &quot; + contactId, null, null);
+        emails.moveToFirst();
+        email = emails.getString(emails.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+        emails.close();
+      }
+      catch (Exception e)
+      {
+      }
+    }
+    return email;
+  }
+}
+</code></pre>
+
+<p>The above is fairly crudely implemented - we can either get uses 'Diaplay Name' or their 'Email' - but not both.</p>
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>Residence</h1>
+<p>The Residence model class will need to be extended to include a new field (the tennant) and also a new method - to generate a report. First introduce these imports:</p>
 <pre><code>import org.wit.myrent.R;
 import android.content.Context;
 </code></pre>
 
+<p>This is the new field:</p>
 <pre><code>public String  tenant;
 </code></pre>
 
+<p>... and to keep serialization on track - an identifier for this field:</p>
 <pre><code>  private static final String JSON_TENANT         = &quot;tenant&quot;;  
 </code></pre>
 
+<p>... which will need to be engaged in the constructor:</p>
 <pre><code>    tenant        = json.getString(JSON_TENANT);
 </code></pre>
 
+<p>... and the serialization itself:</p>
 <pre><code>    json.put(JSON_TENANT        , tenant);
 </code></pre>
 
+<p>Finally, a new method to generate the contents of the email:</p>
 <pre><code>  public String getResidenceReport(Context context)
   {
     String rentedString = null;
@@ -355,115 +299,33 @@ import android.content.Context;
     return report;
   }
 </code></pre>
-
-<h2>References Purposes:</h2>
-<pre><code>package org.wit.myrent.models;
-
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.UUID;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.wit.myrent.R;
-
-import android.content.Context;
-
-public class Residence
-{
-  public UUID id;
-
-  public String  geolocation;
-  public Date    date;
-  public boolean rented;
-  public String  tenant;
-
-  private static final String JSON_ID             = &quot;id&quot;            ;
-  private static final String JSON_GEOLOCATION    = &quot;geolocation&quot;   ; 
-  private static final String JSON_DATE           = &quot;date&quot;          ; 
-  private static final String JSON_RENTED         = &quot;rented&quot;        ; 
-  private static final String JSON_TENANT         = &quot;tenant&quot;        ;  
-
-  public Residence()
-  {
-    this.id          = UUID.randomUUID();
-    this.date        = new Date();
-    this.geolocation = &quot;52.253456, -7.187162&quot;;
-  }
-
-  public Residence(JSONObject json) throws JSONException
-  {
-    id            = UUID.fromString(json.getString(JSON_ID));
-    geolocation   = json.getString(JSON_GEOLOCATION);
-    date          = new Date(json.getLong(JSON_DATE));
-    rented        = json.getBoolean(JSON_RENTED);
-    tenant        = json.getString(JSON_TENANT);
-  }
-
-  public JSONObject toJSON() throws JSONException
-  {
-    JSONObject json = new JSONObject();
-    json.put(JSON_ID            , id.toString());  
-    json.put(JSON_GEOLOCATION   , geolocation);
-    json.put(JSON_DATE          , date.getTime());       
-    json.put(JSON_RENTED        , rented);     
-    json.put(JSON_TENANT        , tenant);
-    return json;
-  }  
-
-  public String getDateString()
-  {
-    return &quot;Registered: &quot; + DateFormat.getDateTimeInstance().format(date);
-  }
-
-  public String getResidenceReport(Context context)
-  {
-    String rentedString = null;
-    if (rented)
-    {
-      rentedString = context.getString(R.string.residence_report_rented);
-    }
-    else
-    {
-      rentedString = context.getString(R.string.residence_report_not_rented);
-    }
-    String dateFormat = &quot;EEE, MMM dd&quot;;
-    String dateString = android.text.format.DateFormat.format(dateFormat, date).toString();
-    String prospectiveTenant = tenant;
-    if (tenant == null)
-    {
-      prospectiveTenant = context.getString(R.string.residence_report_nobody_interested);
-    }
-    else
-    {
-      prospectiveTenant = context.getString(R.string.residence_report_prospective_tenant, tenant);
-    }
-    String report =  &quot;Location &quot; + geolocation + &quot; Date: &quot; + dateString + &quot; &quot; + rentedString + &quot; &quot; + prospectiveTenant;
-    return report;
-  }
-}
-</code></pre>
 	  </section>
 	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h2>ResidenceActivity - Tenant</h2>
-<pre><code>import static org.wit.android.helpers.ContactHelper.getContact;
+	     <h1>ResidenceActivity - Tenant</h1>
+<p>We can then start to wire up a "Select Tenant" button.</p>
+<p>The imports:</p>
+<pre><code>import static org.wit.android.helpers.ContactHelper.getEmail;
 import static org.wit.android.helpers.IntentHelper.selectContact;
 import android.content.Intent;
 </code></pre>
 
+<p>An ID we will use for the implicit Intent:</p>
 <pre><code>private static final int REQUEST_CONTACT = 1;
 </code></pre>
 
+<p>The button to trigger the intent:</p>
 <pre><code>private Button   tenantButton;
-
 </code></pre>
 
+<p>Initialization of the button:</p>
 <pre><code>tenantButton = (Button)   findViewById(R.id.tenant);
 </code></pre>
 
+<p>Its event handler set up:</p>
 <pre><code>tenantButton.setOnClickListener(this);
 </code></pre>
 
+<p>And then the event handler itself:</p>
 <pre><code>  @Override
   public void onClick(View v)
   {
@@ -476,22 +338,44 @@ import android.content.Intent;
     }
   }
 </code></pre>
+
+<p>This last method will trigger a 'startActivityForResult' - which we will have to deal with in order to recover the actual contact. This will be provided by the following new method:</p>
+<pre><code>  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data)
+  {
+    switch (requestCode)
+    {
+      case REQUEST_CONTACT    : String email = getEmail(this, data);
+                                residence.tenant = email;
+                                tenantButton.setText(email);      
+                                break;
+    }
+  }  
+</code></pre>
+
+<p>Note that the above passes the data we received from the Contact List activity to our helper, which will recover the actual email address.</p>
 	  </section>
 	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h2>ResidenceActivity - Email</h2>
+	     <h1>ResidenceActivity - Email</h1>
+<p>Now we can engage the report button to actually send the email.</p>
+<p>The imports:</p>
 <pre><code>import static org.wit.android.helpers.IntentHelper.sendEmail;
 import android.content.Intent;
 </code></pre>
 
+<p>The Button object:</p>
 <pre><code>private Button   reportButton;
 </code></pre>
 
+<p>Initialisation of the button:</p>
 <pre><code>reportButton = (Button)   findViewById(R.id.residence_reportButton);
 </code></pre>
 
+<p>Enabling the event handler:</p>
 <pre><code>reportButton.setOnClickListener(this);
 </code></pre>
 
+<p>The event handler itself:</p>
 <pre><code>  @Override
   public void onClick(View v)
   {
@@ -505,34 +389,9 @@ import android.content.Intent;
   }
 </code></pre>
 
-<pre><code>  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data)
-  {
-    switch (requestCode)
-    {
-      case REQUEST_CONTACT    : String name = getContact(this, data);
-                                residence.tenant = name;
-                                tenantButton.setText(name);      
-                                break;
-    }
-  }  
-</code></pre>
-
-<p>Test the module just added as follows:</p>
-<ul>
-<li>Launch the app</li>
-<li>Create a new residence object by clicking on the menu (+)</li>
-<li>Press the <strong>Prospective Tenant</strong> button</li>
-<li>Your contact list should open</li>
-<li>Choose a contact</li>
-<li>The name of the chosen contact should appear as the label of the Prospective Tenant button.</li>
-<li>Press the <strong>Send Residence Information</strong> button</li>
-<li>An email client window should open</li>
-<li>Add one of your email addresses in the <strong>To</strong> slot</li>
-<li>Send the email</li>
-<li>Check your email and verify the mail arrives
-<img alt="Figure 1: Sample Email" src="img/02.png"></li>
-</ul>
+<p>Test this now. Make sure the contact you select actually has an email address in the contact info.</p>
+<p>If gmail is the default mail handling app, it may look like this:</p>
+<p><img alt="Figure 1: Sample Email" src="img/02.png"></p>
 	  </section>
 	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
 	     <h1>Archives</h1>
