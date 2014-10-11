@@ -1,0 +1,454 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> MyRent-07 </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/0.19.3/css/semantic.min.css">
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> 
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script src="http://cdn.jsdelivr.net/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
+ 
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size: 14px
+}
+
+code
+{
+	font-family: "Monaco";
+	font-size: 110%;
+}
+
+h1 
+{
+  font-style:italic;
+  font-size:120%;
+  border-bottom: thin solid black;
+}
+h2 
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3 
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+#footertext 
+{
+  font-size:70%
+}
+
+
+#title 
+{
+  font-size:120%;
+  color: black;
+  text-align: right;
+  background-color : white;
+}
+
+img 
+{
+   padding:1px;
+  /* border:1px solid black;*/
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+header img
+{
+	 padding:1px;
+   border:0px solid black;
+}
+
+header h1
+{
+  font-style:normal;
+  font-size:120%;
+  border-bottom: 0px;
+}
+
+header h2
+{
+  font-style:normal;
+  font-size:100%;
+  border-bottom: 0px;
+}
+
+header h3
+{
+  font-style:normal;
+  font-size:90%;
+  border-bottom: 0px;
+}
+
+    </style>
+
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">6: Fragments, Maps & ViewPager</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="MyRent-07"> MyRent-07 </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="Archives"> Archives </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="MyRent-07" class="ui tab stacked moodle-book segment">
+	     <h1>ViewPager</h1>
+<p>Now that our Activities are based on Fragment, we can introduce a new feature to support 'swipe' interaction. This allows a user to swipe left/right to page through the residence list.</p>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>ViewPager</h1>
+<p>Here we shall refactor MyRent by incorporating a ViewPager.</p>
+<ul>
+<li>This will allow us to swipe between pages as illustrated in Figure 1.</li>
+</ul>
+<p><img alt="Figure 1: Swipe between pages" src="img/19.png"></p>
+<p>The refactoring is shown in Figure 2 where the changes are highlighted: compare this object diagram to that in the previous step and you will see that the main change is the replacement of MyRentActivity with a new class MyRentPagerActivity. </p>
+<p><img alt="Figure 2: Object diagram following introduction of ViewPager" src="img/20.png"></p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Resources</h1>
+<p>Create a new file <em>ids.xml</em> in res/values folder:</p>
+<p>Filename: ids.xml</p>
+<pre><code>&lt;resources&gt;
+    &lt;item type=&quot;id&quot; name=&quot;viewPager&quot; /&gt;
+&lt;/resources&gt;
+
+</code></pre>
+
+<p>Change the MyRentActivity node in the manifest file: delete MyRentActivity node:</p>
+<p><img alt="" src="img/01.png"></p>
+<p>Replacement node: MyRentPagerActivity added</p>
+<pre><code>    &lt;activity 
+        android:name=&quot;.activities.MyRentPagerActivity&quot;
+        android:label=&quot;@string/app_name&quot;&gt;
+
+        &lt;meta-data  
+          android:name=&quot;android.support.PARENT_ACTIVITY&quot;
+          android:value=&quot;.activities.ResidenceListActivity&quot;/&gt;
+    &lt;/activity&gt;
+</code></pre>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Create MyRentPagerActivity</h1>
+<p>Note: not all import statements are included: </p>
+<ul>
+<li>
+<p>You may use QuickFix to identify missing entities. </p>
+</li>
+<li>
+<p>Alternatively, on the Mac, the key combination <em>Shift + cmd + O</em> (upper case letter oh), automatically inserts missing imports.</p>
+</li>
+</ul>
+<p>Delete MyRentActivity and replace with MyRentPagerActivity, the code for which follows:</p>
+<p>Filename: MyRentPagerActivity.java</p>
+<pre><code>package org.wit.myrent.activities;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+
+
+public class MyRentPagerActivity extends FragmentActivity
+{
+  private ViewPager viewPager;
+
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) 
+  {
+    super.onCreate(savedInstanceState);
+  }
+}
+</code></pre>
+
+<p>This file is necessary because ViewPager requires a resource id.</p>
+<ul>
+<li>ViewPager is a fragment container and so requires a resource id.</li>
+</ul>
+<p>Create and show ViewPager:</p>
+<ul>
+<li>Add this code to MyRentPagerActivity.onCreate following the call to <em>super.onCreate</em>.<ul>
+<li>This creates a view programatically.</li>
+</ul>
+</li>
+</ul>
+<pre><code>    viewPager = new ViewPager(this);
+    viewPager.setId(R.id.viewPager);
+    setContentView(viewPager);
+</code></pre>
+
+<p>Import:</p>
+<pre><code>import org.wit.myrent.R;
+</code></pre>
+
+<p>Next we introduce code to facilitate retrieval of views that are required as a user swipes left or right.</p>
+<p>Introduce instance variables for a list of residences and portfolio:</p>
+<pre><code>  private ArrayList&lt;Residence&gt; residences;  
+  private Portfolio portfolio;
+</code></pre>
+
+<p>Add this private method to obtain a reference to the list of references stored in the model layer:</p>
+<pre><code>  private void setResidenceList()
+  {
+    MyRentApp app = (MyRentApp) getApplication();
+    portfolio = app.portfolio; 
+    residences = portfolio.residences;    
+  }
+</code></pre>
+
+<p>Invoke <em>setResidenceList</em> immediately following <em>setContentView</em> in <em>onCreate</em>.</p>
+<p>Add this private class at the end of MyRentPagerActivity.</p>
+<pre><code>  class PagerAdapter extends FragmentStatePagerAdapter 
+  {
+    private ArrayList&lt;Residence&gt;  residences; 
+
+    public PagerAdapter(FragmentManager fm, ArrayList&lt;Residence&gt; residences)
+    {
+      super(fm);
+      this.residences = residences;
+    }
+
+    @Override
+    public int getCount()  
+    {  
+      return residences.size();  
+    }
+
+    @Override
+    public Fragment getItem(int pos) 
+    {
+      Residence residence = residences.get(pos);
+      Bundle args = new Bundle();
+      args.putSerializable(MyRentFragment.EXTRA_RESIDENCE_ID, residence.id);
+      MyRentFragment fragment = new MyRentFragment();
+      fragment.setArguments(args);
+      return fragment;
+    } 
+  }
+</code></pre>
+
+<p>Change the signature of MyRentPagerActivity to the following:</p>
+<pre><code>public class MyRentPagerActivity extends FragmentActivity implements ViewPager.OnPageChangeListener
+
+</code></pre>
+
+<p>Official documentation on ViewPager.OnPageChangeListener is available <a href="http://developer.android.com/reference/android/support/v4/view/ViewPager.OnPageChangeListener.html">here</a>.</p>
+<p>This change will trigger errors that may be eliminated by using QuickFix to implement the required interface methods:</p>
+<pre><code>
+  @Override
+  public void onPageScrollStateChanged(int arg0)
+  {
+  }
+
+  @Override
+  public void onPageScrolled(int arg0, float arg1, int arg2)
+  {
+  }
+
+  @Override
+  public void onPageSelected(int arg0)
+  {
+  }
+</code></pre>
+
+<p>We are only interested in full implementation of <em>onPageScrolled</em>. Here it is:</p>
+<pre><code>
+  @Override
+  public void onPageScrolled(int arg0, float arg1, int arg2)
+  {
+    info(this, &quot;onPageScrolled: arg0 &quot;+arg0+&quot; arg1 &quot;+arg1+&quot; arg2 &quot;+arg2);
+    Residence residence = residences.get(arg0);
+    if (residence.geolocation != null)
+    {
+      setTitle(residence.geolocation);
+    }
+  }
+</code></pre>
+
+<p>This last feature is illustrated in Figure 1 below.</p>
+<p><img alt="Figure 1: Changing Action Bar Title" src="img/21.png"></p>
+<p>Next add a PageAdapter instance variable:</p>
+<pre><code>  private PagerAdapter          pagerAdapter;
+</code></pre>
+
+<ul>
+<li>Instantiate pagerAdapter in <em>onCreate</em></li>
+<li>Pass the new object as an argument to ViewPager.setAdapter.</li>
+<li>Register the OnPageListener</li>
+<li>The following 3 lines of code should be located following the invocation of <em>setResidenceList</em></li>
+</ul>
+<pre><code>    pagerAdapter = new PagerAdapter(getSupportFragmentManager(), residences);
+    viewPager.setAdapter(pagerAdapter);
+    viewPager.setOnPageChangeListener(this);
+
+</code></pre>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Integrate MyRentPagerActivity</h1>
+<p>To date in ResidenceListActivity.onListItemClick:</p>
+<ul>
+<li>When a list item is clicked the MyRentActivty is started.</li>
+</ul>
+<p>We now wish to start MyRentPagerActivity:</p>
+<ul>
+<li>To do so, in ResidenceListFragment, replace the following code:</li>
+</ul>
+<p><img alt="" src="img/24.png"></p>
+<p>with this:</p>
+<pre><code>Intent i = new Intent(getActivity(), MyRentPagerActivity.class);
+</code></pre>
+
+<p>Replace any other references to MyRentActivity with MyRentPagerActivity in ResidenceListFragment.</p>
+<p>Run MyRent and select on any element in the list which should open the details screen.</p>
+<ul>
+<li>You should be able to swipe left and right.</li>
+<li>Should you have difficulty doing so on an emulator, try it on a physical device.</li>
+</ul>
+<p>Observe, however, that irrespective which residence on the list is pressed, the first on the list is displayed in the details view. This will now be fixed by mplementing a method <em>backButton</em>:</p>
+<pre><code>  private void backButton()
+  {
+    //On pressing back button display move to position on list that includes current residence
+    UUID res = (UUID) getIntent().getSerializableExtra(MyRentFragment.EXTRA_RESIDENCE_ID);
+    for (int i = 0; i &lt; residences.size(); i++)
+    {
+      if (residences.get(i).id.toString().equals(res.toString()))
+      {
+        viewPager.setCurrentItem(i);
+        break;
+      }
+    }
+  }
+</code></pre>
+
+<p>An import statement is necessary for the UUID:</p>
+<pre><code>import java.util.UUID;
+</code></pre>
+
+<p>Invoke <em>backButton</em> at the end of <em>MyRentPagerActivity.onCreate</em>.</p>
+<p>Here is a brief description of <em>backButton</em>:</p>
+<ul>
+<li>We simply obtain the id of the residence displayed in the details screen from the activity intent, </li>
+<li>then iterate through the list of residences to find a match</li>
+<li>and having found a matching residence, invoke <em>setCurrent</em> item using the index position of the residence object as an argument.</li>
+</ul>
+<p>Here is the final <em>onCreate</em>:</p>
+<pre><code>  @Override
+  public void onCreate(Bundle savedInstanceState) 
+  {
+    super.onCreate(savedInstanceState);
+    viewPager = new ViewPager(this);
+    viewPager.setId(R.id.viewPager);
+    setContentView(viewPager);
+    setResidenceList();
+    pagerAdapter = new PagerAdapter(getSupportFragmentManager(), residences);
+    viewPager.setAdapter(pagerAdapter); 
+    viewPager.setOnPageChangeListener(this);
+    backButton();
+  }
+</code></pre>
+
+<p>For reference, the complete list of imports is provided below:</p>
+<pre><code>import java.util.ArrayList;
+import java.util.UUID;
+
+import org.wit.myrent.R;
+import org.wit.myrent.app.MyRentApp;
+import org.wit.myrent.models.Portfolio;
+import org.wit.myrent.models.Residence;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import static org.wit.android.helpers.LogHelpers.info;
+</code></pre>
+
+<p>Build and lauch the app on an emulator or device and check the functionality we have introduced in this lab.</p>
+	  </section>
+	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
+	     <h1>Archives</h1>
+<p>This is a version of MyRent complete to the end if this lab:</p>
+<ul>
+<li><a href="archives/MyRentV08.zip">MyRentV08</a></li>
+</ul>
+	  </section>
+<script>
+
+function addCaptions() {
+  var images = $(".moodle-book img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0) 
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+};
+
+// Need to check if we have already been loaded
+seen = 0;
+
+$(document).ready(function()
+{ 
+  if (seen == 0)
+  { 
+    // not loaded before - so do the restyling once (need to moodle book print)
+    $(".moodle-book img").addClass ("ui image");
+    $(".moodle-book pre").addClass ("ui segment");
+    addCaptions();
+    seen = 1;
+  }
+
+
+})</script>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  <script>
+    $(document).ready(function()
+    {  
+      $('.tab-menu.menu .item').tab();
+    });
+  </script>   
+  </body>
+ </html>

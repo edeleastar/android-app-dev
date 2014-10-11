@@ -126,6 +126,7 @@ header h3
         <a class="active item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
         <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
         <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
+        <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
       </div>
     </nav>
   </section>
@@ -134,118 +135,116 @@ header h3
     <section class="ui stacked segment">
       <h1>3: Widgets &amp; Callbacks</h1>
       <div class="ui  middle aligned grid">
-          <div class="row">   
-            <div class="ten column wide">
-              <h4 class="ui center aligned header">
-               The Android Stack
-              </h4>
-              <div class="ui raised segment">
-                <p>Android is a sophisticated, multi-layered operating system encompassing a wide range of features, capabilities and components. This is organised into a 'Stack', whereby each layer communicates with the layer immediately below. Here we review this stack and briefly examine the primary components at each layer.</p>
-              </div>
-            </div>
-            <div class="six vertical column wide">
-              <a href="./pdf/a-android-stack.pdf"> 
-                <img class="ui medium image" src="./pdf/a-android-stack.png"> 
-              </a>
-            </div>
-          </div>
-          <div class="row">   
-            <div class="ten column wide">
-              <h4 class="ui center aligned header">
-               MyRent V00
-              </h4>
-              <div class="ui raised segment">
-                <p>We should now begin to have a firm understanding of structure of an android project as presented in Eclipse. Here we review the MyRent v00 in detail, and review all its working parts</p>
-              </div>
-            </div>
-            <div class="six vertical column wide">
-              <a href="./pdf/c-myrent-v00.pdf"> 
-                <img class="ui medium image" src="./pdf/c-myrent-v00.png"> 
-              </a>
-            </div>
-          </div>
-          <div class="row">   
-            <div class="ten column wide">
-              <h4 class="ui center aligned header">
-               MyRent V01
-              </h4>
-              <div class="ui raised segment">
-                <p>Although the app is still relatively simple, this app crosses a threshold in our understanding of Android.The Activity class implements multiple interfaces, each implementation responding to different widgits. Here we review this in detail, as it represents a pattern we will see in most of the application we develop.</p>
-              </div>
-            </div>
-            <div class="six vertical column wide">
-              <a href="./pdf/d-myrent-v01.pdf"> 
-                <img class="ui medium image" src="./pdf/d-myrent-v01.png"> 
-              </a>
-            </div>
-          </div>
-          <div class="row">   
-            <div class="ten column wide">
-              <h4 class="ui center aligned header">
-               Assignment 1
-              </h4>
-              <div class="ui raised segment">
-                <p>This is a specification for your for first assignment. Currently, you will only be able to complete the first first feature or tow in the slides. Each week we will be building (in MyRent) equivalent features to those that are required for the assignment. In these labs we will not be normally asking you to do exercises or extensions to the MyRent app. Instead, you should consider turning your attention to this specification here, and move on with one of the features requested. The order they are presented is more or less in line with the labs. Sometimes you may have to do some independent research.</p>
-              </div>
-            </div>
-            <div class="six vertical column wide">
-              <a href="./pdf/e-assignment-1.pdf"> 
-                <img class="ui medium image" src="./pdf/e-assignment-1.png"> 
-              </a>
-            </div>
-          </div>
-          <div class="row">   
-            <div class="ten column wide">
-              <h4 class="ui center aligned header">
-               Event Handling
-              </h4>
-              <div class="ui raised segment">
-                <p>Central to almost all Android applications is the notion of an event. This is typically a user generated interaction, although it can also be system generated, or perhaps produced by some network activity. How events are intercepted and handled is an aspect of android programme you will becoming very familiar with. Here we review the underlying Java mechanisms used in this context</p>
-              </div>
-            </div>
-            <div class="six vertical column wide">
-              <a href="./pdf/e-event-handling.pdf"> 
-                <img class="ui medium image" src="./pdf/e-event-handling.jpeg"> 
-              </a>
-            </div>
-          </div>
-          <div class="row">   
-            <div class="ten column wide">
-             <h4 class="ui center aligned header">
-               Lab: MyRent-00 
-             </h4>
-              <div class="ui raised segment">
-                <p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
-              </div>
-            </div>
-            <div class="six column wide center aligned">
-              <a  href="./book-a/index.html"> 
-                  <img class="ui medium image" src="./book-a/img/main.png" alt="Lab"> 
-              </a>
-            </div>
-        </div>
-          <div class="row">   
-            <div class="ten column wide">
-             <h4 class="ui center aligned header">
-               Lab: MyRent-01 
-             </h4>
-              <div class="ui raised segment">
-                <p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
-              </div>
-            </div>
-            <div class="six column wide center aligned">
-              <a  href="./book-b/index.html"> 
-                  <img class="ui medium image" src="./book-b/img/main.png" alt="Lab"> 
-              </a>
-            </div>
-        </div>
-          <div class="row">   
-            <div class="ten column wide">
-             <h4 class="ui center aligned header">
-               Lab: Event-Handling 
-             </h4>
-              <div class="ui raised segment">
-                <p>This is a short lab whose aim is to provide a detailed explanation of event handling</p>
+          <div class="row">
+  <div class="ten column wide">
+    <h4 class="ui right aligned header">
+     The Android Stack
+    </h4>
+    <div class="ui raised segment">
+      <p>Android is a sophisticated, multi-layered operating system encompassing a wide range of features, capabilities and components. This is organised into a 'Stack', whereby each layer communicates with the layer immediately below. Here we review this stack and briefly examine the primary components at each layer.</p>
+    </div>
+  </div>
+  <div class="six vertical column wide">
+    <a href="./pdf/a-android-stack.pdf">
+      <img class="ui medium image" src="./pdf/a-android-stack.png">
+    </a>
+  </div>          </div>
+          <div class="row">
+  <div class="six vertical column wide">
+    <a href="./pdf/c-myrent-v00.pdf">
+      <img class="ui medium image" src="./pdf/c-myrent-v00.png">
+    </a>
+  </div>
+  <div class="ten column wide">
+    <h4 class="ui left aligned header">
+     MyRent V00
+    </h4>
+    <div class="ui raised segment">
+      <p>We should now begin to have a firm understanding of structure of an android project as presented in Eclipse. Here we review the MyRent v00 in detail, and review all its working parts</p>
+    </div>
+  </div>          </div>
+          <div class="row">
+  <div class="ten column wide">
+    <h4 class="ui right aligned header">
+     MyRent V01
+    </h4>
+    <div class="ui raised segment">
+      <p>Although the app is still relatively simple, this app crosses a threshold in our understanding of Android.The Activity class implements multiple interfaces, each implementation responding to different widgits. Here we review this in detail, as it represents a pattern we will see in most of the application we develop.</p>
+    </div>
+  </div>
+  <div class="six vertical column wide">
+    <a href="./pdf/d-myrent-v01.pdf">
+      <img class="ui medium image" src="./pdf/d-myrent-v01.png">
+    </a>
+  </div>          </div>
+          <div class="row">
+  <div class="six vertical column wide">
+    <a href="./pdf/e-assignment-1.pdf">
+      <img class="ui medium image" src="./pdf/e-assignment-1.png">
+    </a>
+  </div>
+  <div class="ten column wide">
+    <h4 class="ui left aligned header">
+     Assignment 1
+    </h4>
+    <div class="ui raised segment">
+      <p>This is a specification for your for first assignment. Currently, you will only be able to complete the first first feature or tow in the slides. Each week we will be building (in MyRent) equivalent features to those that are required for the assignment. In these labs we will not be normally asking you to do exercises or extensions to the MyRent app. Instead, you should consider turning your attention to this specification here, and move on with one of the features requested. The order they are presented is more or less in line with the labs. Sometimes you may have to do some independent research.</p>
+    </div>
+  </div>          </div>
+          <div class="row">
+  <div class="ten column wide">
+    <h4 class="ui right aligned header">
+     Event Handling
+    </h4>
+    <div class="ui raised segment">
+      <p>Central to almost all Android applications is the notion of an event. This is typically a user generated interaction, although it can also be system generated, or perhaps produced by some network activity. How events are intercepted and handled is an aspect of android programme you will becoming very familiar with. Here we review the underlying Java mechanisms used in this context</p>
+    </div>
+  </div>
+  <div class="six vertical column wide">
+    <a href="./pdf/e-event-handling.pdf">
+      <img class="ui medium image" src="./pdf/e-event-handling.jpeg">
+    </a>
+  </div>          </div>
+          <div class="row">
+   <div class="six column wide center aligned">
+    <a  href="./book-a/index.html">
+        <img class="ui medium image" src="./book-a/img/main.png" alt="Lab">
+    </a>
+  </div>
+  <div class="ten column wide">
+   <h4 class="ui left aligned header">
+     Lab: MyRent-00
+   </h4>
+    <div class="ui raised segment">
+      <p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
+    </div>
+  </div>          </div>
+          <div class="row">
+  <div class="ten column wide">
+   <h4 class="ui right aligned header">
+     Lab: MyRent-01
+   </h4>
+    <div class="ui raised segment">
+      <p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
+    </div>
+  </div>
+  <div class="six column wide center aligned">
+    <a  href="./book-b/index.html">
+        <img class="ui medium image" src="./book-b/img/main.png" alt="Lab">
+    </a>
+  </div>          </div>
+          <div class="row">
+   <div class="six column wide center aligned">
+    <a  href="./book-c/index.html">
+        <img class="ui medium image" src="./book-c/img/main.png" alt="Lab">
+    </a>
+  </div>
+  <div class="ten column wide">
+   <h4 class="ui left aligned header">
+     Lab: Event-Handling
+   </h4>
+    <div class="ui raised segment">
+      <p>This is a short lab whose aim is to provide a detailed explanation of event handling</p>
 <ul>
 <li>A small project is developed to show how the the process works.</li>
 <li>Three separate approaches are demonstrated:<ul>
@@ -259,29 +258,22 @@ header h3
 <li>The lab concludes with an exercise to test your knowledge of the subject.</li>
 <li>Accompanying the lab will be a short associated presentation.</li>
 </ul>
-              </div>
-            </div>
-            <div class="six column wide center aligned">
-              <a  href="./book-c/index.html"> 
-                  <img class="ui medium image" src="./book-c/img/main.png" alt="Lab"> 
-              </a>
-            </div>
-        </div>
-          <div class="row">   
-            <div class="ten column wide">
-             <h4 class="ui center aligned header">
-               Lab: Event-Handling-Solution 
-             </h4>
-              <div class="ui raised segment">
-                <p>This is a solution to the event handling lab.</p>
-              </div>
-            </div>
-            <div class="six column wide center aligned">
-              <a  href="./book-d/index.html"> 
-                  <img class="ui medium image" src="./book-d/img/main.jpg" alt="Lab"> 
-              </a>
-            </div>
-        </div>
+    </div>
+  </div>          </div>
+          <div class="row">
+  <div class="ten column wide">
+   <h4 class="ui right aligned header">
+     Lab: Event-Handling-Solution
+   </h4>
+    <div class="ui raised segment">
+      <p>This is a solution to the event handling lab.</p>
+    </div>
+  </div>
+  <div class="six column wide center aligned">
+    <a  href="./book-d/index.html">
+        <img class="ui medium image" src="./book-d/img/main.jpg" alt="Lab">
+    </a>
+  </div>          </div>
       </div>
     </section>
   </section>

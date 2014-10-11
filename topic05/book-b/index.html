@@ -304,7 +304,7 @@ import android.content.Context;
 	     <h1>ResidenceActivity - Tenant</h1>
 <p>We can then start to wire up a "Select Tenant" button.</p>
 <p>The imports:</p>
-<pre><code>import static org.wit.android.helpers.ContactHelper.getEmail;
+<pre><code>import static org.wit.android.helpers.ContactHelper.getContact;
 import static org.wit.android.helpers.IntentHelper.selectContact;
 import android.content.Intent;
 </code></pre>
@@ -345,9 +345,9 @@ import android.content.Intent;
   {
     switch (requestCode)
     {
-      case REQUEST_CONTACT    : String email = getEmail(this, data);
-                                residence.tenant = email;
-                                tenantButton.setText(email);      
+      case REQUEST_CONTACT    : String name= getContact(this, data);
+                                residence.tenant = name;
+                                tenantButton.setText(name);      
                                 break;
     }
   }  
@@ -360,7 +360,6 @@ import android.content.Intent;
 <p>Now we can engage the report button to actually send the email.</p>
 <p>The imports:</p>
 <pre><code>import static org.wit.android.helpers.IntentHelper.sendEmail;
-import android.content.Intent;
 </code></pre>
 
 <p>The Button object:</p>

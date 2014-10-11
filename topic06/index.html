@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> 4: ListView, Action Bar & Dialogs </title>
+     <title> 6: Fragments, Maps & ViewPager </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -124,57 +124,29 @@ header h3
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
         <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
-        <a class="active item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
+        <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
         <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
-        <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
+        <a class="active item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
       </div>
     </nav>
   </section>
 
   <section class="ui twelve column wide">
     <section class="ui stacked segment">
-      <h1>4: ListView, Action Bar &amp; Dialogs</h1>
+      <h1>6: Fragments, Maps &amp; ViewPager</h1>
       <div class="ui  middle aligned grid">
           <div class="row">
   <div class="ten column wide">
     <h4 class="ui right aligned header">
-     Navigation Principles I
+     Navigation into Apps
     </h4>
     <div class="ui raised segment">
-      <p>We have already explored the primary Android UX. Here we focus specifically on navigation within an android application, examining some typical patterns. In particular, we explore navigation within a single application, which can yield some interesting and surprising subtleties.</p>
+      <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
     </div>
   </div>
   <div class="six vertical column wide">
-    <a href="./pdf/a-navigation-within-apps.pdf">
-      <img class="ui medium image" src="./pdf/a-navigation-within-apps.png">
-    </a>
-  </div>          </div>
-          <div class="row">
-  <div class="six vertical column wide">
-    <a href="./pdf/b-activities-basics.pdf">
-        b-activities-basics.pdf
-    </a>
-  </div>
-  <div class="ten column wide">
-    <h4 class="ui left aligned header">
-     
-    </h4>
-    <div class="ui raised segment">
-      
-    </div>
-  </div>          </div>
-          <div class="row">
-  <div class="ten column wide">
-    <h4 class="ui right aligned header">
-     Activities Fundamentals 
-    </h4>
-    <div class="ui raised segment">
-      <p>The Activity is at the heart of almost all android applications. You have already experience in designing and implementing a number of simple ones. Here we review the general nature of activities and define the principle the concerns of the programmer has to bear in mind.</p>
-    </div>
-  </div>
-  <div class="six vertical column wide">
-    <a href="./pdf/b-activity-basics.pdf">
-      <img class="ui medium image" src="./pdf/b-activity-basics.png">
+    <a href="./pdf/a-navigation-into-apps.pdf">
+      <img class="ui medium image" src="./pdf/a-navigation-into-apps.png">
     </a>
   </div>          </div>
           <div class="row">
@@ -185,19 +157,19 @@ header h3
   </div>
   <div class="ten column wide">
    <h4 class="ui left aligned header">
-     Lab: MyRent-02
+     Lab: MyRent-06
    </h4>
     <div class="ui raised segment">
-      <p>Our current version of MyRent (V01) only permits a single Residence to be entered. In this lab we seek to manage a list of residences. To do this we need to extend the model in include a new class - 'Portfolio' - to manage all our residences. We will also need a new Activity - ResidenceListActivity - to display the full portfolio of residences.</p>
+      <p>Modern Android Activities tend to be composed of one or more Fragments - as opposed to consisting of a single layouts. This introduces a slightly more complicated creation process. However, using fragments opens up other opportunities we will explore in later labs.</p>
     </div>
   </div>          </div>
           <div class="row">
   <div class="ten column wide">
    <h4 class="ui right aligned header">
-     Lab: MyRent-03
+     Lab: MyRent-07
    </h4>
     <div class="ui raised segment">
-      <p>In a significant update to the app, we introduce navigation within the app using an Action Bar. This will allow us to create new residences, or navigate to existing ones. Additionally, we will explore a simple date picker dialog to all the user to select a registration date for the residence.</p>
+      <p>Now that our Activities are based on Fragment, we can introduce a new feature to support 'swipe' interaction. This allows a user to swipe left/right to page through the residence list.</p>
     </div>
   </div>
   <div class="six column wide center aligned">
