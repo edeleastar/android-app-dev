@@ -8,11 +8,17 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
+      <link rel="stylesheet" href="http://beta.semantic-ui.com/build/packaged/definitions/css/semantic.min.css">
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+      <script src="http://beta.semantic-ui.com/build/packaged/definitions/javascript/semantic.min.js"></script>
+
+    <!--
      <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/0.19.3/css/semantic.min.css">
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> 
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
      <script src="http://cdn.jsdelivr.net/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
- 
+   -->
+
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
@@ -103,40 +109,40 @@ header h3
 
   </head>
   <body>
-<header class="ui middle aligned two column raised grid segment">
-  <div class="row">
-    <div class="column">
+<section class="ui page stackable grid">
+
+<div class="row">
+  <header class="ui middle aligned grid">
+    <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
     </div>
-    <div class="column">
-      <img class="ui image floated right" src="http://www.wit.ie/graphics/top_logo_transparent.png">
-      <img class="ui image floated right" src="http://www.wit.ie/graphics/h1_text.png">
+    <div class="four wide column">
+       <img class="ui medium image" src="http://www.wit.ie/graphics/h1_text.png">
     </div>
-  </div>
-</header>
+    <div class="two wide column">
+      <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
+    </div>
+  </header>
+</div>
 
-<section class="ui grid">
-  
-  <section class="ui four column wide">
+<div class="row">
+  <section class="ui four wide column segment">
     <nav class="ui vertical fluid pointing menu">
-      <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
         <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
         <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
         <a class="active item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
         <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
-      </div>
     </nav>
   </section>
 
-  <section class="ui twelve column wide">
-    <section class="ui stacked segment">
+  <section class="ui twelve wide column segment">
       <h1>5: File IO, Navigation &amp; Implicit Intents</h1>
-      <div class="ui  middle aligned grid">
+      <div class="ui  middle aligned stackable grid">
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
     <h4 class="ui right aligned header">
      Navigation into Apps
     </h4>
@@ -144,18 +150,18 @@ header h3
       <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
     </div>
   </div>
-  <div class="six vertical column wide">
-    <a href="./pdf/a-navigation-into-apps.pdf">
-      <img class="ui medium image" src="./pdf/a-navigation-into-apps.png">
+  <div class="six vertical wide column">
+    <a href="./pdf/a-navigation-into-apps.pdf" >
+      <img  width="200"  src="./pdf/a-navigation-into-apps.png">
     </a>
   </div>          </div>
           <div class="row">
-  <div class="six vertical column wide">
+  <div class="six vertical wide column">
     <a href="./pdf/b-myrent-01-02.pdf">
-      <img class="ui medium image" src="./pdf/b-myrent-01-02.png">
+      <img width="200"  src="./pdf/b-myrent-01-02.png">
     </a>
   </div>
-  <div class="ten column wide">
+  <div class="ten wide right floated column">
     <h4 class="ui left aligned header">
      MyRent01-02
     </h4>
@@ -164,7 +170,7 @@ header h3
     </div>
   </div>          </div>
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
     <h4 class="ui right aligned header">
      MyRent03
     </h4>
@@ -172,18 +178,18 @@ header h3
       <p>In this version we introduced an action bar, containing an option to enable a new Residence Item to be added. This residence is created in the ResidenceActivity, and will be added to the list. Additionally, the ResidenceActivity now supports a simple dialog to allow the user to select a date.</p>
     </div>
   </div>
-  <div class="six vertical column wide">
-    <a href="./pdf/c-myrent-03.pdf">
-      <img class="ui medium image" src="./pdf/c-myrent-03.png">
+  <div class="six vertical wide column">
+    <a href="./pdf/c-myrent-03.pdf" >
+      <img  width="200"  src="./pdf/c-myrent-03.png">
     </a>
   </div>          </div>
           <div class="row">
-   <div class="six column wide center aligned">
+   <div class="six wide column  center aligned">
     <a  href="./book-a/index.html">
-        <img class="ui medium image" src="./book-a/img/main.png" alt="Lab">
+        <img width="200"  src="./book-a/img/main.png" alt="Lab">
     </a>
   </div>
-  <div class="ten column wide">
+  <div class="ten wide right floated column">
    <h4 class="ui left aligned header">
      Lab: MyRent-04
    </h4>
@@ -192,7 +198,7 @@ header h3
     </div>
   </div>          </div>
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
    <h4 class="ui right aligned header">
      Lab: MyRent-05
    </h4>
@@ -200,15 +206,17 @@ header h3
       <p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
     </div>
   </div>
-  <div class="six column wide center aligned">
+  <div class="six  wide column center aligned">
     <a  href="./book-b/index.html">
-        <img class="ui medium image" src="./book-b/img/main.png" alt="Lab">
+        <img width="200"  src="./book-b/img/main.png" alt="Lab">
     </a>
   </div>          </div>
       </div>
-    </section>
   </section>
-  
+
+
+</div>
+
 </section>
   <br>  
   <div class="ui fixed bottom borderless menu">'

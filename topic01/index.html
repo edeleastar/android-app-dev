@@ -8,11 +8,17 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
+      <link rel="stylesheet" href="http://beta.semantic-ui.com/build/packaged/definitions/css/semantic.min.css">
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+      <script src="http://beta.semantic-ui.com/build/packaged/definitions/javascript/semantic.min.js"></script>
+
+    <!--
      <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/0.19.3/css/semantic.min.css">
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> 
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
      <script src="http://cdn.jsdelivr.net/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
- 
+   -->
+
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
@@ -103,40 +109,40 @@ header h3
 
   </head>
   <body>
-<header class="ui middle aligned two column raised grid segment">
-  <div class="row">
-    <div class="column">
+<section class="ui page stackable grid">
+
+<div class="row">
+  <header class="ui middle aligned grid">
+    <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
     </div>
-    <div class="column">
-      <img class="ui image floated right" src="http://www.wit.ie/graphics/top_logo_transparent.png">
-      <img class="ui image floated right" src="http://www.wit.ie/graphics/h1_text.png">
+    <div class="four wide column">
+       <img class="ui medium image" src="http://www.wit.ie/graphics/h1_text.png">
     </div>
-  </div>
-</header>
+    <div class="two wide column">
+      <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
+    </div>
+  </header>
+</div>
 
-<section class="ui grid">
-  
-  <section class="ui four column wide">
+<div class="row">
+  <section class="ui four wide column segment">
     <nav class="ui vertical fluid pointing menu">
-      <div class="menu">
         <a class="active item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
         <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
         <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
         <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
         <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
-      </div>
     </nav>
   </section>
 
-  <section class="ui twelve column wide">
-    <section class="ui stacked segment">
+  <section class="ui twelve wide column segment">
       <h1>1: Activities &amp; Layouts</h1>
-      <div class="ui  middle aligned grid">
+      <div class="ui  middle aligned stackable grid">
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
     <h4 class="ui right aligned header">
      Android Overview
     </h4>
@@ -144,18 +150,18 @@ header h3
       <p>Here we explore the general context of the android User Experience, it's role in the mobile platform space and the components that make up the the system. We are particularly interested in the version numbers and how version in general is managed.</p>
     </div>
   </div>
-  <div class="six vertical column wide">
-    <a href="./pdf/a-android-overview.pdf">
-      <img class="ui medium image" src="./pdf/a-android-overview.jpeg">
+  <div class="six vertical wide column">
+    <a href="./pdf/a-android-overview.pdf" >
+      <img  width="200"  src="./pdf/a-android-overview.jpeg">
     </a>
   </div>          </div>
           <div class="row">
-  <div class="six vertical column wide">
+  <div class="six vertical wide column">
     <a href="./pdf/b-ui-overview.pdf">
-      <img class="ui medium image" src="./pdf/b-ui-overview.jpeg">
+      <img width="200"  src="./pdf/b-ui-overview.jpeg">
     </a>
   </div>
-  <div class="ten column wide">
+  <div class="ten wide right floated column">
     <h4 class="ui left aligned header">
      Android UX
     </h4>
@@ -164,7 +170,7 @@ header h3
     </div>
   </div>          </div>
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
     <h4 class="ui right aligned header">
      UML
     </h4>
@@ -172,18 +178,18 @@ header h3
       <p>Occasionally, as we uncover new featured as capabilities if the applications we are building we will be interested in discussing the deep structure of the Code itself. UML is a visual language for this purpose, and here we review some of the general characteristics of this notation. </p>
     </div>
   </div>
-  <div class="six vertical column wide">
-    <a href="./pdf/c-uml-intro.pdf">
-      <img class="ui medium image" src="./pdf/c-uml-intro.jpeg">
+  <div class="six vertical wide column">
+    <a href="./pdf/c-uml-intro.pdf" >
+      <img  width="200"  src="./pdf/c-uml-intro.jpeg">
     </a>
   </div>          </div>
           <div class="row">
-  <div class="six vertical column wide">
+  <div class="six vertical wide column">
     <a href="./pdf/d-first-android-app.pdf">
-      <img class="ui medium image" src="./pdf/d-first-android-app.png">
+      <img width="200"  src="./pdf/d-first-android-app.png">
     </a>
   </div>
-  <div class="ten column wide">
+  <div class="ten wide right floated column">
     <h4 class="ui left aligned header">
      Donation 01 Application
     </h4>
@@ -192,12 +198,12 @@ header h3
     </div>
   </div>          </div>
           <div class="row">
-   <div class="six column wide center aligned">
+   <div class="six wide column  center aligned">
     <a  href="./book-a/index.html">
-        <img class="ui medium image" src="./book-a/img/main.png" alt="Lab">
+        <img width="200"  src="./book-a/img/main.png" alt="Lab">
     </a>
   </div>
-  <div class="ten column wide">
+  <div class="ten wide right floated column">
    <h4 class="ui left aligned header">
      Lab: Android-Tools-01
    </h4>
@@ -206,7 +212,7 @@ header h3
     </div>
   </div>          </div>
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
    <h4 class="ui right aligned header">
      Lab: Donation-01
    </h4>
@@ -214,15 +220,17 @@ header h3
       <p>With this range of tools installed we can start the process of acquainting ourselves with the android SDK and the workflow involved in authoring, building and deploying applications. In the 'Donation-01' lab below we proceed to explore in detail the creating of a simple activity class + the associated layout. This process will seem quite complex on first contact - but as we proceed through the labs over the next few sessions the deep structure should start to emerge.</p>
     </div>
   </div>
-  <div class="six column wide center aligned">
+  <div class="six  wide column center aligned">
     <a  href="./book-b/index.html">
-        <img class="ui medium image" src="./book-b/img/main.png" alt="Lab">
+        <img width="200"  src="./book-b/img/main.png" alt="Lab">
     </a>
   </div>          </div>
       </div>
-    </section>
   </section>
-  
+
+
+</div>
+
 </section>
   <br>  
   <div class="ui fixed bottom borderless menu">'

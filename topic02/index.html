@@ -8,11 +8,17 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
+      <link rel="stylesheet" href="http://beta.semantic-ui.com/build/packaged/definitions/css/semantic.min.css">
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+      <script src="http://beta.semantic-ui.com/build/packaged/definitions/javascript/semantic.min.js"></script>
+
+    <!--
      <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/0.19.3/css/semantic.min.css">
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> 
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
      <script src="http://cdn.jsdelivr.net/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
- 
+   -->
+
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
@@ -103,40 +109,40 @@ header h3
 
   </head>
   <body>
-<header class="ui middle aligned two column raised grid segment">
-  <div class="row">
-    <div class="column">
+<section class="ui page stackable grid">
+
+<div class="row">
+  <header class="ui middle aligned grid">
+    <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
     </div>
-    <div class="column">
-      <img class="ui image floated right" src="http://www.wit.ie/graphics/top_logo_transparent.png">
-      <img class="ui image floated right" src="http://www.wit.ie/graphics/h1_text.png">
+    <div class="four wide column">
+       <img class="ui medium image" src="http://www.wit.ie/graphics/h1_text.png">
     </div>
-  </div>
-</header>
+    <div class="two wide column">
+      <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
+    </div>
+  </header>
+</div>
 
-<section class="ui grid">
-  
-  <section class="ui four column wide">
+<div class="row">
+  <section class="ui four wide column segment">
     <nav class="ui vertical fluid pointing menu">
-      <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
         <a class="active item" href=" ../topic02/index.html"> 2: Intents & Events </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
         <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
         <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
         <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
-      </div>
     </nav>
   </section>
 
-  <section class="ui twelve column wide">
-    <section class="ui stacked segment">
+  <section class="ui twelve wide column segment">
       <h1>2: Intents &amp; Events</h1>
-      <div class="ui  middle aligned grid">
+      <div class="ui  middle aligned stackable grid">
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
     <h4 class="ui right aligned header">
      Application Structure
     </h4>
@@ -144,18 +150,18 @@ header h3
       <p>Android, like IOS, has introduced a new visual language for interaction on the devices it supports. This language is different from previous graphical environments (Windows, OSX), and is optimised for touch based interaction. Here we review some of the major elements of this language and become acquainted with the some of the primary interaction patterns.</p>
     </div>
   </div>
-  <div class="six vertical column wide">
-    <a href="./pdf/a-app-structure.pdf">
-      <img class="ui medium image" src="./pdf/a-app-structure.png">
+  <div class="six vertical wide column">
+    <a href="./pdf/a-app-structure.pdf" >
+      <img  width="200"  src="./pdf/a-app-structure.png">
     </a>
   </div>          </div>
           <div class="row">
-  <div class="six vertical column wide">
+  <div class="six vertical wide column">
     <a href="./pdf/b-donation-android-v2.pdf">
-      <img class="ui medium image" src="./pdf/b-donation-android-v2.png">
+      <img width="200"  src="./pdf/b-donation-android-v2.png">
     </a>
   </div>
-  <div class="ten column wide">
+  <div class="ten wide right floated column">
     <h4 class="ui left aligned header">
      Donation-android V2
     </h4>
@@ -164,7 +170,7 @@ header h3
     </div>
   </div>          </div>
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
     <h4 class="ui right aligned header">
      Donation Android V3
     </h4>
@@ -172,18 +178,18 @@ header h3
       <p>This lab presents the solution to the series of challenges in the Donation-02 lab. If you have completed these challenges you may just with to examine our solutions, which may be largely the same as yours. If you have not completed them all, the incorporated these into your solution now and have a got at the exercises at the end of this lab. You should be able to complete these exercises.</p>
     </div>
   </div>
-  <div class="six vertical column wide">
-    <a href="./pdf/c-donation-android-v3.pdf">
-      <img class="ui medium image" src="./pdf/c-donation-android-v3.png">
+  <div class="six vertical wide column">
+    <a href="./pdf/c-donation-android-v3.pdf" >
+      <img  width="200"  src="./pdf/c-donation-android-v3.png">
     </a>
   </div>          </div>
           <div class="row">
-  <div class="six vertical column wide">
+  <div class="six vertical wide column">
     <a href="./pdf/d-models.pdf">
-      <img class="ui medium image" src="./pdf/d-models.jpg">
+      <img width="200"  src="./pdf/d-models.jpg">
     </a>
   </div>
-  <div class="ten column wide">
+  <div class="ten wide right floated column">
     <h4 class="ui left aligned header">
      UML Models
     </h4>
@@ -192,12 +198,12 @@ header h3
     </div>
   </div>          </div>
           <div class="row">
-   <div class="six column wide center aligned">
+   <div class="six wide column  center aligned">
     <a  href="./book-a/index.html">
-        <img class="ui medium image" src="./book-a/img/main.png" alt="Lab">
+        <img width="200"  src="./book-a/img/main.png" alt="Lab">
     </a>
   </div>
-  <div class="ten column wide">
+  <div class="ten wide right floated column">
    <h4 class="ui left aligned header">
      Lab: Donation-02
    </h4>
@@ -206,7 +212,7 @@ header h3
     </div>
   </div>          </div>
           <div class="row">
-  <div class="ten column wide">
+  <div class="ten wide column">
    <h4 class="ui right aligned header">
      Lab: Donation-03
    </h4>
@@ -214,15 +220,17 @@ header h3
       <p>We continue the implementation of Donation to including the welcome, sign up and login. Support these views with a User model, and validate the users on log in.</p>
     </div>
   </div>
-  <div class="six column wide center aligned">
+  <div class="six  wide column center aligned">
     <a  href="./book-b/index.html">
-        <img class="ui medium image" src="./book-b/img/main.png" alt="Lab">
+        <img width="200"  src="./book-b/img/main.png" alt="Lab">
     </a>
   </div>          </div>
       </div>
-    </section>
   </section>
-  
+
+
+</div>
+
 </section>
   <br>  
   <div class="ui fixed bottom borderless menu">'
