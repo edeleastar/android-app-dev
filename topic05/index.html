@@ -137,80 +137,69 @@ header h3
     </nav>
   </section>
 
+
+
   <section class="ui twelve wide column segment">
-      <h1>5: File IO, Navigation &amp; Implicit Intents</h1>
-      <div class="ui  middle aligned stackable grid">
-          <div class="row">
-  <div class="ten wide column">
-    <h4 class="ui right aligned header">
-     Navigation into Apps
-    </h4>
-    <div class="ui raised segment">
-      <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
-    </div>
+    <h1>5: File IO, Navigation &amp; Implicit Intents</h1>
+    <div class="row">
+      <div class="ui two cards">
+<div  class="ui card">
+  <div class="ui image">
+    <img src="./pdf/a-navigation-into-apps.png">
   </div>
-  <div class="six vertical wide column">
-    <a href="./pdf/a-navigation-into-apps.pdf" >
-      <img  width="200"  src="./pdf/a-navigation-into-apps.png">
-    </a>
-  </div>          </div>
-          <div class="row">
-  <div class="six vertical wide column">
-    <a href="./pdf/b-myrent-01-02.pdf">
-      <img width="200"  src="./pdf/b-myrent-01-02.png">
-    </a>
+  <div class="content">
+    <a  href="./pdf/a-navigation-into-apps.pdf" class="header">Navigation into Apps</a>
   </div>
-  <div class="ten wide right floated column">
-    <h4 class="ui left aligned header">
-     MyRent01-02
-    </h4>
-    <div class="ui raised segment">
-      <p>We review the structure, model and code in the MyRent 01 and 02 applications. The application at this stage has 2 views - sometimes called a 'Master-Detail' pattern. The Master presents a list of items which, if selected, will launch a detail view presenting the individual items. The List if items is randomly generated at application startup, and cannot be extended.</p>
-    </div>
-  </div>          </div>
-          <div class="row">
-  <div class="ten wide column">
-    <h4 class="ui right aligned header">
-     MyRent03
-    </h4>
-    <div class="ui raised segment">
-      <p>In this version we introduced an action bar, containing an option to enable a new Residence Item to be added. This residence is created in the ResidenceActivity, and will be added to the list. Additionally, the ResidenceActivity now supports a simple dialog to allow the user to select a date.</p>
-    </div>
+  <div class="extra content">
+    <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
   </div>
-  <div class="six vertical wide column">
-    <a href="./pdf/c-myrent-03.pdf" >
-      <img  width="200"  src="./pdf/c-myrent-03.png">
-    </a>
-  </div>          </div>
-          <div class="row">
-   <div class="six wide column  center aligned">
-    <a  href="./book-a/index.html">
-        <img width="200"  src="./book-a/img/main.png" alt="Lab">
-    </a>
+</div><div  class="ui card">
+  <div class="ui image">
+    <img src="./pdf/b-myrent-01-02.png">
   </div>
-  <div class="ten wide right floated column">
-   <h4 class="ui left aligned header">
-     Lab: MyRent-04
-   </h4>
-    <div class="ui raised segment">
-      <p>Introduce into MyRent a serialization mechanism to save/restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updates. In addition, continue to evolve the navigation support in the app, enabling a 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
-    </div>
-  </div>          </div>
-          <div class="row">
-  <div class="ten wide column">
-   <h4 class="ui right aligned header">
-     Lab: MyRent-05
-   </h4>
-    <div class="ui raised segment">
-      <p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
-    </div>
+  <div class="content">
+    <a  href="./pdf/b-myrent-01-02.pdf" class="header">MyRent01-02</a>
   </div>
-  <div class="six  wide column center aligned">
-    <a  href="./book-b/index.html">
-        <img width="200"  src="./book-b/img/main.png" alt="Lab">
-    </a>
-  </div>          </div>
-      </div>
+  <div class="extra content">
+    <p>We review the structure, model and code in the MyRent 01 and 02 applications. The application at this stage has 2 views - sometimes called a 'Master-Detail' pattern. The Master presents a list of items which, if selected, will launch a detail view presenting the individual items. The List if items is randomly generated at application startup, and cannot be extended.</p>
+  </div>
+</div><div  class="ui card">
+  <div class="ui image">
+    <img src="./pdf/c-myrent-03.png">
+  </div>
+  <div class="content">
+    <a  href="./pdf/c-myrent-03.pdf" class="header">MyRent03</a>
+  </div>
+  <div class="extra content">
+    <p>In this version we introduced an action bar, containing an option to enable a new Residence Item to be added. This residence is created in the ResidenceActivity, and will be added to the list. Additionally, the ResidenceActivity now supports a simple dialog to allow the user to select a date.</p>
+  </div>
+</div>      </div>
+    </div>
+    <div class="row">
+      <h1> Labs </h1>
+      <div class="ui two cards">
+<div class="ui card">
+  <div class="ui image">
+    <img src="./book-a/img/main.png">
+  </div>
+  <div class="content">
+    <a  href="./book-a/index.html" class="header">Lab: MyRent-04</a>
+  </div>
+  <div class="extra content">
+    <p>Introduce into MyRent a serialization mechanism to save/restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updates. In addition, continue to evolve the navigation support in the app, enabling a 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
+  </div>
+</div><div class="ui card">
+  <div class="ui image">
+    <img src="./book-b/img/main.png">
+  </div>
+  <div class="content">
+    <a  href="./book-b/index.html" class="header">Lab: MyRent-05</a>
+  </div>
+  <div class="extra content">
+    <p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
+  </div>
+</div>      </div>
+    </div>
   </section>
 
 
