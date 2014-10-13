@@ -23,7 +23,11 @@
 body 
 {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
-  font-size: 14px
+}
+
+#container
+{
+  margin :10px
 }
 
 code
@@ -54,7 +58,6 @@ h3
   font-size:70%
 }
 
-
 #title 
 {
   font-size:120%;
@@ -66,7 +69,7 @@ h3
 img 
 {
    padding:1px;
-  /* border:1px solid black;*/
+   border:1px solid black;
    margin-top: 10px;
    margin-bottom: 10px;
 }
@@ -98,14 +101,31 @@ header h3
   border-bottom: 0px;
 }
 
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
     </style>
 
   </head>
   <body>
-<section class="ui page stackable grid">
+<section id="container" class="ui stackable grid">
 
-<div class="row">
-  <header class="ui middle aligned grid">
+<!--<div class="row">-->
+  <header class="ui middle aligned grid section">
     <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
@@ -117,7 +137,7 @@ header h3
       <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
     </div>
   </header>
-</div>  <section class="ui four wide column">
+<!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
@@ -130,13 +150,14 @@ header h3
     </nav>
   </section>
 
-    <section class="ui twelve wide column segment">
+
+
+    <section id="topic" class="ui doubling twelve wide column segment">
       <h1>4: ListView, Action Bar &amp; Dialogs</h1>
-      <div class="row">
-        <div class="ui cards">
+      <div class="ui cards">
 <div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/a-navigation-within-apps.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/a-navigation-within-apps.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/a-navigation-within-apps.pdf" class="header">Navigation Principles I</a>
@@ -145,8 +166,8 @@ header h3
     <p>We have already explored the primary Android UX. Here we focus specifically on navigation within an android application, examining some typical patterns. In particular, we explore navigation within a single application, which can yield some interesting and surprising subtleties.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/b-activities-basics.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/b-activities-basics.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/b-activities-basics.pdf" class="header">Activities Fundamentals </a>
@@ -154,14 +175,12 @@ header h3
   <div class="extra content">
     <p>The Activity is at the heart of almost all android applications. You have already experience in designing and implementing a number of simple ones. Here we review the general nature of activities and define the principle the concerns of the programmer has to bear in mind.</p>
   </div>
-</div>        </div>
-      </div>
-      <div class="row">
-        <h1> Labs </h1>
-        <div class="ui cards">
+</div>      </div>
+      <h1> Labs </h1>
+      <div class="ui cards">
 <div class="ui card">
-  <div class="ui image">
-    <img src="./book-a/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-a/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-a/index.html" class="header">Lab: MyRent-02</a>
@@ -170,8 +189,8 @@ header h3
     <p>Our current version of MyRent (V01) only permits a single Residence to be entered. In this lab we seek to manage a list of residences. To do this we need to extend the model in include a new class - 'Portfolio' - to manage all our residences. We will also need a new Activity - ResidenceListActivity - to display the full portfolio of residences.</p>
   </div>
 </div><div class="ui card">
-  <div class="ui image">
-    <img src="./book-b/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-b/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-b/index.html" class="header">Lab: MyRent-03</a>
@@ -179,12 +198,12 @@ header h3
   <div class="extra content">
     <p>In a significant update to the app, we introduce navigation within the app using an Action Bar. This will allow us to create new residences, or navigate to existing ones. Additionally, we will explore a simple date picker dialog to all the user to select a registration date for the residence.</p>
   </div>
-</div>        </div>
-      </div>
+</div>      </div>
     </section>
   </div>
 
 </section>
+  <!--
   <br>  
   <div class="ui fixed bottom borderless menu">'
     <div class="ui small item"> 
@@ -197,6 +216,7 @@ header h3
     </div>
   </div>   
     
+-->
   <script>
     $(document).ready(function()
     {  

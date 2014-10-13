@@ -23,7 +23,11 @@
 body 
 {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
-  font-size: 14px
+}
+
+#container
+{
+  margin :10px
 }
 
 code
@@ -54,7 +58,6 @@ h3
   font-size:70%
 }
 
-
 #title 
 {
   font-size:120%;
@@ -66,7 +69,7 @@ h3
 img 
 {
    padding:1px;
-  /* border:1px solid black;*/
+   border:1px solid black;
    margin-top: 10px;
    margin-bottom: 10px;
 }
@@ -98,14 +101,31 @@ header h3
   border-bottom: 0px;
 }
 
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
     </style>
 
   </head>
   <body>
-<section class="ui page stackable grid">
+<section id="container" class="ui stackable grid">
 
-<div class="row">
-  <header class="ui middle aligned grid">
+<!--<div class="row">-->
+  <header class="ui middle aligned grid section">
     <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
@@ -117,7 +137,7 @@ header h3
       <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
     </div>
   </header>
-</div>  <section class="ui four wide column">
+<!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
@@ -130,13 +150,14 @@ header h3
     </nav>
   </section>
 
-    <section class="ui twelve wide column segment">
+
+
+    <section id="topic" class="ui doubling twelve wide column segment">
       <h1>3: Widgets &amp; Callbacks</h1>
-      <div class="row">
-        <div class="ui cards">
+      <div class="ui cards">
 <div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/a-android-stack.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/a-android-stack.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/a-android-stack.pdf" class="header">The Android Stack</a>
@@ -145,8 +166,8 @@ header h3
     <p>Android is a sophisticated, multi-layered operating system encompassing a wide range of features, capabilities and components. This is organised into a 'Stack', whereby each layer communicates with the layer immediately below. Here we review this stack and briefly examine the primary components at each layer.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/c-myrent-v00.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/c-myrent-v00.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/c-myrent-v00.pdf" class="header">MyRent V00</a>
@@ -155,8 +176,8 @@ header h3
     <p>We should now begin to have a firm understanding of structure of an android project as presented in Eclipse. Here we review the MyRent v00 in detail, and review all its working parts</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/d-myrent-v01.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/d-myrent-v01.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/d-myrent-v01.pdf" class="header">MyRent V01</a>
@@ -165,8 +186,8 @@ header h3
     <p>Although the app is still relatively simple, this app crosses a threshold in our understanding of Android.The Activity class implements multiple interfaces, each implementation responding to different widgits. Here we review this in detail, as it represents a pattern we will see in most of the application we develop.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/e-assignment-1.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/e-assignment-1.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/e-assignment-1.pdf" class="header">Assignment 1</a>
@@ -175,8 +196,8 @@ header h3
     <p>This is a specification for your for first assignment. Currently, you will only be able to complete the first first feature or tow in the slides. Each week we will be building (in MyRent) equivalent features to those that are required for the assignment. In these labs we will not be normally asking you to do exercises or extensions to the MyRent app. Instead, you should consider turning your attention to this specification here, and move on with one of the features requested. The order they are presented is more or less in line with the labs. Sometimes you may have to do some independent research.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/e-event-handling.jpeg">
+  <div class="cover">
+    <div style="background-image: url('./pdf/e-event-handling.jpeg');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/e-event-handling.pdf" class="header">Event Handling</a>
@@ -184,14 +205,12 @@ header h3
   <div class="extra content">
     <p>Central to almost all Android applications is the notion of an event. This is typically a user generated interaction, although it can also be system generated, or perhaps produced by some network activity. How events are intercepted and handled is an aspect of android programme you will becoming very familiar with. Here we review the underlying Java mechanisms used in this context</p>
   </div>
-</div>        </div>
-      </div>
-      <div class="row">
-        <h1> Labs </h1>
-        <div class="ui cards">
+</div>      </div>
+      <h1> Labs </h1>
+      <div class="ui cards">
 <div class="ui card">
-  <div class="ui image">
-    <img src="./book-a/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-a/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-a/index.html" class="header">Lab: MyRent-00</a>
@@ -200,8 +219,8 @@ header h3
     <p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
   </div>
 </div><div class="ui card">
-  <div class="ui image">
-    <img src="./book-b/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-b/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-b/index.html" class="header">Lab: MyRent-01</a>
@@ -210,8 +229,8 @@ header h3
     <p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
   </div>
 </div><div class="ui card">
-  <div class="ui image">
-    <img src="./book-c/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-c/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-c/index.html" class="header">Lab: Event-Handling</a>
@@ -233,8 +252,8 @@ header h3
 </ul>
   </div>
 </div><div class="ui card">
-  <div class="ui image">
-    <img src="./book-d/img/main.jpg">
+  <div class="cover">
+    <div style="background-image: url('./book-d/img/main.jpg');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-d/index.html" class="header">Lab: Event-Handling-Solution</a>
@@ -242,12 +261,12 @@ header h3
   <div class="extra content">
     <p>This is a solution to the event handling lab.</p>
   </div>
-</div>        </div>
-      </div>
+</div>      </div>
     </section>
   </div>
 
 </section>
+  <!--
   <br>  
   <div class="ui fixed bottom borderless menu">'
     <div class="ui small item"> 
@@ -260,6 +279,7 @@ header h3
     </div>
   </div>   
     
+-->
   <script>
     $(document).ready(function()
     {  

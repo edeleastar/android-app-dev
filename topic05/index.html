@@ -23,7 +23,11 @@
 body 
 {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
-  font-size: 14px
+}
+
+#container
+{
+  margin :10px
 }
 
 code
@@ -54,7 +58,6 @@ h3
   font-size:70%
 }
 
-
 #title 
 {
   font-size:120%;
@@ -66,7 +69,7 @@ h3
 img 
 {
    padding:1px;
-  /* border:1px solid black;*/
+   border:1px solid black;
    margin-top: 10px;
    margin-bottom: 10px;
 }
@@ -98,14 +101,31 @@ header h3
   border-bottom: 0px;
 }
 
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
     </style>
 
   </head>
   <body>
-<section class="ui page stackable grid">
+<section id="container" class="ui stackable grid">
 
-<div class="row">
-  <header class="ui middle aligned grid">
+<!--<div class="row">-->
+  <header class="ui middle aligned grid section">
     <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
@@ -117,7 +137,7 @@ header h3
       <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
     </div>
   </header>
-</div>  <section class="ui four wide column">
+<!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
@@ -130,13 +150,14 @@ header h3
     </nav>
   </section>
 
-    <section class="ui twelve wide column segment">
+
+
+    <section id="topic" class="ui doubling twelve wide column segment">
       <h1>5: File IO, Navigation &amp; Implicit Intents</h1>
-      <div class="row">
-        <div class="ui cards">
+      <div class="ui cards">
 <div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/a-navigation-into-apps.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/a-navigation-into-apps.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/a-navigation-into-apps.pdf" class="header">Navigation into Apps</a>
@@ -145,8 +166,8 @@ header h3
     <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/b-myrent-01-02.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/b-myrent-01-02.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/b-myrent-01-02.pdf" class="header">MyRent01-02</a>
@@ -155,8 +176,8 @@ header h3
     <p>We review the structure, model and code in the MyRent 01 and 02 applications. The application at this stage has 2 views - sometimes called a 'Master-Detail' pattern. The Master presents a list of items which, if selected, will launch a detail view presenting the individual items. The List if items is randomly generated at application startup, and cannot be extended.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/c-myrent-03.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/c-myrent-03.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/c-myrent-03.pdf" class="header">MyRent03</a>
@@ -164,14 +185,12 @@ header h3
   <div class="extra content">
     <p>In this version we introduced an action bar, containing an option to enable a new Residence Item to be added. This residence is created in the ResidenceActivity, and will be added to the list. Additionally, the ResidenceActivity now supports a simple dialog to allow the user to select a date.</p>
   </div>
-</div>        </div>
-      </div>
-      <div class="row">
-        <h1> Labs </h1>
-        <div class="ui cards">
+</div>      </div>
+      <h1> Labs </h1>
+      <div class="ui cards">
 <div class="ui card">
-  <div class="ui image">
-    <img src="./book-a/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-a/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-a/index.html" class="header">Lab: MyRent-04</a>
@@ -180,8 +199,8 @@ header h3
     <p>Introduce into MyRent a serialization mechanism to save/restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updates. In addition, continue to evolve the navigation support in the app, enabling a 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
   </div>
 </div><div class="ui card">
-  <div class="ui image">
-    <img src="./book-b/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-b/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-b/index.html" class="header">Lab: MyRent-05</a>
@@ -189,12 +208,12 @@ header h3
   <div class="extra content">
     <p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
   </div>
-</div>        </div>
-      </div>
+</div>      </div>
     </section>
   </div>
 
 </section>
+  <!--
   <br>  
   <div class="ui fixed bottom borderless menu">'
     <div class="ui small item"> 
@@ -207,6 +226,7 @@ header h3
     </div>
   </div>   
     
+-->
   <script>
     $(document).ready(function()
     {  

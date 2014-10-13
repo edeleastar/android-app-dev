@@ -23,7 +23,11 @@
 body 
 {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
-  font-size: 14px
+}
+
+#container
+{
+  margin :10px
 }
 
 code
@@ -54,7 +58,6 @@ h3
   font-size:70%
 }
 
-
 #title 
 {
   font-size:120%;
@@ -66,7 +69,7 @@ h3
 img 
 {
    padding:1px;
-  /* border:1px solid black;*/
+   border:1px solid black;
    margin-top: 10px;
    margin-bottom: 10px;
 }
@@ -98,13 +101,30 @@ header h3
   border-bottom: 0px;
 }
 
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
     </style>
 
   </head>
   <body>
-  <div class="ui page stackable grid">
-<div class="row">
-  <header class="ui middle aligned grid">
+  <div class="ui stackable grid">
+<!--<div class="row">-->
+  <header class="ui middle aligned grid section">
     <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
@@ -116,7 +136,7 @@ header h3
       <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
     </div>
   </header>
-</div>    <section class="ui four wide column">
+<!--</div>-->    <section class="ui four wide column">
     
       <nav class="ui vertical fluid pointing menu">
         <div class="menu">
@@ -144,6 +164,7 @@ header h3
     
   </div> 
   	
+  <!--
   <br>  
   <div class="ui fixed bottom borderless menu">'
     <div class="ui small item"> 
@@ -156,6 +177,7 @@ header h3
     </div>
   </div>   
     
+-->
   <script>
     $(document).ready(function()
     {  

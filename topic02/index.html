@@ -23,7 +23,11 @@
 body 
 {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
-  font-size: 14px
+}
+
+#container
+{
+  margin :10px
 }
 
 code
@@ -54,7 +58,6 @@ h3
   font-size:70%
 }
 
-
 #title 
 {
   font-size:120%;
@@ -66,7 +69,7 @@ h3
 img 
 {
    padding:1px;
-  /* border:1px solid black;*/
+   border:1px solid black;
    margin-top: 10px;
    margin-bottom: 10px;
 }
@@ -98,14 +101,31 @@ header h3
   border-bottom: 0px;
 }
 
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
     </style>
 
   </head>
   <body>
-<section class="ui page stackable grid">
+<section id="container" class="ui stackable grid">
 
-<div class="row">
-  <header class="ui middle aligned grid">
+<!--<div class="row">-->
+  <header class="ui middle aligned grid section">
     <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
@@ -117,7 +137,7 @@ header h3
       <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
     </div>
   </header>
-</div>  <section class="ui four wide column">
+<!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
@@ -130,13 +150,14 @@ header h3
     </nav>
   </section>
 
-    <section class="ui twelve wide column segment">
+
+
+    <section id="topic" class="ui doubling twelve wide column segment">
       <h1>2: Intents &amp; Events</h1>
-      <div class="row">
-        <div class="ui cards">
+      <div class="ui cards">
 <div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/a-app-structure.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/a-app-structure.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/a-app-structure.pdf" class="header">Application Structure</a>
@@ -145,8 +166,8 @@ header h3
     <p>Android, like IOS, has introduced a new visual language for interaction on the devices it supports. This language is different from previous graphical environments (Windows, OSX), and is optimised for touch based interaction. Here we review some of the major elements of this language and become acquainted with the some of the primary interaction patterns.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/b-donation-android-v2.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/b-donation-android-v2.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/b-donation-android-v2.pdf" class="header">Donation-android V2</a>
@@ -155,8 +176,8 @@ header h3
     <p>If you have completed this lab (but not the exercises yet) then we can review your achievements so far, and closely inspect the code we introduced to accommodate the new activity + the list. We will also review the challenges.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/c-donation-android-v3.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/c-donation-android-v3.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/c-donation-android-v3.pdf" class="header">Donation Android V3</a>
@@ -165,8 +186,8 @@ header h3
     <p>This lab presents the solution to the series of challenges in the Donation-02 lab. If you have completed these challenges you may just with to examine our solutions, which may be largely the same as yours. If you have not completed them all, the incorporated these into your solution now and have a got at the exercises at the end of this lab. You should be able to complete these exercises.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/d-models.jpg">
+  <div class="cover">
+    <div style="background-image: url('./pdf/d-models.jpg');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/d-models.pdf" class="header">UML Models</a>
@@ -174,14 +195,12 @@ header h3
   <div class="extra content">
     <p>This simple application is already composed of a range of classes related to each other in via different types of relationships. We can capture this design graphically in UML, exploring the true nature of the structure of the app.</p>
   </div>
-</div>        </div>
-      </div>
-      <div class="row">
-        <h1> Labs </h1>
-        <div class="ui cards">
+</div>      </div>
+      <h1> Labs </h1>
+      <div class="ui cards">
 <div class="ui card">
-  <div class="ui image">
-    <img src="./book-a/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-a/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-a/index.html" class="header">Lab: Donation-02</a>
@@ -190,8 +209,8 @@ header h3
     <p>We will now try to implement some of these patterns in the Application we started last week. In this lab we will introduce a second screen to display the list of donations made by the user. In addition, we will explore some of the menu support provided by android, the notion of and "Application Object" and also "Adapters". These features will enable our app to be equipped with its first "Model" objects, which will be used to store the individual donations made by the user. At the end of this lab is a series of 'Challenges', some if which are straightforward, others are more complicated. See how far you get with them.</p>
   </div>
 </div><div class="ui card">
-  <div class="ui image">
-    <img src="./book-b/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-b/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-b/index.html" class="header">Lab: Donation-03</a>
@@ -199,12 +218,12 @@ header h3
   <div class="extra content">
     <p>We continue the implementation of Donation to including the welcome, sign up and login. Support these views with a User model, and validate the users on log in.</p>
   </div>
-</div>        </div>
-      </div>
+</div>      </div>
     </section>
   </div>
 
 </section>
+  <!--
   <br>  
   <div class="ui fixed bottom borderless menu">'
     <div class="ui small item"> 
@@ -217,6 +236,7 @@ header h3
     </div>
   </div>   
     
+-->
   <script>
     $(document).ready(function()
     {  

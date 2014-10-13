@@ -23,7 +23,11 @@
 body 
 {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
-  font-size: 14px
+}
+
+#container
+{
+  margin :10px
 }
 
 code
@@ -54,7 +58,6 @@ h3
   font-size:70%
 }
 
-
 #title 
 {
   font-size:120%;
@@ -66,7 +69,7 @@ h3
 img 
 {
    padding:1px;
-  /* border:1px solid black;*/
+   border:1px solid black;
    margin-top: 10px;
    margin-bottom: 10px;
 }
@@ -98,14 +101,31 @@ header h3
   border-bottom: 0px;
 }
 
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
     </style>
 
   </head>
   <body>
-<section class="ui page stackable grid">
+<section id="container" class="ui stackable grid">
 
-<div class="row">
-  <header class="ui middle aligned grid">
+<!--<div class="row">-->
+  <header class="ui middle aligned grid section">
     <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
@@ -117,7 +137,7 @@ header h3
       <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
     </div>
   </header>
-</div>  <section class="ui four wide column">
+<!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="active item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
@@ -130,13 +150,14 @@ header h3
     </nav>
   </section>
 
-    <section class="ui twelve wide column segment">
+
+
+    <section id="topic" class="ui doubling twelve wide column segment">
       <h1>1: Activities &amp; Layouts</h1>
-      <div class="row">
-        <div class="ui cards">
+      <div class="ui cards">
 <div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/a-android-overview.jpeg">
+  <div class="cover">
+    <div style="background-image: url('./pdf/a-android-overview.jpeg');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/a-android-overview.pdf" class="header">Android Overview</a>
@@ -145,8 +166,8 @@ header h3
     <p>Here we explore the general context of the android User Experience, it's role in the mobile platform space and the components that make up the the system. We are particularly interested in the version numbers and how version in general is managed.</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/b-ui-overview.jpeg">
+  <div class="cover">
+    <div style="background-image: url('./pdf/b-ui-overview.jpeg');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/b-ui-overview.pdf" class="header">Android UX</a>
@@ -155,8 +176,8 @@ header h3
     <p>Android introduced a new user interface language to the world, one that is gradually evolving in flexibility and expressiveness. Here we review the principle elements of this language and how its is incorporated into attractive and usable applications</p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/c-uml-intro.jpeg">
+  <div class="cover">
+    <div style="background-image: url('./pdf/c-uml-intro.jpeg');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/c-uml-intro.pdf" class="header">UML</a>
@@ -165,8 +186,8 @@ header h3
     <p>Occasionally, as we uncover new featured as capabilities if the applications we are building we will be interested in discussing the deep structure of the Code itself. UML is a visual language for this purpose, and here we review some of the general characteristics of this notation. </p>
   </div>
 </div><div  class="ui card">
-  <div class="ui image">
-    <img src="./pdf/d-first-android-app.png">
+  <div class="cover">
+    <div style="background-image: url('./pdf/d-first-android-app.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/d-first-android-app.pdf" class="header">Donation 01 Application</a>
@@ -174,14 +195,12 @@ header h3
   <div class="extra content">
     <p>The first application exhibits a range of new concepts you will not have come across before. Here we tour this app in detail, exploring each of the artifacts we have composed, and attempt to get a sense of how they fit together to form a running app.</p>
   </div>
-</div>        </div>
-      </div>
-      <div class="row">
-        <h1> Labs </h1>
-        <div class="ui cards">
+</div>      </div>
+      <h1> Labs </h1>
+      <div class="ui cards">
 <div class="ui card">
-  <div class="ui image">
-    <img src="./book-a/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-a/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-a/index.html" class="header">Lab: Android-Tools-01</a>
@@ -190,8 +209,8 @@ header h3
     <p>We will then install and set up effective tools for Android application development. This will include a specially equipped version of Eclipse + an emulator. The emulator we are using - Genymotion - is a third party application not strictly part of the android build tools. However it is considerably faster and more useful than the standard emulator provided with the Android SDK.</p>
   </div>
 </div><div class="ui card">
-  <div class="ui image">
-    <img src="./book-b/img/main.png">
+  <div class="cover">
+    <div style="background-image: url('./book-b/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-b/index.html" class="header">Lab: Donation-01</a>
@@ -199,12 +218,12 @@ header h3
   <div class="extra content">
     <p>With this range of tools installed we can start the process of acquainting ourselves with the android SDK and the workflow involved in authoring, building and deploying applications. In the 'Donation-01' lab below we proceed to explore in detail the creating of a simple activity class + the associated layout. This process will seem quite complex on first contact - but as we proceed through the labs over the next few sessions the deep structure should start to emerge.</p>
   </div>
-</div>        </div>
-      </div>
+</div>      </div>
     </section>
   </div>
 
 </section>
+  <!--
   <br>  
   <div class="ui fixed bottom borderless menu">'
     <div class="ui small item"> 
@@ -217,6 +236,7 @@ header h3
     </div>
   </div>   
     
+-->
   <script>
     $(document).ready(function()
     {  
