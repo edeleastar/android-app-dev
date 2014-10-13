@@ -8,16 +8,9 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-      <link rel="stylesheet" href="http://beta.semantic-ui.com/build/packaged/definitions/css/semantic.min.css">
-      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-      <script src="http://beta.semantic-ui.com/build/packaged/definitions/javascript/semantic.min.js"></script>
-
-    <!--
-     <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/0.19.3/css/semantic.min.css">
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script src="http://cdn.jsdelivr.net/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
-   -->
+     <link rel="stylesheet" href="http://beta.semantic-ui.com/build/packaged/definitions/css/semantic.min.css">
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+     <script src="http://beta.semantic-ui.com/build/packaged/definitions/javascript/semantic.min.js"></script>
 
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
@@ -117,6 +110,9 @@ header h3
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
           <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="07"> 07 </a>
           <a class="item" data-tab="Archives"> Archives </a>
     </div>
   </nav>
@@ -124,21 +120,205 @@ header h3
   <br>
 
 	  <section data-tab="MyRent-07" class="ui tab stacked moodle-book segment">
-	     <h1>ViewPager</h1>
-<p>Now that our Activities are based on Fragment, we can introduce a new feature to support 'swipe' interaction. This allows a user to swipe left/right to page through the residence list.</p>
+	     <h1>Residence List Deletion &amp; ViewPager</h1>
+<ul>
+<li>In this lab we introduce a facility to select and delete a subset of residences in the list view. The selected items need not be contiguous.</li>
+<li>Now that our Activities are based on Fragment, we can introduce a new feature to support 'swipe' interaction. This allows a user to swipe left/right to page through the residence list.</li>
+</ul>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Preview</h1>
+<p><img alt="Figure 1: Long press to engage contextual menu to delete selection from list" src="img/02.png"></p>
+<p><img alt="Figure 2: Use ViewPager to introduce swipe facility" src="img/19.png"></p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Resources (Contextual Menu)</h1>
+<p>Add a new context menu resource.</p>
+<p>Filename: res/menu/residence_list_context.xml</p>
+<pre><code>&lt;menu
+  xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:id=&quot;@+id/menu_item_delete_residence&quot;
+    android:icon=&quot;@android:drawable/ic_menu_delete&quot;
+    android:title=&quot;@string/delete_residence&quot; /&gt;
+&lt;/menu&gt;
+
+</code></pre>
+
+<p>We would like the selected residences to appear highlighted for ease of identification. Add the following xml file in a new folder <em>drawable</em>:</p>
+<p>Filename: res/drawable/background_activated.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; &gt;
+  &lt;item
+    android:state_activated=&quot;true&quot;
+    android:drawable=&quot;@android:color/darker_gray&quot;
+    /&gt;
+&lt;/selector&gt;
+
+</code></pre>
+
+<p>Activate the <em>background_activated</em> state by adding the following attribute to res/layout/list_item_residence.xml.</p>
+<ul>
+<li>Failure to introduce this line of code will result in selected residence in the list remaining highlighted only as long as the mouse button is pressed.</li>
+</ul>
+<pre><code>    android:background=&quot;@drawable/background_activated&quot;
+</code></pre>
+
+<p>Here is the complete file:</p>
+<p>Filename: list_item_residence.xml</p>
+<pre><code>&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:background=&quot;@drawable/background_activated&quot;
+    android:orientation=&quot;vertical&quot;&gt;
+
+    &lt;CheckBox
+        android:id=&quot;@+id/residence_list_item_isrented&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:gravity=&quot;center&quot;
+        android:layout_alignParentRight=&quot;true&quot;
+        android:enabled=&quot;false&quot;
+        android:focusable=&quot;false&quot;
+        android:padding=&quot;4dp&quot;
+         /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/residence_list_item_geolocation&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_toLeftOf=&quot;@id/residence_list_item_isrented&quot;
+        android:textStyle=&quot;bold&quot;
+        android:paddingLeft=&quot;4dp&quot;
+        android:paddingRight=&quot;4dp&quot;
+        /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/residence_list_item_dateTextView&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_below=&quot;@id/residence_list_item_geolocation&quot;
+        android:layout_toLeftOf=&quot;@id/residence_list_item_isrented&quot;
+        android:paddingLeft=&quot;4dp&quot;
+        android:paddingRight=&quot;4dp&quot;
+        android:paddingTop=&quot;4dp&quot;/&gt;
+
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<p>Add string resource:</p>
+<pre><code>&lt;string name=&quot;delete_residence&quot;&gt;Delete Residence&lt;/string&gt;  
+</code></pre>
+
+<p><img alt="Press and hold trash can to display menu label" src="img/03.png"></p>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>ResidenceListFragment</h1>
+<p>Add imports:</p>
+<pre><code>import android.view.ActionMode;
+import android.widget.AbsListView.MultiChoiceModeListener;
+</code></pre>
+
+<p>Change class signature by implementing MultiChoiceModeListener:</p>
+<pre><code>public class ResidenceListFragment extends ListFragment implements OnItemClickListener, MultiChoiceModeListener
+</code></pre>
+
+<p>Add a ListView field:</p>
+<pre><code>private ListView listView;
+</code></pre>
+
+<p>In onCreateView initialize the listView and set listener:</p>
+<pre><code>    listView = (ListView) v.findViewById(android.R.id.list);
+    listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+    listView.setMultiChoiceModeListener(this);
+</code></pre>
+
+<p>Delete <em>onActivityResult</em> and replace with <em>onResume</em>:</p>
+<pre><code>  @Override
+  public void onResume()
+  {
+    super.onResume();
+    ((ResidenceAdapter) getListAdapter()).notifyDataSetChanged();
+  }
+
+</code></pre>
+
+<p>Implement MultiChoiceModeListener methods:</p>
+<pre><code>  /* ************ MultiChoiceModeListener methods (begin) *********** */
+  @Override
+  public boolean onCreateActionMode(ActionMode mode, Menu menu)
+  {
+    MenuInflater inflater = mode.getMenuInflater();
+    inflater.inflate(R.menu.residence_list_context, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onPrepareActionMode(ActionMode mode, Menu menu)
+  {
+    return false;
+  }
+
+  @Override
+  public boolean onActionItemClicked(ActionMode mode, MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+    case R.id.menu_item_delete_residence:
+      deleteResidence(mode);
+      return true;
+    default:
+      return false;
+    }
+
+  }
+
+  private void deleteResidence(ActionMode mode)
+  {
+    for (int i = adapter.getCount() - 1; i &gt;= 0; i--)
+    {
+      if (listView.isItemChecked(i))
+      {
+        portfolio.deleteResidence(adapter.getItem(i));
+      }
+    }
+    mode.finish();
+    adapter.notifyDataSetChanged();
+  }
+
+  @Override
+  public void onDestroyActionMode(ActionMode mode)
+  {
+  }
+
+  @Override
+  public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked)
+  {
+  }
+
+  /* ************ MultiChoiceModeListener methods (end) *********** */
+
+</code></pre>
+
+<h1>Model Layer</h1>
+<p>Add a method to Portfolio to delete a residence :</p>
+<pre><code>  public void deleteResidence(Residence c)
+  {
+    residences.remove(c);
+  }
+</code></pre>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
 	     <h1>ViewPager</h1>
 <p>Here we shall refactor MyRent by incorporating a ViewPager.</p>
 <ul>
 <li>This will allow us to swipe between pages as illustrated in Figure 1.</li>
 </ul>
 <p><img alt="Figure 1: Swipe between pages" src="img/19.png"></p>
-<p>The refactoring is shown in Figure 2 where the changes are highlighted: compare this object diagram to that in the previous step and you will see that the main change is the replacement of MyRentActivity with a new class MyRentPagerActivity. </p>
+<p>The refactoring is shown in Figure 2 where the changes are highlighted: compare this object diagram to that in the previous step and you will see that the main change is the replacement of ResidenceActivity with a new class ResidencePagerActivity. </p>
 <p><img alt="Figure 2: Object diagram following introduction of ViewPager" src="img/20.png"></p>
 	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Resources</h1>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Resources (ViewPager)</h1>
 <p>Create a new file <em>ids.xml</em> in res/values folder:</p>
 <p>Filename: ids.xml</p>
 <pre><code>&lt;resources&gt;
@@ -147,11 +327,10 @@ header h3
 
 </code></pre>
 
-<p>Change the MyRentActivity node in the manifest file: delete MyRentActivity node:</p>
+<p>Change the ResidenceActivity node in the manifest file to ResidencePagerActivity.</p>
 <p><img alt="" src="img/01.png"></p>
-<p>Replacement node: MyRentPagerActivity added</p>
 <pre><code>    &lt;activity 
-        android:name=&quot;.activities.MyRentPagerActivity&quot;
+        android:name=&quot;.activities.ResidencePagerActivity&quot;
         android:label=&quot;@string/app_name&quot;&gt;
 
         &lt;meta-data  
@@ -160,8 +339,8 @@ header h3
     &lt;/activity&gt;
 </code></pre>
 	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Create MyRentPagerActivity</h1>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>Create ResidencePagerActivity</h1>
 <p>Note: not all import statements are included: </p>
 <ul>
 <li>
@@ -171,8 +350,8 @@ header h3
 <p>Alternatively, on the Mac, the key combination <em>Shift + cmd + O</em> (upper case letter oh), automatically inserts missing imports.</p>
 </li>
 </ul>
-<p>Delete MyRentActivity and replace with MyRentPagerActivity, the code for which follows:</p>
-<p>Filename: MyRentPagerActivity.java</p>
+<p>Delete ResidenceActivity and replace with ResidencePagerActivity, the code for which follows:</p>
+<p>Filename: ResidencePagerActivity.java</p>
 <pre><code>package org.wit.myrent.activities;
 
 import android.os.Bundle;
@@ -180,7 +359,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
 
-public class MyRentPagerActivity extends FragmentActivity
+public class ResidencePagerActivity extends FragmentActivity
 {
   private ViewPager viewPager;
 
@@ -199,7 +378,7 @@ public class MyRentPagerActivity extends FragmentActivity
 </ul>
 <p>Create and show ViewPager:</p>
 <ul>
-<li>Add this code to MyRentPagerActivity.onCreate following the call to <em>super.onCreate</em>.<ul>
+<li>Add this code to ResidencePagerActivity.onCreate following the call to <em>super.onCreate</em>.<ul>
 <li>This creates a view programatically.</li>
 </ul>
 </li>
@@ -229,7 +408,7 @@ public class MyRentPagerActivity extends FragmentActivity
 </code></pre>
 
 <p>Invoke <em>setResidenceList</em> immediately following <em>setContentView</em> in <em>onCreate</em>.</p>
-<p>Add this private class at the end of MyRentPagerActivity.</p>
+<p>Add this private class at the end of ResidencePagerActivity.</p>
 <pre><code>  class PagerAdapter extends FragmentStatePagerAdapter 
   {
     private ArrayList&lt;Residence&gt;  residences; 
@@ -251,16 +430,18 @@ public class MyRentPagerActivity extends FragmentActivity
     {
       Residence residence = residences.get(pos);
       Bundle args = new Bundle();
-      args.putSerializable(MyRentFragment.EXTRA_RESIDENCE_ID, residence.id);
-      MyRentFragment fragment = new MyRentFragment();
+      args.putSerializable(ResidenceFragment.EXTRA_RESIDENCE_ID, residence.id);
+      ResidenceFragment fragment = new ResidenceFragment();
       fragment.setArguments(args);
       return fragment;
     } 
   }
 </code></pre>
 
-<p>Change the signature of MyRentPagerActivity to the following:</p>
-<pre><code>public class MyRentPagerActivity extends FragmentActivity implements ViewPager.OnPageChangeListener
+<p>Ensure this new class is contained within ResidencePagerActivity as shown here:</p>
+<p><img alt="" src="img/25.png"></p>
+<p>Change the signature of ResidencePagerActivity to the following:</p>
+<pre><code>public class ResidencePagerActivity extends FragmentActivity implements ViewPager.OnPageChangeListener
 
 </code></pre>
 
@@ -297,6 +478,7 @@ public class MyRentPagerActivity extends FragmentActivity
   }
 </code></pre>
 
+<p>The method <em>info</em> is implemented in the helpers folder and may be imported in a similar manner as previously in, for example, ResidenceFragment.</p>
 <p>This last feature is illustrated in Figure 1 below.</p>
 <p><img alt="Figure 1: Changing Action Bar Title" src="img/21.png"></p>
 <p>Next add a PageAdapter instance variable:</p>
@@ -315,32 +497,32 @@ public class MyRentPagerActivity extends FragmentActivity
 
 </code></pre>
 	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>Integrate MyRentPagerActivity</h1>
+	  <section data-tab="07" class="ui tab stacked moodle-book segment">
+	     <h1>Integrate ResidencePagerActivity</h1>
 <p>To date in ResidenceListActivity.onListItemClick:</p>
 <ul>
-<li>When a list item is clicked the MyRentActivty is started.</li>
+<li>When a list item is clicked the ResidenceActivity is started.</li>
 </ul>
-<p>We now wish to start MyRentPagerActivity:</p>
+<p>We now wish to start ResidencePagerActivity:</p>
 <ul>
 <li>To do so, in ResidenceListFragment, replace the following code:</li>
 </ul>
 <p><img alt="" src="img/24.png"></p>
 <p>with this:</p>
-<pre><code>Intent i = new Intent(getActivity(), MyRentPagerActivity.class);
+<pre><code>Intent i = new Intent(getActivity(), ResidencePagerActivity.class);
 </code></pre>
 
-<p>Replace any other references to MyRentActivity with MyRentPagerActivity in ResidenceListFragment.</p>
-<p>Run MyRent and select on any element in the list which should open the details screen.</p>
+<p>In ResidenceListFragment, replace any other references to ResidenceActivity with ResidencePagerActivity.</p>
+<p>Run MyRent and click on any element in the list: this should open the associated details screen.</p>
 <ul>
 <li>You should be able to swipe left and right.</li>
 <li>Should you have difficulty doing so on an emulator, try it on a physical device.</li>
 </ul>
-<p>Observe, however, that irrespective which residence on the list is pressed, the first on the list is displayed in the details view. This will now be fixed by mplementing a method <em>backButton</em>:</p>
+<p>Observe, however, that irrespective which residence on the list is pressed, the first on the list is displayed in the details view. This will now be fixed by implementing a method <em>backButton</em> in ResidencePagerActivity:</p>
 <pre><code>  private void backButton()
   {
     //On pressing back button display move to position on list that includes current residence
-    UUID res = (UUID) getIntent().getSerializableExtra(MyRentFragment.EXTRA_RESIDENCE_ID);
+    UUID res = (UUID) getIntent().getSerializableExtra(ResidenceFragment.EXTRA_RESIDENCE_ID);
     for (int i = 0; i &lt; residences.size(); i++)
     {
       if (residences.get(i).id.toString().equals(res.toString()))
@@ -356,7 +538,7 @@ public class MyRentPagerActivity extends FragmentActivity
 <pre><code>import java.util.UUID;
 </code></pre>
 
-<p>Invoke <em>backButton</em> at the end of <em>MyRentPagerActivity.onCreate</em>.</p>
+<p>Invoke <em>backButton</em> at the end of <em>ResidencePagerActivity.onCreate</em>.</p>
 <p>Here is a brief description of <em>backButton</em>:</p>
 <ul>
 <li>We simply obtain the id of the residence displayed in the details screen from the activity intent, </li>
@@ -403,7 +585,7 @@ import static org.wit.android.helpers.LogHelpers.info;
 	     <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
-<li><a href="archives/MyRentV08.zip">MyRentV08</a></li>
+<li><a href="archives/MyRentV07.zip">MyRentV07</a></li>
 </ul>
 	  </section>
 <script>
