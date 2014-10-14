@@ -8,16 +8,9 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-      <link rel="stylesheet" href="http://beta.semantic-ui.com/build/packaged/definitions/css/semantic.min.css">
-      <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-      <script src="http://beta.semantic-ui.com/build/packaged/definitions/javascript/semantic.min.js"></script>
-
-    <!--
-     <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/0.19.3/css/semantic.min.css">
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script src="http://cdn.jsdelivr.net/semantic-ui/0.19.3/javascript/semantic.min.js"></script>
-   -->
+     <link rel="stylesheet" href="http://beta.semantic-ui.com/build/packaged/definitions/css/semantic.min.css">
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+     <script src="http://beta.semantic-ui.com/build/packaged/definitions/javascript/semantic.min.js"></script>
 
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
@@ -30,7 +23,11 @@
 body 
 {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
-  font-size: 14px
+}
+
+#container
+{
+  margin :10px
 }
 
 code
@@ -61,7 +58,6 @@ h3
   font-size:70%
 }
 
-
 #title 
 {
   font-size:120%;
@@ -73,7 +69,7 @@ h3
 img 
 {
    padding:1px;
-  /* border:1px solid black;*/
+   border:1px solid black;
    margin-top: 10px;
    margin-bottom: 10px;
 }
@@ -105,14 +101,31 @@ header h3
   border-bottom: 0px;
 }
 
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
     </style>
 
   </head>
   <body>
-<section class="ui page stackable grid">
+<section id="container" class="ui stackable grid">
 
-<div class="row">
-  <header class="ui middle aligned grid">
+<!--<div class="row">-->
+  <header class="ui middle aligned grid section">
     <div class="ten wide column">
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
@@ -124,19 +137,23 @@ header h3
       <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
     </div>
   </header>
-</div>  <div class="row">
-    <section class="ui four wide column segment">
-      <nav class="ui vertical fluid pointing menu">
-            <a class="active item" href=" ../topic00/index.html"> 0: Welcome </a>
-            <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
-            <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
-            <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
-            <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
-            <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
-            <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
-      </nav>
-    </section>
-    <section class="ui twelve wide column segment">
+<!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
+    <nav class="ui vertical fluid pointing menu">
+      <div class="menu">
+        <a class="active item" href=" ../topic00/index.html"> 0: Welcome </a>
+        <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
+        <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
+        <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
+        <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
+        <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
+        <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
+      </div>
+    </nav>
+  </section>
+
+
+
+    <section id="topic" class="ui doubling twelve wide column segment">
       <h1>0: Welcome</h1>
 <blockquote>
 <p>Welcome to the Mobile Application Development Module. The objective of this course will provide a comprehensive introduction to developing modern Android Applications. It is a 10 credit module, delivered over a single semester. The course will comprise of a series of lectures + labs exploring the Android development ecosystem in increasing detail. Our objective is to provide the student with the skills required to construct efficient and reliable android applications of moderately complexity. We assume a beginner/intermediate level in Java. Each week the Table of Content on the left here will be populated with a new topic - which will contain slide + labs for the week.</p>
@@ -151,14 +168,10 @@ John Fitzgerald </p>
 <p>There is no final examination - with all assessment based on applications &amp; services you will build and submit during the course. The first assignment - and application - will be due around week 7. The second assignment - a combination of an application + a web service will be submitted after the course concludes, approximately week 13 or 14.</p>
 <h4>Timetable</h4>
 <p><img class="img-responsive" src="https://dl.dropboxusercontent.com/u/2068306/ict-skills-2014/timetable/mobile-app.png"></p>
-      <div class="row">
-        <div class="ui cards">
-        </div>
+      <div class="ui cards">
       </div>
-      <div class="row">
-        <h1> Labs </h1>
-        <div class="ui cards">
-        </div>
+      <h1> Labs </h1>
+      <div class="ui cards">
       </div>
     </section>
   </div>

@@ -166,7 +166,8 @@ header h3
 	  </section>
 	  <section data-tab="02" class="ui tab stacked moodle-book segment">
 	     <h1>ResidenceActivity</h1>
-<p>Much of the content of ResidenceActivity inherited from the previous verion is being moved to its associated new fragment class.</p>
+<p>Much of the content of ResidenceActivity inherited from the previous version is being moved to its associated new fragment class, ResidenceFragment.</p>
+<p>We now begin refactoring:</p>
 <ul>
 <li>Replace the contents of <em>ResidenceActivity</em> with the following:</li>
 </ul>
@@ -209,7 +210,7 @@ public class ResidenceActivity extends FragmentActivity
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>ResidenceFragment</h1>
-<p>Here is the new ResidenceFragment class which comprises, mostly, code migrated from the previous version's ResidenceActivity:</p>
+<p>Here is the new ResidenceFragment class which comprises, mostly, code migrated from ResidencyActivity in the previous version of MyRent:</p>
 <pre><code>package org.wit.myrent.activities;
 
 import java.util.Calendar;
@@ -438,7 +439,7 @@ public class ResidenceListActivity extends FragmentActivity
 	  </section>
 	  <section data-tab="05" class="ui tab stacked moodle-book segment">
 	     <h1>ResidenceListFragment</h1>
-<p>Here is the refactored ResidenceListFragment, most of which is copied directly from the former ResidenceListActivity:</p>
+<p>Here is the ResidenceListFragment class which comprises, mostly, code migrated from ResidencyListActivity in the previous version of MyRent:</p>
 <pre><code>package org.wit.myrent.activities;
 
 import java.util.ArrayList;
@@ -504,9 +505,8 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
   }
 
   @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data)
+  public void onResume()
   {
-    super.onResume();
     ((ResidenceAdapter) getListAdapter()).notifyDataSetChanged();
   }
 
@@ -603,6 +603,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 </ul>
 </li>
 </ul>
+<p>Here is the modified layout:</p>
 <p>Filename: res/layout/fragment_residence.xml</p>
 <pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     android:layout_width=&quot;match_parent&quot;
@@ -697,9 +698,9 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 &lt;/LinearLayout&gt;
 </code></pre>
 
-<p>The major change here is to the layout where we have added a map button as shown in the following Figure 1.</p>
+<p>The changes are evident in the following Figure 1.</p>
 <ul>
-<li>Note that the registration date is not displayed: the reason for this is that the contents of Figure 1 are formed from screenshot of the Graphical Layout which does not display dynamically generated data (such as the registration dates).</li>
+<li>Note that the registration date is not displayed: the reason for this is that the contents of Figure 1 are formed from screenshots of the Graphical Layout which does not display dynamically generated data (such as the registration dates).</li>
 </ul>
 <p><img alt="Figure 1: Layout before and following refactoring" src="img/04.png"></p>
 	  </section>
@@ -724,8 +725,13 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
   } 
 </code></pre>
 
+<p>In the above code you will notice that we are using an implicit Intent. </p>
+<ul>
+<li>This searches for components that are registered for the action we have specified, namely ACTION_VIEW.</li>
+<li>Because of the particular argument we have used in the <em>Uri.parse</em> method, the component sought will be one which can display a geolocation. In our case this will be the external maps app that we will already have downloaded onto the emulator or physical device. See <a href="https://developer.android.com/guide/components/intents-common.html">here</a> for official documentation.</li>
+</ul>
 <p>Invoke this helper method from within ResidenceFragment by pressing the <em>mapButton</em>.</p>
-<p>Here is the wiring to facilitate this which should be added to ResidenceFragment:</p>
+<p>Here is the wiring to facilitate this. It should be added to ResidenceFragment:</p>
 <p>Declare the map button:</p>
 <pre><code>  private Button   mapButton;
 

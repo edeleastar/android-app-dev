@@ -252,16 +252,6 @@ import android.widget.AbsListView.MultiChoiceModeListener;
     listView.setMultiChoiceModeListener(this);
 </code></pre>
 
-<p>Delete <em>onActivityResult</em> and replace with <em>onResume</em>:</p>
-<pre><code>  @Override
-  public void onResume()
-  {
-    super.onResume();
-    ((ResidenceAdapter) getListAdapter()).notifyDataSetChanged();
-  }
-
-</code></pre>
-
 <p>Implement MultiChoiceModeListener methods:</p>
 <pre><code>  /* ************ MultiChoiceModeListener methods (begin) *********** */
   @Override
@@ -339,7 +329,7 @@ import android.widget.AbsListView.MultiChoiceModeListener;
 	  </section>
 	  <section data-tab="05" class="ui tab stacked moodle-book segment">
 	     <h1>Resources (ViewPager)</h1>
-<p>Create a new file <em>ids.xml</em> in res/values folder:</p>
+<p>Create a new file <em>ids.xml</em> in res/values folder which will be used to store viewPager id numbers:</p>
 <p>Filename: ids.xml</p>
 <pre><code>&lt;resources&gt;
     &lt;item type=&quot;id&quot; name=&quot;viewPager&quot; /&gt;
@@ -369,6 +359,7 @@ import android.widget.AbsListView.MultiChoiceModeListener;
 <li>
 <p>Alternatively, on the Mac, the key combination <em>Shift + cmd + O</em> (upper case letter oh), automatically inserts missing imports.</p>
 </li>
+<li>Further information on shortcut keys is available <a href="http://tkramar.blogspot.ie/2007/10/effective-eclipse-ii-shortcut-keys_16.html">here</a></li>
 </ul>
 <p>Delete ResidenceActivity and replace with ResidencePagerActivity, the code for which follows:</p>
 <p>Filename: ResidencePagerActivity.java</p>
@@ -533,13 +524,16 @@ public class ResidencePagerActivity extends FragmentActivity
 </code></pre>
 
 <p>In ResidenceListFragment, replace any other references to ResidenceActivity with ResidencePagerActivity.</p>
-<p>Run MyRent and click on any element in the list: this should open the associated details screen.</p>
+<p>Run MyRent and click on any element in the list: this should open the associated details view.</p>
 <ul>
 <li>You should be able to swipe left and right.</li>
 <li>Should you have difficulty doing so on an emulator, try it on a physical device.</li>
 </ul>
-<p>Observe, however, that irrespective which residence on the list is pressed, the first on the list is displayed in the details view. This will now be fixed by implementing a method <em>backButton</em> in ResidencePagerActivity:</p>
-<pre><code>  private void backButton()
+<p>Observe, however, that irrespective which residence on the list is pressed, the first on the list is displayed in the details view. This will now be fixed by implementing a method <em>setCurrentItem</em> in ResidencePagerActivity:</p>
+<pre><code>  /*
+   * Ensure selected residence is shown in details view
+   */
+  private void setCurrentItem()
   {
     //On pressing back button display move to position on list that includes current residence
     UUID res = (UUID) getIntent().getSerializableExtra(ResidenceFragment.EXTRA_RESIDENCE_ID);
@@ -558,10 +552,10 @@ public class ResidencePagerActivity extends FragmentActivity
 <pre><code>import java.util.UUID;
 </code></pre>
 
-<p>Invoke <em>backButton</em> at the end of <em>ResidencePagerActivity.onCreate</em>.</p>
-<p>Here is a brief description of <em>backButton</em>:</p>
+<p>Invoke <em>setCurrentItem</em> at the end of <em>ResidencePagerActivity.onCreate</em>.</p>
+<p>Here is a brief description of <em>setCurrentItem</em>:</p>
 <ul>
-<li>We simply obtain the id of the residence displayed in the details screen from the activity intent, </li>
+<li>We simply obtain the id of the residence displayed in the details view from the activity intent, </li>
 <li>then iterate through the list of residences to find a match</li>
 <li>and having found a matching residence, invoke <em>setCurrent</em> item using the index position of the residence object as an argument.</li>
 </ul>
@@ -577,7 +571,7 @@ public class ResidencePagerActivity extends FragmentActivity
     pagerAdapter = new PagerAdapter(getSupportFragmentManager(), residences);
     viewPager.setAdapter(pagerAdapter); 
     viewPager.setOnPageChangeListener(this);
-    backButton();
+    setCurrentItem();
   }
 </code></pre>
 
