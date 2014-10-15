@@ -507,6 +507,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
   @Override
   public void onResume()
   {
+    super.onResume();
     ((ResidenceAdapter) getListAdapter()).notifyDataSetChanged();
   }
 
