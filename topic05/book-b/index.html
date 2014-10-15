@@ -267,6 +267,11 @@ public class ContactHelper
 </code></pre>
 
 <p>The above is fairly crudely implemented - we can either get uses 'Diaplay Name' or their 'Email' - but not both.</p>
+<p>The second method - getting an email - will require explicit permission to acccess the detail in a contact. otherwise it will fail. In the manifest, introduce the following before the application element:</p>
+<pre><code>    &lt;uses-permission android:name=&quot;android.permission.READ_CONTACTS&quot; /&gt;
+</code></pre>
+
+<p>~~~</p>
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>Residence</h1>
