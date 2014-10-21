@@ -1,0 +1,369 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> MyRent-09 </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="http://beta.semantic-ui.com/dist/semantic.min.css">
+     <script src="http://beta.semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://beta.semantic-ui.com/dist/semantic.min.js"></script>
+
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+#container
+{
+  margin :10px
+}
+
+code
+{
+	font-family: "Monaco";
+	font-size: 110%;
+}
+
+h1 
+{
+  font-style:italic;
+  font-size:120%;
+  border-bottom: thin solid black;
+}
+h2 
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3 
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+#footertext 
+{
+  font-size:70%
+}
+
+#title 
+{
+  font-size:120%;
+  color: black;
+  text-align: right;
+  background-color : white;
+}
+
+img 
+{
+   padding:1px;
+   border:1px solid black;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+header img
+{
+	 padding:1px;
+   border:0px solid black;
+}
+
+header h1
+{
+  font-style:normal;
+  font-size:120%;
+  border-bottom: 0px;
+}
+
+header h2
+{
+  font-style:normal;
+  font-size:100%;
+  border-bottom: 0px;
+}
+
+header h3
+{
+  font-style:normal;
+  font-size:90%;
+  border-bottom: 0px;
+}
+
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
+    </style>
+
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">8: JPA Part I | Camera</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="MyRent-09"> MyRent-09 </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="Archives"> Archives </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="MyRent-09" class="ui tab stacked moodle-book segment">
+	     <h1>Alternative Menu Item &amp; Orientation</h1>
+<ul>
+<li>Show | Hide subtitles</li>
+<li>Save state between rotations</li>
+</ul>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Alternative Menu Item</h1>
+<p>In this lab we shall introduce and alternative menu item as shown in Figure 1 and Figure 2.</p>
+<ul>
+<li>
+<p>Figure 1 shows the menu item in portrait mode.</p>
+</li>
+<li>
+<p>Figure 2 shows how the menu display alters in landscape mode.</p>
+</li>
+<li>
+<p>Note that the state of the menu item remains unchanged as one switches between portrait modes in either direction.</p>
+</li>
+<li>The menu items, when pressed, toggle between SHOW SUBTITLE and HIDE SUBTITLE</li>
+<li>The subtitle label is <em>Residence List</em></li>
+</ul>
+<p><img alt="Figure 1: Alternative menu item - portrait" src="img/01.png"></p>
+<p><img alt="Figure 2: Alternative menu item - landscape" src="img/02.png"></p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Resources</h1>
+<p>Add these nodes to res/values/strings.xml</p>
+<pre><code>    &lt;string name=&quot;show_subtitle&quot;&gt;Show Subtitle&lt;/string&gt;
+    &lt;string name=&quot;hide_subtitle&quot;&gt;Hide Subtitle&lt;/string&gt;
+    &lt;string name=&quot;subtitle&quot;&gt;Residence List&lt;/string&gt;
+</code></pre>
+
+<p>Add an extra element to res/menu/fragment_residence_list.xml:</p>
+<pre><code>        &lt;item
+          android:id=&quot;@+id/menu_item_show_subtitle&quot;
+          android:showAsAction=&quot;ifRoom&quot;
+          android:title=&quot;@string/show_subtitle&quot;/&gt;
+</code></pre>
+
+<p>Add the following code to <em>onOptionsItemSelected</em> in MyRentFragment:</p>
+<pre><code>    case R.id.menu_item_show_subtitle:
+                            getActivity().getActionBar().setSubtitle(R.string.subtitle);
+</code></pre>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Helpers</h1>
+<p>Add the following methods to IntentHelper:</p>
+<pre><code>  public static void setSubtitle(Activity parent, int id)
+  {
+    parent.getActionBar().setSubtitle(id);
+  }
+
+  public static void setSubtitle(Activity parent)
+  {
+    parent.getActionBar().setSubtitle(null);
+  }
+
+  public static boolean isSubtitle(Activity parent)
+  {
+    return parent.getActionBar().getSubtitle() != null;
+  }
+
+</code></pre>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Activities</h1>
+<p>Add an additional <em>case</em> to the <em>switch</em> statement in ResidenceListFragment.onOptionsItemSelected:</p>
+<pre><code>    case R.id.menu_item_show_subtitle: setSubtitle(getActivity(), R.string.subtitle);
+                                       return true;
+</code></pre>
+
+<p>This sets the subtitle defined by the <strong>id</strong> on the activity referred to by the argument <strong>parent</strong>.</p>
+<ul>
+<li>We require these imports from helpers:</li>
+</ul>
+<pre><code>import static org.wit.android.helpers.IntentHelper.isSubtitle;
+import static org.wit.android.helpers.IntentHelper.setSubtitle;
+</code></pre>
+
+<p>Run MyRent and observe that the subtitle item is now present in the menu.</p>
+<ul>
+<li>However, pressing the item has no effect.</li>
+<li>We require that repeatedly pressing the item toggles the display between <strong>SHOW SUBTITLE</strong> and <strong>HIDE SUBTITLE</strong></li>
+</ul>
+<p>Modify the case statement as follows:</p>
+<pre><code>    case R.id.menu_item_show_subtitle: 
+      if(isSubtitle(getActivity()) == false)
+      {
+        setSubtitle(getActivity(), R.string.subtitle);
+        item.setTitle(R.string.hide_subtitle);
+      }
+      else
+      {
+        setSubtitle(getActivity());
+        item.setTitle(R.string.show_subtitle);
+      }
+      return true; 
+</code></pre>
+
+<p>Build and run the app again and this time notice that the subtitle toggles as required.</p>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Orientation</h1>
+<p>Conduct the following test:</p>
+<ul>
+<li>Launch MyRent</li>
+<li>Notice the default is <em>SHOW SUBTITLE</em></li>
+<li>Toggle to <em>HIDE SUBTITLE</em></li>
+<li>Switch to landscape mode</li>
+<li>Notice the display has reverted to <em>SHOW SUBTITLE</em></li>
+</ul>
+<p>In this step we shall arrange that the state of the menu persists across changes from one mode to the other - portrait to landscape and back.</p>
+<p>To achieve this we shall make the following changes in ResidenceListFragment:</p>
+<ul>
+<li>Create an instance variable to track the state of the subtitle</li>
+<li>Use the Fragment <a href="http://developer.android.com/reference/android/app/Fragment.html#setRetainInstance%28boolean%29"><em>setRetainInstance</em></a> method to retain the current fragment <em>across Activity re-creation</em>.</li>
+</ul>
+<p>Add the instance variable:</p>
+<pre><code>  private boolean subtitleVisible;
+</code></pre>
+
+<p>In <em>onCreate</em> invoke <em>setRetainInstance</em>:</p>
+<pre><code>    setRetainInstance(true);
+</code></pre>
+
+<p>Set <em>subtitleVisible</em> to the appropriate value in <em>onOptionsItemSelected</em>:</p>
+<pre><code>    case R.id.menu_item_show_subtitle: 
+      if(isSubtitle(getActivity()) == false)
+      {
+        setSubtitle(getActivity(), R.string.subtitle);
+        item.setTitle(R.string.hide_subtitle);
+        subtitleVisible = true;
+      }
+      else
+      {
+        setSubtitle(getActivity());
+        item.setTitle(R.string.show_subtitle);
+        subtitleVisible = false;
+      }
+      return true; 
+</code></pre>
+
+<p>In <em>onCreateOptionsMenu</em> invoke <em>initializeSubtitle</em>:</p>
+<pre><code>  private void initializeSubtitle(Menu menu)
+  {
+    MenuItem showSubtitle = menu.findItem(R.id.menu_item_show_subtitle);
+    if (subtitleVisible &amp;&amp; showSubtitle != null)
+    {
+      showSubtitle.setTitle(R.string.hide_subtitle);
+    }
+  }
+</code></pre>
+
+<p>In <em>onCreateView</em> check if subtitle should be shown:</p>
+<pre><code>    if(subtitleVisible)
+    {
+      setSubtitle(getActivity(), R.string.subtitle);
+    }
+</code></pre>
+
+<p>Repeat the tests listed above:</p>
+<ul>
+<li>Launch MyRent</li>
+<li>Notice the default is <em>SHOW SUBTITLE</em></li>
+<li>Toggle to <em>HIDE SUBTITLE</em></li>
+<li>Switch to landscape mode</li>
+<li>Notice the display is now correctly retaining data across rotations.</li>
+</ul>
+	  </section>
+	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
+	     <h1>Archives</h1>
+<p>This is a version of MyRent complete to the end if this lab:</p>
+<ul>
+<li><a href="archives/MyRentV10.zip">MyRentV10</a></li>
+</ul>
+	  </section>
+<script>
+
+function addCaptions() {
+  var images = $(".moodle-book img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0) 
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+};
+
+// Need to check if we have already been loaded
+seen = 0;
+
+$(document).ready(function()
+{ 
+  if (seen == 0)
+  { 
+    // not loaded before - so do the restyling once (need to moodle book print)
+    $(".moodle-book img").addClass ("ui image");
+    $(".moodle-book pre").addClass ("ui segment");
+    addCaptions();
+    seen = 1;
+  }
+
+
+})</script>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  <script>
+    $(document).ready(function()
+    {  
+      $('.tab-menu.menu .item').tab();
+    });
+  </script>   
+  </body>
+ </html>

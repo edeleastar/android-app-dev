@@ -1,0 +1,688 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> MyRent-11 </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="http://beta.semantic-ui.com/dist/semantic.min.css">
+     <script src="http://beta.semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://beta.semantic-ui.com/dist/semantic.min.js"></script>
+
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+#container
+{
+  margin :10px
+}
+
+code
+{
+	font-family: "Monaco";
+	font-size: 110%;
+}
+
+h1 
+{
+  font-style:italic;
+  font-size:120%;
+  border-bottom: thin solid black;
+}
+h2 
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3 
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+#footertext 
+{
+  font-size:70%
+}
+
+#title 
+{
+  font-size:120%;
+  color: black;
+  text-align: right;
+  background-color : white;
+}
+
+img 
+{
+   padding:1px;
+   border:1px solid black;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+header img
+{
+	 padding:1px;
+   border:0px solid black;
+}
+
+header h1
+{
+  font-style:normal;
+  font-size:120%;
+  border-bottom: 0px;
+}
+
+header h2
+{
+  font-style:normal;
+  font-size:100%;
+  border-bottom: 0px;
+}
+
+header h3
+{
+  font-style:normal;
+  font-size:90%;
+  border-bottom: 0px;
+}
+
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
+    </style>
+
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">10: Implementing APIs</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="MyRent-11"> MyRent-11 </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="07"> 07 </a>
+          <a class="item" data-tab="Archives"> Archives </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="MyRent-11" class="ui tab stacked moodle-book segment">
+	     <h1>Camera II</h1>
+<p>Taking Photos</p>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Helpers</h1>
+<p>Add new class org.wit.android.helpers.FileIOHelper:</p>
+<pre><code>package org.wit.android.helpers;
+
+import java.io.FileOutputStream;
+
+import android.content.Context;
+
+public class FileIOHelper
+{
+  public static boolean write(Context context, String filename, byte[] data)
+  {
+    FileOutputStream os = null;
+    boolean success = true;
+    try
+    {
+      //os = getActivity().openFileOutput(filename, Context.MODE_PRIVATE);
+      os = context.openFileOutput(filename, Context.MODE_PRIVATE);      
+      os.write(data);
+    }
+    catch (Exception e)
+    {
+      LogHelpers.info(context,&quot;Error writing to file &quot; + filename + &quot; &quot; + e.getMessage());
+      success = false;
+    }
+    finally
+    {
+      try
+      {
+        if (os != null)
+          os.close();
+      }
+      catch (Exception e)
+      {
+        LogHelpers.info(context, &quot;Error closing file &quot; + filename + &quot; &quot; + e.getMessage());
+        success = false;
+      }
+    }
+    return success;
+  }
+}
+</code></pre>
+
+<p>The static method <strong>write</strong> writes an array of bytes to a file and returns <em>true</em> if the operation is successful.</p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Helpers</h1>
+<p>Add PictureUtils</p>
+<pre><code>package org.wit.android.helpers;
+
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Display;
+
+import android.widget.ImageView;
+
+public class PictureUtils
+{
+  /**
+   * Get a BitmapDrawable from a local file that is scaled down to fit the
+   * current Window size.
+   */
+  @SuppressWarnings(&quot;deprecation&quot;)
+  public static BitmapDrawable getScaledDrawable(Activity a, String path)
+  {
+    Display display = a.getWindowManager().getDefaultDisplay();
+    float destWidth = display.getWidth();
+    float destHeight = display.getHeight();
+
+    // read in the dimensions of the image on disk
+    BitmapFactory.Options options = new BitmapFactory.Options();
+    options.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(path, options);
+
+    float srcWidth = options.outWidth;
+    float srcHeight = options.outHeight;
+
+    int inSampleSize = 1;
+    if (srcHeight &gt; destHeight || srcWidth &gt; destWidth)
+    {
+      if (srcWidth &gt; srcHeight)
+      {
+        inSampleSize = Math.round((float) srcHeight / (float) destHeight);
+      }
+      else
+      {
+        inSampleSize = Math.round((float) srcWidth / (float) destWidth);
+      }
+    }
+
+    options = new BitmapFactory.Options();
+    options.inSampleSize = inSampleSize;
+
+    Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+    return new BitmapDrawable(a.getResources(), bitmap);
+  }
+
+  public static void cleanImageView(ImageView imageView)
+  {
+    if (!(imageView.getDrawable() instanceof BitmapDrawable))
+      return;
+
+    // clean up the view's image for the sake of memory
+    BitmapDrawable b = (BitmapDrawable) imageView.getDrawable();
+    b.getBitmap().recycle();
+    imageView.setImageDrawable(null);
+  }
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Model</h1>
+<p>Add Photo class to model package:</p>
+<pre><code>package org.wit.myrent.models;
+
+import java.io.Serializable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Photo implements Serializable
+{
+  private static final long serialVersionUID = 1L;
+
+  private static final String JSON_FILENAME = &quot;filename&quot;;
+
+  private String filename;
+
+  /** create a Photo representing an existing file on disk */
+  public Photo(String filename)
+  {
+    this.filename = filename;
+  }
+
+  public Photo(JSONObject json) throws JSONException
+  {
+    filename = json.getString(JSON_FILENAME);
+  }
+
+  public JSONObject toJSON() throws JSONException
+  {
+    JSONObject json = new JSONObject();
+    json.put(JSON_FILENAME, filename);
+    return json;
+  }
+
+  public String getFilename()
+  {
+    return filename;
+  }
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Model</h1>
+<p>Add Photo field to Residence</p>
+<pre><code>  public Photo   photo;
+
+  private static final String JSON_PHOTO = &quot;photo&quot;;
+
+</code></pre>
+
+<pre><code>  public Residence(JSONObject json) throws JSONException
+  {
+
+    ...
+
+    if (json.has(JSON_PHOTO)) photo = new Photo(json.getJSONObject(JSON_PHOTO));
+  }
+</code></pre>
+
+<pre><code>  public JSONObject toJSON() throws JSONException
+  {
+
+    ...
+
+    if (photo != null)  json.put(JSON_PHOTO, photo.toJSON());    
+    return json;
+  }
+</code></pre>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>ImageFragment</h1>
+<pre><code>package org.wit.myrent.activities;
+
+import org.wit.android.helpers.PictureUtils;
+
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+public class ImageFragment extends DialogFragment
+{
+  public static final String EXTRA_IMAGE_PATH = &quot;path&quot;;
+
+  public static ImageFragment createInstance(String imagePath)
+  {
+    Bundle args = new Bundle();
+    args.putSerializable(EXTRA_IMAGE_PATH, imagePath);
+
+    ImageFragment fragment = new ImageFragment();
+    fragment.setArguments(args);
+    fragment.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
+
+    return fragment;
+  }
+
+  private ImageView mImageView;
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
+  {
+    mImageView = new ImageView(getActivity());
+    String path = (String) getArguments().getSerializable(EXTRA_IMAGE_PATH);
+    BitmapDrawable image = PictureUtils.getScaledDrawable(getActivity(), path);
+
+    mImageView.setImageDrawable(image);
+
+    return mImageView;
+  }
+
+  @Override
+  public void onDestroyView()
+  {
+    super.onDestroyView();
+    PictureUtils.cleanImageView(mImageView);
+  }
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>MyRentCameraFragment</h1>
+<p>Refactor MyRentCameraFragment as follows:</p>
+<p>Add the following instance variable:</p>
+<pre><code>private View progressContainer;
+
+</code></pre>
+
+<p>Add a class variable:</p>
+<pre><code>  public static final String EXTRA_PHOTO_FILENAME = &quot;org.wit.myrent.photo.filename&quot;;
+
+</code></pre>
+
+<pre><code>    progressContainer = v.findViewById(R.id.myrent_camera_progressContainer);
+    progressContainer.setVisibility(View.INVISIBLE);
+</code></pre>
+
+<p>Implement Camera.ShutterCallback interface</p>
+<pre><code>public class MyRentCameraFragment extends Fragment implements SurfaceHolder.Callback,
+                                                              OnClickListener,
+                                                              Camera.ShutterCallback
+</code></pre>
+
+<pre><code>  @Override
+  public void onShutter()
+  {
+    // display the progress indicator
+    progressContainer.setVisibility(View.VISIBLE);  
+  }
+</code></pre>
+
+<pre><code>public class MyRentCameraFragment extends Fragment implements SurfaceHolder.Callback,
+                                                              OnClickListener,
+                                                              Camera.ShutterCallback,
+                                                              Camera.PictureCallback
+
+</code></pre>
+
+<p>When picture taken write it to a file on disk:</p>
+<pre><code>  @Override
+  public void onPictureTaken(byte[] data, Camera camera)
+  {
+    // create a filename
+    String filename = UUID.randomUUID().toString() + &quot;.jpg&quot;;
+    if(write(getActivity(), filename, data) == true)
+    {
+      Intent i = new Intent();
+      i.putExtra(EXTRA_PHOTO_FILENAME, filename);
+      getActivity().setResult(Activity.RESULT_OK, i);      
+    }
+    else
+    {
+      getActivity().setResult(Activity.RESULT_CANCELED);
+    }
+  } 
+</code></pre>
+
+<p>Refactor <em>onClick</em> to respond to pressing the camera button:</p>
+<pre><code>  //OnClickListener (camera button)
+  @Override
+  public void onClick(View v)
+  {
+    if (camera != null)
+    {
+      camera.takePicture(this, null, this);
+    }
+  }
+</code></pre>
+
+<p>Add an import statements:</p>
+<pre><code>import java.util.UUID;
+import android.content.Intent;
+import android.app.Activity;
+</code></pre>
+
+<p>In <em>surfaceChanged</em> set best picture size:</p>
+<pre><code>    //set best picture size
+    s = getBestSupportedSize(parameters.getSupportedPictureSizes(), w, h);
+    parameters.setPictureSize(s.width, s.height);
+
+</code></pre>
+
+<p>Complete method:</p>
+<pre><code>
+  public void surfaceChanged(SurfaceHolder holder, int format, int w, int h)
+  {
+    if (camera == null)
+      return;
+
+    // the surface has changed size; update the camera preview size
+    Camera.Parameters parameters = camera.getParameters();
+    //set best preview size
+    Size s = getBestSupportedSize(parameters.getSupportedPreviewSizes(), w, h);
+    parameters.setPreviewSize(s.width, s.height);
+    //set best picture size
+    s = getBestSupportedSize(parameters.getSupportedPictureSizes(), w, h);
+    parameters.setPictureSize(s.width, s.height);
+    camera.setParameters(parameters);
+    try
+    {
+      camera.startPreview();
+    }
+    catch (Exception e)
+    {
+      info(this, &quot;Could not start preview &quot; + e.getMessage());
+      camera.release();
+      camera = null;
+    }
+  }
+</code></pre>
+	  </section>
+	  <section data-tab="07" class="ui tab stacked moodle-book segment">
+	     <h1>MyRentFragment</h1>
+<p>Add a new instance variable:</p>
+<pre><code>  private ImageView photoView;
+</code></pre>
+
+<p>Add associated listener:</p>
+<pre><code>    photoView = (ImageView)v.findViewById(R.id.myrent_imageView);
+    photoView .setOnClickListener(this);
+</code></pre>
+
+<p>Add to onClick:</p>
+<pre><code>      case R.id.myrent_imageView       : showImageView();
+                                         break;
+</code></pre>
+
+<p>The complete method follows:</p>
+<pre><code>  @Override
+  public void onClick(View v)
+  {
+    switch (v.getId())
+    {
+      case R.id.registration_date      : Calendar c = Calendar.getInstance();
+                                         DatePickerDialog dpd = new DatePickerDialog (getActivity(), this, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+                                         dpd.show();
+                                         break; 
+      case R.id.tenant                 : Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                                         startActivityForResult(i, REQUEST_CONTACT);
+                                         if (residence.tenant != null)
+                                         {
+                                           tenantButton.setText(&quot;Tenant: &quot;+residence.tenant);
+                                         }   
+                                         break;
+     case R.id.residence_reportButton  : sendEmail(getActivity(), &quot;&quot;, getString(R.string.residence_report_subject), residence.getResidenceReport(getActivity()));                           
+                                         break;                      
+     case R.id.camera_button           : Intent ic = new Intent(getActivity(), MyRentCameraActivity.class);
+                                         startActivityForResult(ic, REQUEST_PHOTO);                                         
+                                         break;
+     case R.id.myrent_imageView       :  showImageView();
+                                         break;
+    }
+  }
+</code></pre>
+
+<pre><code>
+    case REQUEST_PHOTO:       // create a new Photo object and attach it to the model layer
+                              String filename = data.getStringExtra(MyRentCameraFragment.EXTRA_PHOTO_FILENAME);
+                              if (filename != null)
+                              {
+                                residence.photo = new Photo(filename);
+                                showPhoto();
+                              }
+                              break;
+</code></pre>
+
+<pre><code>  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data)
+  {
+    if (resultCode != Activity.RESULT_OK)
+    {
+      return;
+    }
+    switch(requestCode)
+    {
+    case REQUEST_CONTACT:     String name = ContactHelper.getContact(getActivity(), data);
+                              residence.tenant = name;
+                              tenantButton.setText(name);
+                              break;
+    case REQUEST_PHOTO:       // create a new Photo object and attach it to the model layer
+                              String filename = data.getStringExtra(MyRentCameraFragment.EXTRA_PHOTO_FILENAME);
+                              if (filename != null)
+                              {
+                                residence.photo = new Photo(filename);
+                                showPhoto();
+                              }
+                              break;
+    }
+  }
+</code></pre>
+
+<pre><code>  private void showPhoto()
+  {
+    // (re)set the image button's image based on our photo
+    Photo p = residence.photo;
+    BitmapDrawable b = null;
+    if (p != null)
+    {
+      String path = getActivity().getFileStreamPath(p.getFilename()).getAbsolutePath();
+      b = PictureUtils.getScaledDrawable(getActivity(), path);
+    }
+    photoView.setImageDrawable(b);
+  }
+</code></pre>
+
+<p>Add import statements to resolve some of the errors:</p>
+<pre><code>import android.graphics.drawable.BitmapDrawable;
+import org.wit.myrent.models.Photo;
+
+</code></pre>
+
+<p>Several errors remain: these will be resolved as we develop the lab.</p>
+<p>Add class variable:</p>
+<pre><code>  private static final String   DIALOG_IMAGE = &quot;image&quot;;
+</code></pre>
+
+<pre><code>  private void showImageView()
+  {
+    Photo p = residence.photo;
+    if (p == null)
+      return;
+
+    FragmentManager fm = getActivity().getSupportFragmentManager();
+    String path = getActivity().getFileStreamPath(p.getFilename()).getAbsolutePath();
+    ImageFragment.createInstance(path).show(fm, DIALOG_IMAGE);    
+  }
+</code></pre>
+
+<p>Start &amp;  Stop</p>
+<pre><code>  @Override
+  public void onStart()
+  {
+    super.onStart();
+    showPhoto();
+  }
+
+  @Override
+  public void onStop()
+  {
+    super.onStop();
+    PictureUtils.cleanImageView(photoView);
+  }
+</code></pre>
+	  </section>
+	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
+	     <h1>Archives</h1>
+<p>This is a version of MyRent complete to the end if this lab:</p>
+<ul>
+<li><a href="archives/MyRentV12.zip">MyRentV12</a></li>
+</ul>
+	  </section>
+<script>
+
+function addCaptions() {
+  var images = $(".moodle-book img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0) 
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+};
+
+// Need to check if we have already been loaded
+seen = 0;
+
+$(document).ready(function()
+{ 
+  if (seen == 0)
+  { 
+    // not loaded before - so do the restyling once (need to moodle book print)
+    $(".moodle-book img").addClass ("ui image");
+    $(".moodle-book pre").addClass ("ui segment");
+    addCaptions();
+    seen = 1;
+  }
+
+
+})</script>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  <script>
+    $(document).ready(function()
+    {  
+      $('.tab-menu.menu .item').tab();
+    });
+  </script>   
+  </body>
+ </html>

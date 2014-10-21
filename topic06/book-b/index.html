@@ -8,9 +8,9 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://beta.semantic-ui.com/build/packaged/definitions/css/semantic.min.css">
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-     <script src="http://beta.semantic-ui.com/build/packaged/definitions/javascript/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://beta.semantic-ui.com/dist/semantic.min.css">
+     <script src="http://beta.semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://beta.semantic-ui.com/dist/semantic.min.js"></script>
 
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
@@ -535,7 +535,6 @@ public class ResidencePagerActivity extends FragmentActivity
    */
   private void setCurrentItem()
   {
-    //On pressing back button display move to position on list that includes current residence
     UUID res = (UUID) getIntent().getSerializableExtra(ResidenceFragment.EXTRA_RESIDENCE_ID);
     for (int i = 0; i &lt; residences.size(); i++)
     {
@@ -593,6 +592,19 @@ import android.support.v4.view.ViewPager;
 import static org.wit.android.helpers.LogHelpers.info;
 </code></pre>
 
+<p><strong>ResidenceFragment</strong></p>
+<p>One final item needs attention. Replace this line in ResidenceFragment:</p>
+<p><img alt="" src="img/04.png"></p>
+<p>with this:</p>
+<pre><code>UUID resId = (UUID)getArguments().getSerializable(EXTRA_RESIDENCE_ID);
+</code></pre>
+
+<p>This last line of code extracts the current residence id from the Bundle object that was created in the <em>PagerAdapter.getItem</em> method which is located in the file ResidencePagerActivity. </p>
+<ul>
+<li>There we added a fragment argument to the Bundle object. The value of this argument is the current residence id.</li>
+<li>See here for a brief summary of fragment arguments taken from the Android Book by Hardy &amp; Philips:
+<img alt="" src="img/05.png"></li>
+</ul>
 <p>Build and lauch the app on an emulator or device and check the functionality we have introduced in this lab.</p>
 	  </section>
 	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
