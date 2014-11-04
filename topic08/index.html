@@ -148,10 +148,6 @@ header h3
         <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
         <a class="item" href=" ../topic07/index.html"> 7: TDD | Embedded Map & Orientation </a>
         <a class="active item" href=" ../topic08/index.html"> 8: JPA Part I | Camera </a>
-        <a class="item" href=" ../topic09/index.html"> 9: JPA Part I, HTTP Recap | Viewfinder </a>
-        <a class="item" href=" ../topic10/index.html"> 10: Implementing APIs </a>
-        <a class="item" href=" ../topic11/index.html"> 11: REST Clients & Servers </a>
-        <a class="item" href=" ../topic12/index.html"> 12:TODO </a>
           <a class="item" href=" ../topicwall.html"> All Topics </a>
           <a class="item" href=" ../labwall.html"> All Labs </a>
       </div>
@@ -162,30 +158,36 @@ header h3
 
     <section id="topic" class="ui doubling twelve wide column segment">
       <h1>8: JPA Part I | Camera</h1>
-<ul>
-<li>Viewfinder setup </li>
-<li>Taking photos</li>
-</ul>
       <div class="ui cards">
 <div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/aa-jpa-1.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./pdf/aa-jpa-1.pdf" class="header">JPA I</a>
+    <a  href="./pdf/aa-jpa-1.pdf" class="header">JPA I - OneToMany, ManyToOne</a>
   </div>
   <div class="extra content">
-    
+    <p>The simplest relationship to model in JPA in OneToMany, and an associated ManyToOne in the reverse directions. Here we explore this via a simple example, including an examination of the generated database tables.</p>
   </div>
 </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/ab-jpa-2.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./pdf/ab-jpa-2.pdf" class="header">JPA II</a>
+    <a  href="./pdf/ab-jpa-2.pdf" class="header">JPA II - ManyToMany</a>
   </div>
   <div class="extra content">
-    
+    <p>ManyToMany relationships need to be carefully created and removed. They generated an extra database table. Removal is particularly tricky, and must be done in an orderly manner.</p>
+  </div>
+</div><div  class="ui card">
+  <div class="cover">
+    <div style="background-image: url('./pdf/ac-jpa-3.png');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./pdf/ac-jpa-3.pdf" class="header">JPA UI</a>
+  </div>
+  <div class="extra content">
+    <p>The models developed in JPA I and II can be usefully explored either in the database admin interface, or via a simple bolt-on UI. Here we explore both.</p>
   </div>
 </div>      </div>
       <h1> Labs </h1>
@@ -198,23 +200,31 @@ header h3
     <a  href="./book-a/index.html" class="header">Lab: JPA-01</a>
   </div>
   <div class="extra content">
-    <ul>
-<li>Introduce UML Class Diagram modeling using Visual Paradigm</li>
-<li>Define a simple model and implement it in Play</li>
-<li>Write comprehensive unit tests to exercise the model</li>
-</ul>
+    <p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
   </div>
 </div><div class="ui card">
   <div class="cover">
     <div style="background-image: url('./book-b/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./book-b/index.html" class="header">Lab: MyRent-09</a>
+    <a  href="./book-b/index.html" class="header">Lab: JPA-02</a>
+  </div>
+  <div class="extra content">
+    <p>Explore the model developed in the last lab a little further by attaching a Semantic UI. Experiment with UI elements that change the model.</p>
+  </div>
+</div><div class="ui card">
+  <div class="cover">
+    <div style="background-image: url('None');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./book-c/index.html" class="header">Lab: MyRent-09</a>
   </div>
   <div class="extra content">
     <ul>
-<li>Show | Hide subtitles</li>
-<li>Save state between rotations</li>
+<li>Make use of the device camera to take a photo</li>
+<li>Display as thumbnail</li>
+<li>Display in a single-photo gallery</li>
+<li>Save the photo</li>
 </ul>
   </div>
 </div>      </div>
