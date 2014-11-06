@@ -132,8 +132,6 @@ header h3
           <a class="item" data-tab="04"> 04 </a>
           <a class="item" data-tab="05"> 05 </a>
           <a class="item" data-tab="06"> 06 </a>
-          <a class="item" data-tab="07"> 07 </a>
-          <a class="item" data-tab="08"> 08 </a>
           <a class="item" data-tab="Exercises"> Exercises </a>
     </div>
   </nav>
@@ -505,13 +503,46 @@ Donation(d):
 <p>Try a few other urls from the above list. Also, try a few unrecognised urls - and explore the raw and preview display options.</p>
 	  </section>
 	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     <h1>GET, POST and DELETE</h1>
-	  </section>
-	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     
-	  </section>
-	  <section data-tab="08" class="ui tab stacked moodle-book segment">
-	     <h1></h1>
+	     <h1>POST and DELETE</h1>
+<p>So far you have experimented with GET commands. THe API we have developed also supports POST and DELETE. This is declared in the routes file:</p>
+<pre><code>GET     /api/users                           DonationServiceAPI.users
+GET     /api/users/{id}                      DonationServiceAPI.user
+POST    /api/users                           DonationServiceAPI.createUser
+DELETE  /api/users/{id}                      DonationServiceAPI.deleteUser
+
+GET     /api/donations                       DonationServiceAPI.donations
+GET     /api/donations/{id}                  DonationServiceAPI.donation
+POST    /api/donations                       DonationServiceAPI.createDonation
+DELETE  /api/donations/{id}                  DonationServiceAPI.deleteDonation
+</code></pre>
+
+<p>POST will create a user or donation, and DELETE will remove one.</p>
+<p>POST and DELETE cannot be easily generated from a standard browser address bar (GET is the default). However this is where tools like Postman come into their own.</p>
+<h2>POST</h2>
+<p>Here is a JSON version of a User:</p>
+<pre><code>{
+  &quot;firstName&quot; : &quot;homer&quot;,
+  &quot;lastName&quot;  : &quot;simpson&quot;,
+  &quot;email&quot;     : &quot;homer@simpson.com&quot;,
+  &quot;password&quot;  : &quot;secret&quot;
+}
+</code></pre>
+
+<p>In Postman, switch the HTTP request from GET to POST, and paste the above json into the 'raw' text box, selecting 'JSON' as the style.</p>
+<p><img alt="" src="img/11.png"></p>
+<p>In addition, you must select Headders: Content-Type = application/json. This parameter has also been selected in the above screen shot.</p>
+<p>Press Send - and the application should respond with a copy of the object it has just created:</p>
+<p><img alt="" src="img/12.png"></p>
+<p>Also, check via a standard browser that the new object is being returned when we do a standard get form a browser address bar:</p>
+<ul>
+<li><a href="http://localhost:9000/api/users">http://localhost:9000/api/users</a></li>
+</ul>
+<h2>DELETE</h2>
+<p>Now try a delete:</p>
+<p><img alt="" src="img/13.png"></p>
+<p>This time we have no parameters, just the ID of the user we want to delete. If it works (and a user with ID 1 exists), then we should get a 'success' response:</p>
+<p><img alt="" src="img/14.png"></p>
+<p>Verify, via a GET, that this user is in fact deleted.</p>
 	  </section>
 	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
 	     <h1>Exercises</h1>
@@ -519,6 +550,14 @@ Donation(d):
 <ul>
 <li><a href="archives/donation-service-play.zip">donation-service-play.zip</a></li>
 </ul>
+<h2>Exercise 1:</h2>
+<p>You may notice that Postman remembers the various request you will have made:</p>
+<p><img alt="" src="img/15.png"></p>
+<p>You should be able to rerun each of them - or edit them to reflect different json objects.</p>
+<h2>Exercise 2:</h2>
+<p>Build some requests to create, delete and list Donations as well as Users.</p>
+<h2>Exercise 3:</h2>
+<p>Explore the 'Collections' feature of Postman. This will enable you to archive and recover various requests - which can be useful for test purposes.</p>
 	  </section>
 <script>
 
