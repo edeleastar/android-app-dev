@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> MyRent-10 </title>
+     <title> Donation-Service-02 </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -123,596 +123,525 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">9: JPA Part I, HTTP Recap | Viewfinder</a></header>
+    <header class="header item"> <a href="../index.html">9: APIs | Maps </a></header>
     <div class="right tab-menu menu">
-          <a class="item" data-tab="MyRent-10"> MyRent-10 </a>
+          <a class="item" data-tab="Donation-Service-02"> Donation-Service-02 </a>
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
           <a class="item" data-tab="04"> 04 </a>
           <a class="item" data-tab="05"> 05 </a>
           <a class="item" data-tab="06"> 06 </a>
-          <a class="item" data-tab="07"> 07 </a>
-          <a class="item" data-tab="Archives"> Archives </a>
+          <a class="item" data-tab="Exercises"> Exercises </a>
     </div>
   </nav>
 
   <br>
 
-	  <section data-tab="MyRent-10" class="ui tab stacked moodle-book segment">
-	     <h1>Camera I</h1>
-<p>Viewfinder setup</p>
+	  <section data-tab="Donation-Service-02" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<ul>
+<li>Create a version of the the donation app as a play project</li>
+<li>Expose an 'API' from this app to enable other programmes to use it</li>
+<li>Rework the Donation android app to use this api</li>
+</ul>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Resources(Layout)</h1>
-<p>Create a new file res/layout/fragment_myrent_camera.xml</p>
-<p>Filename: fragment_myrent_camera.xml</p>
-<pre><code>
-&lt;FrameLayout
-  xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-  android:layout_width=&quot;match_parent&quot;
-  android:layout_height=&quot;match_parent&quot;&gt;
-  &lt;LinearLayout android:id=&quot;@+id/myrent_camera_preview&quot;
-    android:orientation=&quot;horizontal&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;&gt;
-    &lt;SurfaceView android:id=&quot;@+id/myrent_camera_surfaceView&quot;
-      android:layout_weight=&quot;1&quot;
-      android:layout_width=&quot;0dp&quot;
-      android:layout_height=&quot;match_parent&quot;/&gt;
-    &lt;Button android:id=&quot;@+id/myrent_camera_takePictureButton&quot;
-      android:layout_width=&quot;wrap_content&quot;
-      android:layout_height=&quot;match_parent&quot;
-      android:text=&quot;@string/take&quot;/&gt;
-  &lt;/LinearLayout&gt;
-  &lt;FrameLayout android:id=&quot;@+id/myrent_camera_progressContainer&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:clickable=&quot;true&quot;&gt;
-&lt;!--     &lt;ProgressBar
-      style=&quot;@android:style/Widget.ProgressBar.Large&quot;
-      android:layout_width=&quot;wrap_content&quot;
-      android:layout_height=&quot;wrap_content&quot;
-      android:layout_gravity=&quot;center&quot;/&gt; --&gt;
-  &lt;/FrameLayout&gt;
-&lt;/FrameLayout&gt;
-</code></pre>
-
-<p>Add a string resource, a label for the camera button press: Take.</p>
-<pre><code>&lt;string name=&quot;take&quot;&gt;Take&lt;/string&gt;
-</code></pre>
-
-<p>Adding this should eliminate the error triggered on adding the new xml file above.</p>
-<p>Essential changes are necessary to the manifest file:</p>
-<p>Add permissions:</p>
-<pre><code>    &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt; 
-    &lt;uses-feature android:name=&quot;android.hardware.camera&quot; /&gt;
-</code></pre>
-
-<p>Camera activity:</p>
-<pre><code>     &lt;activity android:name=&quot;.activities.MyRentCameraActivity&quot;
-      android:screenOrientation=&quot;landscape&quot;
-      android:label=&quot;@string/app_name&quot;&gt;
-    &lt;/activity&gt; 
-</code></pre>
+	     <h1>donation-service-test</h1>
+<p>Create a new Java Project in eclipse - this time neither a play nor an Android app, just a simple Java Application. Call the Project donation-service-play-test"</p>
+<p><img alt="" src="./img/05.png"></p>
+<p>In the new project, select the project in Eclipse Package Explorer, right click, and select "Build Path-&gt;Configure Build Path"</p>
+<p><img alt="" src="./img/06.png"></p>
+<p>Under libraries, select "Add Library" and in subsequent select JUnit 4:</p>
+<p><img alt="" src="./img/07.png"></p>
+<p>This adds the JUnit library capability to our project.</p>
+<p>Now download this archive here:</p>
+<ul>
+<li><a href="archives/lib.zip">lib.zip</a></li>
+</ul>
+<p>Expand the archive and drag/drop the folder into your project. It should now look like this:</p>
+<p><img alt="" src="./img/08.png"></p>
+<p>Select all of the imported jar files, right-click, and select 'Build Path-&gt;Add to Build Path'</p>
+<p><img alt="" src="./img/09.png"></p>
+<p>The project should now be configured thus:</p>
+<p><img alt="" src="./img/10.png"></p>
 	  </section>
 	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Resources(Layout portrait)</h1>
-<p>We shall locate the camera button and thumbnail in the approximate location of the previous map button as shown in Figure 1 here:</p>
-<p><img alt="Figure 1: Location of camera button &amp; thumbnail placeholder" src="img/01.png"></p>
-<p>Here is the replacement layout file:</p>
-<pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:orientation=&quot;vertical&quot; &gt;   
-  &lt;LinearLayout
-      android:layout_width=&quot;match_parent&quot;
-      android:layout_height=&quot;0dp&quot;
-      android:layout_weight=&quot;60&quot;
-      android:baselineAligned=&quot;false&quot;
-      android:orientation=&quot;vertical&quot; &gt; 
-      &lt;ScrollView 
-        android:layout_width=&quot;fill_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;&gt;  
-        &lt;LinearLayout 
-          android:id=&quot;@+id/container&quot;
-          android:orientation=&quot;vertical&quot; 
-          android:layout_width=&quot;fill_parent&quot;
-          android:layout_height=&quot;wrap_content&quot;&gt;   
-          &lt;!-- LOCATION --&gt;
-          &lt;TextView
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:text=&quot;@string/location&quot;
-            style=&quot;?android:listSeparatorTextViewStyle&quot;/&gt; 
-            &lt;LinearLayout
-              android:layout_width=&quot;match_parent&quot;
-              android:layout_height=&quot;wrap_content&quot;
-              android:orientation=&quot;horizontal&quot; 
-              android:baselineAligned=&quot;false&quot; &gt;             
-             &lt;!-- Geolocation (GPS Coords) --&gt;      
-             &lt;LinearLayout
-               android:layout_width=&quot;0dp&quot;
-               android:layout_height=&quot;match_parent&quot;
-               android:layout_weight=&quot;60&quot;
-               android:orientation=&quot;vertical&quot; &gt;  
-             &lt;TextView
-               android:layout_width=&quot;wrap_content&quot;
-               android:layout_height=&quot;wrap_content&quot;
-               android:layout_marginLeft=&quot;10dp&quot;
-               android:text=&quot;@string/geolocation_label&quot; /&gt;            
-             &lt;EditText   
-               android:id=&quot;@+id/geolocation&quot;
-               android:layout_width=&quot;wrap_content&quot;
-               android:layout_height=&quot;wrap_content&quot;
-               android:hint=&quot;@string/geolocation_hint&quot; &gt;
-               &lt;requestFocus /&gt;
-             &lt;/EditText&gt; 
-           &lt;/LinearLayout&gt; 
-           &lt;!-- Show Camera Button --&gt;          
-           &lt;LinearLayout
-             android:layout_width=&quot;0dp&quot;
-             android:layout_height=&quot;match_parent&quot;
-             android:layout_weight=&quot;40&quot;
-             android:orientation=&quot;horizontal&quot; &gt; 
-           &lt;ImageButton 
-              android:id=&quot;@+id/camera_button&quot;
-              android:layout_width=&quot;40dp&quot;
-              android:layout_height=&quot;40dp&quot;
-              android:scaleType=&quot;centerInside&quot;
-              android:layout_marginTop=&quot;16dp&quot;
-              android:src=&quot;@android:drawable/ic_menu_camera&quot;/&gt;  
-            &lt;ImageView 
-              android:id=&quot;@+id/myrent_imageView&quot;
-              android:layout_width=&quot;40dp&quot;
-              android:layout_height=&quot;40dp&quot;
-              android:scaleType=&quot;centerInside&quot;
-              android:background=&quot;@android:color/darker_gray&quot;
-              android:cropToPadding=&quot;true&quot;
-              android:layout_marginTop=&quot;16dp&quot;/&gt;                       
-            &lt;/LinearLayout&gt;   
-          &lt;/LinearLayout&gt;   
-          &lt;!-- STATUS --&gt;   
-          &lt;TextView
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:text=&quot;@string/status&quot;
-            style=&quot;?android:listSeparatorTextViewStyle&quot;/&gt; 
-          &lt;Button android:id=&quot;@+id/registration_date&quot;
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:layout_marginLeft=&quot;16dp&quot;
-            android:layout_marginRight=&quot;16dp&quot; /&gt;
-          &lt;CheckBox
-            android:id=&quot;@+id/isrented&quot;
-            android:layout_width=&quot;wrap_content&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:enabled=&quot;true&quot;
-            android:focusable=&quot;false&quot;
-            android:gravity=&quot;center&quot;
-            android:text=&quot;@string/rented_checkbox_text&quot;/&gt;
-          &lt;Button
-            android:id=&quot;@+id/tenant&quot;
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:layout_marginLeft=&quot;16dp&quot;
-            android:layout_marginRight=&quot;16dp&quot;
-            android:text=&quot;@string/landlord_label&quot; /&gt;    
-          &lt;Button android:id=&quot;@+id/residence_reportButton&quot;
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:layout_marginLeft=&quot;16dp&quot;
-            android:layout_marginRight=&quot;16dp&quot;
-            android:text=&quot;@string/residence_report_text&quot;/&gt; 
-        &lt;/LinearLayout&gt;
-      &lt;/ScrollView&gt;
-    &lt;/LinearLayout&gt;   
-    &lt;LinearLayout
-      android:layout_width=&quot;match_parent&quot;
-      android:layout_height=&quot;0dp&quot;
-      android:layout_weight=&quot;40&quot;
-      android:baselineAligned=&quot;false&quot;
-      android:orientation=&quot;vertical&quot; &gt;
+	     <h1>Model Classes</h1>
+<h2>app.models</h2>
+<p>In donation-service-test, create a new package called 'app.models'. Incorporate the following two classes into this package:</p>
+<h3>User</h3>
+<pre><code>package app.model;
 
-      &lt;FrameLayout
-          android:id=&quot;@+id/map&quot;
-          android:layout_width=&quot;match_parent&quot;
-          android:layout_height=&quot;wrap_content&quot;/&gt;
-    &lt;/LinearLayout&gt;
-&lt;/LinearLayout&gt;
+import com.google.common.base.Objects;
+import static com.google.common.base.Objects.toStringHelper;
+
+public class User 
+{
+  public Long   id;
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+  public User()
+  {}
+
+  public User(String firstName, String lastName, String email, String password)
+  {
+    this.firstName = firstName;
+    this.lastName  = lastName;
+    this.email     = email;
+    this.password  = password;
+  } 
+
+  @Override
+  public boolean equals(final Object obj)
+  {
+    if (obj instanceof User)
+    {
+      final User other = (User) obj;
+      return Objects.equal(firstName,  other.firstName) 
+          &amp;&amp; Objects.equal(lastName,   other.lastName)
+          &amp;&amp; Objects.equal(email,      other.email)
+          &amp;&amp; Objects.equal(password,   other.password);                               
+    }
+    else
+    {
+      return false;
+    }
+  }  
+
+  @Override
+  public String toString()
+  {
+    return toStringHelper(this).addValue(id)
+                               .addValue(firstName)
+                               .addValue(lastName)
+                               .addValue(password)
+                               .addValue(email)  
+                               .toString();
+  }
+}
+</code></pre>
+
+<h3>Donation</h3>
+<pre><code>package app.model;
+
+import static com.google.common.base.Objects.toStringHelper;
+
+import com.google.common.base.Objects;
+
+public class Donation
+{
+  public Long   id;
+  public int    amount;
+  public String method;
+
+  public Donation()
+  {}
+
+  public Donation (int amount, String method)
+  {
+    this.amount = amount;
+    this.method = method;
+  }
+
+  public String toString()
+  {
+    return toStringHelper(this).addValue(id)
+                .addValue(amount)
+                .addValue(method) 
+                .toString();
+  }
+
+  @Override
+  public boolean equals(final Object obj)
+  {
+    if (obj instanceof Donation)
+    {
+      final Donation other = (Donation) obj;
+      return Objects.equal(amount ,  other.amount) 
+          &amp;&amp; Objects.equal(method,   other.method);                            
+    }
+    else
+    {
+      return false;
+    }
+  }   
+}
+
 </code></pre>
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Helpers</h1>
-<p>Add a helper file (to package org.wit.android.helpers):</p>
-<p>Filename: CameraHelper.java</p>
-<pre><code>package org.wit.android.helpers;
+	     <h2>API Classes</h2>
+<p>In donation-service-test, create a new package called 'app.api'. Incorporate the following three classes into this package:</p>
+<p>Note: we will explore the structure of these classes in the lectures.</p>
+<h3>Rest</h3>
+<pre><code>package app.api;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+
+public class Rest
+{
+  private static DefaultHttpClient httpClient = null;
+  private static final String URL = &quot;http://localhost:9000&quot;;
+
+  private static DefaultHttpClient httpClient()
+  {
+    if (httpClient == null)
+    {
+      HttpParams httpParameters = new BasicHttpParams();
+      HttpConnectionParams.setConnectionTimeout(httpParameters, 10000);
+      HttpConnectionParams.setSoTimeout(httpParameters, 10000);
+      httpClient = new DefaultHttpClient(httpParameters);
+    }
+    return httpClient;
+  }
+
+  public static String get(String path) throws Exception
+  {
+    HttpGet getRequest = new HttpGet(URL + path);
+    getRequest.setHeader(&quot;accept&quot;, &quot;application/json&quot;);
+    HttpResponse response = httpClient().execute(getRequest);
+    return new BasicResponseHandler().handleResponse(response);
+  }
+
+  public static String delete(String path) throws Exception
+  {
+    HttpDelete deleteRequest = new HttpDelete(URL + path);
+    HttpResponse response = httpClient().execute(deleteRequest);
+    return new BasicResponseHandler().handleResponse(response);
+  }
+
+  public static String put(String path, String json) throws Exception
+  {
+    HttpPut putRequest = new HttpPut(URL + path);
+    putRequest.setHeader(&quot;Content-type&quot;, &quot;application/json&quot;);
+    putRequest.setHeader(&quot;accept&quot;, &quot;application/json&quot;);
+
+    StringEntity s = new StringEntity(json);
+    s.setContentEncoding(&quot;UTF-8&quot;);
+    s.setContentType(&quot;application/json&quot;);
+    putRequest.setEntity(s);
+
+    HttpResponse response = httpClient().execute(putRequest);
+    return new BasicResponseHandler().handleResponse(response);
+  }
+
+  public static String post(String path, String json) throws Exception
+  {
+    HttpPost putRequest = new HttpPost(URL + path);
+    putRequest.setHeader(&quot;Content-type&quot;, &quot;application/json&quot;);
+    putRequest.setHeader(&quot;accept&quot;, &quot;application/json&quot;);
+
+    StringEntity s = new StringEntity(json);
+    s.setContentEncoding(&quot;UTF-8&quot;);
+    s.setContentType(&quot;application/json&quot;);
+    putRequest.setEntity(s);
+
+    HttpResponse response = httpClient().execute(putRequest);
+    return new BasicResponseHandler().handleResponse(response);
+  }
+}
+</code></pre>
+
+<h3>JsonParsers</h3>
+<pre><code>package app.api;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import app.model.Donation;
+import app.model.User;
+import flexjson.JSONDeserializer;
+import flexjson.JSONSerializer;
+
+public class JsonParsers
+{
+  public static JSONSerializer userSerializer     = new JSONSerializer().exclude(&quot;class&quot;)
+                                                                        .exclude(&quot;persistent&quot;)
+                                                                        .exclude(&quot;entityId&quot;); 
+  public static JSONSerializer donationSerializer = new JSONSerializer().exclude(&quot;class&quot;)
+                                                                        .exclude(&quot;persistent&quot;)
+                                                                        .exclude(&quot;entityId&quot;); 
+
+  public static User json2User(String json)
+  {
+    return new JSONDeserializer&lt;User&gt;().deserialize(json, User.class); 
+  }
+
+  public static List&lt;User&gt; json2Users(String json)
+  {
+    return new JSONDeserializer&lt;ArrayList&lt;User&gt;&gt;().use(&quot;values&quot;, User.class)
+                                                  .deserialize(json);
+  }
+
+  public static String user2Json(Object obj)
+  {
+    return userSerializer.serialize(obj);
+  }
+
+  public static List&lt;User&gt; users2Json(String json)
+  {
+    return new JSONDeserializer&lt;ArrayList&lt;User&gt;&gt;().use(&quot;values&quot;, User.class)
+                                                  .deserialize(json);
+  } 
+
+
+  public static Donation json2Donation(String json)
+  {
+    return  new JSONDeserializer&lt;Donation&gt;().deserialize(json, Donation.class);    
+  }
+
+  public static String donation2Json(Object obj)
+  {
+    return donationSerializer.serialize(obj);
+  }  
+
+  public static List&lt;Donation&gt; json2Donations(String json)
+  {
+    return new JSONDeserializer&lt;ArrayList&lt;Donation&gt;&gt;().use(&quot;values&quot;, Donation.class)
+        .deserialize(json);
+  }  
+}
+</code></pre>
+
+<h2>DonationServiceAPI</h2>
+<pre><code>package app.api;
 
 import java.util.List;
 
-import android.hardware.Camera.Size;
+import app.model.Donation;
+import app.model.User;
 
-public class CameraHelper
-{
-  /**
-   * a simple algorithm to get the largest size available. For a more robust
-   * version, see CameraPreview.java in the ApiDemos sample app from Android.
-   */
-  public static Size getBestSupportedSize(List&lt;Size&gt; sizes, int width, int height)
+public class DonationServiceAPI
+{ 
+  public static List&lt;User&gt; getUsers() throws Exception
   {
-    Size bestSize = sizes.get(0);
-    int largestArea = bestSize.width * bestSize.height;
-    for (Size s : sizes)
-    {
-      int area = s.width * s.height;
-      if (area &gt; largestArea)
-      {
-        bestSize = s;
-        largestArea = area;
-      }
-    }
-    return bestSize;
+    String response =  Rest.get(&quot;/api/users&quot;);
+    List&lt;User&gt; userList = JsonParsers.json2Users(response);
+    return userList;
   }
+
+  public static User getUser(Long id) throws Exception
+  {
+    String response =  Rest.get(&quot;/api/users/&quot; + id);
+    User user = JsonParsers.json2User(response);
+    return user;
+  }
+
+  public static User createUser(User user) throws Exception
+  {
+    String response = Rest.post (&quot;/api/users&quot;, JsonParsers.user2Json(user));
+    return JsonParsers.json2User(response);
+  }
+
+  public static void deleteUser(User user) throws Exception
+  {
+    Rest.delete (&quot;/api/users/&quot; + user.id);
+  }  
 }
-
-
 </code></pre>
 	  </section>
 	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>Activities</h1>
-<p>Create a new file:</p>
-<ul>
-<li>MyRentCameraActivity</li>
-</ul>
-<p>Filename: SingleFragmentActivity.java</p>
-<p>Filename: MyRentCameraActivity.java</p>
-<pre><code>package org.wit.myrent.activities;
+	     <h1>Unit Tests</h1>
+<p>Create another folder called 'app.test', and incorporate this class:</p>
+<pre><code>package app.test;
 
+import java.util.List;
+import org.junit.Test;
+import app.api.DonationServiceAPI;
+import app.model.User;
 
-import org.wit.myrent.R;
-
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.Window;
-import android.view.WindowManager;
-
-public class MyRentCameraActivity extends FragmentActivity// extends SingleFragmentActivity
+public class UserTest
 {
-  @Override
-  public void onCreate(Bundle savedInstanceState)
-  {
-    // hide the window title.
-    requestWindowFeature(Window.FEATURE_NO_TITLE);
-    // hide the status bar and other OS-level chrome
-    getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.fragment_container);
 
-    FragmentManager manager = getSupportFragmentManager();
-    Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
-    if (fragment == null)
-    {
-      fragment = createFragment();
-      manager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
-    }
-  }
-
-  private Fragment createFragment()
+  @Test
+  public void testList() throws Exception
   {
-    return new MyRentCameraFragment();
+    List&lt;User&gt; list = DonationServiceAPI.getUsers();
+    System.out.println(list);
   }
 }
-
 </code></pre>
+
+<p>Your project should now look like this:</p>
+<p><img alt="" src="img/11.png"></p>
+<p>The class we have just introduced is a simple unit test.</p>
+<p>Make sue the donation-service-play app is running, and run the above test. To run the test, right click on the UserTest class and select 'Run as-&gt;JUnit Test'</p>
+<p>After perhaps a slight delay if this is the first time you have launched the app, you should see the test runner 'green bar':</p>
+<p><img alt="" src="img/12.png"></p>
+<p>And the console window might contain the users retrieved by the api call:</p>
+<p><img alt="" src="img/13.png"></p>
+<p>Think carefully about what we have just done.</p>
+<ul>
+<li>A standalone app - donation-play-service - is running on localhost:9000 exposing a simple API</li>
+<li>A separate app launches and issues a request to that API using '/users' url.</li>
+<li>The returned list is displayed on the console.</li>
+</ul>
 	  </section>
 	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h1>Fragment(Camera)</h1>
-<p>MyRentCameraFragment.java</p>
-<pre><code>package org.wit.myrent.activities;
-
-import java.io.IOException;
-
-import org.wit.myrent.R;
-
-import android.support.v4.app.Fragment;
-import android.hardware.Camera;
-import android.hardware.Camera.Size;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import static org.wit.android.helpers.CameraHelper.getBestSupportedSize;
-import static org.wit.android.helpers.LogHelpers.info;
-
-public class MyRentCameraFragment extends Fragment implements SurfaceHolder.Callback,
-                                                              OnClickListener
-{
-  private Camera camera;
-  private SurfaceView surfaceView;
-
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
+	     <h1>User Tests</h1>
+<p>Exploring DonationServiceAPI, we can see there are several methods in here that may be useful:</p>
+<pre><code>public class DonationServiceAPI
+{ 
+  public static List&lt;User&gt; getUsers() throws Exception
   {
-    View v = inflater.inflate(R.layout.fragment_myrent_camera, parent, false);
-    Button takePictureButton = (Button) v.findViewById(R.id.myrent_camera_takePictureButton);
-    takePictureButton.setOnClickListener(this);
-
-    surfaceView = (SurfaceView) v.findViewById(R.id.myrent_camera_surfaceView);
-    SurfaceHolder holder = surfaceView.getHolder();
-    holder.addCallback(this);
-
-    return v;
+   //...
   }
 
-  @Override
-  public void onResume()
+  public static User getUser(Long id) throws Exception
   {
-    super.onResume();
-    camera =  Camera.open(0);
+   //...
   }
 
-  @Override 
-  public void onPause()
+  public static User createUser(User user) throws Exception
   {
-    super.onPause();
-    if(camera != null)
-    {
-      camera.release();
-      camera = null;
-    }
+   //...
   }
 
-  //Surface holder callback start methods implementation
-  public void surfaceCreated(SurfaceHolder holder)
+  public static void deleteUser(User user) throws Exception
   {
-    // tell the camera to use this surface as its preview area
-    try
-    {
-      if (camera != null)
-      {
-        camera.setPreviewDisplay(holder);
-      }
-    }
-    catch (IOException exception)
-    {
-      info(this,&quot;Error setting up preview display &quot;+exception.getMessage());
-    }
+   //...
   }
-
-  public void surfaceDestroyed(SurfaceHolder holder)
-  {
-    // we can no longer display on this surface, so stop the preview.
-    if (camera != null)
-    {
-      camera.stopPreview();
-    }
-  }
-
-  public void surfaceChanged(SurfaceHolder holder, int format, int w, int h)
-  {
-    if (camera == null)
-      return;
-
-    // the surface has changed size; update the camera preview size
-    Camera.Parameters parameters = camera.getParameters();
-    Size s = getBestSupportedSize(parameters.getSupportedPreviewSizes(), w, h);
-    parameters.setPreviewSize(s.width, s.height);
-    camera.setParameters(parameters);
-    try
-    {
-      camera.startPreview();
-    }
-    catch (Exception e)
-    {
-      info(this, &quot;Could not start preview &quot; + e.getMessage());
-      camera.release();
-      camera = null;
-    }
-  }
-  //Surface holder callback end methods implementation
-  //Camera button
-  @Override
-  public void onClick(View v)
-  {
-    getActivity().finish();
-  }
-
-}
-
 </code></pre>
+
+<p>We can use these to compose some tests:</p>
+<pre><code>package app.test;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import app.api.DonationServiceAPI;
+import app.model.User;
+
+public class UserTest
+{
+  @Test
+  public void testCreate() throws Exception
+  {
+    User john = new User(&quot;john&quot;, &quot;doe&quot;, &quot;john@doe.com&quot;, &quot;secret&quot;);
+    User user = DonationServiceAPI.createUser(john);
+    assertEquals(john, user);
+  }
+
+  @Test
+  public void testGet() throws Exception
+  {
+    User homer = new User(&quot;Homer&quot;, &quot;Simpson&quot;, &quot;homer@simpson.com&quot;, &quot;secret&quot;);
+    User searchUser = DonationServiceAPI.getUser(1l);
+    assertEquals(homer, searchUser);
+  }
+}
+</code></pre>
+
+<p>Run this test - we would expect it to pass. Explore the API directly (or via postman)</p>
+<ul>
+<li><a href="http://localhost:9000/api/users">http://localhost:9000/api/users</a></li>
+</ul>
+<p>You should be able to see a new user created by the tests. You will also perhaps see duplicates if you run the test a few times.</p>
 	  </section>
 	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     <h1>Fragment (MyRentFragment)</h1>
-<p>Refactor MyRentFragment as follows.</p>
-<ul>
-<li>Invoke a method <em>checkCameraPresence</em> in onCreateView.</li>
-</ul>
-<pre><code>checkCameraPresence();
+	     <h1>Structured User Tests</h1>
+<p>In the play app, comment our or delete the Bootstrap task that loads the yaml data. We would like the application to start with a blank database (otherwise the tests will be hard to manage)</p>
+<p>In our UserTest class, put some fixtures in the class we will use to exercise the API:</p>
+<pre><code>public class UserTest
+{
+  static User userArray [] = 
+  { 
+    new User (&quot;homer&quot;,  &quot;simpson&quot;, &quot;homer@simpson.com&quot;,  &quot;secret&quot;),
+    new User (&quot;lisa&quot;,   &quot;simpson&quot;, &quot;lisa@simpson.com&quot;,   &quot;secret&quot;),
+    new User (&quot;maggie&quot;, &quot;simpson&quot;, &quot;maggie@simpson.com&quot;, &quot;secret&quot;),
+    new User (&quot;bart&quot;,   &quot;simpson&quot;, &quot;bart@simpson.com&quot;,   &quot;secret&quot;),
+    new User (&quot;marge&quot;,  &quot;simpson&quot;, &quot;marge@simpson.com&quot;,  &quot;secret&quot;),
+  };
+
+  List &lt;User&gt; userList = new ArrayList&lt;&gt;();
 </code></pre>
 
-<p>Implement the method:</p>
-<pre><code>   private void checkCameraPresence()
-   {
-     // if camera is not available, disable camera functionality
-     PackageManager pm = getActivity().getPackageManager();
-     if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)
-         &amp;&amp; !pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT))
-     {
-       cameraButton.setEnabled(false);
-     }     
-   }
+<p>The introduce setup/teardown methods which will populate/depopulate the service using the above fixture</p>
+<pre><code>  @Before
+  public void setup() throws Exception
+  { 
+    for (User user : userArray)
+    {
+      User returned = DonationServiceAPI.createUser(user);
+      userList.add(returned);
+    }
+  }
+
+  @After
+  public void teardown() throws Exception
+  {
+    for (User user : userList)
+    {
+      DonationServiceAPI.deleteUser(user);
+    }
+  }
 </code></pre>
 
-<p>Add an instance variable:</p>
-<pre><code>private ImageView cameraButton; 
+<p>Finally, bring in these unit tests:</p>
+<pre><code>  @Test
+  public void testCreate () throws Exception
+  {
+    assertEquals (userArray.length, userList.size());
+    for (int i=0; i&lt;userArray.length; i++)
+    {
+      assertEquals(userList.get(i), userArray[i]);
+    }
+  }
+
+  @Test
+  public void testList() throws Exception
+  {
+    List&lt;User&gt; list = DonationServiceAPI.getUsers();
+    assertTrue (list.containsAll(userList));
+  }
+
+  @Test
+  public void testDelete () throws Exception
+  {
+    List&lt;User&gt; list1 = DonationServiceAPI.getUsers();
+    User testUser = new User(&quot;mark&quot;,  &quot;simpson&quot;, &quot;marge@simpson.com&quot;,  &quot;secret&quot;);
+    User returnedUser = DonationServiceAPI.createUser(testUser);
+    List&lt;User&gt; list2 = DonationServiceAPI.getUsers();
+    assertEquals (list1.size()+1, list2.size());
+    DonationServiceAPI.deleteUser(returnedUser);
+    List&lt;User&gt; list3 = DonationServiceAPI.getUsers();
+    assertEquals (list1.size(), list3.size());
+  }
 </code></pre>
 
-<p>Add import to eliminate the errors caused by recent additions:</p>
-<pre><code>import android.widget.ImageView;
-import android.content.pm.PackageManager;
-</code></pre>
-
-<p>Add a cameraButton listener in the addListener method and register a listener.</p>
-<pre><code>    cameraButton = (ImageView)  v.findViewById(R.id.camera_button);
-    cameraButton.setOnClickListener(this);
-
-</code></pre>
-
-<p>Introduce a new case in <em>onClick</em>:</p>
-<pre><code>      case R.id.camera_button          : Intent ic = new Intent(getActivity(), MyRentCameraActivity.class);
-                                         startActivityForResult(ic, REQUEST_PHOTO);
-
-</code></pre>
-
-<p>This will trigger error:</p>
-<ul>
-<li>REQUEST_PHOTO cannot be resolved.</li>
-</ul>
-<p>Add a class variable:</p>
-<pre><code>  private static final int     REQUEST_PHOTO   = 0;
-</code></pre>
+<p>Theses tests should all pass.</p>
+<p>Examine closely the last test.</p>
 	  </section>
-	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     <h1>Resources(Layout-land)</h1>
-<p>Finally, modify the layout-land/fragment_myrent.xml to include the camera button and thumbnail placeholder.</p>
-<p>Here is the refactored file:</p>
-<p>Filename: res/layout-land/fragment_myrent.xml</p>
-<pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:orientation=&quot;horizontal&quot; android:baselineAligned=&quot;false&quot;&gt;
-  &lt;LinearLayout
-    android:layout_width=&quot;0dp&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:layout_weight=&quot;60&quot;
-    android:baselineAligned=&quot;false&quot;
-    android:orientation=&quot;vertical&quot; &gt;
-    &lt;ScrollView 
-      android:layout_width=&quot;fill_parent&quot;
-      android:layout_height=&quot;wrap_content&quot;&gt;  
-      &lt;LinearLayout 
-        android:id=&quot;@+id/container&quot;
-        android:orientation=&quot;vertical&quot; 
-        android:layout_width=&quot;fill_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;&gt;   
-       &lt;!-- LOCATION --&gt;
-       &lt;TextView
-         android:layout_width=&quot;match_parent&quot;
-         android:layout_height=&quot;wrap_content&quot;
-         android:text=&quot;@string/location&quot;
-         style=&quot;?android:listSeparatorTextViewStyle&quot;/&gt; 
-        &lt;LinearLayout
-          android:layout_width=&quot;match_parent&quot;
-          android:layout_height=&quot;wrap_content&quot;
-          android:orientation=&quot;horizontal&quot; 
-          android:baselineAligned=&quot;false&quot;&gt;           
-        &lt;!-- Geolocation (GPS Coords) --&gt;      
-        &lt;LinearLayout
-          android:layout_width=&quot;0dp&quot;
-          android:layout_height=&quot;match_parent&quot;
-          android:layout_weight=&quot;60&quot;
-          android:orientation=&quot;vertical&quot; &gt;        
-          &lt;TextView
-            android:layout_width=&quot;wrap_content&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:layout_marginLeft=&quot;10dp&quot;
-            android:text=&quot;@string/geolocation_label&quot; /&gt;             
-          &lt;EditText   
-            android:id=&quot;@+id/geolocation&quot;
-            android:layout_width=&quot;wrap_content&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:hint=&quot;@string/geolocation_hint&quot; &gt;
-           &lt;requestFocus /&gt;   
-          &lt;/EditText&gt; 
-        &lt;/LinearLayout&gt; 
-        &lt;!-- Show Camera Button --&gt;          
-        &lt;LinearLayout
-          android:layout_width=&quot;0dp&quot;
-          android:layout_height=&quot;match_parent&quot;
-          android:layout_weight=&quot;40&quot;
-          android:orientation=&quot;horizontal&quot; &gt;  
-          &lt;ImageButton 
-             android:id=&quot;@+id/camera_button&quot;
-             android:layout_width=&quot;40dp&quot;
-             android:layout_height=&quot;40dp&quot;
-             android:scaleType=&quot;centerInside&quot;
-             android:layout_marginTop=&quot;16dp&quot;
-             android:src=&quot;@android:drawable/ic_menu_camera&quot;/&gt;  
-           &lt;ImageView 
-             android:id=&quot;@+id/myrent_imageView&quot;
-             android:layout_width=&quot;40dp&quot;
-             android:layout_height=&quot;40dp&quot;
-             android:scaleType=&quot;centerInside&quot;
-             android:background=&quot;@android:color/darker_gray&quot;
-             android:cropToPadding=&quot;true&quot;
-             android:layout_marginTop=&quot;16dp&quot;/&gt;   
-        &lt;/LinearLayout&gt;
-      &lt;/LinearLayout&gt;   
-      &lt;!-- STATUS --&gt;   
-      &lt;TextView
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:text=&quot;@string/status&quot;
-        style=&quot;?android:listSeparatorTextViewStyle&quot;/&gt;     
-        &lt;Button 
-          android:id=&quot;@+id/registration_date&quot;
-          android:layout_width=&quot;match_parent&quot;
-          android:layout_height=&quot;wrap_content&quot;
-          android:layout_marginLeft=&quot;16dp&quot;
-          android:layout_marginRight=&quot;16dp&quot;/&gt;
-
-       &lt;CheckBox
-          android:id=&quot;@+id/isrented&quot;
-          android:layout_width=&quot;wrap_content&quot;
-          android:layout_height=&quot;wrap_content&quot;
-          android:enabled=&quot;true&quot;
-          android:focusable=&quot;false&quot;
-          android:gravity=&quot;center&quot;
-          android:text=&quot;@string/rented_checkbox_text&quot;/&gt;
-        &lt;Button
-          android:id=&quot;@+id/tenant&quot;
-          android:layout_width=&quot;match_parent&quot;
-          android:layout_height=&quot;wrap_content&quot;
-          android:layout_marginLeft=&quot;16dp&quot;
-          android:layout_marginRight=&quot;16dp&quot;
-          android:text=&quot;@string/landlord_label&quot; /&gt;  
-
-        &lt;Button android:id=&quot;@+id/residence_reportButton&quot;
-          android:layout_width=&quot;match_parent&quot;
-          android:layout_height=&quot;wrap_content&quot;
-          android:layout_marginLeft=&quot;16dp&quot;
-          android:layout_marginRight=&quot;16dp&quot;
-          android:text=&quot;@string/residence_report_text&quot;/&gt; 
-      &lt;/LinearLayout&gt;
-    &lt;/ScrollView&gt;
-  &lt;/LinearLayout&gt;   
-  &lt;LinearLayout
-    android:layout_width=&quot;0dp&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:layout_weight=&quot;40&quot;
-    android:baselineAligned=&quot;false&quot;
-    android:orientation=&quot;vertical&quot; &gt;
-
-    &lt;FrameLayout
-      android:id=&quot;@+id/map&quot;
-      android:layout_width=&quot;match_parent&quot;
-      android:layout_height=&quot;wrap_content&quot;/&gt;
-  &lt;/LinearLayout&gt;
-&lt;/LinearLayout&gt;
-</code></pre>
-	  </section>
-	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
-	     <h1>Archives</h1>
-<p>This is a version of MyRent complete to the end if this lab:</p>
+	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
+	     <h1>Exercises</h1>
+<p>Archive of the two projects so far:</p>
 <ul>
-<li><a href="archives/MyRentV11.zip">MyRentV11</a></li>
+<li><a href="archives/donation-service-play.zip">donation-service-play.zip</a></li>
+<li><a href="archives/donation-service-play-test.zip">donation-service-play-test.zip</a></li>
 </ul>
+<h2>Exercise 1:</h2>
+<p>Consider writing some more User tests. Look back at last weeks lab for inspiration of one or two more useful tests you might compose.</p>
+<h2>Exercise 2:</h2>
+<p>Look carefully at the UserTest and also the methods in DonationServiceAPI.</p>
+<p>Now consider how you might extent the DonationServiceAPI class to allow access to donations as well as users. The code changes are entirely restricted to the DonationServiceAPI class, there will be no need to change the play project.</p>
+<p>Now, build a new rest class - DonationTest - to exercises the api. Use UserTest as a role model for writing these tests.</p>
 	  </section>
 <script>
 

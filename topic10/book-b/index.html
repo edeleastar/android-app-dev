@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> MyRent-11 </title>
+     <title> Donation-Service-02 </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -125,514 +125,445 @@ header h3
   <nav class="ui fixed top pointing borderless inverted menu">
     <header class="header item"> <a href="../index.html">10: Implementing APIs</a></header>
     <div class="right tab-menu menu">
-          <a class="item" data-tab="MyRent-11"> MyRent-11 </a>
+          <a class="item" data-tab="Donation-Service-02"> Donation-Service-02 </a>
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="04"> 04 </a>
-          <a class="item" data-tab="05"> 05 </a>
-          <a class="item" data-tab="06"> 06 </a>
-          <a class="item" data-tab="07"> 07 </a>
-          <a class="item" data-tab="Archives"> Archives </a>
+          <a class="item" data-tab="">  </a>
+          <a class="item" data-tab="Exercises"> Exercises </a>
     </div>
   </nav>
 
   <br>
 
-	  <section data-tab="MyRent-11" class="ui tab stacked moodle-book segment">
-	     <h1>Camera II</h1>
-<p>Taking Photos</p>
+	  <section data-tab="Donation-Service-02" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<ul>
+<li>Deploy the donation-service app to cloudbees</li>
+<li>Implement donation-android/donation-service interaction for registration and donation activities </li>
+<li>Explore Eclipse Refactoring in more depth</li>
+</ul>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Helpers</h1>
-<p>Add new class org.wit.android.helpers.FileIOHelper:</p>
-<pre><code>package org.wit.android.helpers;
-
-import java.io.FileOutputStream;
-
-import android.content.Context;
-
-public class FileIOHelper
-{
-  public static boolean write(Context context, String filename, byte[] data)
-  {
-    FileOutputStream os = null;
-    boolean success = true;
-    try
-    {
-      //os = getActivity().openFileOutput(filename, Context.MODE_PRIVATE);
-      os = context.openFileOutput(filename, Context.MODE_PRIVATE);      
-      os.write(data);
-    }
-    catch (Exception e)
-    {
-      LogHelpers.info(context,&quot;Error writing to file &quot; + filename + &quot; &quot; + e.getMessage());
-      success = false;
-    }
-    finally
-    {
-      try
-      {
-        if (os != null)
-          os.close();
-      }
-      catch (Exception e)
-      {
-        LogHelpers.info(context, &quot;Error closing file &quot; + filename + &quot; &quot; + e.getMessage());
-        success = false;
-      }
-    }
-    return success;
-  }
-}
+	     <h1>Exercise Solutions</h1>
+<p>These are the completed labs from last week:</p>
+<ul>
+<li><a href="archives/donation-service.zip">donation-service.zip</a></li>
+<li><a href="archives/donation-android.zip">donation-android.zip</a></li>
+</ul>
+<h2>Exercise 1: Cloudbees</h2>
+<p>Publish the donation-service app to Cloudbees - and have the android app user that service instead of the locally hosted version.</p>
+<p>You may have forgotten the steps for cloudbees deployment - but it involves:</p>
+<ul>
+<li>Creating an Application on Cloudbees</li>
+<li>Creating a Database on Cloudbees</li>
+</ul>
+<p>.. and then make the following changes in the play project:</p>
+<h3>app/dependenies.yaml</h3>
+<h1>Application dependencies</h1>
+<p>In dos/terminal, enter:</p>
+<pre><code> play install cloudbees
 </code></pre>
 
-<p>The static method <strong>write</strong> writes an array of bytes to a file and returns <em>true</em> if the operation is successful.</p>
+<p>Edit app/dependenies.yaml and make following change:</p>
+<pre><code>require:
+    - play
+    - play -&gt; cloudbees 0.2.2
+</code></pre>
+
+<p>Change into the donation-service folder and enter:</p>
+<pre><code>play deps
+</code></pre>
+
+<h3>app/application.conf</h3>
+<p>Comment out the in memory setup for the database:</p>
+<pre><code>#db=mem
+</code></pre>
+
+<p>.. and then bring in the setting for cloudbees:</p>
+<pre><code>db.url=jdbc:cloudbees://YOUR_DB_NAME
+db.driver=com.mysql.jdbc.Driver 
+db.user=YOUR_DB_USER_NAME
+db.pass=YOUR_DB_USER_PASSWORD
+
+jpa.ddl=create
+</code></pre>
+
+<p>and in the same file, you cloudbees keys:</p>
+<pre><code>bees.api.key=YOUT_KEY
+bees.api.secret=YOUR_SECRET
+bees.api.domain=YOUR_DOMAIN
+bees.api.name=YOUR_APP_NAME
+</code></pre>
+
+<p>The command to deploy the app is </p>
+<pre><code>play bees:app:deploy
+</code></pre>
+
+<p>The Rest class has local ip address hardcoded:</p>
+<pre><code>public class Rest
+{
+  private static DefaultHttpClient httpClient = null;
+  //private static final String URL = &quot;http://10.0.2.2:9000&quot;;
+  private static final String URL = &quot;http://donation-edel020.edel020.cloudbees.net&quot;;
+</code></pre>
+
+<p>So replace it with your own cloudbees url (not the one above!)</p>
 	  </section>
 	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Helpers</h1>
-<p>Add PictureUtils</p>
-<pre><code>package org.wit.android.helpers;
+	     <h1>Exercise 2: When users sign up, their details are send to the donation-service play app</h1>
+<p>The application as it currently stands uses two aspects of the donation play application:</p>
+<ul>
+<li>Let users log in who are already 'registered' online</li>
+<li>Display a list of donations downloaded form the web service</li>
+</ul>
+<p>See if you can figure out how to:</p>
+<ul>
+<li>when users sign up, their details are send to the donation-service play app</li>
+<li>when a donation is made, it is sent to the donation-service play app</li>
+</ul>
+<p>The facilities are already in the play app for this, so you will only be making changes to the android application.</p>
+<h1>Solution</h1>
+<h2>When users sign up, their details are send to the donation-service play app</h2>
+<p>Before working up to a solution to this, we might first introduce a new  attribute in the DonationApp class:</p>
+<pre><code class="java">  public boolean         donationServiceAvailable = false;
+</code></pre>
 
+<p>Every time we connect, we will set the last know status of our connection to the service here:/</p>
+<p>Currently, the app loads the users from the service in the Login activity. This might not bee such a good idea. Lets move it to the welcome screen, so we will have preloaded the user list before starting the login activity:</p>
+<pre><code class="java">package app.activities;
+
+import java.util.List;
+import app.donation.R;
+import app.http.Response;
+import app.main.DonationApp;
+import app.models.DonationServiceAPI;
+import app.models.User;
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.Display;
-
-import android.widget.ImageView;
-
-public class PictureUtils
-{
-  /**
-   * Get a BitmapDrawable from a local file that is scaled down to fit the
-   * current Window size.
-   */
-  @SuppressWarnings(&quot;deprecation&quot;)
-  public static BitmapDrawable getScaledDrawable(Activity a, String path)
-  {
-    Display display = a.getWindowManager().getDefaultDisplay();
-    float destWidth = display.getWidth();
-    float destHeight = display.getHeight();
-
-    // read in the dimensions of the image on disk
-    BitmapFactory.Options options = new BitmapFactory.Options();
-    options.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(path, options);
-
-    float srcWidth = options.outWidth;
-    float srcHeight = options.outHeight;
-
-    int inSampleSize = 1;
-    if (srcHeight &gt; destHeight || srcWidth &gt; destWidth)
-    {
-      if (srcWidth &gt; srcHeight)
-      {
-        inSampleSize = Math.round((float) srcHeight / (float) destHeight);
-      }
-      else
-      {
-        inSampleSize = Math.round((float) srcWidth / (float) destWidth);
-      }
-    }
-
-    options = new BitmapFactory.Options();
-    options.inSampleSize = inSampleSize;
-
-    Bitmap bitmap = BitmapFactory.decodeFile(path, options);
-    return new BitmapDrawable(a.getResources(), bitmap);
-  }
-
-  public static void cleanImageView(ImageView imageView)
-  {
-    if (!(imageView.getDrawable() instanceof BitmapDrawable))
-      return;
-
-    // clean up the view's image for the sake of memory
-    BitmapDrawable b = (BitmapDrawable) imageView.getDrawable();
-    b.getBitmap().recycle();
-    imageView.setImageDrawable(null);
-  }
-}
-
-</code></pre>
-	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Model</h1>
-<p>Add Photo class to model package:</p>
-<pre><code>package org.wit.myrent.models;
-
-import java.io.Serializable;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class Photo implements Serializable
-{
-  private static final long serialVersionUID = 1L;
-
-  private static final String JSON_FILENAME = &quot;filename&quot;;
-
-  private String filename;
-
-  /** create a Photo representing an existing file on disk */
-  public Photo(String filename)
-  {
-    this.filename = filename;
-  }
-
-  public Photo(JSONObject json) throws JSONException
-  {
-    filename = json.getString(JSON_FILENAME);
-  }
-
-  public JSONObject toJSON() throws JSONException
-  {
-    JSONObject json = new JSONObject();
-    json.put(JSON_FILENAME, filename);
-    return json;
-  }
-
-  public String getFilename()
-  {
-    return filename;
-  }
-}
-
-</code></pre>
-	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>Model</h1>
-<p>Add Photo field to Residence</p>
-<pre><code>  public Photo   photo;
-
-  private static final String JSON_PHOTO = &quot;photo&quot;;
-
-</code></pre>
-
-<pre><code>  public Residence(JSONObject json) throws JSONException
-  {
-
-    ...
-
-    if (json.has(JSON_PHOTO)) photo = new Photo(json.getJSONObject(JSON_PHOTO));
-  }
-</code></pre>
-
-<pre><code>  public JSONObject toJSON() throws JSONException
-  {
-
-    ...
-
-    if (photo != null)  json.put(JSON_PHOTO, photo.toJSON());    
-    return json;
-  }
-</code></pre>
-	  </section>
-	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h1>ImageFragment</h1>
-<pre><code>package org.wit.myrent.activities;
-
-import org.wit.android.helpers.PictureUtils;
-
-import android.graphics.drawable.BitmapDrawable;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Toast;
 
-public class ImageFragment extends DialogFragment
+public class Welcome extends Activity implements Response&lt;User&gt;
 {
-  public static final String EXTRA_IMAGE_PATH = &quot;path&quot;;
-
-  public static ImageFragment createInstance(String imagePath)
-  {
-    Bundle args = new Bundle();
-    args.putSerializable(EXTRA_IMAGE_PATH, imagePath);
-
-    ImageFragment fragment = new ImageFragment();
-    fragment.setArguments(args);
-    fragment.setStyle(DialogFragment.STYLE_NO_TITLE, 0);
-
-    return fragment;
-  }
-
-  private ImageView mImageView;
+  DonationApp app;
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
+  public void onCreate(Bundle savedInstanceState)
   {
-    mImageView = new ImageView(getActivity());
-    String path = (String) getArguments().getSerializable(EXTRA_IMAGE_PATH);
-    BitmapDrawable image = PictureUtils.getScaledDrawable(getActivity(), path);
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_welcome);
+    app = (DonationApp) getApplication();
 
-    mImageView.setImageDrawable(image);
-
-    return mImageView;
+    DonationServiceAPI.getUsers(this, this, &quot;Retrieving list of users&quot;);
   }
 
-  @Override
-  public void onDestroyView()
+  void serviceUnavailableMessage()
   {
-    super.onDestroyView();
-    PictureUtils.cleanImageView(mImageView);
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
   }
-}
 
-</code></pre>
-	  </section>
-	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     <h1>MyRentCameraFragment</h1>
-<p>Refactor MyRentCameraFragment as follows:</p>
-<p>Add the following instance variable:</p>
-<pre><code>private View progressContainer;
-
-</code></pre>
-
-<p>Add a class variable:</p>
-<pre><code>  public static final String EXTRA_PHOTO_FILENAME = &quot;org.wit.myrent.photo.filename&quot;;
-
-</code></pre>
-
-<pre><code>    progressContainer = v.findViewById(R.id.myrent_camera_progressContainer);
-    progressContainer.setVisibility(View.INVISIBLE);
-</code></pre>
-
-<p>Implement Camera.ShutterCallback interface</p>
-<pre><code>public class MyRentCameraFragment extends Fragment implements SurfaceHolder.Callback,
-                                                              OnClickListener,
-                                                              Camera.ShutterCallback
-</code></pre>
-
-<pre><code>  @Override
-  public void onShutter()
+  public void loginPressed (View view) 
   {
-    // display the progress indicator
-    progressContainer.setVisibility(View.VISIBLE);  
-  }
-</code></pre>
-
-<pre><code>public class MyRentCameraFragment extends Fragment implements SurfaceHolder.Callback,
-                                                              OnClickListener,
-                                                              Camera.ShutterCallback,
-                                                              Camera.PictureCallback
-
-</code></pre>
-
-<p>When picture taken write it to a file on disk:</p>
-<pre><code>  @Override
-  public void onPictureTaken(byte[] data, Camera camera)
-  {
-    // create a filename
-    String filename = UUID.randomUUID().toString() + &quot;.jpg&quot;;
-    if(write(getActivity(), filename, data) == true)
+    if (app.donationServiceAvailable)
     {
-      Intent i = new Intent();
-      i.putExtra(EXTRA_PHOTO_FILENAME, filename);
-      getActivity().setResult(Activity.RESULT_OK, i);      
+      startActivity (new Intent(this, Login.class));
     }
     else
     {
-      getActivity().setResult(Activity.RESULT_CANCELED);
-    }
-  } 
-</code></pre>
-
-<p>Refactor <em>onClick</em> to respond to pressing the camera button:</p>
-<pre><code>  //OnClickListener (camera button)
-  @Override
-  public void onClick(View v)
-  {
-    if (camera != null)
-    {
-      camera.takePicture(this, null, this);
+      serviceUnavailableMessage();
     }
   }
+
+  public void signupPressed (View view) 
+  {
+    if (app.donationServiceAvailable)
+    {
+      startActivity (new Intent(this, Signup.class));
+    }
+    else
+    {
+      serviceUnavailableMessage();
+    }
+  }
+
+  @Override
+  public void setReponse(List&lt;User&gt; aList)
+  {
+    app.users = aList;
+    app.donationServiceAvailable = true;
+  }
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    app.donationServiceAvailable = false;
+    serviceUnavailableMessage();
+  }
+
+  @Override
+  public void setReponse(User anObject)
+  {}
+}
+
 </code></pre>
 
-<p>Add an import statements:</p>
-<pre><code>import java.util.UUID;
-import android.content.Intent;
+<p>Read the above class carefully - and note how we make use of the `donationServiceAvailable' flag in DonationApp.</p>
+<p>Login can now be simplified to its original form:</p>
+<pre><code class="java">package app.activities;
+
+import android.os.Bundle;
 import android.app.Activity;
-</code></pre>
+import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+import app.donation.R;
+import app.main.DonationApp;
 
-<p>In <em>surfaceChanged</em> set best picture size:</p>
-<pre><code>    //set best picture size
-    s = getBestSupportedSize(parameters.getSupportedPictureSizes(), w, h);
-    parameters.setPictureSize(s.width, s.height);
-
-</code></pre>
-
-<p>Complete method:</p>
-<pre><code>
-  public void surfaceChanged(SurfaceHolder holder, int format, int w, int h)
+public class Login extends Activity
+{
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
   {
-    if (camera == null)
-      return;
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_login);
+  }
 
-    // the surface has changed size; update the camera preview size
-    Camera.Parameters parameters = camera.getParameters();
-    //set best preview size
-    Size s = getBestSupportedSize(parameters.getSupportedPreviewSizes(), w, h);
-    parameters.setPreviewSize(s.width, s.height);
-    //set best picture size
-    s = getBestSupportedSize(parameters.getSupportedPictureSizes(), w, h);
-    parameters.setPictureSize(s.width, s.height);
-    camera.setParameters(parameters);
-    try
+  public void signinPressed (View view) 
+  {
+    DonationApp app = (DonationApp) getApplication();
+
+    TextView email     = (TextView)  findViewById(R.id.loginEmail);
+    TextView password  = (TextView)  findViewById(R.id.loginPassword);
+
+    if (app.validUser(email.getText().toString(), password.getText().toString()))
     {
-      camera.startPreview();
+      startActivity (new Intent(this, Donate.class));
     }
-    catch (Exception e)
+    else
     {
-      info(this, &quot;Could not start preview &quot; + e.getMessage());
-      camera.release();
-      camera = null;
+      Toast toast = Toast.makeText(this, &quot;Invalid Credentials&quot;, Toast.LENGTH_SHORT);
+      toast.show();
     }
   }
-</code></pre>
-	  </section>
-	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     <h1>MyRentFragment</h1>
-<p>Add a new instance variable:</p>
-<pre><code>  private ImageView photoView;
+}
 </code></pre>
 
-<p>Add associated listener:</p>
-<pre><code>    photoView = (ImageView)v.findViewById(R.id.myrent_imageView);
-    photoView .setOnClickListener(this);
-</code></pre>
+<p>We will only be reaching this activity if we have successfully connected to the service.</p>
+<p>This is a revised version of Signup, which makes use of the service:</p>
+<pre><code class="java">package app.activities;
 
-<p>Add to onClick:</p>
-<pre><code>      case R.id.myrent_imageView       : showImageView();
-                                         break;
-</code></pre>
+import java.util.List;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+import app.donation.R;
+import app.http.Response;
+import app.main.DonationApp;
+import app.models.DonationServiceAPI;
+import app.models.User;
 
-<p>The complete method follows:</p>
-<pre><code>  @Override
-  public void onClick(View v)
+public class Signup extends Activity implements Response&lt;User&gt;
+{
+  private DonationApp app;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
   {
-    switch (v.getId())
-    {
-      case R.id.registration_date      : Calendar c = Calendar.getInstance();
-                                         DatePickerDialog dpd = new DatePickerDialog (getActivity(), this, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-                                         dpd.show();
-                                         break; 
-      case R.id.tenant                 : Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                                         startActivityForResult(i, REQUEST_CONTACT);
-                                         if (residence.tenant != null)
-                                         {
-                                           tenantButton.setText(&quot;Tenant: &quot;+residence.tenant);
-                                         }   
-                                         break;
-     case R.id.residence_reportButton  : sendEmail(getActivity(), &quot;&quot;, getString(R.string.residence_report_subject), residence.getResidenceReport(getActivity()));                           
-                                         break;                      
-     case R.id.camera_button           : Intent ic = new Intent(getActivity(), MyRentCameraActivity.class);
-                                         startActivityForResult(ic, REQUEST_PHOTO);                                         
-                                         break;
-     case R.id.myrent_imageView       :  showImageView();
-                                         break;
-    }
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_signup);
+    app = (DonationApp) getApplication();
   }
-</code></pre>
 
-<pre><code>
-    case REQUEST_PHOTO:       // create a new Photo object and attach it to the model layer
-                              String filename = data.getStringExtra(MyRentCameraFragment.EXTRA_PHOTO_FILENAME);
-                              if (filename != null)
-                              {
-                                residence.photo = new Photo(filename);
-                                showPhoto();
-                              }
-                              break;
-</code></pre>
-
-<pre><code>  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data)
+  public void registerPressed (View view) 
   {
-    if (resultCode != Activity.RESULT_OK)
-    {
-      return;
-    }
-    switch(requestCode)
-    {
-    case REQUEST_CONTACT:     String name = ContactHelper.getContact(getActivity(), data);
-                              residence.tenant = name;
-                              tenantButton.setText(name);
-                              break;
-    case REQUEST_PHOTO:       // create a new Photo object and attach it to the model layer
-                              String filename = data.getStringExtra(MyRentCameraFragment.EXTRA_PHOTO_FILENAME);
-                              if (filename != null)
-                              {
-                                residence.photo = new Photo(filename);
-                                showPhoto();
-                              }
-                              break;
-    }
-  }
-</code></pre>
+    TextView firstName = (TextView)  findViewById(R.id.firstName);
+    TextView lastName  = (TextView)  findViewById(R.id.lastName);
+    TextView email     = (TextView)  findViewById(R.id.Email);
+    TextView password  = (TextView)  findViewById(R.id.Password);
 
-<pre><code>  private void showPhoto()
-  {
-    // (re)set the image button's image based on our photo
-    Photo p = residence.photo;
-    BitmapDrawable b = null;
-    if (p != null)
-    {
-      String path = getActivity().getFileStreamPath(p.getFilename()).getAbsolutePath();
-      b = PictureUtils.getScaledDrawable(getActivity(), path);
-    }
-    photoView.setImageDrawable(b);
-  }
-</code></pre>
+    User user = new User (firstName.getText().toString(), lastName.getText().toString(), email.getText().toString(), password.getText().toString());
 
-<p>Add import statements to resolve some of the errors:</p>
-<pre><code>import android.graphics.drawable.BitmapDrawable;
-import org.wit.myrent.models.Photo;
-
-</code></pre>
-
-<p>Several errors remain: these will be resolved as we develop the lab.</p>
-<p>Add class variable:</p>
-<pre><code>  private static final String   DIALOG_IMAGE = &quot;image&quot;;
-</code></pre>
-
-<pre><code>  private void showImageView()
-  {
-    Photo p = residence.photo;
-    if (p == null)
-      return;
-
-    FragmentManager fm = getActivity().getSupportFragmentManager();
-    String path = getActivity().getFileStreamPath(p.getFilename()).getAbsolutePath();
-    ImageFragment.createInstance(path).show(fm, DIALOG_IMAGE);    
-  }
-</code></pre>
-
-<p>Start &amp;  Stop</p>
-<pre><code>  @Override
-  public void onStart()
-  {
-    super.onStart();
-    showPhoto();
+    DonationServiceAPI.createUser(this, this, &quot;Registering new user&quot;, user);
   }
 
   @Override
-  public void onStop()
+  public void setReponse(List&lt;User&gt; aList)
   {
-    super.onStop();
-    PictureUtils.cleanImageView(photoView);
   }
+
+  @Override
+  public void setReponse(User user)
+  { 
+    app.users.add(user);
+  }
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    app.donationServiceAvailable = false;
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+    startActivity (new Intent(this, Welcome.class));
+  }
+}
+</code></pre>
+
+<p>This should work now.</p>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Exercise 2: When a donation is made, it is sent to the donation-service play app</h1>
+<p>This takes a bit more work, and involved refactoring the donate button handler to only make the donation in the callback method:</p>
+<pre><code class="java">package app.activities;
+
+import java.util.List;
+import app.donation.R;
+import app.http.Response;
+import app.main.DonationApp;
+import app.models.Donation;
+import app.models.DonationServiceAPI;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioGroup;
+import android.widget.NumberPicker;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class Donate extends Activity implements Response&lt;Donation&gt;
+{
+  private RadioGroup   paymentMethod;
+  private ProgressBar  progressBar;
+  private NumberPicker amountPicker;
+  private TextView     amountText;
+  private TextView     amountTotal;
+  private DonationApp  app;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_donate);
+
+    app = (DonationApp) getApplication();
+
+    paymentMethod = (RadioGroup)   findViewById(R.id.paymentMethod);
+    progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
+    amountPicker  = (NumberPicker) findViewById(R.id.amountPicker);
+    amountText    = (TextView)     findViewById(R.id.amountText);
+    amountTotal   = (TextView)     findViewById(R.id.amountTotal);
+
+    amountPicker.setMinValue(0);
+    amountPicker.setMaxValue(1000);
+    progressBar.setMax(app.target);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu)
+  {
+    getMenuInflater().inflate(R.menu.donate, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+      case R.id.menuReport : startActivity (new Intent(this, Report.class));
+                             break;
+      case R.id.menuLogout : startActivity (new Intent(this, Welcome.class));
+                             break;                             
+    }
+    return true;
+  }
+
+  public void donateButtonPressed (View view) 
+  {
+    String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? &quot;PayPal&quot; : &quot;Direct&quot;;
+    int donatedAmount =  amountPicker.getValue();
+    if (donatedAmount == 0)
+    {
+      String text = amountText.getText().toString();
+      if (!text.equals(&quot;&quot;))
+        donatedAmount = Integer.parseInt(text);
+    }
+    if (donatedAmount &gt; 0)
+    {
+      DonationServiceAPI.createDonation(this, this, &quot;Registering new donation...&quot;, new Donation(donatedAmount, method));
+    }
+   }
+
+  @Override
+  public void setReponse(Donation acceptedDonation)
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Accepteed&quot;, Toast.LENGTH_SHORT);
+    toast.show();
+    app.newDonation(acceptedDonation);
+    progressBar.setProgress(app.totalDonated);
+    String totalDonatedStr = &quot;$&quot; + app.totalDonated;
+    amountTotal.setText(totalDonatedStr);
+    amountText.setText(&quot;&quot;);
+    amountPicker.setValue(0);
+  }
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+  }
+
+  @Override
+  public void setReponse(List&lt;Donation&gt; aList)
+  {}
+}
 </code></pre>
 	  </section>
-	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
-	     <h1>Archives</h1>
-<p>This is a version of MyRent complete to the end if this lab:</p>
+	  <section data-tab="" class="ui tab stacked moodle-book segment">
+	     <h1>Refactor / Rename</h1>
+<p>The donation-android app has an unfortunate type in the name of the Response interface methods:</p>
+<pre><code class="java">public interface Response&lt;T&gt;
+{
+  public void setReponse(List&lt;T&gt; aList);
+  public void setReponse(T anObject);
+  public void errorOccurred (Exception e);
+}
+</code></pre>
+
+<p>Missing an 's' on setReponse!</p>
+<p>Changing this will cause errors throughout our activities - however, there is a way to change this and have all the activities changed automatically. This is to use the Eclipse 'refactorring' menu options.</p>
+<p>This needs to be accessed via eclipse package explorer view:</p>
+<p><img alt="" src="img/01.png">
+<img alt="" src="img/02.png"></p>
+<p>Do this for both methods. If you get warning - press "continue" anyway.</p>
+<p>If all goes according to plan, it should successfully rename all relevant artifacts.</p>
+	  </section>
+	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
+	     <h1>Exercises</h1>
+<p>Archive of the lab so far:</p>
 <ul>
-<li><a href="archives/MyRentV12.zip">MyRentV12</a></li>
+<li><a href="archives/donation-android-v4.zip">donation-android-v4.zip</a></li>
 </ul>
+<h2>Exercise 1</h2>
+<p>Does it make sense to download the full list of users when we load the Welcome activity? Perhaps it might be better if we just attempted to reach donation-service, and indicate to the user if it is available or not.</p>
+<p>Consider how you might do this.</p>
+<h2>Exercise 2</h2>
+<p>When Login is launched, it might be better to just check that the user supplied credentials are valid - with the donation-service app, and not by inspecting our local list of users.</p>
+<p>How would this be done?</p>
+<h2>Exercise 3</h2>
+<p>In the Singup activity - we should really check to see if the new user email is not already taken.</p>
+<p>How would we do this?</p>
 	  </section>
 <script>
 

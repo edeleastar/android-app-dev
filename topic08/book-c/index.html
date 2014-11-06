@@ -123,7 +123,7 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">8: JPA Part I | Camera</a></header>
+    <header class="header item"> <a href="../index.html">8: JPA | Camera</a></header>
     <div class="right tab-menu menu">
           <a class="item" data-tab="MyRent-09"> MyRent-09 </a>
           <a class="item" data-tab="01"> 01 </a>
@@ -275,22 +275,69 @@ header h3
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>Model</h1>
-<p>The model Residence class requires a new field to represent the photo filename.</p>
-<p>Add this field and its json counterpart:</p>
-<pre><code>  public String   photoFileName ;
-  private static final String JSON_PHOTO = &quot;photoFileName&quot;;
+<p>Add the following file (which manages the thumbnail filename) to the models folder:</p>
+<p>Filename: Photo.java</p>
+<pre><code>package org.wit.myrent.models;
+
+import java.io.Serializable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Photo implements Serializable
+{
+  private static final long serialVersionUID = 1L;
+
+  private static final String JSON_FILENAME = &quot;filename&quot;;
+
+  private String filename;
+
+  /** create a Photo representing an existing file on disk */
+  public Photo(String filename)
+  {
+    this.filename = filename;
+  }
+
+  public Photo(JSONObject json) throws JSONException
+  {
+    filename = json.getString(JSON_FILENAME);
+  }
+
+  public JSONObject toJSON() throws JSONException
+  {
+    JSONObject json = new JSONObject();
+    json.put(JSON_FILENAME, filename);
+    return json;
+  }
+
+  public String getFilename()
+  {
+    return filename;
+  }
+}
 </code></pre>
 
-<p>In the default constructor, initialize the field:</p>
-<pre><code>    photoFileName = &quot;a_residence&quot;;
+<p>The model Residence class requires a new field to represent the photo (thumbnail).</p>
+<ul>
+<li>Add this field and its json counterpart:</li>
+</ul>
+<pre><code>public Photo photo;
+private static final String JSON_PHOTO = &quot;photo&quot;;  
+
 </code></pre>
 
-<p>Retrieve the filename in the overloaded constructor:</p>
-<pre><code>    photoFileName = json.getString(JSON_PHOTO);
+<p>Initialize the new Photo field in the overloaded constructor:</p>
+<pre><code>    if (json.has(JSON_PHOTO)) 
+    {
+      photo = new Photo(json.getJSONObject(JSON_PHOTO));
+    }
 </code></pre>
 
 <p>Add the following statement to the method <em>toJSON</em>:</p>
-<pre><code>    json.put(JSON_PHOTO         , photoFileName);
+<pre><code>    if (photo != null)  
+    {
+      json.put(JSON_PHOTO, photo.toJSON());    
+    }
 </code></pre>
 	  </section>
 	  <section data-tab="04" class="ui tab stacked moodle-book segment">
@@ -331,19 +378,18 @@ public class CameraHelper
   public static void showPhoto(Activity activity, Residence res, ImageView photoView)
   {
     // (re)set the image button's image based on our photo
-    String photoFileName = res.photoFileName;
+    Photo p = res.photo;
     BitmapDrawable b = null;
-    if (photoFileName != null)
+    if (p != null)
     {
-      String path = activity.getFileStreamPath(photoFileName).getAbsolutePath();
+      String path = activity.getFileStreamPath(p.getFilename()).getAbsolutePath();
       b = getScaledDrawable(activity, path);
     }
     if (b != null)
     {
       photoView.setImageDrawable(b);
     }
-  }
-
+  } 
   /**
    * Get a BitmapDrawable from a local file that is scaled down to fit the
    * current Window size.
@@ -588,7 +634,8 @@ import static org.wit.android.helpers.FileIOHelper.writeBitmap;
 	     <h1>Fragments</h1>
 <p>Integrate camera module into ResidenceFragment.</p>
 <p>Add imports:</p>
-<pre><code>import static org.wit.android.helpers.CameraHelper.showPhoto;
+<pre><code>import org.wit.myrent.models.Photo;
+import static org.wit.android.helpers.CameraHelper.showPhoto;
 import android.widget.ImageView;
 </code></pre>
 
@@ -640,7 +687,7 @@ private ImageView photoView;
       String filename = data.getStringExtra(ResidenceCameraActivity.EXTRA_PHOTO_FILENAME);
       if (filename != null)
       {
-        residence.photoFileName = filename;
+        residence.photo = new Photo(filename);
         showPhoto(getActivity(), residence, photoView );
       }
       break;
@@ -779,6 +826,7 @@ Here are the necessary changes to ResidenceFragment:</p>
 <li>Verify the photo in thumbnail in details view</li>
 <li>Long-press the thumbnail: does photo display in gallery?</li>
 <li>Return from gallery to details view using up button.</li>
+<li>Switch to landscape and back to portrait.</li>
 <li>Switch to residence list and back to details view: is picture still displayed?</li>
 <li>Shutdown the app and relaunch: is picture still displayed in thumbnail?</li>
 </ul>

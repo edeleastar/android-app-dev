@@ -1,0 +1,495 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Donation-Service-03 </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="http://beta.semantic-ui.com/dist/semantic.min.css">
+     <script src="http://beta.semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://beta.semantic-ui.com/dist/semantic.min.js"></script>
+
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+#container
+{
+  margin :10px
+}
+
+code
+{
+	font-family: "Monaco";
+	font-size: 110%;
+}
+
+h1 
+{
+  font-style:italic;
+  font-size:120%;
+  border-bottom: thin solid black;
+}
+h2 
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3 
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+#footertext 
+{
+  font-size:70%
+}
+
+#title 
+{
+  font-size:120%;
+  color: black;
+  text-align: right;
+  background-color : white;
+}
+
+img 
+{
+   padding:1px;
+   border:1px solid black;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+header img
+{
+	 padding:1px;
+   border:0px solid black;
+}
+
+header h1
+{
+  font-style:normal;
+  font-size:120%;
+  border-bottom: 0px;
+}
+
+header h2
+{
+  font-style:normal;
+  font-size:100%;
+  border-bottom: 0px;
+}
+
+header h3
+{
+  font-style:normal;
+  font-size:90%;
+  border-bottom: 0px;
+}
+
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
+    </style>
+
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">9: APIs | Maps </a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Donation-Service-03"> Donation-Service-03 </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="Archives"> Archives </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Donation-Service-03" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<ul>
+<li>Deploy the donation-service app to Heroku</li>
+<li>The app is available to download in the Archives page</li>
+</ul>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Git Bash</h1>
+<p>Download and install <a href="http://git-scm.com/downloads">Git for Windows</a>.</p>
+<ul>
+<li>This will be used in this lab. We shall refer to as <em>Git Bash</em>.</li>
+</ul>
+<p><img alt="Figure 1: Installation Wizard Git Bash" src="img/heroku_022.png"></p>
+<p>All the following commands should be run within the Git Bash terminal, not the standard windows terminal (Command Prompt).</p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>SSH Keys</h1>
+<p>This section applies only if you do not have SSH keys on your computer. We shall explain shortly how you can check whether or not keys are present.</p>
+<p>Official Heroku documentation on managing SSH keys is available <a href="https://devcenter.heroku.com/articles/keys#adding-keys-to-heroku">here</a></p>
+<p>Your computer will communicate with Heroku using <a href="http://en.wikipedia.org/wiki/Secure_Shell">Secure Shell</a> (SSH).</p>
+<p>Here are brief instructions on how to check for the presence of SSH keys on your computer and to generate them if necessary.</p>
+<p>Git Bash should have an SSH client. Verify this with the following command:</p>
+<pre><code>ssh -v
+</code></pre>
+
+<p>The response should be similar to this:</p>
+<p><img alt="Figure 2: Verify presence of SSH client" src="img/heroku_001.png"></p>
+<p>Check if you already have SSH keys by checking for the presence of the<strong>.ssh</strong> folder and if it exists, listing its contents:</p>
+<pre><code>ls -l ~/.ssh
+</code></pre>
+
+<p>If keys are present then the response should be something simiar to that shown in Figure 3:</p>
+<p><img alt="Figure 3: SSH Keys" src="img/heroku_002.png"></p>
+<p>If keys are not present then generate a set with this command:</p>
+<pre><code>ssh-keygen
+
+</code></pre>
+
+<p>Accept the default prompts and in particular when prompted for a password and to confirm the password simply hit the return key on both occasions but without typing any characters for the password.</p>
+<ul>
+<li>That is: do <strong>not</strong> password protect the keys.</li>
+</ul>
+<p>Confirm that keys have been successfully generated by checking the contents of the <em>.ssh</em> folder which should be similar that shown in Figure 3 above.</p>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Local Repository</h1>
+<p>Create a directory on your computer named, for example, <em>org-wit-donation-service</em>.</p>
+<p>In Git Bash terminal <em>cd</em> into this new directory.</p>
+<pre><code> cd org-wit-donation-service
+</code></pre>
+
+<p>Create a new empty repository:</p>
+<pre><code>git init
+</code></pre>
+
+<p>Using a file manager or otherwise, copy the contents of the <em>donation-service</em> project that you can download in the Archives page to the <em>org-wit-donation-service</em> folder.
+<img alt="" src="img/heroku_014.png"></p>
+<p>Create and add a file named <strong>ProcFile</strong> to the root of <em>org-wit-donation-service</em>.</p>
+<ul>
+<li>
+<p>Add the following single line to ProcFile:</p>
+<p><em>web: play run --http.port=$PORT $PLAY_OPTS</em></p>
+</li>
+</ul>
+<p>Ensure that the  <strong>.gitignore</strong> file is present in the root of <em>org-wit-donation-service</em>.</p>
+<p>Add all to the repo and commit:</p>
+<pre><code>git add --all
+git commit -m 'first commit'
+</code></pre>
+
+<p>Verify by running the command</p>
+<pre><code>git status
+</code></pre>
+
+<p>The response should as follow:
+<img alt="" src="img/heroku_016.png"></p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Heroku repository</h1>
+<p>Create an account on <a href="http://www.heroku.com">Heroku</a>.</p>
+<ul>
+<li>Note carefully your login and password.</li>
+</ul>
+<p>Download and install <a href="https://toolbelt.heroku.com">Heroku Toolbelt for Windows</a></p>
+<ul>
+<li>Close and reopen Git Bash following installation of Toolbelt.</li>
+<li>
+<p>Verify installation ok by typing </p>
+<p><em>heroku --version</em> </p>
+</li>
+<li>
+<p>The response should be something like:</p>
+<p><em>heroku/toolbelt/3.12.1 (i386-mingw32) ruby/1.9.3</em></p>
+</li>
+</ul>
+<p>Login in to your heroku account from Git Bash</p>
+<pre><code>heroku login
+</code></pre>
+
+<ul>
+<li>You will be prompted for you email and password.</li>
+<li>Successful authentication will be confirmed.</li>
+</ul>
+<p>Next create an app and repository on Heroku as follows:</p>
+<pre><code>heroku create
+</code></pre>
+
+<ul>
+<li>The response will be something like this:</li>
+</ul>
+<p><img alt="Figure 1: Heroku: app and repository created" src="img/heroku_003.png"></p>
+<p>Notice the default name assigned by Heroku to the remote app.</p>
+<p>Verify with the command </p>
+<pre><code>git remote -v
+</code></pre>
+
+<p>and observe a response similar to that in Figure 2.</p>
+<p><img alt="Figure 2: Checking remote repo on Heroku" src="img/heroku_004.png"></p>
+<p>Now add your SSH keys to Heroku:</p>
+<pre><code>heroku keys: add
+</code></pre>
+
+<p><img alt="Figure 3: Heroku: Adding SSH Keys" src="img/heroku_005.png"></p>
+<p>Finally, push the local repo to Heroku:</p>
+<pre><code>git push heroku master
+</code></pre>
+
+<p>The response should be somewhat similar to that shown in Figure 4.</p>
+<p><img alt="Figure 4: Successful deployment" src="img/heroku_006.png"></p>
+<p>We shall now test the service:</p>
+<ul>
+<li>In the specific case of this lab we have been randomly assigned a remote Heroku repo named <em>guarded-reef-267.git</em>. </li>
+<li>The convention for construction a URI to access this repo or service can easily be deduced by studying the URI for this specific service:</li>
+</ul>
+<pre><code>http://guarded-reef-2677.herokuapp.com/api/users
+</code></pre>
+
+<ul>
+<li>The portions <strong>/api/users</strong> is determined by how we, the developers, wrote the application (<em>donation-service</em>).</li>
+<li>Notice where the actual name of the repo is located in the URI:<ul>
+<li><em>guarded-reef-2677</em>.</li>
+</ul>
+</li>
+</ul>
+<p>Copy this URI into a brower's navigation bar: unfortunately an application error is flagged.</p>
+<ul>
+<li>The reason for this is that we have not set up a suitable database on Heroku. We shall attend to this shortly.</li>
+</ul>
+<p><strong>Changing name of Heroku app</strong></p>
+<p>We shall now change the Heroku-assigned name <em>guarded-reef-2677</em> to a more meaningful name <em>org-wit-donation-service-id</em> where <strong>id</strong> is your email address excluding @, periods, underscores and so on. For example john_doe@organs.com becomes johndoeorganscom. This is just a suggestion to ensure that the name you choose for the app on Heroku will be unique.</p>
+<p>Run the following command within the Heroku terminal:</p>
+<pre><code>heroku apps:rename org-wit-donation-service-id
+</code></pre>
+
+<p>A typical response is shown in Figure 5:</p>
+<p><img alt="Figure 5: Changing name of Heroku app from command line" src="img/heroku_007.png"></p>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Heroku Database</h1>
+<p>You created a Heroku app in an earlier step (using the command <em>heroku create</em>) </p>
+<ul>
+<li>A database was made available as part of the app creation process.</li>
+<li>You can verify this by running the following command:</li>
+</ul>
+<pre><code>heroku pg:info
+</code></pre>
+
+<p>A typical response is depicted in Figure 1.</p>
+<p><img alt="Figure 1: Database information" src="img/heroku_012.png"></p>
+<p>In this case the DATABASE_URL is HEROKU_POSTGRESQL_MAUVE_URL.</p>
+<p>Log in to <a href="https://dashboard-next.heroku.com/apps/">Heroku</a> website for more detailed information such as is shown here in Figure 2 for the current project.</p>
+<p><img alt="Figure 2: App and associated database details on Heroku site" src="img/heroku_025.png"></p>
+<p>In order to make use of this database do the following:</p>
+<ul>
+<li>Modify the <em>application.conf</em> file:<ul>
+<li>Comment out any database activation statments such as, for example, <em>db = mem</em>.</li>
+<li>Add the following block to the end of the file.</li>
+</ul>
+</li>
+</ul>
+<pre><code>#================heroku databse config config=========================
+db=${DATABASE_URL}
+jpa.dialect=org.hibernate.dialect.PostgreSQLDialect
+jpa.ddl=update
+#================end database config heroku config====================
+</code></pre>
+
+<ul>
+<li>In the Heroku terminal add and commit the changes:</li>
+</ul>
+<pre><code>git add --all
+git commit -m 'database configured'
+git push heroku master
+</code></pre>
+
+<p>The response should be similar to that shown in Figure 3.
+<img alt="Figure 3: Application + configured database pushed to remote heroku repo" src="img/heroku_010.png"></p>
+<p><strong>Test App</strong></p>
+<p>You can test that the application is working correctly in a number of ways, listed here:</p>
+<ul>
+<li>Run the following command: output similar to that in Figure 4 indicates your app has been successfully deployed.</li>
+</ul>
+<pre><code>heroku ps
+</code></pre>
+
+<p><img alt="Figure 4: Successful deployment" src="img/heroku_023.png"></p>
+<ul>
+<li>Next run the command to open a browser: Figure 5 shows the command and additionally the response to the command and the output in the browser if the app is running correctly.</li>
+</ul>
+<pre><code>heroku open
+</code></pre>
+
+<p><img alt="Figure 5: Application ready" src="img/heroku_024.png"></p>
+<ul>
+<li>Finally, introduce this URI in a browser's navigation bar: the expected response is shown here in Figure 6:</li>
+</ul>
+<pre><code>http://org-wit-donation-service-id.herokuapp.com/api/users
+</code></pre>
+
+<p><img alt="Figure 6: List of users returned in resonse to query" src="img/heroku_011.png"></p>
+<p><strong>Reset Database</strong></p>
+<p>You can reset the database as follows:</p>
+<ul>
+<li>First obtain the DATABASE_URL with the following command:</li>
+</ul>
+<pre><code>heroku pg:info
+</code></pre>
+
+<p>A typical response is depicted in Figure 7.</p>
+<p><img alt="Figure 7: Database information" src="img/heroku_012.png"></p>
+<p>In this case the DATABASE_URL is HEROKU_POSTGRESQL_MAUVE_URL. The command to run to reset is:</p>
+<pre><code>heroku pg:reset HEROKU_POSTGRESQL_MAUVE_URL
+</code></pre>
+
+<p>Follow the instructions as indicated in Figure 8.</p>
+<p><img alt="Figure 8: Resetting the database" src="img/heroku_013.png"></p>
+<p><strong>References</strong></p>
+<p><a href="https://devcenter.heroku.com/articles/git">Deploying with Git</a></p>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>Regenerate project</h1>
+<p>You can regenerate your work environment as follows:</p>
+<ul>
+<li>Create a working folder, for example <em>workspacePlay</em></li>
+<li>Change directory into this folder</li>
+</ul>
+<pre><code>cd workspacePlay
+</code></pre>
+
+<ul>
+<li>If not already logged in to Heroku, do so now:</li>
+</ul>
+<pre><code>heroku login
+</code></pre>
+
+<p>Obtain a clone of the remote repo:</p>
+<pre><code> git clone git@heroku.com:org-wit-donation-service-id.git
+</code></pre>
+
+<p><img alt="Figure 1: Cloning heroku repository" src="img/heroku_017.png"></p>
+<p>The project will now be recreated in a folder <em>org-wit-donation-service-id</em>.</p>
+<ul>
+<li>Change directory to <em>org-wit-donation-service-id</em>.</li>
+<li>Run the command to allow the project to be imported into an Eclipse workspace:</li>
+</ul>
+<pre><code>play eclipsify
+</code></pre>
+
+<p>Launch Eclipse, switch to the workspace <em>workspacePlay</em> and import the project:</p>
+<p><img alt="Figure 2: Importing project into Eclipse workspace" src="img/heroku_018.png"></p>
+<p>Note that earlier we pushed to Heroku with the following command:</p>
+<pre><code>git push heroku master
+</code></pre>
+
+<p>This will not now work. To understand why check the remote:</p>
+<pre><code>git remote -v
+</code></pre>
+
+<p><img alt="" src="img/heroku_019.png"></p>
+<p>Notice that it is <strong>origin</strong>, not <strong>heroku</strong>. </p>
+<p>Working with origin will work ok.</p>
+<p>But perhaps it is better to preserve Heroku convention which requires that we:</p>
+<ul>
+<li>Remove <em>origin</em> as the remote</li>
+<li>Replace with <em>heroku</em></li>
+</ul>
+<p>This can easily be achieved with the following commands:</p>
+<pre><code>git remote remove origin
+git remote add heroku git@heroku.com:org-wit-donation-service-id.git
+</code></pre>
+
+<p>Then, push with the following command:</p>
+<pre><code>git push heroku master
+</code></pre>
+	  </section>
+	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
+	     <h1>Exercises</h1>
+<p>Archive of donation-service as used in this lab</p>
+<ul>
+<li><a href="archives/org-wit-donation-service-id.zip">donation-service</a></li>
+</ul>
+	  </section>
+<script>
+
+function addCaptions() {
+  var images = $(".moodle-book img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0) 
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+};
+
+// Need to check if we have already been loaded
+seen = 0;
+
+$(document).ready(function()
+{ 
+  if (seen == 0)
+  { 
+    // not loaded before - so do the restyling once (need to moodle book print)
+    $(".moodle-book img").addClass ("ui image");
+    $(".moodle-book pre").addClass ("ui segment");
+    addCaptions();
+    seen = 1;
+  }
+
+
+})</script>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  <script>
+    $(document).ready(function()
+    {  
+      $('.tab-menu.menu .item').tab();
+    });
+  </script>   
+  </body>
+ </html>
