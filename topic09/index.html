@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> 9: APIs | Maps  </title>
+     <title> 9: APIs </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -148,6 +148,7 @@ header h3
         <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
         <a class="item" href=" ../topic07/index.html"> 7: TDD | Embedded Map & Orientation </a>
         <a class="item" href=" ../topic08/index.html"> 8: JPA | Camera </a>
+        <a class="active item" href=" ../topic09/index.html"> 9: APIs </a>
           <a class="item" href=" ../topicwall.html"> All Topics </a>
           <a class="item" href=" ../labwall.html"> All Labs </a>
       </div>
@@ -157,37 +158,47 @@ header h3
 
 
     <section id="topic" class="ui doubling twelve wide column segment">
-      <h1>9: APIs | Maps</h1>
+      <h1>9: APIs</h1>
       <div class="ui cards">
 <div  class="ui card">
   <div class="cover">
-    <div style="background-image: url('./pdf/aa-jpa-3.png');" class="image-thumbnail"> </div>
+    <div style="background-image: url('./pdf/aa-internet-and-http.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./pdf/aa-jpa-3.pdf" class="header">JPA Part III</a>
+    <a  href="./pdf/aa-internet-and-http.pdf" class="header">HTTP Protocol</a>
   </div>
   <div class="extra content">
-    
+    <p>HTTP is the heartbeat of the Web, and the key protocol through with both applications and services communicate. A general understanding of it is a key part of a developers knowledge base.</p>
   </div>
 </div><div  class="ui card">
   <div class="cover">
-    <div style="background-image: url('./pdf/ab-internet-and-http.png');" class="image-thumbnail"> </div>
+    <div style="background-image: url('./pdf/ab-spacebook-trace.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./pdf/ab-internet-and-http.pdf" class="header">HTTP Protocol</a>
+    <a  href="./pdf/ab-spacebook-trace.pdf" class="header">Tracing HTTP</a>
   </div>
   <div class="extra content">
-    
+    <p>Most browsers come with built in tools to let the developer explore the http interactions. As the it is text based, we can examine and interpret the requests and responses without too much difficulty.</p>
   </div>
 </div><div  class="ui card">
   <div class="cover">
-    <div style="background-image: url('./pdf/ac-spacebook-trace.png');" class="image-thumbnail"> </div>
+    <div style="background-image: url('./pdf/ac-api-intro.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./pdf/ac-spacebook-trace.pdf" class="header">Tracing Requests</a>
+    <a  href="./pdf/ac-api-intro.pdf" class="header">APIs</a>
   </div>
   <div class="extra content">
-    
+    <p>An Application Programmer Interface is the published set of http endpoints and messages that a service can support. API design and implementation is a rich field of study - here we take a general overview.</p>
+  </div>
+</div><div  class="ui card">
+  <div class="cover">
+    <div style="background-image: url('./pdf/ad-donation-service.png');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./pdf/ad-donation-service.pdf" class="header">donation-service-play</a>
+  </div>
+  <div class="extra content">
+    <p>This is our first attempt at implementing an API. It comprises essentially of a set of routes (the end points), controllers for these routes + a mechanisms for translating Java objects to/from the Json format.</p>
   </div>
 </div>      </div>
       <h1> Labs </h1>
@@ -200,11 +211,7 @@ header h3
     <a  href="./book-a/index.html" class="header">Lab: Donation-Service-01</a>
   </div>
   <div class="extra content">
-    <ul>
-<li>Create a version of the the donation app as a play project</li>
-<li>Expose an 'API' from this app to enable other programmes to use it</li>
-<li>Rework the Donation android app to use this api</li>
-</ul>
+    <p>Create a version of the the donation app as a play project. Expose an 'API' from this app to enable other programmes to use it. Try to access the API from a browser, and also from a special purpose browser extension.</p>
   </div>
 </div><div class="ui card">
   <div class="cover">
@@ -222,16 +229,13 @@ header h3
   </div>
 </div><div class="ui card">
   <div class="cover">
-    <div style="background-image: url('None');" class="image-thumbnail"> </div>
+    <div style="background-image: url('./book-c/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./book-c/index.html" class="header">Lab: Donation-Service-03</a>
   </div>
   <div class="extra content">
-    <ul>
-<li>Deploy the donation-service app to Heroku</li>
-<li>The app is available to download in the Archives page</li>
-</ul>
+    <p>Deploy the donation-service app to Heroku. This will require a heroku account + a locally installed git tool set.</p>
   </div>
 </div>      </div>
     </section>

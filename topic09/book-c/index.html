@@ -123,7 +123,7 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">9: APIs | Maps </a></header>
+    <header class="header item"> <a href="../index.html">9: APIs</a></header>
     <div class="right tab-menu menu">
           <a class="item" data-tab="Donation-Service-03"> Donation-Service-03 </a>
           <a class="item" data-tab="01"> 01 </a>
@@ -132,7 +132,7 @@ header h3
           <a class="item" data-tab="04"> 04 </a>
           <a class="item" data-tab="05"> 05 </a>
           <a class="item" data-tab="06"> 06 </a>
-          <a class="item" data-tab="Archives"> Archives </a>
+          <a class="item" data-tab="Exercises"> Exercises </a>
     </div>
   </nav>
 
@@ -140,10 +140,7 @@ header h3
 
 	  <section data-tab="Donation-Service-03" class="ui tab stacked moodle-book segment">
 	     <h1>Objectives</h1>
-<ul>
-<li>Deploy the donation-service app to Heroku</li>
-<li>The app is available to download in the Archives page</li>
-</ul>
+<p>Deploy the donation-service app to Heroku. This will require a heroku account + a locally installed git tool set.</p>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
 	     <h1>Git Bash</h1>
@@ -185,26 +182,55 @@ header h3
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>Local Repository</h1>
-<p>Create a directory on your computer named, for example, <em>org-wit-donation-service</em>.</p>
-<p>In Git Bash terminal <em>cd</em> into this new directory.</p>
-<pre><code> cd org-wit-donation-service
+<p>In the donation-service-play project, create a file called '.gitignore'. Here are its contents:</p>
+<pre><code># Ignore all dotfiles...
+.*
+# except for .gitignore
+!.gitignore
+!.classpath
+!.project
+
+
+# Ignore Play! working directory #
+war
+db
+eclipse
+lib
+log
+logs
+modules
+precompiled
+project/project
+project/target
+crud/*
+data/*
+conf/crud/*
+conf/cloudbees*
+public/crud/*
+target
+tmp
+test-result
+server.pid
+*.iml
+*.eml
 </code></pre>
 
-<p>Create a new empty repository:</p>
+<p>In the same folder, create and a file named <strong>ProcFile</strong> containing the following:</p>
+<pre><code>web: play run --http.port=$PORT $PLAY_OPTS
+</code></pre>
+
+<p>Next, we need to make one significant change to the app. Open the 'Users' model and adjust the the class as follows:</p>
+<pre><code>@Entity
+@Table(name=&quot;`User`&quot;) //This is necessary because User is a reserved word in PostGreSQL
+public class User extends Model
+</code></pre>
+
+<p>'User' is a reserved table name in the database, so we change it to something slightly different.</p>
+<p>In Git Bash terminal <em>cd</em> into the folder containing your donation-service-play project, and create a git repository for the project:</p>
 <pre><code>git init
 </code></pre>
 
-<p>Using a file manager or otherwise, copy the contents of the <em>donation-service</em> project that you can download in the Archives page to the <em>org-wit-donation-service</em> folder.
-<img alt="" src="img/heroku_014.png"></p>
-<p>Create and add a file named <strong>ProcFile</strong> to the root of <em>org-wit-donation-service</em>.</p>
-<ul>
-<li>
-<p>Add the following single line to ProcFile:</p>
-<p><em>web: play run --http.port=$PORT $PLAY_OPTS</em></p>
-</li>
-</ul>
-<p>Ensure that the  <strong>.gitignore</strong> file is present in the root of <em>org-wit-donation-service</em>.</p>
-<p>Add all to the repo and commit:</p>
+<p>Add all files (except those matched by .gitignore) to the repo and commit:</p>
 <pre><code>git add --all
 git commit -m 'first commit'
 </code></pre>
@@ -213,42 +239,31 @@ git commit -m 'first commit'
 <pre><code>git status
 </code></pre>
 
-<p>The response should as follow:
-<img alt="" src="img/heroku_016.png"></p>
+<p>The response should as follow:</p>
+<p><img alt="" src="img/heroku_016.png"></p>
 	  </section>
 	  <section data-tab="04" class="ui tab stacked moodle-book segment">
 	     <h1>Heroku repository</h1>
-<p>Create an account on <a href="http://www.heroku.com">Heroku</a>.</p>
-<ul>
-<li>Note carefully your login and password.</li>
-</ul>
-<p>Download and install <a href="https://toolbelt.heroku.com">Heroku Toolbelt for Windows</a></p>
-<ul>
-<li>Close and reopen Git Bash following installation of Toolbelt.</li>
-<li>
-<p>Verify installation ok by typing </p>
-<p><em>heroku --version</em> </p>
-</li>
-<li>
+<p>Create an account on <a href="http://www.heroku.com">Heroku</a>. Note carefully your login and password.</p>
+<p>Download and install <a href="https://toolbelt.heroku.com">Heroku Toolbelt for Windows</a>. Close and reopen Git Bash following installation of Toolbelt. </p>
+<p>Once installed, verify installation ok by typing </p>
+<pre><code>heroku --version* 
+</code></pre>
+
 <p>The response should be something like:</p>
-<p><em>heroku/toolbelt/3.12.1 (i386-mingw32) ruby/1.9.3</em></p>
-</li>
-</ul>
+<pre><code>heroku/toolbelt/3.12.1 (i386-mingw32) ruby/1.9.3
+</code></pre>
+
 <p>Login in to your heroku account from Git Bash</p>
 <pre><code>heroku login
 </code></pre>
 
-<ul>
-<li>You will be prompted for you email and password.</li>
-<li>Successful authentication will be confirmed.</li>
-</ul>
+<p>You will be prompted for you email and password. Successful authentication will be confirmed. </p>
 <p>Next create an app and repository on Heroku as follows:</p>
 <pre><code>heroku create
 </code></pre>
 
-<ul>
-<li>The response will be something like this:</li>
-</ul>
+<p>The response will be something like this:</p>
 <p><img alt="Figure 1: Heroku: app and repository created" src="img/heroku_003.png"></p>
 <p>Notice the default name assigned by Heroku to the remote app.</p>
 <p>Verify with the command </p>
@@ -268,26 +283,15 @@ git commit -m 'first commit'
 
 <p>The response should be somewhat similar to that shown in Figure 4.</p>
 <p><img alt="Figure 4: Successful deployment" src="img/heroku_006.png"></p>
-<p>We shall now test the service:</p>
-<ul>
-<li>In the specific case of this lab we have been randomly assigned a remote Heroku repo named <em>guarded-reef-267.git</em>. </li>
-<li>The convention for construction a URI to access this repo or service can easily be deduced by studying the URI for this specific service:</li>
-</ul>
+<p>We shall now test the service: In the specific case of this lab we have been randomly assigned a remote Heroku repo named <em>guarded-reef-267.git</em>. The convention for construction a URI to access this repo or service can easily be deduced by studying the URI for this specific service:</p>
 <pre><code>http://guarded-reef-2677.herokuapp.com/api/users
 </code></pre>
 
-<ul>
-<li>The portions <strong>/api/users</strong> is determined by how we, the developers, wrote the application (<em>donation-service</em>).</li>
-<li>Notice where the actual name of the repo is located in the URI:<ul>
-<li><em>guarded-reef-2677</em>.</li>
-</ul>
-</li>
-</ul>
-<p>Copy this URI into a brower's navigation bar: unfortunately an application error is flagged.</p>
-<ul>
-<li>The reason for this is that we have not set up a suitable database on Heroku. We shall attend to this shortly.</li>
-</ul>
-<p><strong>Changing name of Heroku app</strong></p>
+<p>The portions <strong>/api/users</strong> is determined by how we, the developers, wrote the application (<em>donation-service</em>). Notice where the actual name of the repo is located in the URI:</p>
+<pre><code>- guarded-reef-2677
+</code></pre>
+<p>Copy this URI into a browser's navigation bar: unfortunately an application error is flagged. The reason for this is that we have not set up a suitable database on Heroku. We shall attend to this shortly.</p>
+<h3>Changing name of Heroku app</h3>
 <p>We shall now change the Heroku-assigned name <em>guarded-reef-2677</em> to a more meaningful name <em>org-wit-donation-service-id</em> where <strong>id</strong> is your email address excluding @, periods, underscores and so on. For example john_doe@organs.com becomes johndoeorganscom. This is just a suggestion to ensure that the name you choose for the app on Heroku will be unique.</p>
 <p>Run the following command within the Heroku terminal:</p>
 <pre><code>heroku apps:rename org-wit-donation-service-id
@@ -379,31 +383,26 @@ git push heroku master
 <p><a href="https://devcenter.heroku.com/articles/git">Deploying with Git</a></p>
 	  </section>
 	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     <h1>Regenerate project</h1>
-<p>You can regenerate your work environment as follows:</p>
+	     <h1>Remote Repository</h1>
+<p>This step is optional - and you can safely skip it for the moment.</p>
+<p>Your app is now stored in a remote repository on heroku. You can regenerate it on another mahcine / folder if you wish:</p>
 <ul>
-<li>Create a working folder, for example <em>workspacePlay</em></li>
+<li>Create a new working folder, for example <em>workspacePlay</em></li>
 <li>Change directory into this folder</li>
 </ul>
 <pre><code>cd workspacePlay
 </code></pre>
 
-<ul>
-<li>If not already logged in to Heroku, do so now:</li>
-</ul>
+<p>If not already logged in to Heroku, do so now:</p>
 <pre><code>heroku login
 </code></pre>
 
 <p>Obtain a clone of the remote repo:</p>
-<pre><code> git clone git@heroku.com:org-wit-donation-service-id.git
+<pre><code> git clone git@heroku.com: NAME OF THE REPO HERE.git
 </code></pre>
 
 <p><img alt="Figure 1: Cloning heroku repository" src="img/heroku_017.png"></p>
-<p>The project will now be recreated in a folder <em>org-wit-donation-service-id</em>.</p>
-<ul>
-<li>Change directory to <em>org-wit-donation-service-id</em>.</li>
-<li>Run the command to allow the project to be imported into an Eclipse workspace:</li>
-</ul>
+<p>The project will now be recreated in a folder named after the application, Change directory to this folder and run the command to allow the project to be imported into an Eclipse workspace:</p>
 <pre><code>play eclipsify
 </code></pre>
 
@@ -434,12 +433,16 @@ git remote add heroku git@heroku.com:org-wit-donation-service-id.git
 <pre><code>git push heroku master
 </code></pre>
 	  </section>
-	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
+	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
 	     <h1>Exercises</h1>
 <p>Archive of donation-service as used in this lab</p>
 <ul>
 <li><a href="archives/org-wit-donation-service-id.zip">donation-service</a></li>
 </ul>
+<h2>Exercise 1:</h2>
+<p>Using postman, create a few Users and Donations on the app hosted in heroku. Verify that the creation/deleting proceeds as expected</p>
+<h2>Exercise 2:</h2>
+<p>You have some tests in the donation-service-test project, which currently tests the app running on localhost. Change this app such that it will test the application you have now deployed to heroku.  A one line change to the Rest class should be sufficient.</p>
 	  </section>
 <script>
 
