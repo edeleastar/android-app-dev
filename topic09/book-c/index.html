@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> Donation-Service-03 </title>
+     <title> Donation-06 </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -125,7 +125,7 @@ header h3
   <nav class="ui fixed top pointing borderless inverted menu">
     <header class="header item"> <a href="../index.html">9: APIs</a></header>
     <div class="right tab-menu menu">
-          <a class="item" data-tab="Donation-Service-03"> Donation-Service-03 </a>
+          <a class="item" data-tab="Donation-06"> Donation-06 </a>
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
@@ -138,7 +138,7 @@ header h3
 
   <br>
 
-	  <section data-tab="Donation-Service-03" class="ui tab stacked moodle-book segment">
+	  <section data-tab="Donation-06" class="ui tab stacked moodle-book segment">
 	     <h1>Objectives</h1>
 <p>Deploy the donation-service app to Heroku. This will require a heroku account + a locally installed git tool set.</p>
 	  </section>
@@ -182,7 +182,14 @@ header h3
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>Local Repository</h1>
+<ul>
+<li>
+<p>Delete the file Bootstrap.java (if it exists).</p>
+</li>
+<li>
 <p>In the donation-service-play project, create a file called '.gitignore'. Here are its contents:</p>
+</li>
+</ul>
 <pre><code># Ignore all dotfiles...
 .*
 # except for .gitignore
@@ -215,18 +222,24 @@ server.pid
 *.eml
 </code></pre>
 
-<p>In the same folder, create and a file named <strong>ProcFile</strong> containing the following:</p>
+<ul>
+<li>In the same folder, create and a file named <strong>ProcFile</strong> containing the following:</li>
+</ul>
 <pre><code>web: play run --http.port=$PORT $PLAY_OPTS
 </code></pre>
 
-<p>Next, we need to make one significant change to the app. Open the 'Users' model and adjust the the class as follows:</p>
+<ul>
+<li>Next, we need to make one significant change to the app. Open the 'Users' model and adjust the the class as follows:</li>
+</ul>
 <pre><code>@Entity
 @Table(name=&quot;`User`&quot;) //This is necessary because User is a reserved word in PostGreSQL
 public class User extends Model
 </code></pre>
 
 <p>'User' is a reserved table name in the database, so we change it to something slightly different.</p>
-<p>In Git Bash terminal <em>cd</em> into the folder containing your donation-service-play project, and create a git repository for the project:</p>
+<ul>
+<li>In Git Bash terminal <em>cd</em> into the folder containing your donation-service-play project, and create a git repository for the project:</li>
+</ul>
 <pre><code>git init
 </code></pre>
 
@@ -247,7 +260,7 @@ git commit -m 'first commit'
 <p>Create an account on <a href="http://www.heroku.com">Heroku</a>. Note carefully your login and password.</p>
 <p>Download and install <a href="https://toolbelt.heroku.com">Heroku Toolbelt for Windows</a>. Close and reopen Git Bash following installation of Toolbelt. </p>
 <p>Once installed, verify installation ok by typing </p>
-<pre><code>heroku --version* 
+<pre><code>heroku --version
 </code></pre>
 
 <p>The response should be something like:</p>
@@ -273,7 +286,7 @@ git commit -m 'first commit'
 <p>and observe a response similar to that in Figure 2.</p>
 <p><img alt="Figure 2: Checking remote repo on Heroku" src="img/heroku_004.png"></p>
 <p>Now add your SSH keys to Heroku:</p>
-<pre><code>heroku keys: add
+<pre><code>heroku keys:add
 </code></pre>
 
 <p><img alt="Figure 3: Heroku: Adding SSH Keys" src="img/heroku_005.png"></p>

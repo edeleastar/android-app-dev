@@ -275,69 +275,36 @@ header h3
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>Model</h1>
-<p>Add the following file (which manages the thumbnail filename) to the models folder:</p>
-<p>Filename: Photo.java</p>
-<pre><code>package org.wit.myrent.models;
-
-import java.io.Serializable;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class Photo implements Serializable
-{
-  private static final long serialVersionUID = 1L;
-
-  private static final String JSON_FILENAME = &quot;filename&quot;;
-
-  private String filename;
-
-  /** create a Photo representing an existing file on disk */
-  public Photo(String filename)
-  {
-    this.filename = filename;
-  }
-
-  public Photo(JSONObject json) throws JSONException
-  {
-    filename = json.getString(JSON_FILENAME);
-  }
-
-  public JSONObject toJSON() throws JSONException
-  {
-    JSONObject json = new JSONObject();
-    json.put(JSON_FILENAME, filename);
-    return json;
-  }
-
-  public String getFilename()
-  {
-    return filename;
-  }
-}
-</code></pre>
-
-<p>The model Residence class requires a new field to represent the photo (thumbnail).</p>
+<p>The model Residence class requires a new field to represent the photo filename:</p>
 <ul>
 <li>Add this field and its json counterpart:</li>
 </ul>
-<pre><code>public Photo photo;
+<pre><code>public String photo;
 private static final String JSON_PHOTO = &quot;photo&quot;;  
 
 </code></pre>
 
-<p>Initialize the new Photo field in the overloaded constructor:</p>
-<pre><code>    if (json.has(JSON_PHOTO)) 
-    {
-      photo = new Photo(json.getJSONObject(JSON_PHOTO));
-    }
+<p>Initialize the new Photo field in the constructors:</p>
+<p>Default:</p>
+<pre><code>public Residence()
+{
+  ...
+  photo = &quot;photo&quot;;
+}
+
+public Residence(JSONObject json) throws JSONException
+{
+  ...
+  photo = json.getString(JSON_PHOTO); 
+}  
 </code></pre>
 
 <p>Add the following statement to the method <em>toJSON</em>:</p>
-<pre><code>    if (photo != null)  
-    {
-      json.put(JSON_PHOTO, photo.toJSON());    
-    }
+<pre><code>public JSONObject toJSON() throws JSONException
+{
+  ...
+  json.put(JSON_PHOTO , photo);
+}
 </code></pre>
 	  </section>
 	  <section data-tab="04" class="ui tab stacked moodle-book segment">
@@ -375,21 +342,17 @@ import android.widget.ImageView;
 public class CameraHelper
 {
 
+  /**
+   * Render the photo on the ImageView
+   */
   public static void showPhoto(Activity activity, Residence res, ImageView photoView)
-  {
-    // (re)set the image button's image based on our photo
-    Photo p = res.photo;
-    BitmapDrawable b = null;
-    if (p != null)
-    {
-      String path = activity.getFileStreamPath(p.getFilename()).getAbsolutePath();
-      b = getScaledDrawable(activity, path);
-    }
+  { 
+    String path = activity.getFileStreamPath(res.photo).getAbsolutePath();
+    BitmapDrawable b = getScaledDrawable(activity, path);
     if (b != null)
-    {
       photoView.setImageDrawable(b);
-    }
-  } 
+  }
+
   /**
    * Get a BitmapDrawable from a local file that is scaled down to fit the
    * current Window size.
@@ -634,8 +597,7 @@ import static org.wit.android.helpers.FileIOHelper.writeBitmap;
 	     <h1>Fragments</h1>
 <p>Integrate camera module into ResidenceFragment.</p>
 <p>Add imports:</p>
-<pre><code>import org.wit.myrent.models.Photo;
-import static org.wit.android.helpers.CameraHelper.showPhoto;
+<pre><code>import static org.wit.android.helpers.CameraHelper.showPhoto;
 import android.widget.ImageView;
 </code></pre>
 
@@ -687,7 +649,7 @@ private ImageView photoView;
       String filename = data.getStringExtra(ResidenceCameraActivity.EXTRA_PHOTO_FILENAME);
       if (filename != null)
       {
-        residence.photo = new Photo(filename);
+        residence.photo = filename;
         showPhoto(getActivity(), residence, photoView );
       }
       break;

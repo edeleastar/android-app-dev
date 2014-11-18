@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> 10: Implementing APIs </title>
+     <title> 10: REST </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -148,9 +148,8 @@ header h3
         <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
         <a class="item" href=" ../topic07/index.html"> 7: TDD | Embedded Map & Orientation </a>
         <a class="item" href=" ../topic08/index.html"> 8: JPA | Camera </a>
-        <a class="item" href=" ../topic09/index.html"> 9: APIs | Maps  </a>
-        <a class="active item" href=" ../topic10/index.html"> 10: Implementing APIs </a>
-        <a class="item" href=" ../topic11/index.html"> 11: REST Clients & Servers </a>
+        <a class="item" href=" ../topic09/index.html"> 9: APIs </a>
+        <a class="active item" href=" ../topic10/index.html"> 10: REST </a>
           <a class="item" href=" ../topicwall.html"> All Topics </a>
           <a class="item" href=" ../labwall.html"> All Labs </a>
       </div>
@@ -160,37 +159,47 @@ header h3
 
 
     <section id="topic" class="ui doubling twelve wide column segment">
-      <h1>10: Implementing APIs</h1>
+      <h1>10: REST</h1>
       <div class="ui cards">
 <div  class="ui card">
   <div class="cover">
-    <div style="background-image: url('./pdf/aa-api-intro.png');" class="image-thumbnail"> </div>
+    <div style="background-image: url('./pdf/a-donation-service-test.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./pdf/aa-api-intro.pdf" class="header">Introducing APIs</a>
+    <a  href="./pdf/a-donation-service-test.pdf" class="header">Donation Service Test</a>
   </div>
   <div class="extra content">
-    
+    <p>A standard Java project to implement a JUnit set of tests of the donation Service API. This is essential to ensure the stability and robustness of the REST interface.</p>
   </div>
 </div><div  class="ui card">
   <div class="cover">
-    <div style="background-image: url('./pdf/ab-processes-and-threads.png');" class="image-thumbnail"> </div>
+    <div style="background-image: url('./pdf/b-processes-and-threads.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./pdf/ab-processes-and-threads.pdf" class="header">Processes & Threads</a>
+    <a  href="./pdf/b-processes-and-threads.pdf" class="header">Processes & Threads</a>
   </div>
   <div class="extra content">
-    
+    <p>An introduction to the Java threading model. Threads are necessary for applications that wish to access network services in Android.</p>
   </div>
 </div><div  class="ui card">
   <div class="cover">
-    <div style="background-image: url('./pdf/ac-donation-service.png');" class="image-thumbnail"> </div>
+    <div style="background-image: url('./pdf/c-donation-android-v4.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./pdf/ac-donation-service.pdf" class="header">Donation Service</a>
+    <a  href="./pdf/c-donation-android-v4.pdf" class="header">Donation Android V4</a>
   </div>
   <div class="extra content">
-    
+    <p>This version of the Donation Android application will access the REST interface to validate a user, and download the list of donations to display in the reports view.</p>
+  </div>
+</div><div  class="ui card">
+  <div class="cover">
+    <div style="background-image: url('./pdf/d-donation-android-v4-models.png');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./pdf/d-donation-android-v4-models.pdf" class="header">Donation Android Models</a>
+  </div>
+  <div class="extra content">
+    <p>The android donation application is now quite sophisticated. Here we review the models for both v3 and v4 of the app.</p>
   </div>
 </div>      </div>
       <h1> Labs </h1>
@@ -200,28 +209,20 @@ header h3
     <div style="background-image: url('./book-a/img/main.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./book-a/index.html" class="header">Lab: Donation-Android-01</a>
+    <a  href="./book-a/index.html" class="header">Lab: Donation-06</a>
   </div>
   <div class="extra content">
-    <ul>
-<li>Create a version of the the donation app as a play project</li>
-<li>Expose an 'API' from this app to enable other programmes to use it</li>
-<li>Rework the Donation android app to use this api</li>
-</ul>
+    <p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
   </div>
 </div><div class="ui card">
   <div class="cover">
     <div style="background-image: url('None');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./book-b/index.html" class="header">Lab: Donation-Service-02</a>
+    <a  href="./book-b/index.html" class="header">Lab: Donation-07</a>
   </div>
   <div class="extra content">
-    <ul>
-<li>Deploy the donation-service app to cloudbees</li>
-<li>Implement donation-android/donation-service interaction for registration and donation activities </li>
-<li>Explore Eclipse Refactoring in more depth</li>
-</ul>
+    <p>Rework the Donation-android activities to support signup and donate activities using the REST service.</p>
   </div>
 </div>      </div>
     </section>

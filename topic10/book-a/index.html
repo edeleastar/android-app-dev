@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> Donation-Android-01 </title>
+     <title> Donation-06 </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -123,39 +123,40 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">10: Implementing APIs</a></header>
+    <header class="header item"> <a href="../index.html">10: REST</a></header>
     <div class="right tab-menu menu">
-          <a class="item" data-tab="Donation-Android-01"> Donation-Android-01 </a>
+          <a class="item" data-tab="Donation-06"> Donation-06 </a>
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
           <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
           <a class="item" data-tab="Exercises"> Exercises </a>
     </div>
   </nav>
 
   <br>
 
-	  <section data-tab="Donation-Android-01" class="ui tab stacked moodle-book segment">
+	  <section data-tab="Donation-06" class="ui tab stacked moodle-book segment">
 	     <h1>Objectives</h1>
-<ul>
-<li>Create a version of the the donation app as a play project</li>
-<li>Expose an 'API' from this app to enable other programmes to use it</li>
-<li>Rework the Donation android app to use this api</li>
-</ul>
+<p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Back in donation-android App</h1>
-<p>There is a folder in your eclipse project called 'libs'.  Download and copy this jar into libs:</p>
+	     <h1>Donation-android app</h1>
+<p>This is the donation android app as we left it with Donation-03 lab:</p>
+<p><a href="archives/donation-android-v3.zip">donation-android-v3.zip</a></p>
+<p>Import this into your eclipse environment and make sure it compiles and launches successfully.</p>
+<h2>Libraries</h2>
+<p>There is a folder in the project called 'libs'.  Download and copy this jar into libs:</p>
 <ul>
-<li>
-<p><a href="archives/gson-2.2.2.jar">gson-2.2.2.jar</a></p>
-</li>
-<li>
-<p>add to build path (right click and add to build path in Eclipse)</p>
-</li>
+<li><a href="archives/flexjson-2.1.jar">flexjson-2.1.jar</a></li>
 </ul>
-<p>In Eclipse, create new package <code>app.http</code>, and bring in these classes:</p>
+<p>and he add it to build path (right click and add to build path in Eclipse)</p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>app.http</h1>
+<p>Create a new package in the android app called app.http, and introduce these classes:</p>
 <h2>Response</h2>
 <pre><code class="java">package app.http;
 
@@ -265,7 +266,7 @@ import org.apache.http.params.HttpParams;
 public class Rest
 {
   private static DefaultHttpClient httpClient = null;
-  private static final String URL = &quot;http://10.0.2.2:9000&quot;;
+  private static final String URL = &quot;http://10.0.3.2:9000&quot;;
 
   private static DefaultHttpClient httpClient()
   {
@@ -326,53 +327,63 @@ public class Rest
 }
 </code></pre>
 	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Models</h1>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Models - API Classes</h1>
 <p>We already have a models package - introduce these new classes into this package:</p>
 <h2>JsonParsers</h2>
 <pre><code class="java">package app.models;
 
-import java.lang.reflect.Type;
 import java.util.List;
-
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
+import flexjson.JSONDeserializer;
+import flexjson.JSONSerializer;
 
 public class JsonParsers
 {
-  static Gson gson = new Gson();
+  public static JSONSerializer userSerializer     = new JSONSerializer().exclude(&quot;class&quot;)
+                                                                        .exclude(&quot;persistent&quot;)
+                                                                        .exclude(&quot;entityId&quot;); 
+  public static JSONSerializer donationSerializer = new JSONSerializer().exclude(&quot;class&quot;)
+                                                                        .exclude(&quot;persistent&quot;)
+                                                                        .exclude(&quot;entityId&quot;); 
 
   public static User json2User(String json)
   {
-    return gson.fromJson(json, User.class);   
+    return new JSONDeserializer&lt;User&gt;().deserialize(json, User.class); 
   }
 
   public static List&lt;User&gt; json2Users(String json)
   {
-    Type collectionType = new TypeToken&lt;List&lt;User&gt;&gt;() {}.getType();
-    return gson.fromJson(json, collectionType); 
+    return new JSONDeserializer&lt;ArrayList&lt;User&gt;&gt;().use(&quot;values&quot;, User.class)
+                                                  .deserialize(json);
   }
 
   public static String user2Json(Object obj)
   {
-    return gson.toJson(obj);
-  }  
+    return userSerializer.serialize(obj);
+  }
+
+  public static List&lt;User&gt; users2Json(String json)
+  {
+    return new JSONDeserializer&lt;ArrayList&lt;User&gt;&gt;().use(&quot;values&quot;, User.class)
+                                                  .deserialize(json);
+  } 
+
 
   public static Donation json2Donation(String json)
   {
-    return gson.fromJson(json, Donation.class);    
+    return  new JSONDeserializer&lt;Donation&gt;().deserialize(json, Donation.class);    
   }
 
   public static String donation2Json(Object obj)
   {
-    return gson.toJson(obj);
+    return donationSerializer.serialize(obj);
   }  
 
   public static List&lt;Donation&gt; json2Donations(String json)
   {
-    Type collectionType = new TypeToken&lt;List&lt;Donation&gt;&gt;() {}.getType();
-    return gson.fromJson(json, collectionType);    
+    return new JSONDeserializer&lt;ArrayList&lt;Donation&gt;&gt;().use(&quot;values&quot;, Donation.class)
+        .deserialize(json);
   }  
 }
 </code></pre>
@@ -472,7 +483,63 @@ class CreateDonation extends Request
 }
 </code></pre>
 	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Models - User &amp; Donation</h1>
+<p>The curret User and Donation classes need some minor adjustments. Specifically, we need to include the following in both:</p>
+<ul>
+<li>id</li>
+<li>default (no argument) constructor</li>
+</ul>
+<h2>User</h2>
+<pre><code>package app.models;
+
+public class User 
+{
+  public Long   id;
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+  public User()
+  {}
+
+  public User(String firstName, String lastName, String email, String password)
+  {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+  } 
+}
+</code></pre>
+
+<h2>Donation</h2>
+<pre><code>package app.models;
+
+public class Donation
+{
+  public Long   id;
+  public int    amount;
+  public String method;
+
+  Donation()
+  {}
+
+  public Donation (int amount, String method)
+  {
+    this.amount = amount;
+    this.method = method;
+  }
+
+  public String toString()
+  {
+    return amount + &quot;, &quot; + method;
+  }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
 	     <h1>Login Activity</h1>
 <p>This is a restructuring of Login to fetch the users from the donation-service as soon as the activity starts, and then to handle the response appropriately.</p>
 <pre><code class="java">package app.activities;
@@ -520,7 +587,7 @@ public class Login extends Activity implements Response&lt;User&gt;
   }
 
   @Override
-  public void setReponse(List&lt;User&gt; aList)
+  public void setResponse(List&lt;User&gt; aList)
   {
     DonationApp app = (DonationApp) getApplication();
     app.users = aList;
@@ -535,7 +602,7 @@ public class Login extends Activity implements Response&lt;User&gt;
   }
 
   @Override
-  public void setReponse(User anObject)
+  public void setResponse(User anObject)
   {}
 }
 </code></pre>
@@ -547,7 +614,7 @@ public class Login extends Activity implements Response&lt;User&gt;
 
 <p>Try the app now (make sure donation-service play app is running). It should let you log in with user credentials download from the service (try homer@simpson.com, secret - without registering).</p>
 	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
 	     <h1>Report</h1>
 <p>Finally, the report activity:</p>
 <pre><code class="java">package app.activities;
@@ -615,7 +682,7 @@ public class Report extends Activity implements Response &lt;Donation&gt;
   }
 
   @Override
-  public void setReponse(List&lt;Donation&gt; aList)
+  public void setResponse(List&lt;Donation&gt; aList)
   {
     app.donations     = aList;
     adapter.donations = aList;
@@ -623,7 +690,7 @@ public class Report extends Activity implements Response &lt;Donation&gt;
   }
 
   @Override
-  public void setReponse(Donation anObject)
+  public void setResponse(Donation anObject)
   {
   }
 
@@ -676,21 +743,20 @@ class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
 	  </section>
 	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
 	     <h1>Exercises</h1>
-<p>Archive of projects  so far:</p>
+<p>Archive of project so far:</p>
 <ul>
-<li><a href="archives/donation-service.zip">donation-service.zip</a></li>
-<li><a href="archives/donation-android.zip">donation-android.zip</a></li>
+<li><a href="archives/donation-android-v4.zip">donation-android-v4.zip</a></li>
 </ul>
-<h2>Exercise 1: Cloudbees</h2>
-<p>Publish the donation-service app to Cloudbees. Using the url of the cloudbees app, change the Rest URL:</p>
+<h2>Exercise 1: Heroku</h2>
+<p>Publish the donation-service app to Heroku. Using the url of the heroku app, change the Rest URL:</p>
 <pre><code>public class Rest
 {
   private static DefaultHttpClient httpClient = null;
-  private static final String URL = &quot;http://10.0.2.2:9000&quot;;
+  private static final String URL = &quot;http://10.0.3.2:9000&quot;;
   //...
 </code></pre>
 
-<p>... to your cloudbees app. See if your android app now reads from the cloudbees app.</p>
+<p>... to your deployed app. See if your android app now reads from the heroku</p>
 <h2>Exercise 2:</h2>
 <p>The application as it currently stands uses two aspects of the donation play application:</p>
 <ul>
@@ -706,11 +772,6 @@ class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
 <p>Because the donation-service play app has no UI, keep an eye on the database via the database browser in the usual way:</p>
 <ul>
 <li><a href="http://localhost/@db">http://localhost/@db</a></li>
-</ul>
-<h2>Exercise 3:</h2>
-<p>Migrate over the UI from the donation play app you completed during the summer school. This is a copy of the app here:</p>
-<ul>
-<li><a href="archives/donation.zip">donation.zip</a></li>
 </ul>
 	  </section>
 <script>

@@ -4,7 +4,7 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> Donation-Service-02 </title>
+     <title> Donation-07 </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -123,9 +123,9 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">10: Implementing APIs</a></header>
+    <header class="header item"> <a href="../index.html">10: REST</a></header>
     <div class="right tab-menu menu">
-          <a class="item" data-tab="Donation-Service-02"> Donation-Service-02 </a>
+          <a class="item" data-tab="Donation-07"> Donation-07 </a>
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
@@ -136,96 +136,13 @@ header h3
 
   <br>
 
-	  <section data-tab="Donation-Service-02" class="ui tab stacked moodle-book segment">
+	  <section data-tab="Donation-07" class="ui tab stacked moodle-book segment">
 	     <h1>Objectives</h1>
-<ul>
-<li>Deploy the donation-service app to cloudbees</li>
-<li>Implement donation-android/donation-service interaction for registration and donation activities </li>
-<li>Explore Eclipse Refactoring in more depth</li>
-</ul>
+<p>Rework the Donation-android activities to support signup and donate activities using the REST service.</p>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise Solutions</h1>
-<p>These are the completed labs from last week:</p>
-<ul>
-<li><a href="archives/donation-service.zip">donation-service.zip</a></li>
-<li><a href="archives/donation-android.zip">donation-android.zip</a></li>
-</ul>
-<h2>Exercise 1: Cloudbees</h2>
-<p>Publish the donation-service app to Cloudbees - and have the android app user that service instead of the locally hosted version.</p>
-<p>You may have forgotten the steps for cloudbees deployment - but it involves:</p>
-<ul>
-<li>Creating an Application on Cloudbees</li>
-<li>Creating a Database on Cloudbees</li>
-</ul>
-<p>.. and then make the following changes in the play project:</p>
-<h3>app/dependenies.yaml</h3>
-<h1>Application dependencies</h1>
-<p>In dos/terminal, enter:</p>
-<pre><code> play install cloudbees
-</code></pre>
-
-<p>Edit app/dependenies.yaml and make following change:</p>
-<pre><code>require:
-    - play
-    - play -&gt; cloudbees 0.2.2
-</code></pre>
-
-<p>Change into the donation-service folder and enter:</p>
-<pre><code>play deps
-</code></pre>
-
-<h3>app/application.conf</h3>
-<p>Comment out the in memory setup for the database:</p>
-<pre><code>#db=mem
-</code></pre>
-
-<p>.. and then bring in the setting for cloudbees:</p>
-<pre><code>db.url=jdbc:cloudbees://YOUR_DB_NAME
-db.driver=com.mysql.jdbc.Driver 
-db.user=YOUR_DB_USER_NAME
-db.pass=YOUR_DB_USER_PASSWORD
-
-jpa.ddl=create
-</code></pre>
-
-<p>and in the same file, you cloudbees keys:</p>
-<pre><code>bees.api.key=YOUT_KEY
-bees.api.secret=YOUR_SECRET
-bees.api.domain=YOUR_DOMAIN
-bees.api.name=YOUR_APP_NAME
-</code></pre>
-
-<p>The command to deploy the app is </p>
-<pre><code>play bees:app:deploy
-</code></pre>
-
-<p>The Rest class has local ip address hardcoded:</p>
-<pre><code>public class Rest
-{
-  private static DefaultHttpClient httpClient = null;
-  //private static final String URL = &quot;http://10.0.2.2:9000&quot;;
-  private static final String URL = &quot;http://donation-edel020.edel020.cloudbees.net&quot;;
-</code></pre>
-
-<p>So replace it with your own cloudbees url (not the one above!)</p>
-	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 2: When users sign up, their details are send to the donation-service play app</h1>
-<p>The application as it currently stands uses two aspects of the donation play application:</p>
-<ul>
-<li>Let users log in who are already 'registered' online</li>
-<li>Display a list of donations downloaded form the web service</li>
-</ul>
-<p>See if you can figure out how to:</p>
-<ul>
-<li>when users sign up, their details are send to the donation-service play app</li>
-<li>when a donation is made, it is sent to the donation-service play app</li>
-</ul>
-<p>The facilities are already in the play app for this, so you will only be making changes to the android application.</p>
-<h1>Solution</h1>
-<h2>When users sign up, their details are send to the donation-service play app</h2>
-<p>Before working up to a solution to this, we might first introduce a new  attribute in the DonationApp class:</p>
+	     <h1>Sign up support</h1>
+<p>First introduce a new  attribute in the DonationApp class:</p>
 <pre><code class="java">  public boolean         donationServiceAvailable = false;
 </code></pre>
 
@@ -417,8 +334,8 @@ public class Signup extends Activity implements Response&lt;User&gt;
 
 <p>This should work now.</p>
 	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 2: When a donation is made, it is sent to the donation-service play app</h1>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Donate Support</h1>
 <p>This takes a bit more work, and involved refactoring the donate button handler to only make the donation in the callback method:</p>
 <pre><code class="java">package app.activities;
 
@@ -530,30 +447,17 @@ public class Donate extends Activity implements Response&lt;Donation&gt;
 }
 </code></pre>
 	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     
+	  </section>
 	  <section data-tab="" class="ui tab stacked moodle-book segment">
-	     <h1>Refactor / Rename</h1>
-<p>The donation-android app has an unfortunate type in the name of the Response interface methods:</p>
-<pre><code class="java">public interface Response&lt;T&gt;
-{
-  public void setReponse(List&lt;T&gt; aList);
-  public void setReponse(T anObject);
-  public void errorOccurred (Exception e);
-}
-</code></pre>
-
-<p>Missing an 's' on setReponse!</p>
-<p>Changing this will cause errors throughout our activities - however, there is a way to change this and have all the activities changed automatically. This is to use the Eclipse 'refactorring' menu options.</p>
-<p>This needs to be accessed via eclipse package explorer view:</p>
-<p><img alt="" src="img/01.png">
-<img alt="" src="img/02.png"></p>
-<p>Do this for both methods. If you get warning - press "continue" anyway.</p>
-<p>If all goes according to plan, it should successfully rename all relevant artifacts.</p>
+	     
 	  </section>
 	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
 	     <h1>Exercises</h1>
 <p>Archive of the lab so far:</p>
 <ul>
-<li><a href="archives/donation-android-v4.zip">donation-android-v4.zip</a></li>
+<li><a href="archives/donation-android-v5.zip">donation-android-v5.zip</a></li>
 </ul>
 <h2>Exercise 1</h2>
 <p>Does it make sense to download the full list of users when we load the Welcome activity? Perhaps it might be better if we just attempted to reach donation-service, and indicate to the user if it is available or not.</p>
