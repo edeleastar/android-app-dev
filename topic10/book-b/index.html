@@ -273,69 +273,6 @@ public class Login extends Activity
 </code></pre>
 
 <p>We will only be reaching this activity if we have successfully connected to the service.</p>
-<p>This is a revised version of Signup, which makes use of the service:</p>
-<pre><code class="java">package app.activities;
-
-import java.util.List;
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-import app.donation.R;
-import app.http.Response;
-import app.main.DonationApp;
-import app.models.DonationServiceAPI;
-import app.models.User;
-
-public class Signup extends Activity implements Response&lt;User&gt;
-{
-  private DonationApp app;
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState)
-  {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_signup);
-    app = (DonationApp) getApplication();
-  }
-
-  public void registerPressed (View view) 
-  {
-    TextView firstName = (TextView)  findViewById(R.id.firstName);
-    TextView lastName  = (TextView)  findViewById(R.id.lastName);
-    TextView email     = (TextView)  findViewById(R.id.Email);
-    TextView password  = (TextView)  findViewById(R.id.Password);
-
-    User user = new User (firstName.getText().toString(), lastName.getText().toString(), email.getText().toString(), password.getText().toString());
-
-    DonationServiceAPI.createUser(this, this, &quot;Registering new user&quot;, user);
-  }
-
-  @Override
-  public void setReponse(List&lt;User&gt; aList)
-  {
-  }
-
-  @Override
-  public void setReponse(User user)
-  { 
-    app.users.add(user);
-  }
-
-  @Override
-  public void errorOccurred(Exception e)
-  {
-    app.donationServiceAvailable = false;
-    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
-    toast.show();
-    startActivity (new Intent(this, Welcome.class));
-  }
-}
-</code></pre>
-
-<p>This should work now.</p>
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
 	     <h1>Signup</h1>
