@@ -129,7 +129,7 @@ header h3
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="">  </a>
+          <a class="item" data-tab="04"> 04 </a>
           <a class="item" data-tab="Exercises"> Exercises </a>
     </div>
   </nav>
@@ -141,13 +141,14 @@ header h3
 <p>Rework the Donation-android activities to support signup and donate activities using the REST service.</p>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Sign up support</h1>
+	     <h1>Welcome</h1>
 <p>First introduce a new  attribute in the DonationApp class:</p>
 <pre><code class="java">  public boolean         donationServiceAvailable = false;
 </code></pre>
 
 <p>Every time we connect, we will set the last know status of our connection to the service here:/</p>
-<p>Currently, the app loads the users from the service in the Login activity. This might not bee such a good idea. Lets move it to the welcome screen, so we will have preloaded the user list before starting the login activity:</p>
+<p>Currently, the app loads the users from the service in the Login activity. This might not bee such a good idea. Lets move it to the welcome screen, so we will have preloaded the user list before starting the login activity</p>
+<p>Here is an alternative version of the Welcome Activity to do this:</p>
 <pre><code class="java">package app.activities;
 
 import java.util.List;
@@ -207,7 +208,7 @@ public class Welcome extends Activity implements Response&lt;User&gt;
   }
 
   @Override
-  public void setReponse(List&lt;User&gt; aList)
+  public void setResponse(List&lt;User&gt; aList)
   {
     app.users = aList;
     app.donationServiceAvailable = true;
@@ -221,13 +222,15 @@ public class Welcome extends Activity implements Response&lt;User&gt;
   }
 
   @Override
-  public void setReponse(User anObject)
+  public void setResponse(User anObject)
   {}
 }
-
 </code></pre>
 
 <p>Read the above class carefully - and note how we make use of the `donationServiceAvailable' flag in DonationApp.</p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Login</h1>
 <p>Login can now be simplified to its original form:</p>
 <pre><code class="java">package app.activities;
 
@@ -334,9 +337,79 @@ public class Signup extends Activity implements Response&lt;User&gt;
 
 <p>This should work now.</p>
 	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Signup</h1>
+<p>This is a revised version of Signup, which makes use of the service:</p>
+<pre><code class="java">package app.activities;
+
+import java.util.List;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+import app.donation.R;
+import app.http.Response;
+import app.main.DonationApp;
+import app.models.DonationServiceAPI;
+import app.models.User;
+
+public class Signup extends Activity implements Response&lt;User&gt;
+{
+  private DonationApp app;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_signup);
+    app = (DonationApp) getApplication();
+  }
+
+  public void registerPressed (View view) 
+  {
+    TextView firstName = (TextView)  findViewById(R.id.firstName);
+    TextView lastName  = (TextView)  findViewById(R.id.lastName);
+    TextView email     = (TextView)  findViewById(R.id.Email);
+    TextView password  = (TextView)  findViewById(R.id.Password);
+
+    User user = new User (firstName.getText().toString(), lastName.getText().toString(), email.getText().toString(), password.getText().toString());
+
+    DonationServiceAPI.createUser(this, this, &quot;Registering new user&quot;, user);
+  }
+
+  @Override
+  public void setResponse(List&lt;User&gt; aList)
+  {
+  }
+
+  @Override
+  public void setResponse(User user)
+  { 
+    app.users.add(user);
+    startActivity (new Intent(this, Welcome.class));
+  }
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    app.donationServiceAvailable = false;
+    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
+    toast.show();
+    startActivity (new Intent(this, Welcome.class));
+  }
+}
+</code></pre>
+
+<p>Check now that you can sign up for the donation service - and that a new user is in fact created. This is most easily checked using postman, or just browse to:</p>
+<p>http://localhost:9000/api/users</p>
+<p>If you are running the app locally.</p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
 	     <h1>Donate Support</h1>
-<p>This takes a bit more work, and involved refactoring the donate button handler to only make the donation in the callback method:</p>
+<p>This takes a bit more work, and involved refactoring the donate button handler to only make the donation in the callback method.</p>
+<p>Look carefully at the following - and compare it with the current version. In particular, examine the role of the setResponse method.</p>
 <pre><code class="java">package app.activities;
 
 import java.util.List;
@@ -422,7 +495,7 @@ public class Donate extends Activity implements Response&lt;Donation&gt;
    }
 
   @Override
-  public void setReponse(Donation acceptedDonation)
+  public void setResponse(Donation acceptedDonation)
   {
     Toast toast = Toast.makeText(this, &quot;Donation Accepteed&quot;, Toast.LENGTH_SHORT);
     toast.show();
@@ -442,16 +515,10 @@ public class Donate extends Activity implements Response&lt;Donation&gt;
   }
 
   @Override
-  public void setReponse(List&lt;Donation&gt; aList)
+  public void setResponse(List&lt;Donation&gt; aList)
   {}
 }
 </code></pre>
-	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     
-	  </section>
-	  <section data-tab="" class="ui tab stacked moodle-book segment">
-	     
 	  </section>
 	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
 	     <h1>Exercises</h1>
