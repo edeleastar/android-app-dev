@@ -4,13 +4,13 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> Donation-Service-02 </title>
+     <title> MyTweet-Assignment </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://beta.semantic-ui.com/dist/semantic.min.css">
-     <script src="http://beta.semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://beta.semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
+     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
 
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
@@ -123,447 +123,1152 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">11: REST Clients & Servers</a></header>
+    <header class="header item"> <a href="../index.html">11: MyTweet</a></header>
     <div class="right tab-menu menu">
-          <a class="item" data-tab="Donation-Service-02"> Donation-Service-02 </a>
+          <a class="item" data-tab="MyTweet-Assignment"> MyTweet-Assignment </a>
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="">  </a>
-          <a class="item" data-tab="Exercises"> Exercises </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="07"> 07 </a>
+          <a class="item" data-tab="08"> 08 </a>
+          <a class="item" data-tab="09"> 09 </a>
+          <a class="item" data-tab="10"> 10 </a>
+          <a class="item" data-tab="11"> 11 </a>
+          <a class="item" data-tab="12"> 12 </a>
     </div>
   </nav>
 
   <br>
 
-	  <section data-tab="Donation-Service-02" class="ui tab stacked moodle-book segment">
+	  <section data-tab="MyTweet-Assignment" class="ui tab stacked moodle-book segment">
 	     <h1>Objectives</h1>
+<p>The aim of this lab is to facilitate the creation of a <a href="http://alistair.cockburn.us/Walking+skeleton">walking skeleton</a> of the baseline  Android <strong>MyTweet</strong> assignment 2 app. </p>
+<p>The information provided should help you to:</p>
 <ul>
-<li>Deploy the donation-service app to cloudbees</li>
-<li>Implement donation-android/donation-service interaction for registration and donation activities </li>
-<li>Explore Eclipse Refactoring in more depth</li>
+<li>Develop the Android client-side app, working from a stripped-down version of your assignment 1 MyTweet app.</li>
+<li>Create the corresponding server-side Play app, deploying on both localhost and Heroku.</li>
+<li>Create a simple JUnit app to test the system by creating, reading and deleting data across the network.</li>
 </ul>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise Solutions</h1>
-<p>These are the completed labs from last week:</p>
+	     <h1>Client-Server</h1>
+<p>During the summer school we developed Donation, MyRent and WitPress apps using the Play framework.</p>
 <ul>
-<li><a href="archives/donation-service.zip">donation-service.zip</a></li>
-<li><a href="archives/donation-android.zip">donation-android.zip</a></li>
+<li>These were <a href="http://en.wikipedia.org/wiki/Web_application">web apps</a>. That is, they could be run in a web browser.</li>
+<li>We deployed these apps both locally (localhost) and on the cloud (Cloudbees).</li>
+<li>In both cases the model data is tightly bound to (is part of) the application. </li>
 </ul>
-<h2>Exercise 1: Cloudbees</h2>
-<p>Publish the donation-service app to Cloudbees - and have the android app user that service instead of the locally hosted version.</p>
-<p>You may have forgotten the steps for cloudbees deployment - but it involves:</p>
+<p>In this semester we have developed Donation, MyRent and MyTweet as mobile apps using the Android development framework.</p>
 <ul>
-<li>Creating an Application on Cloudbees</li>
-<li>Creating a Database on Cloudbees</li>
+<li>These are native Android apps and can be run on an emulator (Genymotion) or a physical device (Android Smart Phone).</li>
+<li>Unlike the summer school Play apps, these apps cannot be run in a web browser.</li>
+<li>As with the Play apps, the data is tightly bound to the application.</li>
 </ul>
-<p>.. and then make the following changes in the play project:</p>
-<h3>app/dependenies.yaml</h3>
-<h1>Application dependencies</h1>
-<p>In dos/terminal, enter:</p>
-<pre><code> play install cloudbees
-</code></pre>
-
-<p>Edit app/dependenies.yaml and make following change:</p>
-<pre><code>require:
-    - play
-    - play -&gt; cloudbees 0.2.2
-</code></pre>
-
-<p>Change into the donation-service folder and enter:</p>
-<pre><code>play deps
-</code></pre>
-
-<h3>app/application.conf</h3>
-<p>Comment out the in memory setup for the database:</p>
-<pre><code>#db=mem
-</code></pre>
-
-<p>.. and then bring in the setting for cloudbees:</p>
-<pre><code>db.url=jdbc:cloudbees://YOUR_DB_NAME
-db.driver=com.mysql.jdbc.Driver 
-db.user=YOUR_DB_USER_NAME
-db.pass=YOUR_DB_USER_PASSWORD
-
-jpa.ddl=create
-</code></pre>
-
-<p>and in the same file, you cloudbees keys:</p>
-<pre><code>bees.api.key=YOUT_KEY
-bees.api.secret=YOUR_SECRET
-bees.api.domain=YOUR_DOMAIN
-bees.api.name=YOUR_APP_NAME
-</code></pre>
-
-<p>The command to deploy the app is </p>
-<pre><code>play bees:app:deploy
-</code></pre>
-
-<p>The Rest class has local ip address hardcoded:</p>
-<pre><code>public class Rest
-{
-  private static DefaultHttpClient httpClient = null;
-  //private static final String URL = &quot;http://10.0.2.2:9000&quot;;
-  private static final String URL = &quot;http://donation-edel020.edel020.cloudbees.net&quot;;
-</code></pre>
-
-<p>So replace it with your own cloudbees url (not the one above!)</p>
+<p>In this lab we:</p>
+<ul>
+<li>
+<p>describe how to modify a MyTweet type app so that:</p>
+<ul>
+<li>The data may be transmitted across the network to be stored and manipulated in a customised Play app on a server. </li>
+<li>The server may return data to MyTweet such as a list of tweets from earlier sessions.</li>
+<li>The data may also be saved on the client-side in the MyTweet Android app. </li>
+<li>The server may reside on the localhost or the cloud such as Heroku (or on both).</li>
+</ul>
+</li>
+<li>
+<p>develop a corresponding Play server-side app</p>
+<ul>
+<li>This app can be accessed by any client that uses a compatible API such as, for example, MyTweetServiceAPI (or similarly named) that you will develop as part of this assignment.</li>
+<li>In the case of this assignment you will be using the MyTweet native Android app to access this server app.</li>
+<li>You could, however, also develop other clients, such as iOS, Windows phone or web-based clients, to access the server app.<ul>
+<li>This could be achieved without any modifications to the server app: the only requirement is that the client is suitably configured to communicate with the server api.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>write a JUnit test app</p>
+</li>
+</ul>
+<h2>MyTweet (Android client side app)</h2>
+<p>MyTweet refactoring: This  essentially comprises the following steps:</p>
+<ul>
+<li>We add a suite of software (a HTTP API) to the Android client app (MyTweet) that allows it to communicate with a server-side app that we shall deploy in the cloud on Heroku.</li>
+<li>At appropriate locations within the existing MyTweet app we will invoke http methods to communicate across the network with our server-side app and create, read and delete data, namely tweets.</li>
+<li>Data that we read will be transmitted from the server and received by the client (MyTweet), stored in memory and also, optionally, on disk (depending on how you design your app).<ul>
+<li>In this lab we have left the legacy serialization code in place so that server data, once transmitted to the client, is saved to a file.</li>
+</ul>
+</li>
+<li>When MyTweet composes and tweets, the tweet will be transmitted across the network, received by the server-side app and stored in its model in the cloud.</li>
+<li>When we delete a tweet or tweets, the data is deleted both on the phone or emulator and on the server.</li>
+</ul>
+<h2>MyTweetService (Play server-side app)</h2>
+<ul>
+<li>We create a new Play app in the usual way.</li>
+<li>The model layer is developed to closely mirror the model in the MyTweet client-side app.</li>
+<li>We do not develop a set of views (templates) as was the case in the summer school projects.<ul>
+<li>The MyTweet client-side app provides the view functionality.</li>
+</ul>
+</li>
+</ul>
+<p>A study of Figures 1, 2 and 3 below may provide further insight into the process.</p>
+<p><img alt="Figure 1: Example of Play app" src="img/02.png"></p>
+<p><img alt="Figure 2: Example of Android app" src="img/01.png"></p>
+<p><img alt="Figure 3: Example of Android client-side and Play server-side apps" src="img/03.png"></p>
 	  </section>
 	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 2: When users sign up, their details are send to the donation-service play app</h1>
-<p>The application as it currently stands uses two aspects of the donation play application:</p>
+	     <h1>Development</h1>
+<p>You are required to develop three apps:</p>
 <ul>
-<li>Let users log in who are already 'registered' online</li>
-<li>Display a list of donations downloaded form the web service</li>
+<li>Client-side  MyTweetTest app </li>
+<li>Client-side MyTweet native Android app</li>
+<li>Server-side MyTweetService app</li>
 </ul>
-<p>See if you can figure out how to:</p>
+<p>The server-side app should be deployed both on localhost and the cloud.</p>
+<p>The MyTweetTest should test with the server-side app (MyTweetService) deployed on both localhost and the cloud.</p>
+<p>Finally the Android client app (MyTweet) should be tested against MyTweetService running on both localhost and the cloud.</p>
+<p>Figure 1 illustrates this sequence.</p>
+<p><img alt="Figure 1: Development phases" src="img/04.png"></p>
+<p><strong>Suggested development approach</strong></p>
+<p>Here is one approach you might consider adopting:</p>
 <ul>
-<li>when users sign up, their details are send to the donation-service play app</li>
-<li>when a donation is made, it is sent to the donation-service play app</li>
+<li>Use git from the outset.<ul>
+<li>You may create a free account on BitBucket to host your git repository. <ul>
+<li>This could   act as backup in the event of loss of data locally.</li>
 </ul>
-<p>The facilities are already in the play app for this, so you will only be making changes to the android application.</p>
-<h1>Solution</h1>
-<h2>When users sign up, their details are send to the donation-service play app</h2>
-<p>Before working up to a solution to this, we might first introduce a new  attribute in the DonationApp class:</p>
-<pre><code class="java">  public boolean         donationServiceAvailable = false;
-</code></pre>
-
-<p>Every time we connect, we will set the last know status of our connection to the service here:/</p>
-<p>Currently, the app loads the users from the service in the Login activity. This might not bee such a good idea. Lets move it to the welcome screen, so we will have preloaded the user list before starting the login activity:</p>
-<pre><code class="java">package app.activities;
-
-import java.util.List;
-import app.donation.R;
-import app.http.Response;
-import app.main.DonationApp;
-import app.models.DonationServiceAPI;
-import app.models.User;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-public class Welcome extends Activity implements Response&lt;User&gt;
-{
-  DonationApp app;
-
-  @Override
-  public void onCreate(Bundle savedInstanceState)
-  {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_welcome);
-    app = (DonationApp) getApplication();
-
-    DonationServiceAPI.getUsers(this, this, &quot;Retrieving list of users&quot;);
-  }
-
-  void serviceUnavailableMessage()
-  {
-    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
-    toast.show();
-  }
-
-  public void loginPressed (View view) 
-  {
-    if (app.donationServiceAvailable)
-    {
-      startActivity (new Intent(this, Login.class));
-    }
-    else
-    {
-      serviceUnavailableMessage();
-    }
-  }
-
-  public void signupPressed (View view) 
-  {
-    if (app.donationServiceAvailable)
-    {
-      startActivity (new Intent(this, Signup.class));
-    }
-    else
-    {
-      serviceUnavailableMessage();
-    }
-  }
-
-  @Override
-  public void setReponse(List&lt;User&gt; aList)
-  {
-    app.users = aList;
-    app.donationServiceAvailable = true;
-  }
-
-  @Override
-  public void errorOccurred(Exception e)
-  {
-    app.donationServiceAvailable = false;
-    serviceUnavailableMessage();
-  }
-
-  @Override
-  public void setReponse(User anObject)
-  {}
-}
-
-</code></pre>
-
-<p>Read the above class carefully - and note how we make use of the `donationServiceAvailable' flag in DonationApp.</p>
-<p>Login can now be simplified to its original form:</p>
-<pre><code class="java">package app.activities;
-
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-import app.donation.R;
-import app.main.DonationApp;
-
-public class Login extends Activity
-{
-  @Override
-  protected void onCreate(Bundle savedInstanceState)
-  {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_login);
-  }
-
-  public void signinPressed (View view) 
-  {
-    DonationApp app = (DonationApp) getApplication();
-
-    TextView email     = (TextView)  findViewById(R.id.loginEmail);
-    TextView password  = (TextView)  findViewById(R.id.loginPassword);
-
-    if (app.validUser(email.getText().toString(), password.getText().toString()))
-    {
-      startActivity (new Intent(this, Donate.class));
-    }
-    else
-    {
-      Toast toast = Toast.makeText(this, &quot;Invalid Credentials&quot;, Toast.LENGTH_SHORT);
-      toast.show();
-    }
-  }
-}
-</code></pre>
-
-<p>We will only be reaching this activity if we have successfully connected to the service.</p>
-<p>This is a revised version of Signup, which makes use of the service:</p>
-<pre><code class="java">package app.activities;
-
-import java.util.List;
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-import app.donation.R;
-import app.http.Response;
-import app.main.DonationApp;
-import app.models.DonationServiceAPI;
-import app.models.User;
-
-public class Signup extends Activity implements Response&lt;User&gt;
-{
-  private DonationApp app;
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState)
-  {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_signup);
-    app = (DonationApp) getApplication();
-  }
-
-  public void registerPressed (View view) 
-  {
-    TextView firstName = (TextView)  findViewById(R.id.firstName);
-    TextView lastName  = (TextView)  findViewById(R.id.lastName);
-    TextView email     = (TextView)  findViewById(R.id.Email);
-    TextView password  = (TextView)  findViewById(R.id.Password);
-
-    User user = new User (firstName.getText().toString(), lastName.getText().toString(), email.getText().toString(), password.getText().toString());
-
-    DonationServiceAPI.createUser(this, this, &quot;Registering new user&quot;, user);
-  }
-
-  @Override
-  public void setReponse(List&lt;User&gt; aList)
-  {
-  }
-
-  @Override
-  public void setReponse(User user)
-  { 
-    app.users.add(user);
-  }
-
-  @Override
-  public void errorOccurred(Exception e)
-  {
-    app.donationServiceAvailable = false;
-    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
-    toast.show();
-    startActivity (new Intent(this, Welcome.class));
-  }
-}
-</code></pre>
-
-<p>This should work now.</p>
+</li>
+</ul>
+</li>
+<li>Develop in iterations. This is how the summer school labs were developed.</li>
+<li>Use a minimalist version of MyTweet (Android) in the first iteration.<ul>
+<li>For example use only 3 fields: <ul>
+<li>String uuid</li>
+<li>String message</li>
+<li>String datestamp</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The first app to develop should be the server app (MyTweetService).<ul>
+<li>Ensure close correspondence between the model fields in both client and service apps. This will be further discussed later in the lab.</li>
+</ul>
+</li>
+<li>Then write the test app and run against the server in localhost.<ul>
+<li>You might consider using the Chrome extension <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">PostMan - Rest client</a> in collaboration with the JUnit test app.</li>
+</ul>
+</li>
+<li>Next refactor MyTweet to incorporate the <strong>http</strong> suite of software similar to that provided in earlier labs (Donation) together with the associated library jars.<ul>
+<li>Some refactoring of this suite will be necessary but this is also discussed later.<ul>
+<li>Request</li>
+<li>Response</li>
+<li>MyTweetServiceAPI</li>
+<li>JsonParsers</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Run MyTweet (Android app) against the MyTweetService on localhost.</li>
+<li>Deploy MyTweetService on Heroku.</li>
+<li>Modify MyTweet to run agains Heroku and test.</li>
+<li>Repeat these steps in subsequent iterations.</li>
+</ul>
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 2: When a donation is made, it is sent to the donation-service play app</h1>
-<p>This takes a bit more work, and involved refactoring the donate button handler to only make the donation in the callback method:</p>
-<pre><code class="java">package app.activities;
+	     <h1>Service</h1>
+<p>Below are the outline steps to develop the server side Play app.</p>
+<p>It is worth noting that whereas in this lab we send requests only from a native Android app and a JUnit test app, any network-enabled app that uses a compatible api can engage in request-response sessions with MyTweetService.</p>
+<p><img alt="Figure 1: MyTweetService cloud-based network" src="img/19.png"></p>
+<ul>
+<li>Create the Play app: in a terminal, switch to the folder in which you wish the app to reside.</li>
+<li>Run the command </li>
+</ul>
+<pre><code>play new MyTweetService_id
+</code></pre>
+
+<p>where <em>id</em> is your student id or other unique identifier. The purpose is the differentiate each student's app on Heroku.</p>
+<p>Then cd into <em>MyTweetService_id</em> folder and run:</p>
+<pre><code>play eclipsify
+</code></pre>
+
+<p>Import the project into your Eclipse workspace.</p>
+<p>Activate the local database by uncommenting <em>#db=mem</em> in <em>conf/application.conf</em></p>
+<p><img alt="" src="img/05.png"></p>
+<p>Expand the folder structure and observe that the model folder is empty:</p>
+<p><img alt="Figure 2: Default project layout" src="img/06.png"></p>
+<p>The file structure of the completed is illustrated in Figure 3:</p>
+<p><img alt="Figure 3: Project layout completed app" src="img/07.png"></p>
+<p>A study of Figure 2 reveals the changes required:</p>
+<ul>
+<li>Model: <em>Tweet.java</em></li>
+<li>utils folder with GsonBinder and JsonParsers</li>
+<li>controllers: MyTweetServiceAPI.java</li>
+</ul>
+<p>GsonBinder remains unchanged: copy it from a previous lab or use the code below.</p>
+<p>Here is the code for both GsonBinder and JsonParser:</p>
+<pre><code>package utils;
+
+import java.lang.reflect.Type;
+import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import models.Tweet;
+
+public class JsonParsers
+{
+  static Gson gson = new Gson();
+
+  public static Tweet json2Tweet(String json)
+  {
+    return gson.fromJson(json, Tweet.class);   
+  }
+
+  public static List&lt;Tweet&gt; json2Tweets(String json)
+  {
+    Type collectionType = new TypeToken&lt;List&lt;Tweet&gt;&gt;() {}.getType();
+    return gson.fromJson(json, collectionType); 
+  }
+
+  public static String tweet2Json(Object obj)
+  {
+    return gson.toJson(obj);
+  }    
+}
+
+</code></pre>
+
+<pre><code>package utils;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
+
+import play.data.binding.Global;
+import play.data.binding.TypeBinder;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+@Global
+public class GsonBinder implements TypeBinder&lt;JsonElement&gt;
+{
+  public Object bind(String name, Annotation[] notes, String value, Class toClass, Type toType) throws Exception
+  {
+    return new JsonParser().parse(value);
+  }
+}
+</code></pre>
+
+<p>Here is the model code followed by some explanations:</p>
+<pre><code>package models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import play.db.jpa.GenericModel;
+
+@Entity
+public class Tweet extends GenericModel
+{
+  @Id
+  @Column(name=&quot;id&quot;)
+  public String uuid;
+  public String message;
+  public String datestamp;
+
+  public Tweet(String uuid, String message, String datestamp)
+  {
+    this.uuid       = uuid;
+    this.message    = message;
+    this.datestamp  = datestamp;
+  }
+}
+</code></pre>
+
+<p>Notice the following points regarding the model class Tweet:</p>
+<ul>
+<li>It extends GenericModel, not Model as in previous Play apps which we developed (Donation, MyRent, WitPress).</li>
+<li>The annotation <strong>@Id</strong> means that we, the developers, are deciding the primary key, the <em>id</em> for the database table.<ul>
+<li>The default Play behaviour to allow the framework to generate the id and assign it a value. </li>
+<li>This will not work in our application: the reason will be given when we develop the client.</li>
+<li>It means also that the client will generate the id value and send it to the server app when a new Tweet is being created.</li>
+</ul>
+</li>
+<li>The annotation <strong>@Column(name="id")</strong> sets the name of the column containing uuid data as <strong>id</strong>.</li>
+</ul>
+<p>A key point to remember in designing this model class is that the field names we use here must be retained exactly in the client model.</p>
+<ul>
+<li>The access modifiers (public, private, protected) need not, however match.</li>
+<li>The field types must also match those in the client model.</li>
+<li>Thus we cannot have <em>String uuid</em> here and <em>UUID uuid</em> in the client model.</li>
+</ul>
+<p>Finally, here is the code for the API:</p>
+<pre><code>package controllers;
 
 import java.util.List;
-import app.donation.R;
-import app.http.Response;
-import app.main.DonationApp;
-import app.models.Donation;
-import app.models.DonationServiceAPI;
-import android.os.Bundle;
+import java.util.Random;
+
+import models.Tweet;
+import play.Logger;
+import play.mvc.Controller;
+import utils.JsonParsers;
+
+import com.google.gson.JsonElement;
+
+public class MyTweetServiceAPI extends Controller
+{
+  public static void tweets()
+  {
+    List&lt;Tweet&gt; tweets = Tweet.findAll();
+    renderJSON(JsonParsers.tweet2Json(tweets));
+  }
+
+  public static void tweet(String id)
+  {
+    Tweet tweet = Tweet.findById(id);  
+    if (tweet == null)
+    {
+      notFound();
+    }
+    else
+    {
+      renderJSON(JsonParsers.tweet2Json(tweet));
+    }
+  }
+
+  public static void createTweet(JsonElement body)
+  {
+    Tweet tweet = JsonParsers.json2Tweet(body.toString());
+    tweet.save();
+    renderJSON(JsonParsers.tweet2Json(tweet));
+  }
+
+  public static void deleteTweet(String id)
+  {
+    Tweet tweet = Tweet.findById(id);
+    if (tweet == null)
+    {
+      notFound();
+    }
+    else
+    {
+      tweet.delete();
+      renderText(&quot;success&quot;);
+    }
+  }
+
+  public static void deleteAllTweets()
+  {
+    Tweet.deleteAll();
+    renderText(&quot;success&quot;);
+  }  
+}
+</code></pre>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Test App</h1>
+<p>A walking skeleton test app is available to download from <a href="archives/mytweet-service-test.zip">here</a>.</p>
+<p>Here is the expanded project structure:</p>
+<p><img alt="" src="img/09.png"></p>
+<p>Observe the similarity between fields in the models in this test app and the service app (MyTweetService):</p>
+<pre><code>package app.model;
+import java.util.UUID;
+
+import com.google.common.base.Objects;
+
+import static com.google.common.base.Objects.toStringHelper;
+
+public class Tweet
+{
+
+  public String uuid;
+  public String message;
+  public String datestamp;
+
+  public Tweet(){}
+
+  public Tweet(String message, String datestamp)
+  {
+    this.uuid       = UUID.randomUUID().toString();
+    this.message    = message;
+    this.datestamp  = datestamp;
+  }
+
+  @Override
+  public boolean equals(final Object obj)
+  {
+    if (obj instanceof Tweet)
+    {
+      final Tweet other = (Tweet) obj;        
+      return     Objects.equal(uuid,      other.uuid)
+              &amp;&amp; Objects.equal(message,   other.message)
+              &amp;&amp; Objects.equal(datestamp, other.datestamp)  ;                          
+    }
+    else
+    {
+      return false;
+    }
+  }  
+
+  @Override
+  public String toString()
+  {
+    return toStringHelper(this).addValue(uuid)
+                               .addValue(message)
+                               .addValue(datestamp)
+                               .toString();
+  }
+
+  /**
+   * To minimise code breakage we return id as UUID type
+   * Note that the String id is obtained from a UUID type
+   * Hence we are allowed to convert back to the original UUID
+   * 
+   * @return the String id converted to its UUID type
+   */
+  public UUID getId()
+  {
+    return UUID.fromString(uuid);
+  }
+}
+
+</code></pre>
+
+<p>Study the code in the API class:</p>
+<pre><code>package app.api;
+
+import java.util.List;
+
+import app.model.Tweet;
+
+public class MyTweetServiceAPI
+{ 
+  public static List&lt;Tweet&gt; getTweets() throws Exception
+  {
+    String response =  Rest.get(&quot;/api/tweets&quot;);
+    List&lt;Tweet&gt; tweetList = JsonParsers.json2Tweets(response);
+    return tweetList;
+  }
+
+  public static Tweet getTweet(Long id) throws Exception
+  {
+    String response =  Rest.get(&quot;/api/tweets/&quot; + id);
+    Tweet tweet = JsonParsers.json2Tweet(response);
+    return tweet;
+  }
+
+  public static Tweet createTweet(Tweet tweet) throws Exception
+  {
+    String response = Rest.post (&quot;/api/tweets&quot;, JsonParsers.tweet2Json(tweet));
+    return JsonParsers.json2Tweet(response);
+  }
+
+  public static void deleteTweet(Long id) throws Exception
+  {
+    Rest.delete (&quot;/api/tweets/&quot; + id);
+  }  
+
+  public static void deleteAllTweets() throws Exception
+  {
+    Rest.delete (&quot;/api/tweets&quot;);
+  } 
+}
+</code></pre>
+
+<p>Note the <strong>URL</strong> in the <em>Rest</em> class:</p>
+<pre><code>private static final String URL = &quot;http://localhost:9000&quot;;
+</code></pre>
+
+<p>This IP address works for the test app but not for the Android app when running within Genymotion (as this in turn is hosted by Virtual Box).</p>
+<ul>
+<li>We will address this issue when we look at the Android client.</li>
+</ul>
+<p>None of the tests has been completed but the skeleton of a small number of tests is provided as a guide.</p>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Android client</h1>
+<p>We now address the refactoring of assignment 1 app into an Android client capable of interacting with the server-side Play app (MyTweetService).</p>
+<p>The steps outline below comprise one of many possible approaches to developing MyTweet native Android client.</p>
+<p>The stripped-down or baseline version of MyTweet is shown here:</p>
+<p><img alt="Figure 1: Baseline MyTweet" src="img/10.png"></p>
+<p>As already pointed out, this is a standalone app and the purpose of this lab is to refactor it so that its data will reside on another app (MyTweetService) that will be located on a server (localhost or the cloud - Heroku).</p>
+<p>The design approach we adopt here will facilate the introduction of a user model and associated views in later grade-range versions of the assignment. </p>
+<ul>
+<li>In particular we will introduce a new activity which we shall name Welcome. </li>
+<li>A key reason for this is to provide a convenient location to retrieve the server-side data.</li>
+<li>The view can also be easily refactored to a sign-up | log-in page later should you so wish.</li>
+</ul>
+<p>Figure 2 illustrates this lab's completed version.</p>
+<p><img alt="Figure 2: Refactored MyTweet retrieves tweets on launch" src="img/11.png"></p>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>Android Client (Read)</h1>
+<p>We will retrieve the list of tweets from the server in the WelcomeActivity class, the code for which is provided below.</p>
+<ul>
+<li>The design of the associated layout xml file is left to you to do (<em>activity_welcome.xml</em>). See Figure 1:</li>
+</ul>
+<p><img alt="Figure 1: Activity_Welcome layout" src="img/12.png"></p>
+<p>Note the following:</p>
+<ul>
+<li>WelcomeActivity implements the Response interface.<ul>
+<li>This necessitates implementation of its associated methods:<ul>
+<li>setResponse(List<T>)</li>
+<li>setRespose(T)</li>
+<li>errorOccurred(Exception)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The call to the server to retrieve the list of tweets is made in the <em>onResume</em> method.<ul>
+<li>If the call is successful the list of tweets becomes available in <em>setResponse(List<T>)</em>.<ul>
+<li>We replace the existing tweets with this newly retrieved list.</li>
+<li>This is a simple approach. A more sophisticated approach would be to retain existing tweets and only add unique tweets, avoiding duplication. </li>
+<li>This iteration retrieves all the tweets on the server. This is not feasible in practice. The number of tweets to be retrieved might be set in preferences and sent to the server when the call is made to retrieve the tweets.</li>
+</ul>
+</li>
+<li>If the call fails then an exception is thrown and it's message is toasted in <em>errorOccurred</em>.</li>
+</ul>
+</li>
+</ul>
+<pre><code>package org.wit.mytweet.activities;
+
+import java.util.List;
+
+import org.wit.mytweet.app.MyTweetApp;
+import org.wit.mytweet.http.Response;
+import org.wit.mytweet.model.MyTweetServiceAPI;
+import org.wit.mytweet.model.Tweet;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RadioGroup;
-import android.widget.NumberPicker;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 
-public class Donate extends Activity implements Response&lt;Donation&gt;
+import org.wit.mytweet.R;
+
+public class WelcomeActivity extends Activity implements Response&lt;Tweet&gt;, OnClickListener
 {
-  private RadioGroup   paymentMethod;
-  private ProgressBar  progressBar;
-  private NumberPicker amountPicker;
-  private TextView     amountText;
-  private TextView     amountTotal;
-  private DonationApp  app;
+
+  Button switchTimeline;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_donate);
+    setContentView(R.layout.activity_welcome);
 
-    app = (DonationApp) getApplication();
+   switchTimeline = (Button) findViewById(R.id.button_switch_timeline);
+   switchTimeline.setEnabled(false);
+   switchTimeline.setOnClickListener(this);
+  }
 
-    paymentMethod = (RadioGroup)   findViewById(R.id.paymentMethod);
-    progressBar   = (ProgressBar)  findViewById(R.id.progressBar);
-    amountPicker  = (NumberPicker) findViewById(R.id.amountPicker);
-    amountText    = (TextView)     findViewById(R.id.amountText);
-    amountTotal   = (TextView)     findViewById(R.id.amountTotal);
+  /**
+   * Make the server call to retrieve tweets in onResume
+   */
+  @Override
+  protected void onResume()
+  {
+    MyTweetServiceAPI.getTweets(this, this, &quot;retrieving tweets&quot;);
+    super.onResume();
+  }
 
-    amountPicker.setMinValue(0);
-    amountPicker.setMaxValue(1000);
-    progressBar.setMax(app.target);
+  /**
+   * Following 3 methods implementations required by Response&lt;T&gt; interface
+   */
+  @Override
+  public void setResponse(List&lt;Tweet&gt; aList)
+  { 
+    //tweets successfully retrieved from server
+    MyTweetApp app = (MyTweetApp) getApplication();
+    app.tweetlist.updateTweets(aList);
+    Toast.makeText(this, &quot;tweets retrieved&quot;, Toast.LENGTH_SHORT).show();    
+    switchTimeline.setEnabled(true);    
   }
 
   @Override
-  public boolean onCreateOptionsMenu(Menu menu)
+  public void setResponse(Tweet anObject)
   {
-    getMenuInflater().inflate(R.menu.donate, menu);
-    return true;
   }
 
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    //failed to retrieve tweets
+    Toast.makeText(this, &quot;retrieval failed&quot;, Toast.LENGTH_LONG).show();    
+  }
+
+  /**
+   * OnClickListener method implementation
+   * switchTimeLine button enabled only on successful retrieval of tweets 
+   * click button switches to tweet list view
+   */
+  @Override
+  public void onClick(View v)
+  {
+    switch (v.getId())
+    {
+      case R.id.button_switch_timeline:
+      Intent i = new Intent(this, TimeLineActivity.class);
+      startActivity(i);
+    }
+  }
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="07" class="ui tab stacked moodle-book segment">
+	     <h1>Android Client (API)</h1>
+<p>We are including a screenshot of the folder structure used in preparing this lab. It is appreciated that yours will likely vary considerably from this. Nevertheless the figure may be of some help.</p>
+<p><img alt="Figure 1: MyTweet source code file structure" src="img/17.png"></p>
+<p>Here is the code for the http module classes: Request, Response, Rest followed by the MyTweetServiceAPI class.</p>
+<p>You may find it necessary to refactor the package name to suit your folder structure.</p>
+<p>Also, set the Rest.URL appropriate to your environment and the server location.</p>
+<pre><code>package org.wit.mytweet.http;
+
+import java.util.List;
+
+public interface Response&lt;T&gt;
+{
+  public void setResponse(List&lt;T&gt; aList);
+  public void setResponse(T anObject);
+  public void errorOccurred (Exception e);
+}
+</code></pre>
+
+<pre><code>package org.wit.mytweet.http;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+
+public class Rest
+{
+  private static DefaultHttpClient httpClient = null;
+  //To determine ip address of localhost when using genymotion use
+  //ipconfig (win) or ifconfig(osx). Address will vary from one machine to another
+  //private static final String URL = &quot;http://192.168.61.6:9000&quot;;//iMac
+  private static final String URL = &quot;http://myyamba-service.herokuapp.com&quot;;
+  //private static final String URL = &quot;http://10.0.3.2:9000&quot;;
+  private static DefaultHttpClient httpClient()
+  {
+    if (httpClient == null)
+    {
+      HttpParams httpParameters = new BasicHttpParams();
+      HttpConnectionParams.setConnectionTimeout(httpParameters, 10000);
+      HttpConnectionParams.setSoTimeout(httpParameters, 10000);
+      httpClient = new DefaultHttpClient(httpParameters);
+    }
+    return httpClient;
+  }
+
+  public static String get(String path) throws Exception
+  {
+    HttpGet getRequest = new HttpGet(URL + path);
+    getRequest.setHeader(&quot;accept&quot;, &quot;application/json&quot;);
+    HttpResponse response = httpClient().execute(getRequest);
+    return new BasicResponseHandler().handleResponse(response);
+  }
+
+  public static String delete(String path) throws Exception
+  {
+    HttpDelete deleteRequest = new HttpDelete(URL + path);
+    HttpResponse response = httpClient().execute(deleteRequest);
+    return new BasicResponseHandler().handleResponse(response);
+  }
+
+  public static String put(String path, String json) throws Exception
+  {
+    HttpPut putRequest = new HttpPut(URL + path);
+    putRequest.setHeader(&quot;Content-type&quot;, &quot;application/json&quot;);
+    putRequest.setHeader(&quot;accept&quot;, &quot;application/json&quot;);
+
+    StringEntity s = new StringEntity(json);
+    s.setContentEncoding(&quot;UTF-8&quot;);
+    s.setContentType(&quot;application/json&quot;);
+    putRequest.setEntity(s);
+
+    HttpResponse response = httpClient().execute(putRequest);
+    return new BasicResponseHandler().handleResponse(response);
+  }
+
+  public static String post(String path, String json) throws Exception
+  {
+    HttpPost putRequest = new HttpPost(URL + path);
+    putRequest.setHeader(&quot;Content-type&quot;, &quot;application/json&quot;);
+    putRequest.setHeader(&quot;accept&quot;, &quot;application/json&quot;);
+
+    StringEntity s = new StringEntity(json);
+    s.setContentEncoding(&quot;UTF-8&quot;);
+    s.setContentType(&quot;application/json&quot;);
+    putRequest.setEntity(s);
+
+    HttpResponse response = httpClient().execute(putRequest);
+    return new BasicResponseHandler().handleResponse(response);
+  }
+}
+</code></pre>
+
+<pre><code>package org.wit.mytweet.http;
+
+import java.util.List;
+
+import org.wit.android.helpers.LogHelpers;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+
+@SuppressWarnings(&quot;rawtypes&quot;)
+public abstract class Request extends AsyncTask&lt;Object, Void, Object&gt;
+{
+  public Response         responder;
+  public ProgressDialog   dialog;
+  public Context          context;
+  public String           message;
+  public Exception        error;
+
+  public Request(Context context, Response responder, String message)
+  {
+    this.responder = responder;
+    this.context = context;
+    this.message = message;
+  }
+
+  @Override
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.dialog = new ProgressDialog(context, 1);
+    this.dialog.setMessage(message);
+    this.dialog.show();
+  }
+
+  @Override
+  protected  Object doInBackground(Object... params)
+  {
+    error = null;
+    try
+    {
+      return doRequest(params);
+    }
+    catch (Exception e)
+    {
+      error = e;  
+      LogHelpers.info(this, e.getMessage());
+    }
+    return null;
+  }
+
+  protected abstract  Object doRequest(Object... params) throws Exception;
+
+  @SuppressWarnings(&quot;unchecked&quot;)
+  @Override
+  protected void onPostExecute(Object result)
+  {
+    super.onPostExecute(result);
+    if (dialog.isShowing())
+    {
+      dialog.dismiss();
+    }
+    if (error != null)
+    {
+      responder.errorOccurred(error);  
+    }
+    else
+    {
+      if (result instanceof List)
+      {
+        responder.setResponse((List)result);
+      }
+      else
+      {
+        responder.setResponse(result);
+      }
+    }
+  } 
+  public void onDestroy()
+  {
+    dialog.cancel();
+  }
+}
+</code></pre>
+
+<pre><code>package org.wit.mytweet.model;
+
+import java.util.List;
+
+import org.wit.mytweet.http.Request;
+import org.wit.mytweet.http.Response;
+import org.wit.mytweet.http.Rest;
+import org.wit.mytweet.httputils.JsonParsers;
+
+import android.content.Context;
+
+public class MyTweetServiceAPI
+{ 
+  public static void getTweets(Context context, Response&lt;Tweet&gt; response, String dialogMesssage)
+  {
+    new GetTweets(context, response, dialogMesssage).execute();
+  }
+
+  public static void createTweet(Context context, Response&lt;Tweet&gt; response, String dialogMesssage, Tweet tweet)
+  {
+    new CreateTweet(context, response, dialogMesssage).execute(tweet);
+  }
+
+  public static void deleteTweet(Context context, Response&lt;Tweet&gt; response, String dialogMesssage, Tweet tweet)
+  {
+    new DeleteTweet(context, response, dialogMesssage).execute(tweet);
+  }
+}
+/*================================================================================*/
+class GetTweets extends Request
+{
+  public GetTweets(Context context, Response&lt;Tweet&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override
+  protected List&lt;Tweet&gt; doRequest(Object... params) throws Exception
+  {
+    String response =  Rest.get(&quot;/api/tweets&quot;);
+    List&lt;Tweet&gt; tweetList = JsonParsers.json2Tweets(response);
+    return tweetList;
+  }
+}
+
+class CreateTweet extends Request
+{
+  public CreateTweet(Context context, Response&lt;Tweet&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override
+  protected Tweet doRequest(Object... params) throws Exception
+  {
+    String response = Rest.post (&quot;/api/tweets&quot;, JsonParsers.tweet2Json(params[0]));
+    return JsonParsers.json2Tweet(response);
+  }
+}
+
+class DeleteTweet extends Request 
+{
+  public DeleteTweet(Context context, Response&lt;Tweet&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override 
+  protected Tweet doRequest(Object... params) throws Exception
+
+  {
+    String id = ((Tweet)params[0]).getId().toString();
+    String path = &quot;/api/tweets/&quot; + id; 
+    String response = Rest.delete (path);
+    if(response.equals(&quot;success&quot;))
+    {
+      return new Tweet();
+    }
+    else
+    {
+      throw new Exception();
+    }
+  }
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="08" class="ui tab stacked moodle-book segment">
+	     <h1>MyTweetFragment (Create)</h1>
+<p>The MyTweetFragment layout is shown here in Figure 1:</p>
+<p><img alt="Figure 1: Detail view" src="img/13.png"></p>
+<p>We require that when the Tweet button is clicked, a Tweet object is created and sent to the server-side app across the network (MyTweetService).</p>
+<p>To enable this it is necessary to do the following:</p>
+<ul>
+<li>Implement the Response<T> interface</li>
+<li>Implement as wrappers the interface's three methods</li>
+<li>Make the network call in the Tweet button event handler (<em>onClick(View)</em>).</li>
+<li>Fully implement the interface methods as required<ul>
+<li>In this case it is not necessary to implement setResponse(List<T>)</li>
+<li>Because MyTweetServiceAPI echoes back the Tweet we created and sent to the server, we will add a Toast message in the method setResonse(T) to indicate success.</li>
+</ul>
+</li>
+</ul>
+<p>Here are the relevant code snippets. Obviously the names may not exactly match those you will have chosen for your implementation.</p>
+<ul>
+<li>Implement Response</li>
+</ul>
+<pre><code>public class MyTweetFragment extends Fragment implements TextWatcher, OnClickListener, Response&lt;Tweet&gt;
+
+</code></pre>
+
+<ul>
+<li>Implement Response methods:</li>
+</ul>
+<pre><code>  @Override
+  public void setResponse(List&lt;Tweet&gt; aList)
+  {
+  }
+
+  @Override
+  public void setResponse(Tweet anObject)
+  {
+    Toast toast = Toast.makeText(getActivity(), &quot;tweet message successfully sent, Toast.LENGTH_SHORT);
+    toast.show();  
+  }
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    Toast toast = Toast.makeText(getActivity(), &quot;failed to send tweet&quot;, Toast.LENGTH_SHORT);
+    toast.show();    
+  }
+</code></pre>
+
+<ul>
+<li>Make the network call in the Tweet button event handler.</li>
+</ul>
+<pre><code>  public void onClick(View v)
+  {
+    switch (v.getId())
+    {
+      case R.id.tweet_button:
+        MyTweetServiceAPI.createTweet(getActivity(), this, &quot;tweeting&quot;, this_tweet);
+
+        break;
+    }
+  }
+</code></pre>
+	  </section>
+	  <section data-tab="09" class="ui tab stacked moodle-book segment">
+	     <h1>TimelineFragment (Delete)</h1>
+<p>Recall that one may delete a set of list items (one or more) in the list view.</p>
+<p>Here we have created a selection of tweet. We can view them, for example, in <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">PostMan</a> as shown in Figure 1:</p>
+<p><img alt="Figure 1: Postman used to show tweets on server app" src="img/14.png">.</p>
+<p>Use a long press initially and then click on any further items you wish to delete:</p>
+<ul>
+<li>For example, delete the first and third tweet in the list of four.</li>
+</ul>
+<p><img alt="Figure 2: Tweets selected for deletion" src="img/15.png"></p>
+<p>Click the delete icon and observe that the selected tweets disappear from both the device and the server as shown in Figure 3:</p>
+<p><img alt="Figure 3: Multi-selected list of tweets deleted locally and from server" src="img/16.png"></p>
+<p>Here is the code to achieve this:</p>
+<p>Modify the class signature by implementing Response interface.</p>
+<pre><code>public class TimeLineFragment extends ListFragment implements OnItemClickListener, MultiChoiceModeListener, Response&lt;Tweet&gt;
+
+</code></pre>
+
+<p>Modify the MultiChoiceModeListener.onActionItemClicked method:</p>
+<pre><code>  @Override
+  public boolean onActionItemClicked(ActionMode mode, MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+    case R.id.menu_item_delete_tweet:
+      removeTweet(mode);
+      return true;
+    default:
+      return false;
+    }
+  }
+
+  private void removeTweet(ActionMode mode)
+  {
+    for (int i = adapter.getCount() - 1; i &gt;= 0; i--)
+    {
+      if (listView.isItemChecked(i))
+      {
+        Tweet tweet = adapter.getItem(i);
+        tweetlist.removeTweet(tweet);
+        MyTweetServiceAPI.deleteTweet(getActivity(), this, &quot;deleting tweet&quot;, tweet); //network call to delete this tweet
+      }
+    }
+    mode.finish();
+    tweetlist.saveTweets(); //update the local list of tweets
+    adapter.notifyDataSetChanged();
+  }
+</code></pre>
+
+<p>Note that this code assumes you have retained serialization in your MyTweet basline app.</p>
+<p>Here are the Response interface methods:</p>
+<pre><code>  @Override
+  public void setResponse(List&lt;Tweet&gt; aList)
+  {
+  }
+
+  @Override
+  public void setResponse(Tweet anObject)
+  {
+    String msg = &quot;tweet deletion success&quot;;
+    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();  
+    LogHelpers.info(this, msg);
+  }
+
+  @Override
+  public void errorOccurred(Exception e)
+  {
+    String msg = &quot;tweet deletion failure&quot;;
+    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();  
+    LogHelpers.info(this, msg + &quot; : &quot; + e.getMessage());
+  }
+</code></pre>
+	  </section>
+	  <section data-tab="10" class="ui tab stacked moodle-book segment">
+	     <h1>Android Client (Model)</h1>
+<p>Here is the code for Tweet.java, the model class.</p>
+<ul>
+<li>This differs from the code used in preparing this lab in that the serialization-related code has been removed in the interest of clarity.</li>
+</ul>
+<p>The key points to note are:</p>
+<ul>
+<li>the uuid field type has been changed from UUID to String and its access modifier has been changed to private.</li>
+<li>the datestamp field type has been changed from Date to String and its access modifier has also been changed to private.</li>
+</ul>
+<p>These changes have been made:</p>
+<ul>
+<li>To minimise code breakage in the legacy MyTweet app as we refactor the code.</li>
+<li>To require the use of getter methods for the uuid and datestamp fields - again in the interest of minimising code breakage.</li>
+<li>To avail of the code already available to make the conversions between String and JSON: we do not have such code to perform similar conversions for Date and UUID types.</li>
+</ul>
+<p>Important: Observe how the field names correspond to those in the server app (MyTweetService).</p>
+<pre><code>package org.wit.mytweet.model;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+import java.util.UUID;
+
+public class Tweet
+{
+  /**
+   * We have changed fields Date and UUID for ease of use in http
+   * We could have allowed the service to generate the id as is usual practice
+   * However it's more convenient to do so when the Tweet instance is first created
+   * Otherwise a blocking http call would be required required in the Tweet constructor below
+   * The id is required immediately in the application
+   * We send to id the server in the http call and configure the server to allow this practice
+   */
+  private  String uuid; //mandates use of getter method getId()
+  public   String message;
+  private  String datestamp; //mandates use of getter method getDateString()
+
+
+  public Tweet()
+  {
+    uuid = UUID.randomUUID().toString();
+    datestamp = setDate();
+    message = &quot;&quot;;
+  }
+
+  /**
+   * To minimise code breakage we return id as UUID type
+   * Note that the String id is obtained from a UUID type
+   * Hence we are allowed to convert back to the original UUID
+   * 
+   * @return the String id converted to its UUID type
+   */
+  public UUID getId()
+  {
+    return UUID.fromString(uuid);
+  }
+
+  /**
+   * Retaining this method which was previously used (before refactoring) 
+   * 
+   * @return
+   */
+  public String getDateString()
+  {
+    return datestamp;
+  }
+
+  /**
+   * 
+   * @return formatted date string
+   */
+  private String setDate()
+  {
+    DateFormat df = DateFormat.getDateTimeInstance();
+    df.setTimeZone(TimeZone.getTimeZone(&quot;UTC&quot;));
+    String formattedDate = df.format(new Date());
+    return formattedDate;
+  }
+}
+
+</code></pre>
+	  </section>
+	  <section data-tab="11" class="ui tab stacked moodle-book segment">
+	     <h1>Miscellaneous</h1>
+<h2>Generating the Tweet database table <strong>id</strong> in the client</h2>
+<p>Default Play framework behaviour is to generate a default Long id primary key.</p>
+<p>Let's explore why this would be problematical for us.</p>
+<p>Here is a code snippet from the list fragment, in this case TimeLineFragment.java:</p>
+<pre><code>
   @Override
   public boolean onOptionsItemSelected(MenuItem item)
   {
     switch (item.getItemId())
     {
-      case R.id.menuReport : startActivity (new Intent(this, Report.class));
-                             break;
-      case R.id.menuLogout : startActivity (new Intent(this, Welcome.class));
-                             break;                             
+     ...
+    case R.id.menuTweet:
+      Tweet tweet = new Tweet(); //Item 1
+      tweetlist.addTweet(tweet);
+
+      Intent i = new Intent(getActivity(), MyTweetPagerActivity.class);
+      i.putExtra(MyTweetFragment.EXTRA_TWEET_ID, tweet.getId()); //Item 2
+      startActivityForResult(i, 0);
+      return true;
+
+    default:
+      return super.onOptionsItemSelected(item);
     }
-    return true;
   }
-
-  public void donateButtonPressed (View view) 
-  {
-    String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? &quot;PayPal&quot; : &quot;Direct&quot;;
-    int donatedAmount =  amountPicker.getValue();
-    if (donatedAmount == 0)
-    {
-      String text = amountText.getText().toString();
-      if (!text.equals(&quot;&quot;))
-        donatedAmount = Integer.parseInt(text);
-    }
-    if (donatedAmount &gt; 0)
-    {
-      DonationServiceAPI.createDonation(this, this, &quot;Registering new donation...&quot;, new Donation(donatedAmount, method));
-    }
-   }
-
-  @Override
-  public void setReponse(Donation acceptedDonation)
-  {
-    Toast toast = Toast.makeText(this, &quot;Donation Accepteed&quot;, Toast.LENGTH_SHORT);
-    toast.show();
-    app.newDonation(acceptedDonation);
-    progressBar.setProgress(app.totalDonated);
-    String totalDonatedStr = &quot;$&quot; + app.totalDonated;
-    amountTotal.setText(totalDonatedStr);
-    amountText.setText(&quot;&quot;);
-    amountPicker.setValue(0);
-  }
-
-  @Override
-  public void errorOccurred(Exception e)
-  {
-    Toast toast = Toast.makeText(this, &quot;Donation Service Unavailable. Try again later&quot;, Toast.LENGTH_LONG);
-    toast.show();
-  }
-
-  @Override
-  public void setReponse(List&lt;Donation&gt; aList)
-  {}
-}
-</code></pre>
-	  </section>
-	  <section data-tab="" class="ui tab stacked moodle-book segment">
-	     <h1>Refactor / Rename</h1>
-<p>The donation-android app has an unfortunate type in the name of the Response interface methods:</p>
-<pre><code class="java">public interface Response&lt;T&gt;
-{
-  public void setReponse(List&lt;T&gt; aList);
-  public void setReponse(T anObject);
-  public void errorOccurred (Exception e);
-}
 </code></pre>
 
-<p>Missing an 's' on setReponse!</p>
-<p>Changing this will cause errors throughout our activities - however, there is a way to change this and have all the activities changed automatically. This is to use the Eclipse 'refactorring' menu options.</p>
-<p>This needs to be accessed via eclipse package explorer view:</p>
-<p><img alt="" src="img/01.png">
-<img alt="" src="img/02.png"></p>
-<p>Do this for both methods. If you get warning - press "continue" anyway.</p>
-<p>If all goes according to plan, it should successfully rename all relevant artifacts.</p>
-	  </section>
-	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
-	     <h1>Exercises</h1>
-<p>Archive of the lab so far:</p>
+<p>Item 1: We create a default Tweet object.</p>
+<p>Item 2: We put an <em>Extra</em> to the new Intent. This extra has as an argument the value of the Tweet id:</p>
 <ul>
-<li><a href="archives/donation-android-v4.zip">donation-android-v4.zip</a></li>
+<li>tweet.getId()</li>
 </ul>
-<h2>Exercise 1</h2>
-<p>Does it make sense to download the full list of users when we load the Welcome activity? Perhaps it might be better if we just attempted to reach donation-service, and indicate to the user if it is available or not.</p>
-<p>Consider how you might do this.</p>
-<h2>Exercise 2</h2>
-<p>When Login is launched, it might be better to just check that the user supplied credentials are valid - with the donation-service app, and not by inspecting our local list of users.</p>
-<p>How would this be done?</p>
-<h2>Exercise 3</h2>
-<p>In the Singup activity - we should really check to see if the new user email is not already taken.</p>
-<p>How would we do this?</p>
+<p>Two choices were presented in refactoring this code: </p>
+<ul>
+<li>Option 1: Ensure that a valid id was returned by the getter call <em>getId</em> by generating the id within the default Tweet constructor.</li>
+<li>Option 2: Execute a create call to the server, sending it the default Tweet object and in return obtain back the same object but with a Play-generated id on board. It would be necessary to make this call and obtain a satisfactory response before invoking <em>getId</em>.</li>
+</ul>
+<p>We have chosen option 1 for two reasons:</p>
+<ul>
+<li>To avoid an extra expensive network call.</li>
+<li>Such a network call would be a blocking call as we would be unable to switch to the MyTweetPagerActivity activity until the network call returned with a valid id.<ul>
+<li>This would be against the spirit of using a worker thread</li>
+<li>There would be no guarantee that the network call would return a valid id in which case MyTweet would be unable to function as required.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="img/18.png"></p>
+	  </section>
+	  <section data-tab="12" class="ui tab stacked moodle-book segment">
+	     <h1>Downloads</h1>
+<p>The apk file, MyTweet, on which this lab is based, is available to download <a href="archives/MyTweet.apk">here</a>.</p>
+<p>You may also download the <a href="archives/MyYamba.apk">MyYamba</a> apk file which was developed using code from Learning Adroid 2nd Edition (Garenta &amp; Nakamura).</p>
+<p>These apps may be installed by dragging and dropping onto the Genymotion emulator.</p>
+<p>Both apps are at prototype standard, have not been adequately tested, contain numerous anomalies and are clearly not fit for general deployment and use. Nevertheless they may generate some helpful ideas for this assignment.</p>
 	  </section>
 <script>
 
