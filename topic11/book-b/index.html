@@ -4,13 +4,13 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> Donation-Service-03 </title>
+     <title> Donation-09 </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://beta.semantic-ui.com/dist/semantic.min.css">
-     <script src="http://beta.semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://beta.semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
+     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
 
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
@@ -123,71 +123,321 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">11: REST Clients & Servers</a></header>
+    <header class="header item"> <a href="../index.html">11: MyTweet</a></header>
     <div class="right tab-menu menu">
-          <a class="item" data-tab="Donation-Service-03"> Donation-Service-03 </a>
+          <a class="item" data-tab="Donation-09"> Donation-09 </a>
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
           <a class="item" data-tab="Exercises"> Exercises </a>
     </div>
   </nav>
 
   <br>
 
-	  <section data-tab="Donation-Service-03" class="ui tab stacked moodle-book segment">
+	  <section data-tab="Donation-09" class="ui tab stacked moodle-book segment">
 	     <h1>Objectives</h1>
-<ul>
-<li>Download and explore the final versions of the donation applications</li>
-</ul>
+<p>Refactor the the Donation Play Service to capture a OneToMany relationship from User-&gt;Donation. Then, reflect this relationship in the API.</p>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Donation-Service</h1>
-<p>Download the archive here:</p>
-<ul>
-<li><a href="archives/donation-service-v2.zip">donation-service-v2.zip</a></li>
-</ul>
-<p>Unzip, and change into the folder containing the project.</p>
-<p>Then run</p>
-<pre><code>play deps
+	     <h1>Routes</h1>
+<p>We will start with the routes. In the previous version the User and Donations APIs were independent. In the revised routes below, not carefully how the Donations routes are structured.</p>
+<pre><code># API - Users
+
+GET     /api/users                           UsersAPI.users
+GET     /api/users/{id}                      UsersAPI.user
+POST    /api/users                           UsersAPI.createUser
+DELETE  /api/users/{id}                      UsersAPI.deleteUser
+
+# API - Donations
+
+GET     /api/users/{userId}/donations        DonationsAPI.donations
+GET     /api/users/{userId}/donations/{id}   DonationsAPI.donation
+POST    /api/users/{userId}/donations        DonationsAPI.createDonation
+DELETE  /api/users/{userId}/donations/{id}   DonationsAPI.deleteDonation
 </code></pre>
 
-<p>and, once that completes:</p>
-<pre><code>play eclipsify
-</code></pre>
-
-<p>The import the project into Eclipse. It should import without errors. Then, run it:</p>
-<pre><code>play run
-</code></pre>
-
-<p>and explore the app at:</p>
-<ul>
-<li><a href="http://localhost:9000">http://localhost:9000</a></li>
-</ul>
+<p>As you can see, the users ID is required in order to reach the donations. The returned (or created) donations will be associated with the given user id.</p>
 	  </section>
 	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Donation-Android</h1>
-<p>Download the android project here:</p>
-<ul>
-<li><a href="archives/donation-android-v5.zip">donation-android-v5</a></li>
-</ul>
-<p>Unzip, and import into Eclipse.</p>
-<p>It should build and execute successfully.</p>
+	     <h1>User Model</h1>
+<p>The User Model can now incorporate the relationship:</p>
+<pre><code>  @OneToMany(cascade = CascadeType.ALL)
+  public List&lt;Donation&gt; donations = new ArrayList&lt;Donation&gt;();
+</code></pre>
+
+<p>We can keep it unidirectional for the moment.</p>
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Semantic UI</h1>
-<p>Visit the semantic UI home page:</p>
-<ul>
-<li><a href="http://semantic-ui.com/">http://semantic-ui.com/</a></li>
-</ul>
-<p>And download the archive. Explore the contents. The android-service project contains the contents of the 'packaged' folder (renamed to semantic).</p>
-<p>There is also an 'examples' folder worth exploring.</p>
+	     <h1>Controllers</h1>
+<p>We can get rid of the current controller, and introduce these two new controllers instead.</p>
+<p>This one looks after the User model:</p>
+<h2>UsersAPI</h2>
+<pre><code>package controllers;
+
+import play.*;
+import play.mvc.*;
+import utils.JsonParsers;
+
+import java.util.*;
+
+import com.google.gson.JsonElement;
+
+import models.*;
+
+public class UsersAPI extends Controller
+{
+  public static void users()
+  {
+    List&lt;User&gt; users = User.findAll();
+    renderJSON(JsonParsers.user2Json(users));
+  }
+
+  public static void user(Long id)
+  {
+    User user = User.findById(id);  
+    if (user == null)
+    {
+      notFound();
+    }
+    else
+    {
+      renderJSON(JsonParsers.user2Json(user));
+    }
+  }
+
+  public static void createUser(JsonElement body)
+  {
+    User user = JsonParsers.json2User(body.toString());
+    user.save();
+    renderJSON(JsonParsers.user2Json(user));
+  }
+
+  public static void deleteUser(Long id)
+  {
+    User user = User.findById(id);
+    if (user == null)
+    {
+      notFound();
+    }
+    else
+    {
+      user.delete();
+      renderText(&quot;success&quot;);
+    }
+  }
+
+  public static void deleteAllUsers()
+  {
+    User.deleteAll();
+    renderText(&quot;success&quot;);
+  }      
+}
+</code></pre>
+
+<p>.. and this is where we manage the Donations model:</p>
+<h2>DonationsAPI</h2>
+<pre><code>package controllers;
+
+import play.*;
+import play.mvc.*;
+import utils.JsonParsers;
+
+import java.util.*;
+
+import com.google.gson.JsonElement;
+
+import models.*;
+
+public class DonationsAPI extends Controller
+{
+  public static void donations(Long userId)
+  {
+    User user = User.findById(userId);
+    List&lt;Donation&gt; donations = user.donations;
+    renderText(JsonParsers.donation2Json(donations));
+  }
+
+  public static void donation (Long userId, Long id)
+  {
+    User user = User.findById(userId);
+    Donation donation = Donation.findById(id);
+    if (user.donations.contains(donation))
+    { 
+      renderJSON (JsonParsers.donation2Json(donation));
+    }
+    else
+    {
+      badRequest();
+    }
+  }
+
+  public static void createDonation(Long userId, JsonElement body)
+  {
+    User user = User.findById(userId);
+    Donation donation = JsonParsers.json2Donation(body.toString());
+    Donation newDonation = new Donation (donation.amount, donation.method);
+    user.donations.add(newDonation);
+    user.save();
+    renderJSON (JsonParsers.donation2Json(newDonation));
+  }  
+
+  public static void deleteDonation(Long userId, Long id)
+  {
+    User user = User.findById(userId);
+    Donation donation = Donation.findById(id);
+    if (!user.donations.contains(donation))
+    {
+      notFound();
+    }
+    else
+    {
+      user.donations.remove(donation);
+      user.save();
+      donation.delete();
+      ok();
+    }
+  }  
+}
+</code></pre>
+
+<p>In the above you will see we are always using the user ID.</p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Test Project - DonationServiceAPI</h1>
+<p>We have just completed a significant overhaul to the service API - so the tests will need to change to reflect this.</p>
+<p>Open the donation-service-test project - and we can extend the API to accommodate the donations:</p>
+<h2>DonationServiceAPI</h2>
+<pre><code>  public static List&lt;Donation&gt; getDonations(User user) throws Exception
+  {
+    String response =  Rest.get(&quot;/api/users/&quot; + user.id + &quot;/donations&quot;);
+    List&lt;Donation&gt; donationList = JsonParsers.json2Donations(response);
+    return donationList;
+  }
+
+  public static Donation createDonation(User user, Donation donation) throws Exception
+  {
+    String response = Rest.post (&quot;/api/users/&quot; + user.id + &quot;/donations&quot;, JsonParsers.donation2Json(donation));
+    return JsonParsers.json2Donation(response);
+  }
+
+  public static void deleteDonation(User user, Donation donation) throws Exception
+  {
+    Rest.delete (&quot;/api/users/&quot; + user.id + &quot;/donations/&quot; + donation.id);
+  } 
+</code></pre>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Test Project - DonationTest</h1>
+<p>The existing user tests should still work. </p>
+<p>However, we can introduce this new DonationTest class to exhaustively test the revised Donations API:</p>
+<h2>DonationTest</h2>
+<pre><code>package app.test;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import app.api.DonationServiceAPI;
+import app.model.Donation;
+import app.model.User;
+
+public class DonationTest
+{
+  User marge =  new User (&quot;marge&quot;,  &quot;simpson&quot;, &quot;homer@simpson.com&quot;,  &quot;secret&quot;);
+
+  @Before
+  public void setup() throws Exception
+  { 
+    marge = DonationServiceAPI.createUser(marge);
+  }
+
+  @After
+  public void teardown() throws Exception
+  {
+    DonationServiceAPI.deleteUser(marge);
+  }
+
+  @Test
+  public void testCreateDonation () throws Exception
+  {
+    Donation donation = new Donation (123, &quot;cash&quot;);
+    Donation returnedDonation = DonationServiceAPI.createDonation(marge, donation);
+    assertEquals (donation, returnedDonation);
+
+    DonationServiceAPI.deleteDonation(marge, returnedDonation);
+  }
+
+
+  @Test
+  public void testCreateDonations () throws Exception
+  {
+    Donation donation1 = new Donation (123, &quot;cash&quot;);
+    Donation donation2 = new Donation (450, &quot;cash&quot;);
+    Donation donation3 = new Donation (43,  &quot;paypal&quot;);
+
+    Donation returnedDonation1 = DonationServiceAPI.createDonation(marge, donation1);
+    Donation returnedDonation2 = DonationServiceAPI.createDonation(marge, donation2);
+    Donation returnedDonation3 = DonationServiceAPI.createDonation(marge, donation3);
+
+    assertEquals(donation1, returnedDonation1);
+    assertEquals(donation2, returnedDonation2);
+    assertEquals(donation3, returnedDonation3);
+
+    DonationServiceAPI.deleteDonation(marge, returnedDonation1);
+    DonationServiceAPI.deleteDonation(marge, returnedDonation2);    
+    DonationServiceAPI.deleteDonation(marge, returnedDonation3);
+  }
+
+  @Test
+  public void testListDonations () throws Exception
+  {
+    Donation donation1 = new Donation (123, &quot;cash&quot;);
+    Donation donation2 = new Donation (450, &quot;cash&quot;);
+    Donation donation3 = new Donation (43,  &quot;paypal&quot;);
+
+    DonationServiceAPI.createDonation(marge, donation1);
+    DonationServiceAPI.createDonation(marge, donation2);
+    DonationServiceAPI.createDonation(marge, donation3);
+
+    List&lt;Donation&gt; donations = DonationServiceAPI.getDonations(marge);
+    assertEquals (3, donations.size());
+
+    assertTrue(donations.contains(donation1));
+    assertTrue(donations.contains(donation2));
+    assertTrue(donations.contains(donation3));
+
+    DonationServiceAPI.deleteDonation(marge, donations.get(0));
+    DonationServiceAPI.deleteDonation(marge, donations.get(1));    
+    DonationServiceAPI.deleteDonation(marge, donations.get(2));
+  }  
+}
+</code></pre>
+
+<p>All tests should pass.</p>
 	  </section>
 	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
 	     <h1>Exercises</h1>
-<p>Start planning your development for the Assignment! The brief + deadlines is here:</p>
+<p>This is an archive of the two projects so far:</p>
 <ul>
-<li><a href="archives/c-assignment-update.pdf">Assignment Spec</a></li>
+<li><a href="./archives/donation-service-play.zip">donation-service-play</a></li>
+<li><a href="./archives/donation-service-play-test.zip">donation-service-play-test</a></li>
+</ul>
+<h2>Exercise 1</h2>
+<p>Deploy the play project to heroku. Verify that the tests work against the deployed version.</p>
+<h2>Exercise 2</h2>
+<p>Are there any other API features we could implement? </p>
+<p>How about:</p>
+<ul>
+<li>List all donations, regardless of user id</li>
+<li>Delete all donations for a specific user</li>
+<li>Delete all donations for all users</li>
 </ul>
 	  </section>
 <script>
