@@ -4,13 +4,13 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> 12:TODO </title>
+     <title> 12: Services </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://beta.semantic-ui.com/dist/semantic.min.css">
-     <script src="http://beta.semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://beta.semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
+     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
 
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
@@ -147,11 +147,11 @@ header h3
         <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
         <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
         <a class="item" href=" ../topic07/index.html"> 7: TDD | Embedded Map & Orientation </a>
-        <a class="item" href=" ../topic08/index.html"> 8: JPA Part I | Camera </a>
-        <a class="item" href=" ../topic09/index.html"> 9: JPA Part I, HTTP Recap | Viewfinder </a>
-        <a class="item" href=" ../topic10/index.html"> 10: Implementing APIs </a>
-        <a class="item" href=" ../topic11/index.html"> 11: REST Clients & Servers </a>
-        <a class="active item" href=" ../topic12/index.html"> 12:TODO </a>
+        <a class="item" href=" ../topic08/index.html"> 8: JPA | Camera </a>
+        <a class="item" href=" ../topic09/index.html"> 9: APIs </a>
+        <a class="item" href=" ../topic10/index.html"> 10: REST </a>
+        <a class="item" href=" ../topic11/index.html"> 11: MyTweet </a>
+        <a class="active item" href=" ../topic12/index.html"> 12: Services </a>
           <a class="item" href=" ../topicwall.html"> All Topics </a>
           <a class="item" href=" ../labwall.html"> All Labs </a>
       </div>
@@ -161,9 +161,49 @@ header h3
 
 
     <section id="topic" class="ui doubling twelve wide column segment">
-      <h1>12:TODO</h1>
+      <h1>12: Services</h1>
       <div class="ui cards">
-      </div>
+<div  class="ui card">
+  <div class="cover">
+    <div style="background-image: url('./pdf/a-donation-v6.png');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./pdf/a-donation-v6.pdf" class="header">Donation-Android V6</a>
+  </div>
+  <div class="extra content">
+    <p>A review of the Donation-Andorid V6 app, which we completed last week. This version of the app incorporates the User-&gt;Donation relationship, as embodied in the donation-play-service app the REST patterns it provides.</p>
+  </div>
+</div><div  class="ui card">
+  <div class="cover">
+    <div style="background-image: url('./pdf/b-donation-service-ui.png');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./pdf/b-donation-service-ui.pdf" class="header">Donation Service UI</a>
+  </div>
+  <div class="extra content">
+    <p>The Donation Play App is given a UX based on Semantic UI. This version is 'segmented' - facilitating interesting aggregation of views with minimal effort.</p>
+  </div>
+</div><div  class="ui card">
+  <div class="cover">
+    <div style="background-image: url('./pdf/c-donation-projects.png');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./pdf/c-donation-projects.pdf" class="header">Donation Projects</a>
+  </div>
+  <div class="extra content">
+    <p>A look at the full family of donation projects again - android, play and test. An examination of their similarities and differences.</p>
+  </div>
+</div><div  class="ui card">
+  <div class="cover">
+    <div style="background-image: url('./pdf/d-intent-services.png');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./pdf/d-intent-services.pdf" class="header">Intent Services</a>
+  </div>
+  <div class="extra content">
+    <p>Donation Android V6 suffers one significant drawback - new tweets arriving at the server will not be propagated to android clients. Here we look at one way of solving this problem.</p>
+  </div>
+</div>      </div>
       <h1> Labs </h1>
       <div class="ui cards">
 <div class="ui card">
@@ -171,20 +211,44 @@ header h3
     <div style="background-image: url('None');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./book-a/index.html" class="header">Lab: Pacemaker-03</a>
+    <a  href="./book-a/index.html" class="header">Lab: Donation-11</a>
   </div>
   <div class="extra content">
-    <p>Lab 19</p>
+    <p>Refactor Donation Android client to refresh donations list using a background service in a non-blocking call, replacing the present Response interface. </p>
+<p>No changes made to user list retrieval. This is left to you to implement as an exercise.</p>
   </div>
 </div><div class="ui card">
   <div class="cover">
     <div style="background-image: url('None');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
-    <a  href="./book-b/index.html" class="header">Lab: Pacemaker-04</a>
+    <a  href="./book-b/index.html" class="header">Lab: MyTweet-Assignment</a>
   </div>
   <div class="extra content">
-    <p>Lab 20</p>
+    <p>This is a follow-on lab to the MyTweet-Assignment. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> which is reasonable given that it relates to an assignment. The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
+<p>You will require to have completed the projects in the previous lab and use these as a starting point in this lab:</p>
+<ul>
+<li>mytweet-app</li>
+<li>mytweet-service</li>
+<li>mytweet-service-test</li>
+</ul>
+<p>The aim of the previous lab was to facilitate the creation of a walking skeleton of the baseline Android MyTweet assignment 2 app.</p>
+<p>In this lab we further develop MyTweet Android client and Play service by introducing a User model and establishing a many-to-one bi-directional relationship between User and Tweet models.</p>
+<ul>
+<li>Introduce a User model</li>
+<li>Modify the existing Tweet model</li>
+<li>Modify the Welcome activity by the addition of buttons to allow a user to access sign up and log in views.</li>
+</ul>
+  </div>
+</div><div class="ui card">
+  <div class="cover">
+    <div style="background-image: url('None');" class="image-thumbnail"> </div>
+  </div>
+  <div class="content">
+    <a  href="./book-c/index.html" class="header">Lab: Donation-12</a>
+  </div>
+  <div class="extra content">
+    <p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
   </div>
 </div>      </div>
     </section>

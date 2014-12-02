@@ -4,13 +4,13 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> Pacemaker-04 </title>
+     <title> MyTweet-Assignment </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://beta.semantic-ui.com/dist/semantic.min.css">
-     <script src="http://beta.semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://beta.semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
+     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
 
      <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
@@ -123,9 +123,9 @@ header h3
   </head>
   <body>
   <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">12:TODO</a></header>
+    <header class="header item"> <a href="../index.html">12: Services</a></header>
     <div class="right tab-menu menu">
-          <a class="item" data-tab="Pacemaker-04"> Pacemaker-04 </a>
+          <a class="item" data-tab="MyTweet-Assignment"> MyTweet-Assignment </a>
           <a class="item" data-tab="01"> 01 </a>
           <a class="item" data-tab="02"> 02 </a>
           <a class="item" data-tab="03"> 03 </a>
@@ -133,35 +133,683 @@ header h3
           <a class="item" data-tab="05"> 05 </a>
           <a class="item" data-tab="06"> 06 </a>
           <a class="item" data-tab="07"> 07 </a>
+          <a class="item" data-tab="08"> 08 </a>
     </div>
   </nav>
 
   <br>
 
-	  <section data-tab="Pacemaker-04" class="ui tab stacked moodle-book segment">
-	     <h1>Donation</h1>
-<p>Lab 20</p>
+	  <section data-tab="MyTweet-Assignment" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<p>This is a follow-on lab to the MyTweet-Assignment. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> which is reasonable given that it relates to an assignment. The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
+<p>You will require to have completed the projects in the previous lab and use these as a starting point in this lab:</p>
+<ul>
+<li>mytweet-app</li>
+<li>mytweet-service</li>
+<li>mytweet-service-test</li>
+</ul>
+<p>The aim of the previous lab was to facilitate the creation of a walking skeleton of the baseline Android MyTweet assignment 2 app.</p>
+<p>In this lab we further develop MyTweet Android client and Play service by introducing a User model and establishing a many-to-one bi-directional relationship between User and Tweet models.</p>
+<ul>
+<li>Introduce a User model</li>
+<li>Modify the existing Tweet model</li>
+<li>Modify the Welcome activity by the addition of buttons to allow a user to access sign up and log in views.</li>
+</ul>
 	  </section>
 	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     
+	     <h1>MyTweetService (User)</h1>
+<p>We shall develop a User model class in this step.</p>
+<p>We establish a relationship with the Tweet model as follows:</p>
+<pre><code>  @OneToMany(mappedBy=&quot;user&quot;,cascade = CascadeType.ALL)
+  public List&lt;Tweet&gt; tweets = new ArrayList&lt;Tweet&gt;();
+</code></pre>
+
+<p>What this is expressing is that:</p>
+<ul>
+<li>a single user may own many tweets</li>
+<li>User stores the tweets in a list named <em>tweets</em></li>
+<li>any particular tweet will have a reference to its owning user<ul>
+<li>this will be represented as <em>User user</em> field in Tweet class which we shall see shortly.</li>
+</ul>
+</li>
+</ul>
+<p>Here is the new User model code including the above snippet. We are familiar with most aspects of this User class from previous labs such as, for example, Donation.</p>
+<p>Note that we are generating the id (uuid) in the client as we did with the Tweet model.</p>
+<p>File: User.java</p>
+<pre><code>package models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import play.db.jpa.GenericModel;
+
+/**
+ * User has been escaped: This is necessary because User is a reserved word in PostGreSQL
+ * However, if working in local host and wish to use localhost:9000/@db (for example) to view database
+ * Then it is necessary to temporarily comment out the line (i.e. @Table(name = &quot;`User`&quot;) while testing with local host
+ *
+ */
+@Entity
+@Table(name=&quot;`User`&quot;) //To facilitate deployment to heroku: comment out if required to inspect localhost:9000/@db
+public class User extends GenericModel
+{
+  @Id
+  @Column(name=&quot;id&quot;)
+  public String uuid;
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+  @OneToMany(mappedBy=&quot;user&quot;,cascade = CascadeType.ALL)
+  public List&lt;Tweet&gt; tweets = new ArrayList&lt;Tweet&gt;();
+
+  public User(String uuid, String firstName, String lastName, String email, String password)
+  {
+    this.uuid     = uuid;
+    this.firstName= firstName;
+    this.lastName = lastName;
+    this.email    = email;
+    this.password = password;
+  }
+
+  public static User findByEmail(String email)
+  {
+    return find(&quot;email&quot;, email).first();
+  }  
+
+  public boolean checkPassword(String password)
+  {
+    return this.password.equals(password);
+  } 
+}
+</code></pre>
 	  </section>
 	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     
+	     <h1>MyTweetService (Tweet)</h1>
+<p>The only change to the Tweet model is the addition of the other side of the relationship introduced in User:</p>
+<pre><code>  @ManyToOne
+  public User user;
+</code></pre>
+
+<p>A user may own (create) many tweets but a tweet will always have been created by a single user.</p>
+<p>Here is the complete class:</p>
+<pre><code>package models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import play.db.jpa.GenericModel;
+
+@Entity
+public class Tweet extends GenericModel
+{
+  @Id
+  @Column(name=&quot;id&quot;)
+  public String uuid;
+  public String message;
+  public String datestamp;
+  @ManyToOne
+  public User user;
+
+  public Tweet(String uuid, String message, String datestamp)
+  {
+    this.uuid       = uuid;
+    this.message    = message;
+    this.datestamp  = datestamp;
+  }
+}
+
+</code></pre>
+
+<p>Replace the routes file with an updated version that accommodates the new User model:</p>
+<pre><code># Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                                     Application.index
+
+GET     /api/users                            UsersAPI.users
+GET     /api/users/{id}                       UsersAPI.user
+POST    /api/users                            UsersAPI.createUser
+DELETE  /api/users/{id}                       UsersAPI.deleteUser
+DELETE  /api/users                            UsersAPI.deleteAllUsers
+
+GET     /api/users/{userId}/tweets            TweetsAPI.tweets
+GET     /api/users/{userId}/tweet/{id}        TweetsAPI.tweet
+POST    /api/users/{userId}/tweets            TweetsAPI.createTweet
+DELETE  /api/users/{userId}/tweets/{id}       TweetsAPI.deleteTweet
+DELETE  /api/users/{userId}/tweets            TweetsAPI.deleteAllTweets
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+</code></pre>
 	  </section>
 	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     
+	     <h1>MyTweetService(APIs)</h1>
+<h2>JsonParsers</h2>
+<p>Add these methods to class JsonParsers to facilitate conversion between User and JSON types:</p>
+<pre><code>  public static User json2User(String json)
+  {
+    return gson.fromJson(json, User.class);   
+  }
+
+  public static List&lt;User&gt; json2Users(String json)
+  {
+    Type collectionType = new TypeToken&lt;List&lt;User&gt;&gt;() {}.getType();
+    return gson.fromJson(json, collectionType); 
+  }
+
+  public static String user2Json(Object obj)
+  {
+    return gson.toJson(obj);
+  } 
+</code></pre>
+
+<h2>UsersAPI</h2>
+<p>Add an API for User class:</p>
+<p>File: UsersAPI.java</p>
+<pre><code>package controllers;
+
+import play.*;
+import play.mvc.*;
+import utils.JsonParsers;
+
+import java.util.*;
+
+import com.google.gson.JsonElement;
+
+import models.*;
+
+public class UsersAPI extends Controller
+{
+  public static void users()
+  {
+    List&lt;User&gt; users = User.findAll();
+    renderJSON(JsonParsers.user2Json(users));
+  }
+
+  public static void user(String id)
+  {
+    User user = User.findById(id);  
+    if (user == null)
+    {
+      notFound();
+    }
+    else
+    {
+      renderJSON(JsonParsers.user2Json(user));
+    }
+  }
+
+  public static void createUser(JsonElement body)
+  {
+    User user = JsonParsers.json2User(body.toString());
+    user.save();
+    renderJSON(JsonParsers.user2Json(user));
+  }
+
+  public static void deleteUser(String id)
+  {
+    User user = User.findById(id);
+    if (user == null)
+    {
+      notFound();
+    }
+    else
+    {
+      user.delete();
+      renderText(&quot;success&quot;);
+    }
+  }
+
+  public static void deleteAllUsers()
+  {
+    List&lt;User&gt; users = User.findAll();
+    for(int i=0; i&lt;users.size(); i++)
+    {
+      User user = users.get(i);
+      if(user == null)
+      {
+        notFound();
+      }
+      else
+      {
+        user.delete();
+      }
+    }
+    renderText(&quot;success&quot;);
+  }     
+}
+
+</code></pre>
+
+<p>Compare <em>deleteAllUsers</em> in this file with <em>deleteAllTweets</em> in TweetAPI.java:</p>
+<ul>
+<li>The above method replaces the single statement User.deleteAll that might have been expected (and that would work in the absence of a relationship such as one-to-many)<ul>
+<li>Previously the body of this method comprised the single statement<ul>
+<li>User.deleteAll();</li>
+</ul>
+</li>
+<li>User.deleteAll throws a PersistenceException (following introduction of User-Tweet relationship)</li>
+</ul>
+</li>
+</ul>
 	  </section>
 	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     
+	     <h1>MyTweetApp (Welcome)</h1>
+<p>We have completed refactoring mytweet-service Play app and now address the Android mytweetapp client.</p>
+<p>The legacy Welcome screen and its suggested replacement are shown here in Figure 1:</p>
+<p><img alt="Figure 1: Legacy Welcome screen" src="img/01.png"></p>
+<p>The refactored Welcome screen and new Login and Signup screens are depicted in Figure 2.</p>
+<p><img alt="Figure 2: Refactored Welcome" src="img/02.png"></p>
 	  </section>
 	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     
+	     <h1>MyTweetApp(Model)</h1>
+<p>The model classes used in the Android client, MyTweetApp are introduced in this step.</p>
+<h2>Tweet</h2>
+<p>Introduce a new field in org.wit.mytweet.models to mirror the relationship between Tweet and User.</p>
+<p>Modify the legacy Tweet class as follows:</p>
+<ul>
+<li>Add a User field</li>
+</ul>
+<pre><code>private User user;
+</code></pre>
+
+<ul>
+<li>Modify the Tweet constructor by introducing a User argument.</li>
+<li>This is now the only Tweet constructor in the client and ensures that when a tweet is created it is simultaneously bound to the creating user.</li>
+</ul>
+<pre><code>  public Tweet(User user)
+  {
+    uuid = UUID.randomUUID().toString();
+    datestamp = setDate();
+    message = &quot;&quot;;
+    this.user = user;
+  }
+
+</code></pre>
+
+<h2>User</h2>
+<p>Here is the new User model class. Observe that the <em>uuid</em> is generated here rather than in the Play app on the server.</p>
+<pre><code>package org.wit.mytweet.model;
+
+import java.util.UUID;
+
+public class User 
+{
+  public String uuid;
+  public String firstName;
+  public String lastName;
+  public String email;
+  public String password;
+
+  public User()
+  {}
+
+  public User(String firstName, String lastName, String email, String password)
+  {
+    this.uuid      = UUID.randomUUID().toString();
+    this.firstName = firstName;
+    this.lastName  = lastName;
+    this.email     = email;
+    this.password  = password;
+  } 
+
+}
+</code></pre>
 	  </section>
 	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     
+	     <h1>MyTweetApp(API)</h1>
+<p>Here are sample APIs for both User and Tweet in the Android client (MyTweetApp):</p>
+<p>File: TweetsAPI.java</p>
+<pre><code>package org.wit.mytweets.controllers;
+
+import java.util.List;
+
+import org.wit.mytweet.http.Request;
+import org.wit.mytweet.http.Response;
+import org.wit.mytweet.http.Rest;
+import org.wit.mytweet.httputils.JsonParsers;
+import org.wit.mytweet.model.Tweet;
+import org.wit.mytweet.model.User;
+
+import android.content.Context;
+
+public class TweetsAPI
+{ 
+  public static void getTweets(Context context, Response&lt;Tweet&gt; response, String dialogMesssage, User user)
+  {
+    new GetTweets(context, response, dialogMesssage).execute(user);
+  }
+
+  public static void createTweet(Context context, Response&lt;Tweet&gt; response, String dialogMesssage, User user, Tweet tweet)
+  {
+    new CreateTweet(context, response, dialogMesssage).execute(user,tweet);
+  }
+
+  public static void deleteTweet(Context context, Response&lt;Tweet&gt; response, String dialogMesssage, User user, Tweet tweet)
+  {
+    new DeleteTweet(context, response, dialogMesssage).execute(user, tweet);
+  }
+}
+
+class GetTweets extends Request
+{
+  public GetTweets(Context context, Response&lt;Tweet&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override
+  protected List&lt;Tweet&gt; doRequest(Object... params) throws Exception
+  {
+    String userId = ((User)params[0]).uuid;
+    String response =  Rest.get(&quot;/api/users/&quot; + userId + &quot;/tweets&quot;);
+    List&lt;Tweet&gt; tweetList = JsonParsers.json2Tweets(response);
+    return tweetList;
+  }
+}
+
+class CreateTweet extends Request
+{
+  public CreateTweet(Context context, Response&lt;Tweet&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override
+  protected Tweet doRequest(Object... params) throws Exception
+  {
+    String userId = ((User)params[0]).uuid;
+    String response = Rest.post (&quot;/api/users/&quot; + userId + &quot;/tweets&quot;, JsonParsers.tweet2Json(params[1]));
+    return JsonParsers.json2Tweet(response);
+  }
+}
+
+class DeleteTweet extends Request 
+{
+  public DeleteTweet(Context context, Response&lt;Tweet&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override 
+  protected Tweet doRequest(Object... params) throws Exception
+
+  {
+  User user = ((User)params[0]);
+    String tweetId = ((Tweet)params[1]).getId().toString();
+    String path    = &quot;/api/users/&quot; + user.uuid + &quot;/tweets/&quot; + tweetId; 
+    String response = Rest.delete (path);
+    if(response.equals(&quot;success&quot;))
+    {
+      return new Tweet(user);//String not acceptable argument to any of Response methods so we fake it
+    }
+    else
+    {
+      throw new Exception();
+    }
+  }
+}
+
+</code></pre>
+
+<p>We have made some minor changes to the DeleteTweet class here to fix breakage cause by eliminating the default Tweet constructor. </p>
+<p>File: UsersAPI.java</p>
+<pre><code>package org.wit.mytweet.model;
+
+import java.util.List;
+
+import org.wit.mytweet.http.Request;
+import org.wit.mytweet.http.Response;
+import org.wit.mytweet.http.Rest;
+import org.wit.mytweet.httputils.JsonParsers;
+import org.wit.mytweet.model.User;
+
+import android.content.Context;
+
+public class UsersAPI
+{ 
+  public static void getUsers(Context context, Response&lt;User&gt; response, String dialogMesssage)
+  {
+    new GetUsers(context, response, dialogMesssage).execute();
+  }
+
+  public static void createUser(Context context, Response&lt;User&gt; response, String dialogMesssage, User user)
+  {
+    new CreateUser(context, response, dialogMesssage).execute(user);
+  }
+
+  public static void deleteUser(Context context, Response&lt;User&gt; response, String dialogMesssage, User user)
+  {
+    new DeleteUser(context, response, dialogMesssage).execute(user);
+  }
+}
+//===============================================================================================================//
+class GetUsers extends Request
+{
+  public GetUsers(Context context, Response&lt;User&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override
+  protected List&lt;User&gt; doRequest(Object... params) throws Exception
+  {
+    String response =  Rest.get(&quot;/api/users&quot;);
+    List&lt;User&gt; userList = JsonParsers.json2Users(response);
+    return userList;
+  }
+}
+
+class CreateUser extends Request
+{
+  public CreateUser(Context context, Response&lt;User&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override
+  protected User doRequest(Object... params) throws Exception
+  {
+    String response = Rest.post (&quot;/api/users&quot;, JsonParsers.user2Json(params[0]));
+    return JsonParsers.json2User(response);
+  }
+}
+
+class DeleteUser extends Request 
+{
+  public DeleteUser(Context context, Response&lt;User&gt; callback, String message)
+  {
+    super(context, callback, message);
+  }
+
+  @Override 
+  protected User doRequest(Object... params) throws Exception
+
+  {
+    String id = ((User)params[0]).uuid.toString();
+    String path = &quot;/api/users/&quot; + id; 
+    String response = Rest.delete (path);
+    if(response.equals(&quot;success&quot;))
+    {
+      return new User();
+    }
+    else
+    {
+      throw new Exception();
+    }
+  }
+}
+
+</code></pre>
+
+<p>Add User parsers to JsonParsers.java which should eliminate the errors in above code:</p>
+<pre><code>  public static User json2User(String json)
+  {
+    return gson.fromJson(json, User.class);   
+  }
+
+  public static List&lt;User&gt; json2Users(String json)
+  {
+    Type collectionType = new TypeToken&lt;List&lt;User&gt;&gt;() {}.getType();
+    return gson.fromJson(json, collectionType); 
+  }
+
+  public static String user2Json(Object obj)
+  {
+    return gson.toJson(obj);
+  } 
+</code></pre>
 	  </section>
 	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     
+	     <h1>MyTweetApp (Integration)</h1>
+<p>Some changes are required to accomodate the new User class and its relationship with Tweet.</p>
+<p><strong>Signup</strong> and <strong>Login</strong></p>
+<p>It is assumed you have already introduced and fully implemented these activities.</p>
+<p><strong>MyTweetApp</strong></p>
+<ul>
+<li>It will be necessary to introduce a field here to store the current user.</li>
+<li>This field should be initialized from the Login activity (once a user has been authenticated).</li>
+</ul>
+<pre><code>public User logged_in_user;
+</code></pre>
+
+<p>Also required is a field for the current list of users:</p>
+<pre><code>  public List &lt;User&gt; users = new ArrayList&lt;User&gt;();  
+</code></pre>
+
+<p>And a method to authenticate:</p>
+<pre><code>  public User validUser (String email, String password)
+  {
+    for (User user : users)
+    {
+      if (user.email.equals(email) &amp;&amp; user.password.equals(password))
+      {
+        logged_in_user = user;
+        return user;
+      }
+    }
+    return null;
+  }
+</code></pre>
+
+<p><strong>TimeLineFragment</strong></p>
+<p>Add User &amp; MyTweetApp fields:</p>
+<pre><code>private User user;
+private MyTweetApp app;
+</code></pre>
+
+<p>Initialize <em>user</em> in onCreate:</p>
+<pre><code>@Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    ...
+    app = (MyTweetApp) getActivity().getApplication();
+    user   = app.logged_in_user;
+    ...
+  }
+</code></pre>
+
+<ul>
+<li>In onOptionsItemSelected<ul>
+<li>Delete: <em>Tweet tweet = new Tweet();</em></li>
+<li>Replace with: <em>Tweet tweet = new Tweet(user);</em></li>
+</ul>
+</li>
+</ul>
+<pre><code>@Override
+public boolean onOptionsItemSelected(MenuItem item)
+{
+  switch (item.getItemId())
+  {
+    ...
+
+    case R.id.menuTweet:
+      Tweet tweet = new Tweet(user);
+      tweetlist.addTweet(tweet);
+
+      Intent i = new Intent(getActivity(), MyTweetPagerActivity.class);
+      i.putExtra(MyTweetFragment.EXTRA_TWEET_ID, tweet.getId());
+      startActivityForResult(i, 0);
+      return true;
+
+     ...
+    }
+  }
+</code></pre>
+
+<p>Modify the TweetsAPI.deleteTweet invocations to include a <em>User</em> instance:</p>
+<pre><code>TweetsAPI.deleteTweet(getActivity(), this, &quot;deleting tweet&quot;, user, tweet);
+</code></pre>
+
+<h2>MyTweetFragment</h2>
+<p>Replace the call in <em>onClick</em> to create a tweet with the following in which <em>user</em> has been introduce as an argument:</p>
+<pre><code>  public void onClick(View v)
+  {
+    switch (v.getId())
+    {
+      case R.id.tweet_button:
+        User user = app.logged_in_user;
+        if(user != null)
+        {
+          TweetsAPI.createTweet(getActivity(), this, &quot;tweeting&quot;, user, this_tweet);
+        }
+        else
+        {
+          Toast.makeText(getActivity(), &quot;Unable to locate logged-in user&quot;, Toast.LENGTH_SHORT).show();
+        }
+        break;
+    }
+  }
+</code></pre>
+	  </section>
+	  <section data-tab="08" class="ui tab stacked moodle-book segment">
+	     <h1>Test</h1>
+<p>As part of the assignment you will be writing and executing comprehensive JUnit tests. </p>
+<p>Here, in the meantime, are some quick checks you may perform using Postman:</p>
+<p>Create a new user.
+Create some tweets associated with the user.</p>
+<p>Repeat for a second user.</p>
+<ul>
+<li>GET the users</li>
+<li>GET a specific user using the user id from the previous test</li>
+<li>GET the tweets for a specific user</li>
+<li>DELETE all users<ul>
+<li>Use the H2 console (localhost:9000/@db) to verify the associated tweets have also been deleted</li>
+</ul>
+</li>
+<li>Replace the deleted users and DELETE the users individually</li>
+</ul>
+<p>Note that if you wish to use the H2 console to view the User table it will be necessary to comment out the following line in model User.java:</p>
+<pre><code>@Table(name=&quot;`User`&quot;)
+</code></pre>
+
+<p>Do not forget to restore this line when deploying to Heroku as a workaround since User is a reserved word in PostgreSql.</p>
+<p>Here are screenshot of some tests results:</p>
+<p><img alt="Figure 1: H2 Console used to check User and Tweet" src="img/06.png">
+<img alt="Figure 2: Get all users" src="img/03.png">
+<img alt="Figure 3: Get all tweets for a specific user" src="img/04.png">
+<img alt="Figure 4: Delete all users" src="img/05.png"></p>
+<p>Consult the routes file as you conduct the tests to ensure the correct uri is being provided for each test.
+<img alt="Figure 5: Extract from routes file" src="img/07.png"></p>
 	  </section>
 <script>
 
