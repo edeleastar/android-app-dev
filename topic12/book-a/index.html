@@ -687,10 +687,10 @@ public class BootReceiver extends BroadcastReceiver
 </code></pre>
 
 <p>Add a new string element to res/values/strings.xml</p>
-<pre><code>  &lt;string name=&quot;refresh_subtitle&quot;&gt;Enter refresh interval (seconds)&lt;/string&gt;
+<pre><code>  &lt;string name=&quot;refresh_subtitle&quot;&gt;Enter refresh interval (minutes)&lt;/string&gt;
 </code></pre>
 
-<p>Clearly the choice of seconds has been made with testing in mind. Production code would likely use much larger time units.</p>
+<p>Clearly the choice of minutes has been made with testing in mind. Production code would likely use much larger time units.</p>
 <p>Add a new package <em>app.settings</em> in which the follows files should be located:</p>
 <p>SettingsActivity.java</p>
 <pre><code>package app.settings;
@@ -809,7 +809,7 @@ public class SettingsFragment extends PreferenceFragment implements OnSharedPref
 <ul>
 <li>We are not obligated to input this value as the default 15 minutes will be used if no value has been input in preferences.</li>
 <li>In reality 15 minutes would, perhaps, be much too small an interval. Remember that network traffic is expensive not only on the client but generally more so on the server. See, for example, this Wikipedia article on <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">Denial-of-service attacks</a>.</li>
-<li>The input value should be in seconds: this is converted to milliseconds in the onReceive method which is the unit of time specified as argument in AlarmManager.setInexactRepeating.</li>
+<li>The input value should be in minutes: this is converted to milliseconds in the onReceive method which is the unit of time specified as argument in AlarmManager.setInexactRepeating.</li>
 </ul>
 <pre><code>package app.receivers;
 import android.app.AlarmManager;
@@ -835,8 +835,8 @@ public class BootReceiver extends BroadcastReceiver
 
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
     long interval = Long.parseLong(prefs.getString(&quot;refresh_interval&quot;, Long.toString(DEFAULT_INTERVAL)));
-    interval *= 1000;//seconds to milliseconds since input at settings menu is specified in minutes
-    interval = interval &lt; 10000 ? 10000 : interval; //Think of the poor server. Denial of service? So we set 10 seconds as the minimum
+    interval *= 60000;//here we convert minutes to milliseconds since input at settings menu is specified in minutes
+    interval = interval &lt; 60000 ? 60000 : interval; //Think of the poor server. Denial of service? So we set 60 seconds as the minimum
     PendingIntent operation = PendingIntent.getService(context, REQUESTCODE, new Intent(context, RefreshService.class),
         PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -859,6 +859,7 @@ public class BootReceiver extends BroadcastReceiver
 <li>Modify RefreshService to retrieve the list of users from the server (in addition to the list of donations).</li>
 <li>Remove the DonationServiceAPI.getUsers call in Welcome, replacing it with other appropriate code (should any such be necessary).</li>
 </ul>
+<p>The completed project <em>donation-android-v7</em> is available to download <a href="archives/donation-android-v7.zip">here</a></p>
 	  </section>
 <script>
 
