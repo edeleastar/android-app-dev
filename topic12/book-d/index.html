@@ -1,0 +1,705 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> MyTweet-Assignment-03 </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
+     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+#container
+{
+  margin :10px
+}
+
+code
+{
+	font-family: "Monaco";
+	font-size: 110%;
+}
+
+h1 
+{
+  font-style:italic;
+  font-size:120%;
+  border-bottom: thin solid black;
+}
+h2 
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+h3 
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+#footertext 
+{
+  font-size:70%
+}
+
+#title 
+{
+  font-size:120%;
+  color: black;
+  text-align: right;
+  background-color : white;
+}
+
+img 
+{
+   padding:1px;
+   border:1px solid black;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+header img
+{
+	 padding:1px;
+   border:0px solid black;
+}
+
+header h1
+{
+  font-style:normal;
+  font-size:120%;
+  border-bottom: 0px;
+}
+
+header h2
+{
+  font-style:normal;
+  font-size:100%;
+  border-bottom: 0px;
+}
+
+header h3
+{
+  font-style:normal;
+  font-size:90%;
+  border-bottom: 0px;
+}
+
+.cover
+{
+    width: 290px;
+    height: 290px;
+    border:1px solid lightgray;
+}
+.image-thumbnail
+{
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-position: center;
+}
+
+
+
+    </style>
+
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">12: Services</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="MyTweet-Assignment-03"> MyTweet-Assignment-03 </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="07"> 07 </a>
+          <a class="item" data-tab="08"> 08 </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="MyTweet-Assignment-03" class="ui tab stacked moodle-book segment">
+	     <h1>MyTweet Assignment 03</h1>
+<p>This lab has been developed to assist in the preparation of the current assignment, which comprises the development of a MyTweet suite of apps. The lab explains how to capture geolocations using map markers and also how to display a user's list of residences as markers on a map. A version of MyRent has been refactored to include sample features since MyRent structure closely resembles that of MyTweet.</p>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Preview</h1>
+<p>This is a brief description of the lab:</p>
+<ul>
+<li>Began with baseline MyRentV06 (downloadable <a href="archives/MyRentV06.zip">here</a>)</li>
+<li>Added Welcome, Sign up and Login activities.</li>
+<li>Added Map activity-fragment pair.</li>
+<li>Added a refresh service and associated menu icon to allow user to manually refresh residence list</li>
+<li>Converted MyRentV06 into an Android client | Play server pair</li>
+<li>Wrote a simple JUnit test app</li>
+<li>Allows residence geolocation to be set using Google Map<ul>
+<li>This is in addition to existing manual input option </li>
+</ul>
+</li>
+<li>Access map from menu option</li>
+<li>Display a user's residence list as map markers<ul>
+<li>marker denotes geolocation residence</li>
+<li>current residence marker colored differently from others</li>
+</ul>
+</li>
+</ul>
+<p>The purpose of this lab is to provide some sample code to allow one to easily integrate a map into the current assignment's MyTweet app.</p>
+<p>The lab does not provide a detailed explanation, but rather leaves it to the student to mine whatever code may be of use.</p>
+<p>The starting point is MyRentV06. We have chosen this version (rather than the final version of MyRent) to reduce as much as possible the amount of baseline code.</p>
+<p>Figure 1 shows MyRentV06 screenshots and Figure 2 the refactored app:</p>
+<p><img alt="Figure 1: MyRentV06" src="img/02.png"></p>
+<p><img alt="Figure 2: MyRentV06 refactored" src="img/03.png"></p>
+<p>The projects completed as part of this lab are available to download here:</p>
+<p><a href="archives/myrent-map-demo-app.zip">myrent-map-demo-app</a></p>
+<p><a href="archives/myrent-map-demo-service.zip">myrent-map-demo-service</a></p>
+<p><a href="archives/myrent-map-demo-test.zip">myrent-map-demo-test</a></p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Setup</h1>
+<p>You may encounter initial errors on importing the archives:</p>
+<ul>
+<li>
+<p>myrent-map-demo-app (Android)</p>
+</li>
+<li>
+<p>myrent-map-demo-service (Play)</p>
+</li>
+<li>
+<p>myrent-map-demo-test (Play)</p>
+</li>
+</ul>
+<h2>Play apps:</h2>
+<ul>
+<li>Import the project into Eclipse</li>
+<li>Delete the <strong>eclipse</strong> folder</li>
+<li>In the terminal browse to the folder containing the Play app &amp; run the following commands in succession:</li>
+</ul>
+<pre><code>play eclipsify
+play deps
+</code></pre>
+
+<p><img alt="" src="img/12.png"></p>
+<p><img alt="" src="img/16.png"></p>
+<p><img alt="" src="img/17.png"></p>
+<h2>Android app</h2>
+<p>Ensure google-play-services_lib is present in your workspace.</p>
+<p><img alt="" src="img/13.png"></p>
+<p>Select the project in Eclipse workspace and via the context menu open the properties view:</p>
+<p><img alt="" src="img/15.png"></p>
+<p>Add the play services library to the project:</p>
+<p><img alt="" src="img/14.png"></p>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Markers</h1>
+<p>Some introductory material on markers is available <a href="markers
+https://www.youtube.com/watch/?v=l3bw8Senjmg">here</a> online or as a local <a href="archives/Maps_Live_Getting_Started_with_Markers_on_Android.flv">download</a> which can be seen on VLC player, for example.</p>
+<p><img alt="Figure 1: Array of markers" src="img/01.png"></p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Map (source)</h1>
+<p>MapActivity.java</p>
+<pre><code>package org.wit.myrent.map;
+
+import org.wit.myrent.R;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+
+
+
+public class MapActivity extends FragmentActivity
+{
+
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.fragment_container);
+
+    FragmentManager manager = getSupportFragmentManager();
+    Fragment fragment = manager.findFragmentById(R.id.fragmentContainer);
+    if (fragment == null)
+    {
+      fragment = new MapFragment();
+      manager.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
+    }
+  }
+}
+</code></pre>
+
+<pre><code>package org.wit.myrent.map;
+
+
+//import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
+
+import org.wit.android.helpers.MapHelper;
+import org.wit.myrent.R;
+import org.wit.myrent.activities.ResidenceFragment;
+import org.wit.myrent.app.MyRentApp;
+import org.wit.myrent.models.Portfolio;
+import org.wit.myrent.models.Residence;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+
+public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMarkerDragListener,
+                                                                GoogleMap.OnCameraChangeListener
+
+
+{
+  private MyRentApp app;
+
+  SupportMapFragment mapFragment;
+  GoogleMap gmap;
+  Marker marker;
+  LatLng markerPosition;
+  boolean markerDragged;
+  Boolean dragFlag;//indicates if the markers may be dragged: value obtained from Intent.
+  String currentGeolocation;// = &quot;52.253456,-7.187162&quot;;
+
+  private Residence   currentResidence;
+  private Portfolio   portfolio;
+
+  @Override
+  public void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
+    setHasOptionsMenu(true);
+
+    UUID resId = (UUID)getActivity().getIntent().getSerializableExtra(ResidenceFragment.EXTRA_RESIDENCE_ID);
+    dragFlag = (Boolean)getActivity().getIntent().getSerializableExtra(&quot;MarkersDraggable&quot;);
+
+    app = (MyRentApp) getActivity().getApplication();
+    portfolio = app.portfolio; 
+    currentResidence = portfolio.getResidence(resId);
+  }
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
+  {
+    super.onCreateView(inflater, parent, savedInstanceState);
+    View v = inflater.inflate(R.layout.fragment_map, parent, false);
+    getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+
+    return v;
+  }
+
+  @Override
+  public void onPause()
+  {
+    super.onPause();
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item)
+  {
+    switch (item.getItemId())
+    {
+    case android.R.id.home:
+      getActivity().onBackPressed();
+      return true;
+    default:
+      return super.onOptionsItemSelected(item);
+    }
+  }
+
+  /* ====================== map ========================================== */
+  private void initializeMapFragment()
+  {
+    FragmentManager fm = getChildFragmentManager();
+    mapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map);
+    if (mapFragment == null)
+    {
+      mapFragment = SupportMapFragment.newInstance();
+      fm.beginTransaction().replace(R.id.map, mapFragment).commit();
+    }
+  }
+
+  @Override
+  public void onMarkerDragStart(Marker arg0)
+  {}
+
+  @Override
+  public void onMarkerDrag(Marker arg0)
+  {}
+
+  @Override
+  public void onMarkerDragEnd(Marker arg0)
+  {
+    currentGeolocation = MapHelper.latLng(arg0.getPosition());
+    getActivity().setTitle(currentGeolocation);
+    currentResidence.geolocation = currentGeolocation;
+    gmap.animateCamera(CameraUpdateFactory.newLatLng(arg0.getPosition()));
+    markerDragged = true;
+  }
+
+  /*
+   * this Camera refers to Google map, not device camera
+   * When camera change equivalent to changed map position here
+   * For example by panning map to new position
+   * Method does the following:
+   *      saves zoom position to model layer
+   *      removes existing non-null marker
+   *      creates and positions new marker to residence geolocation
+   * Marker draggable attribute set by flag dragFlag
+   */
+  @Override
+  public void onCameraChange(CameraPosition arg0)
+  {
+    currentResidence.zoom = arg0.zoom;
+    markerPosition = MapHelper.latLng(getActivity(), currentGeolocation);
+    if (marker != null)
+    {
+      marker.remove();
+    }
+
+    marker = gmap.addMarker(new MarkerOptions()
+                                .position(markerPosition)
+                                .draggable(dragFlag)
+                                .visible(true)
+                                .title(&quot;residence origin&quot;)
+                                .alpha(0.7f)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                                .snippet(&quot;GPS : &quot; + markerPosition.toString()));
+    addVisibleRegionMarkers();
+
+  }
+  /*
+   * initializes and renders the map
+   * sets map type, example HYBRID in this case
+   * sets the drag marker listener (but does not create a marker)
+   * sets the map (camera) changed listener
+   */
+  private void renderMap(LatLng markerPosition)
+  {
+    if (mapFragment != null)
+    {
+      gmap = mapFragment.getMap();
+      if (gmap != null)
+      {
+        gmap.animateCamera(CameraUpdateFactory.newLatLngZoom(markerPosition, (float)currentResidence.zoom));
+        gmap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        gmap.setOnMarkerDragListener(this);
+        gmap.setOnCameraChangeListener(this);//this Camera refers to Google map, not device camera
+      }
+    }
+  }
+
+  /* @see http://stackoverflow.com/questions/18206615/how-to-use-google-map-v2-inside-fragment 
+   * Necessary to wait until MapFragment created before initializing map fragment
+   * Note that map fragment is nested within residence fragment. See the xml layout file for residence frag
+  */
+
+  @Override
+  public void onActivityCreated(Bundle savedInstanceState)
+  {
+    super.onActivityCreated(savedInstanceState);
+    currentGeolocation = currentResidence.geolocation;
+    initializeMapFragment();  
+  }
+
+@Override
+  public void onStart()
+  {
+    super.onStart();
+    renderMap(MapHelper.latLng(getActivity(), currentGeolocation));
+  }
+
+  /**
+   * add a marker to map corresponding to location of arg res
+   * markers set non-draggable
+   * @param the Residence object for which marker added to map
+   */
+  public void addMarker(Residence res)
+  {
+    LatLng pos = MapHelper.latLng(res.geolocation);
+    MarkerOptions options = new MarkerOptions().position(pos)
+                                               .draggable(false)
+                                               .visible(true)
+                                               .alpha(0.7f)
+                                               .title(&quot;Residence Location&quot;)
+                                               .snippet(&quot;GPS : &quot; + res.geolocation);
+     gmap.addMarker(options);
+  }
+
+  /**
+   * Add markers within visible region (that is the visible screen)
+   */
+  public void addVisibleRegionMarkers()
+  {
+    LatLngBounds bounds = gmap.getProjection().getVisibleRegion().latLngBounds;
+
+    List&lt;Residence&gt; residences = portfolio.residences;
+    Iterator&lt;Residence&gt; it = residences.iterator();
+    while(it.hasNext())
+    { 
+      Residence r = it.next();
+      LatLng markerPoint = MapHelper.latLng(r.geolocation);
+      //include points within visible region not including current residence
+      if(bounds.contains(markerPoint) &amp;&amp; !r.getUuid().equals(currentResidence.getUuid()))
+      {
+          addMarker(r);    
+      } 
+    }
+  }
+
+}
+</code></pre>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Map (analysis)</h1>
+<p>Here are some of the features of the fragment:</p>
+<p>Fields include a map, marker and current marker position</p>
+<p><img alt="" src="img/04.png">
+<img alt="" src="img/04a.png"></p>
+<p>When one drags and then drops a marker the current marker position is:</p>
+<ul>
+<li>displayed in the action bar title</li>
+<li>saved to the current residence object</li>
+<li>used to update the map displayed on the app</li>
+</ul>
+<p><img alt="" src="img/05.png"></p>
+<p>When the map camera changes (for example by scrolling or panning the map), all visible markers present within the visible portion of the map are displayed:</p>
+<pre><code>addVisibleRegionMarkers();
+</code></pre>
+
+<ul>
+<li>Obtain the coordinates defining the boundary of the visible map</li>
+<li>Iterate the list of current user's residences</li>
+<li>If a residence is:<ul>
+<li>Located within visible region map </li>
+<li>Is not the current residence</li>
+</ul>
+</li>
+<li>Then display that residence's marker (red)</li>
+</ul>
+<p><img alt="" src="img/06.png"></p>
+<p>The current user's residence will be denoted by a blue marker icon.</p>
+<p><img alt="" src="img/07.png"></p>
+<p>It will be necessary also to modify the manifest permission and obtain a Google Map API V2 key. </p>
+<ul>
+<li>This has been dealt with in detail in an earlier lab.</li>
+</ul>
+<p>Here is the layout file for the map:</p>
+<p>fragment_map.xml</p>
+<pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;vertical&quot; &gt;   
+
+      &lt;FrameLayout
+          android:id=&quot;@+id/map&quot;
+          android:layout_width=&quot;match_parent&quot;
+          android:layout_height=&quot;wrap_content&quot;/&gt;
+
+&lt;/LinearLayout&gt;
+
+</code></pre>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>Map (Launch)</h1>
+<p>The map may be launched from a menu item in the sample app (myrent-map-demo-app).</p>
+<ul>
+<li>From residence list view<ul>
+<li>Here the map will be read-only (marker cannot be dragged)</li>
+</ul>
+</li>
+<li>From residence details view<ul>
+<li>The intention here is to use the map to set the residence location</li>
+<li>Only the current residence's markers are draggable</li>
+</ul>
+</li>
+</ul>
+<p>We enforce this condition on marker draggability by sending a boolean flag in the Intent </p>
+<ul>
+<li>draggable false when sending intent from residence list fragment<ul>
+<li>no current residence</li>
+</ul>
+</li>
+<li>draggable true when sending from residence details fragment<ul>
+<li>option to set current residence geolocation with map marker.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="img/08.png"></p>
+<p>Notice that in the case of the intent sent from ResidenceFragment, we chose the last residence in the list to send as an intent extra.</p>
+	  </section>
+	  <section data-tab="07" class="ui tab stacked moodle-book segment">
+	     <h1>Map(Geolocation)</h1>
+<p>Undoubtedly more efficient and elegant methods exist for transmitting the marker coordinates to the model layer. But this is how it's done in this prototypal app:</p>
+<ul>
+<li>We create a residence object in ResidenceListFragment and store a reference to it in <em>portfolio</em>.</li>
+</ul>
+<p><img alt="" src="img/09.png"></p>
+<ul>
+<li>
+<p>In the map fragment we have a field in which to store this same reference (to the current residence instance):</p>
+<ul>
+<li>here we name it <em>currentResidence</em>.</li>
+</ul>
+</li>
+<li>
+<p>When we stop dragging the marker, its position is assigned to the residence's geolocation.</p>
+</li>
+</ul>
+<p><img alt="" src="img/10.png"></p>
+<ul>
+<li>We return to the Residence details view using the <em>up</em> button. When we have completed our work in this view we again use the <em>up</em> button to return to the list view. This routes the code through the <em>create_update_residence</em> method that eventually results in a network call to create a new residence on the server.</li>
+</ul>
+<p><img alt="" src="img/11.png"></p>
+<p>A somewhat similar process is performed should we change an existing residence in the details view except that <em>updateResidence</em> is invoked instead of <em>createResidence</em>.</p>
+<ul>
+<li>To support this feature we have used a boolean flag to distinguish beteween a residence details view being rendered as part of creating a new residence or making changes to an existing residence.</li>
+<li>We have also added the necessary functionality to the APIs to support updating.</li>
+</ul>
+	  </section>
+	  <section data-tab="08" class="ui tab stacked moodle-book segment">
+	     <h1>Map(Integration)</h1>
+<p>Integrating the Map activity|fragment pair into a project is straightforward.</p>
+<p>MapActivity simply requires the presence of the <em>fragment_container.xml</em> file:</p>
+<ul>
+<li>This is located in res/layout</li>
+</ul>
+<p><img alt="" src="img/19.png"></p>
+<p>MapFragment requires a layout file, also located in the res/layout folder</p>
+<ul>
+<li><em>fragment_map.xml</em> </li>
+</ul>
+<p><img alt="" src="img/20.png"></p>
+<p>MapFragment has the following dependencies:</p>
+<ul>
+<li>Model classes<ul>
+<li>Residence</li>
+<li>Portfolio</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="img/21.png"></p>
+<ul>
+<li>ResidenceFragment<ul>
+<li>Two objects should be present in the Intent:<ul>
+<li>A residence UUID</li>
+<li>A boolean flag indicating whether markers are draggable or not</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="img/18.png"></p>
+<ul>
+<li>MyRentApp<ul>
+<li>The Application subclass<ul>
+<li>Should contain a Portfolio instance</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="img/22.png">
+<img alt="" src="img/25.png"></p>
+<ul>
+<li>Portfolio<ul>
+<li>Should contain <ul>
+<li>a method <em>Residence getResidence(UUID)</em></li>
+<li>a list of <em>residences</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="img/24.png">
+<img alt="" src="img/23.png"></p>
+<p>There may be some further dependencies but should these exist they should be easily identifiable at compile time.</p>
+	  </section>
+<script>
+
+function addCaptions() {
+  var images = $(".moodle-book img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0) 
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
+  });
+};
+
+// Need to check if we have already been loaded
+seen = 0;
+
+$(document).ready(function()
+{ 
+  if (seen == 0)
+  { 
+    // not loaded before - so do the restyling once (need to moodle book print)
+    $(".moodle-book img").addClass ("ui image");
+    $(".moodle-book pre").addClass ("ui segment");
+    addCaptions();
+    seen = 1;
+  }
+
+
+})</script>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  <script>
+    $(document).ready(function()
+    {  
+      $('.tab-menu.menu .item').tab();
+    });
+  </script>   
+  </body>
+ </html>
