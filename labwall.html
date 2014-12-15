@@ -137,17 +137,16 @@ header h3
   </header>
 
   <section class="ui segment">
-      <h1>1: Activities &amp; Layouts</h1>
-       <div class="ui cards">
+     <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic01/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic01/book-a/index.html" class="header">Android-Tools-01</a>
-           </div>
-           <div class="extra content">
-             <p>We will then install and set up effective tools for Android application development. This will include a specially equipped version of Eclipse + an emulator. The emulator we are using - Genymotion - is a third party application not strictly part of the android build tools. However it is considerably faster and more useful than the standard emulator provided with the Android SDK.</p>
+             <div class="description">
+               <p>We will then install and set up effective tools for Android application development. This will include a specially equipped version of Eclipse + an emulator. The emulator we are using - Genymotion - is a third party application not strictly part of the android build tools. However it is considerably faster and more useful than the standard emulator provided with the Android SDK.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -156,23 +155,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic01/book-b/index.html" class="header">Donation-01</a>
-           </div>
-           <div class="extra content">
-             <p>With this range of tools installed we can start the process of acquainting ourselves with the android SDK and the workflow involved in authoring, building and deploying applications. In the 'Donation-01' lab below we proceed to explore in detail the creating of a simple activity class + the associated layout. This process will seem quite complex on first contact - but as we proceed through the labs over the next few sessions the deep structure should start to emerge.</p>
+             <div class="description">
+               <p>Here we proceed to explore in detail the creating of a simple activity class + the associated layout. This process will seem quite complex on first contact - but as we proceed through the labs over the next few sessions the deep structure should start to emerge.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>2: Events &amp; Models</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic02/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic02/book-a/index.html" class="header">Donation-02</a>
-           </div>
-           <div class="extra content">
-             <p>We will now try to implement some of these patterns in the Application we started last week. In this lab we will introduce a second screen to display the list of donations made by the user. In addition, we will explore some of the menu support provided by android, the notion of and "Application Object" and also "Adapters". These features will enable our app to be equipped with its first "Model" objects, which will be used to store the individual donations made by the user. At the end of this lab is a series of 'Challenges', some if which are straightforward, others are more complicated. See how far you get with them.</p>
+             <div class="description">
+               <p>Introduce a second screen to display the list of donations made by the user. In addition, enable our app its first "Model" objects, which will be used to store the individual donations made by the user. </p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -181,23 +177,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic02/book-b/index.html" class="header">Donation-03</a>
-           </div>
-           <div class="extra content">
-             <p>We continue the implementation of Donation to including the welcome, sign up and login. Support these views with a User model, and validate the users on log in.</p>
+             <div class="description">
+               <p>We continue the implementation of Donation to including the welcome, sign up and login. Support these views with a User model, and validate the users on log in.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>3: Widgets &amp; Callbacks</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic03/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic03/book-a/index.html" class="header">MyRent-00</a>
-           </div>
-           <div class="extra content">
-             <p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
+             <div class="description">
+               <p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -206,9 +199,9 @@ header h3
            </div>
            <div class="content">
              <a  href="topic03/book-b/index.html" class="header">MyRent-01</a>
-           </div>
-           <div class="extra content">
-             <p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
+             <div class="description">
+               <p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -217,22 +210,9 @@ header h3
            </div>
            <div class="content">
              <a  href="topic03/book-c/index.html" class="header">Event-Handling</a>
-           </div>
-           <div class="extra content">
-             <p>This is a short lab whose aim is to provide a detailed explanation of event handling</p>
-<ul>
-<li>A small project is developed to show how the the process works.</li>
-<li>Three separate approaches are demonstrated:<ul>
-<li>A <strong>standalone</strong> method</li>
-<li>A method that uses an <strong>anonymous class</strong></li>
-<li>A method we refer to as the <strong>delegate</strong> method</li>
-</ul>
-</li>
-<li>The key classes used in this lab have been designed to correspond closely to those used in MyRent.</li>
-<li>Before working on this lab it would help to revise the lab <em>Java Interface type</em> that was presented during the programming course.</li>
-<li>The lab concludes with an exercise to test your knowledge of the subject.</li>
-<li>Accompanying the lab will be a short associated presentation.</li>
-</ul>
+             <div class="description">
+               <p>This is a short lab whose aim is to provide a detailed explanation of event handling via a simple standalone non-android application</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -241,23 +221,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic03/book-d/index.html" class="header">Event-Handling-Solution</a>
-           </div>
-           <div class="extra content">
-             <p>This is a solution to the event handling lab.</p>
+             <div class="description">
+               <p>This is a solution to the event handling lab.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>4: ListView &amp; Lifecycles</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic04/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic04/book-a/index.html" class="header">MyRent-02</a>
-           </div>
-           <div class="extra content">
-             <p>Our current version of MyRent (V01) only permits a single Residence to be entered. In this lab we seek to manage a list of residences. To do this we need to extend the model in include a new class - 'Portfolio' - to manage all our residences. We will also need a new Activity - ResidenceListActivity - to display the full portfolio of residences.</p>
+             <div class="description">
+               <p>Our current version of MyRent (V01) only permits a single Residence to be entered. In this lab we seek to manage a list of residences. To do this we need to extend the model in include a new class - 'Portfolio' - to manage all our residences. We will also need a new Activity - ResidenceListActivity - to display the full portfolio of residences.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -266,23 +243,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic04/book-b/index.html" class="header">MyRent-03</a>
-           </div>
-           <div class="extra content">
-             <p>In a significant update to the app, we introduce navigation within the app using an Action Bar. This will allow us to create new residences, or navigate to existing ones. Additionally, we will explore a simple date picker dialog to all the user to select a registration date for the residence.</p>
+             <div class="description">
+               <p>In a significant update to the app, we introduce navigation within the app using an Action Bar. This will allow us to create new residences, or navigate to existing ones. Additionally, we will explore a simple date picker dialog to all the user to select a registration date for the residence.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>5: Navigation &amp; Intents</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic05/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic05/book-a/index.html" class="header">MyRent-04</a>
-           </div>
-           <div class="extra content">
-             <p>Introduce into MyRent a serialization mechanism to save/restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updates. In addition, continue to evolve the navigation support in the app, enabling a 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
+             <div class="description">
+               <p>Introduce into MyRent a serialization mechanism to save/restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updates. In addition, continue to evolve the navigation support in the app, enabling a 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -291,23 +265,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic05/book-b/index.html" class="header">MyRent-05</a>
-           </div>
-           <div class="extra content">
-             <p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
+             <div class="description">
+               <p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>6: Streams &amp; File IO</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic06/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic06/book-a/index.html" class="header">MyRent-06</a>
-           </div>
-           <div class="extra content">
-             <p>Modern Android Activities tend to be composed of one or more Fragments - as opposed to consisting of a single layouts. This introduces a slightly more complicated creation process. However, using fragments opens up other opportunities we will explore in later labs.</p>
+             <div class="description">
+               <p>Modern Android Activities tend to be composed of one or more Fragments - as opposed to consisting of a single layouts. This introduces a slightly more complicated creation process. However, using fragments opens up other opportunities we will explore in later labs.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -316,26 +287,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic06/book-b/index.html" class="header">MyRent-07</a>
-           </div>
-           <div class="extra content">
-             <ul>
-<li>In this lab we introduce a facility to select and delete a subset of residences in the list view. The selected items need not be contiguous.</li>
-<li>Now that our Activities are based on Fragment, we can introduce a new feature to support 'swipe' interaction. This allows a user to swipe left/right to page through the residence list.</li>
-</ul>
+             <div class="description">
+               <p>In this lab we introduce a facility to select and delete a subset of residences in the list view. The selected items need not be contiguous. Also, introduce a new feature to support 'swipe' interaction. This allows a user to swipe left/right to page through the residence list.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>7: TDD &amp; Fragments</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic07/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic07/book-a/index.html" class="header">TDD-01</a>
-           </div>
-           <div class="extra content">
-             <p>Explore the Unit test features of Play by writing some tests to verify the current behavior of the User and Message classes for the spacebook app.</p>
+             <div class="description">
+               <p>Explore the Unit test features of Play by writing some tests to verify the current behavior of the User and Message classes for the spacebook app.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -344,36 +309,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic07/book-b/index.html" class="header">MyRent-08</a>
-           </div>
-           <div class="extra content">
-             <ul>
-<li>
-<p>Introduce a Google Map including necessary supporting resources such as Google Play Services Library and a personal API key.</p>
-</li>
-<li>
-<p>Presently the app has been developed to run in portrait mode. Here shall develop a landscape layout.</p>
-</li>
-<li>
-<p>Additional minor features include validation of geolocation input and immediate mirroring any changes in this input in the view title.</p>
-</li>
-<li>
-<p>Finally, to allow the app to run on small devices, the details view will be made scrollable in both portrait and landscape modes.</p>
-</li>
-</ul>
+             <div class="description">
+               <p>Introduce a Google Map including necessary supporting resources such as Google Play Services Library and a personal API key. Additionally, support a landscape layout, validation of geolocation input, immediate mirroring any changes in this input in the view title and support for smaller small factor devices.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>8: JPA &amp; Maps</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic08/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic08/book-a/index.html" class="header">JPA-01</a>
-           </div>
-           <div class="extra content">
-             <p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
+             <div class="description">
+               <p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -382,9 +331,9 @@ header h3
            </div>
            <div class="content">
              <a  href="topic08/book-b/index.html" class="header">JPA-02</a>
-           </div>
-           <div class="extra content">
-             <p>Explore the model developed in the last lab a little further by attaching a Semantic UI. Experiment with UI elements that change the model.</p>
+             <div class="description">
+               <p>Explore the model developed in the last lab a little further by attaching a Semantic UI. Experiment with UI elements that change the model.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -393,28 +342,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic08/book-c/index.html" class="header">MyRent-09</a>
-           </div>
-           <div class="extra content">
-             <ul>
-<li>Make use of the device camera to take a photo</li>
-<li>Display as thumbnail</li>
-<li>Display in a single-photo gallery</li>
-<li>Save the photo</li>
-</ul>
+             <div class="description">
+               <p>Make use of the device camera to take a photo go display as thumbnail a single-photo gallery. Also, support saving the photo</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>9: APIs &amp; Camera</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic09/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic09/book-a/index.html" class="header">Donation-04</a>
-           </div>
-           <div class="extra content">
-             <p>Create a version of the the donation app as a play project. Expose an 'API' from this app to enable other programmes to use it. Try to access the API from a browser, and also from a special purpose browser extension.</p>
+             <div class="description">
+               <p>Create a version of the the donation app as a play project. Expose an 'API' from this app to enable other programmes to use it. Try to access the API from a browser, and also from a special purpose browser extension.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -423,9 +364,9 @@ header h3
            </div>
            <div class="content">
              <a  href="topic09/book-b/index.html" class="header">Donation-05</a>
-           </div>
-           <div class="extra content">
-             <p>Create a new standard java project specifically to test the API we have developed in donation-service-play project.</p>
+             <div class="description">
+               <p>Create a new standard java project specifically to test the API we have developed in donation-service-play project.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -434,23 +375,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic09/book-c/index.html" class="header">Donation-06</a>
-           </div>
-           <div class="extra content">
-             <p>Deploy the donation-service app to Heroku. This will require a heroku account + a locally installed git tool set.</p>
+             <div class="description">
+               <p>Deploy the donation-service app to Heroku. This will require a heroku account + a locally installed git tool set.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>10: REST &amp; AsyncTasks</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic10/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic10/book-a/index.html" class="header">Donation-07</a>
-           </div>
-           <div class="extra content">
-             <p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
+             <div class="description">
+               <p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -459,23 +397,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic10/book-b/index.html" class="header">Donation-08</a>
-           </div>
-           <div class="extra content">
-             <p>Rework the Donation-android activities to support signup and donate activities using the REST service.</p>
+             <div class="description">
+               <p>Rework the Donation-android activities to support signup and donate activities using the REST service.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>11: Assignment Studio</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic11/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic11/book-a/index.html" class="header">MyTweet-Assignment-01</a>
-           </div>
-           <div class="extra content">
-             <p>The aim of this lab is to facilitate the creation of a <a href="http://alistair.cockburn.us/Walking+skeleton">walking skeleton</a> of the baseline  Android <strong>MyTweet</strong> assignment 2 app. </p>
+             <div class="description">
+               <p>The aim of this lab is to facilitate the creation of a <a href="http://alistair.cockburn.us/Walking+skeleton">walking skeleton</a> of the baseline  Android <strong>MyTweet</strong> assignment 2 app. </p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -484,9 +419,9 @@ header h3
            </div>
            <div class="content">
              <a  href="topic11/book-b/index.html" class="header">Donation-09</a>
-           </div>
-           <div class="extra content">
-             <p>Refactor the the Donation Play Service to capture a OneToMany relationship from User-&gt;Donation. Then, reflect this relationship in the API.</p>
+             <div class="description">
+               <p>Refactor the the Donation Play Service to capture a OneToMany relationship from User-&gt;Donation. Then, reflect this relationship in the API.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -495,23 +430,20 @@ header h3
            </div>
            <div class="content">
              <a  href="topic11/book-c/index.html" class="header">Donation-10</a>
-           </div>
-           <div class="extra content">
-             <p>With the revised service implemented and deployed, upgrade donation-android to use this new API.</p>
+             <div class="description">
+               <p>With the revised service implemented and deployed, upgrade donation-android to use this new API.</p>
+             </div>
            </div>
          </div>
-       </div>
-      <h1>12: Services</h1>
-       <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
              <div style="background-image: url('topic12/book-a/img/main.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
              <a  href="topic12/book-a/index.html" class="header">Donation-12</a>
-           </div>
-           <div class="extra content">
-             <p>Refactor Donation Android client to refresh donations list using a background service in a non-blocking call, replacing the present Response interface. </p>
+             <div class="description">
+               <p>Refactor Donation Android client to refresh donations list using a background service in a non-blocking call, replacing the present Response interface. </p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -520,9 +452,9 @@ header h3
            </div>
            <div class="content">
              <a  href="topic12/book-b/index.html" class="header">MyTweet-Assignment-02</a>
-           </div>
-           <div class="extra content">
-             <p>This is a follow-on lab to MyTweet-Assignment-01. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> (which is reasonable given that it relates to an assignment). The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
+             <div class="description">
+               <p>This is a follow-on lab to MyTweet-Assignment-01. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> (which is reasonable given that it relates to an assignment). The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -531,9 +463,9 @@ header h3
            </div>
            <div class="content">
              <a  href="topic12/book-c/index.html" class="header">Donation-11</a>
-           </div>
-           <div class="extra content">
-             <p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
+             <div class="description">
+               <p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
+             </div>
            </div>
          </div>
          <div  class="ui card">
@@ -542,12 +474,12 @@ header h3
            </div>
            <div class="content">
              <a  href="topic12/book-d/index.html" class="header">MyTweet-Assignment-03</a>
-           </div>
-           <div class="extra content">
-             <p>This lab has been developed to assist in the preparation of the current assignment, which comprises the development of a MyTweet suite of apps. The lab explains how to capture geolocations using map markers and also how to display a user's list of residences as markers on a map. A version of MyRent has been refactored to include sample features since MyRent structure closely resembles that of MyTweet.</p>
+             <div class="description">
+               <p>This lab has been developed to assist in the preparation of the current assignment, which comprises the development of a MyTweet suite of apps. The lab explains how to capture geolocations using map markers and also how to display a user's list of residences as markers on a map. A version of MyRent has been refactored to include sample features since MyRent structure closely resembles that of MyTweet.</p>
+             </div>
            </div>
          </div>
-       </div>
+     </div>
   </section>
 </section>
 

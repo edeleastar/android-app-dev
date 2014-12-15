@@ -1,3 +1,3 @@
 Assignment 1
 
-This is a specification for your for first assignment. Currently, you will only be able to complete the first first feature or tow in the slides. Each week we will be building (in MyRent) equivalent features to those that are required for the assignment. In these labs we will not be normally asking you to do exercises or extensions to the MyRent app. Instead, you should consider turning your attention to this specification here, and move on with one of the features requested. The order they are presented is more or less in line with the labs. Sometimes you may have to do some independent research.
+This is the specification for the first assignment. When you complete the MyRent labs, you should consider turning your attention to this specification here, and move on with one of the required features. Sometimes you may have to do some independent research.
