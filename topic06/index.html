@@ -4,15 +4,15 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> 6: Fragments, Maps & ViewPager </title>
+     <title> 6: Streams & File IO </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
-     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
 
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -116,7 +116,9 @@ header h3
     background-position: center;
 }
 
-
+#container .card .description {
+  min-height: 200px;
+}
 
     </style>
 
@@ -130,27 +132,24 @@ header h3
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
     </div>
-    <div class="four wide column">
-       <img class="ui image" src="http://www.wit.ie/graphics/h1_text.png">
-    </div>
-    <div class="two wide column">
-      <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
+    <div class="six wide column">
+      <img class="ui image" src="http://www.wit.ie/assets/images/wit_crest.png">
     </div>
   </header>
 <!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
-        <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
+        <a class="item" href=" ../topic02/index.html"> 2: Events & Models </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
-        <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
-        <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
-        <a class="active item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
-        <a class="item" href=" ../topic07/index.html"> 7: TDD | Embedded Map & Orientation </a>
-        <a class="item" href=" ../topic08/index.html"> 8: JPA | Camera </a>
-        <a class="item" href=" ../topic09/index.html"> 9: APIs </a>
-        <a class="item" href=" ../topic10/index.html"> 10: REST </a>
-        <a class="item" href=" ../topic11/index.html"> 11: MyTweet </a>
+        <a class="item" href=" ../topic04/index.html"> 4: ListView & Lifecycles </a>
+        <a class="item" href=" ../topic05/index.html"> 5: Navigation & Intents </a>
+        <a class="active item" href=" ../topic06/index.html"> 6: Streams & File IO </a>
+        <a class="item" href=" ../topic07/index.html"> 7: TDD & Fragments </a>
+        <a class="item" href=" ../topic08/index.html"> 8: JPA & Maps </a>
+        <a class="item" href=" ../topic09/index.html"> 9: APIs & Camera </a>
+        <a class="item" href=" ../topic10/index.html"> 10: REST & AsyncTasks </a>
+        <a class="item" href=" ../topic11/index.html"> 11: Assignment Studio </a>
         <a class="item" href=" ../topic12/index.html"> 12: Services </a>
           <a class="item" href=" ../topicwall.html"> All Topics </a>
           <a class="item" href=" ../labwall.html"> All Labs </a>
@@ -161,7 +160,7 @@ header h3
 
 
     <section id="topic" class="ui doubling twelve wide column segment">
-      <h1>6: Fragments, Maps &amp; ViewPager</h1>
+      <h1>6: Streams &amp; File IO</h1>
       <div class="ui cards">
 <div  class="ui card">
   <div class="cover">
@@ -169,51 +168,51 @@ header h3
   </div>
   <div class="content">
     <a  href="./pdf/a-navigation-into-apps.pdf" class="header">Navigation into Apps</a>
+    <div class="description">
+      <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>Last time we explored briefly navigation within an app. In this session we continue this discussion, with a focus on navigation from the users perspective, looking at how a user can arrive into an app, and also how they may move between apps.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/b-file-formats.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/b-file-formats.pdf" class="header">File Formats</a>
+    <div class="description">
+      <p>To date we have seen a small number of file formats for data, namely CSV and YAML. These are common and well suited to a range of simple applications. In Android we often use XML and Json. Here we review examples of all of these briefly.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>To date we have seen a small number of file formats for data, namely CSV and YAML. These are common and well suited to a range of simple applications. In Android we often use XML and Json. Here we review examples of all of these briefly.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/c-streams.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/c-streams.pdf" class="header">Streams</a>
+    <div class="description">
+      <p>The android SDK comes with a subset of the Java JDK libraries. This subset is significantly reduced from the range available in the JDK. Amonhg these is the Streams library, which we use for simple file I/O.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>The android SDK comes with a subset of the Java JDK libraries. This subset is significantly reduced from the range available in the JDK. Amonhg these is the Streams library, which we use for simple file I/O.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/d-fileio-in-myrent.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/d-fileio-in-myrent.pdf" class="header">File IO in MyRent</a>
+    <div class="description">
+      <p>In MyRent Lab 04 we incorporated a simple serialization mechanism to write Java objects to a Json file format. This required some significant enhancements to the models package, including a completely new Serializer class. Here we review these classes in detail.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>In MyRent Lab 04 we incorporated a simple serialization mechanism to write Java objects to a Json file format. This required some significant enhancements to the models package, including a completely new Serializer class. Here we review these classes in detail.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/e-up-support-myrent.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/e-up-support-myrent.pdf" class="header">Up Support</a>
+    <div class="description">
+      <p>Navigating "up" (as opposed to 'back') must be explicity implemented in the application. It involves enabling the up button in the action bar, handling the resultant event and also declaring the parent/child relationship in the manifest.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>Navigating "up" (as opposed to 'back') must be explicity implemented in the application. It involves enabling the up button in the action bar, handling the resultant event and also declaring the parent/child relationship in the manifest.</p>
-  </div>
-</div>      </div>
+ </div>      </div>
       <h1> Labs </h1>
       <div class="ui cards">
 <div class="ui card">

@@ -4,15 +4,15 @@
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
    
-     <title> 10: REST </title>
+     <title> 10: REST & AsyncTasks </title>
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
-     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
 
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -116,7 +116,9 @@ header h3
     background-position: center;
 }
 
-
+#container .card .description {
+  min-height: 200px;
+}
 
     </style>
 
@@ -130,27 +132,24 @@ header h3
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
     </div>
-    <div class="four wide column">
-       <img class="ui image" src="http://www.wit.ie/graphics/h1_text.png">
-    </div>
-    <div class="two wide column">
-      <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
+    <div class="six wide column">
+      <img class="ui image" src="http://www.wit.ie/assets/images/wit_crest.png">
     </div>
   </header>
 <!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
-        <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
+        <a class="item" href=" ../topic02/index.html"> 2: Events & Models </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
-        <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
-        <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
-        <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
-        <a class="item" href=" ../topic07/index.html"> 7: TDD | Embedded Map & Orientation </a>
-        <a class="item" href=" ../topic08/index.html"> 8: JPA | Camera </a>
-        <a class="item" href=" ../topic09/index.html"> 9: APIs </a>
-        <a class="active item" href=" ../topic10/index.html"> 10: REST </a>
-        <a class="item" href=" ../topic11/index.html"> 11: MyTweet </a>
+        <a class="item" href=" ../topic04/index.html"> 4: ListView & Lifecycles </a>
+        <a class="item" href=" ../topic05/index.html"> 5: Navigation & Intents </a>
+        <a class="item" href=" ../topic06/index.html"> 6: Streams & File IO </a>
+        <a class="item" href=" ../topic07/index.html"> 7: TDD & Fragments </a>
+        <a class="item" href=" ../topic08/index.html"> 8: JPA & Maps </a>
+        <a class="item" href=" ../topic09/index.html"> 9: APIs & Camera </a>
+        <a class="active item" href=" ../topic10/index.html"> 10: REST & AsyncTasks </a>
+        <a class="item" href=" ../topic11/index.html"> 11: Assignment Studio </a>
         <a class="item" href=" ../topic12/index.html"> 12: Services </a>
           <a class="item" href=" ../topicwall.html"> All Topics </a>
           <a class="item" href=" ../labwall.html"> All Labs </a>
@@ -161,7 +160,7 @@ header h3
 
 
     <section id="topic" class="ui doubling twelve wide column segment">
-      <h1>10: REST</h1>
+      <h1>10: REST &amp; AsyncTasks</h1>
       <div class="ui cards">
 <div  class="ui card">
   <div class="cover">
@@ -169,41 +168,41 @@ header h3
   </div>
   <div class="content">
     <a  href="./pdf/a-donation-service-test.pdf" class="header">Donation Service Test</a>
+    <div class="description">
+      <p>A standard Java project to implement a JUnit set of tests of the donation Service API. This is essential to ensure the stability and robustness of the REST interface.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>A standard Java project to implement a JUnit set of tests of the donation Service API. This is essential to ensure the stability and robustness of the REST interface.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/b-processes-and-threads.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/b-processes-and-threads.pdf" class="header">Processes & Threads</a>
+    <div class="description">
+      <p>An introduction to the Java threading model. Threads are necessary for applications that wish to access network services in Android.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>An introduction to the Java threading model. Threads are necessary for applications that wish to access network services in Android.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/c-donation-android-v4.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/c-donation-android-v4.pdf" class="header">Donation Android V4</a>
+    <div class="description">
+      <p>This version of the Donation Android application will access the REST interface to validate a user, and download the list of donations to display in the reports view.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>This version of the Donation Android application will access the REST interface to validate a user, and download the list of donations to display in the reports view.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/d-donation-android-v4-models.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/d-donation-android-v4-models.pdf" class="header">Donation Android Models</a>
+    <div class="description">
+      <p>The android donation application is now quite sophisticated. Here we review the models for both v3 and v4 of the app.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>The android donation application is now quite sophisticated. Here we review the models for both v3 and v4 of the app.</p>
-  </div>
-</div>      </div>
+ </div>      </div>
       <h1> Labs </h1>
       <div class="ui cards">
 <div class="ui card">

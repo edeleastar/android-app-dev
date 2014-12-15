@@ -8,11 +8,11 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
-     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
 
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -116,7 +116,9 @@ header h3
     background-position: center;
 }
 
-
+#container .card .description {
+  min-height: 200px;
+}
 
     </style>
 
@@ -130,27 +132,24 @@ header h3
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
     </div>
-    <div class="four wide column">
-       <img class="ui image" src="http://www.wit.ie/graphics/h1_text.png">
-    </div>
-    <div class="two wide column">
-      <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
+    <div class="six wide column">
+      <img class="ui image" src="http://www.wit.ie/assets/images/wit_crest.png">
     </div>
   </header>
 <!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="active item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
-        <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
+        <a class="item" href=" ../topic02/index.html"> 2: Events & Models </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
-        <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
-        <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
-        <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
-        <a class="item" href=" ../topic07/index.html"> 7: TDD | Embedded Map & Orientation </a>
-        <a class="item" href=" ../topic08/index.html"> 8: JPA | Camera </a>
-        <a class="item" href=" ../topic09/index.html"> 9: APIs </a>
-        <a class="item" href=" ../topic10/index.html"> 10: REST </a>
-        <a class="item" href=" ../topic11/index.html"> 11: MyTweet </a>
+        <a class="item" href=" ../topic04/index.html"> 4: ListView & Lifecycles </a>
+        <a class="item" href=" ../topic05/index.html"> 5: Navigation & Intents </a>
+        <a class="item" href=" ../topic06/index.html"> 6: Streams & File IO </a>
+        <a class="item" href=" ../topic07/index.html"> 7: TDD & Fragments </a>
+        <a class="item" href=" ../topic08/index.html"> 8: JPA & Maps </a>
+        <a class="item" href=" ../topic09/index.html"> 9: APIs & Camera </a>
+        <a class="item" href=" ../topic10/index.html"> 10: REST & AsyncTasks </a>
+        <a class="item" href=" ../topic11/index.html"> 11: Assignment Studio </a>
         <a class="item" href=" ../topic12/index.html"> 12: Services </a>
           <a class="item" href=" ../topicwall.html"> All Topics </a>
           <a class="item" href=" ../labwall.html"> All Labs </a>
@@ -169,41 +168,41 @@ header h3
   </div>
   <div class="content">
     <a  href="./pdf/a-android-overview.pdf" class="header">Android Overview</a>
+    <div class="description">
+      <p>Here we explore the general context of the android User Experience, it's role in the mobile platform space and the components that make up the the system. We are particularly interested in the version numbers and how version in general is managed.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>Here we explore the general context of the android User Experience, it's role in the mobile platform space and the components that make up the the system. We are particularly interested in the version numbers and how version in general is managed.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/b-ui-overview.jpeg');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/b-ui-overview.pdf" class="header">Android UX</a>
+    <div class="description">
+      <p>Android introduced a new user interface language to the world, one that is gradually evolving in flexibility and expressiveness. Here we review the principle elements of this language and how its is incorporated into attractive and usable applications</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>Android introduced a new user interface language to the world, one that is gradually evolving in flexibility and expressiveness. Here we review the principle elements of this language and how its is incorporated into attractive and usable applications</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/c-uml-intro.jpeg');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/c-uml-intro.pdf" class="header">UML</a>
+    <div class="description">
+      <p>Occasionally, as we uncover new featured as capabilities if the applications we are building we will be interested in discussing the deep structure of the Code itself. UML is a visual language for this purpose, and here we review some of the general characteristics of this notation. </p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>Occasionally, as we uncover new featured as capabilities if the applications we are building we will be interested in discussing the deep structure of the Code itself. UML is a visual language for this purpose, and here we review some of the general characteristics of this notation. </p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/d-first-android-app.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/d-first-android-app.pdf" class="header">Donation 01 Application</a>
+    <div class="description">
+      <p>The first application exhibits a range of new concepts you will not have come across before. Here we tour this app in detail, exploring each of the artifacts we have composed, and attempt to get a sense of how they fit together to form a running app.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>The first application exhibits a range of new concepts you will not have come across before. Here we tour this app in detail, exploring each of the artifacts we have composed, and attempt to get a sense of how they fit together to form a running app.</p>
-  </div>
-</div>      </div>
+ </div>      </div>
       <h1> Labs </h1>
       <div class="ui cards">
 <div class="ui card">

@@ -8,11 +8,11 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
-     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
 
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -116,7 +116,9 @@ header h3
     background-position: center;
 }
 
-
+#container .card .description {
+  min-height: 200px;
+}
 
     </style>
 
@@ -124,16 +126,13 @@ header h3
   <body>
 <section id="container">
 
-    <header class="ui middle aligned grid section">
+  <header class="ui middle aligned grid section">
     <div class="ten wide column">
       <h1><a href="index.html"> Android Application Development </a></h1>
       <h3> </h3>
     </div>
-    <div class="four wide column">
-       <img class="ui image" src="http://www.wit.ie/graphics/h1_text.png">
-    </div>
-    <div class="two wide column">
-      <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
+    <div class="six wide column">
+      <img class="ui image" src="http://www.wit.ie/assets/images/wit_crest.png">
     </div>
   </header>
 
@@ -185,7 +184,7 @@ header h3
            </div>
          </div>
        </div>
-      <h1>2: Intents &amp; Events</h1>
+      <h1>2: Events &amp; Models</h1>
        <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
@@ -290,7 +289,7 @@ header h3
            </div>
          </div>
        </div>
-      <h1>4: ListView, Action Bar &amp; Dialogs</h1>
+      <h1>4: ListView &amp; Lifecycles</h1>
        <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
@@ -315,7 +314,7 @@ header h3
            </div>
          </div>
        </div>
-      <h1>5: File IO, Navigation &amp; Implicit Intents</h1>
+      <h1>5: Navigation &amp; Intents</h1>
        <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
@@ -351,7 +350,7 @@ header h3
            </div>
          </div>
        </div>
-      <h1>6: Fragments, Maps &amp; ViewPager</h1>
+      <h1>6: Streams &amp; File IO</h1>
        <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
@@ -409,7 +408,7 @@ header h3
            </div>
          </div>
        </div>
-      <h1>7: TDD | Embedded Map &amp; Orientation</h1>
+      <h1>7: TDD &amp; Fragments</h1>
        <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
@@ -467,7 +466,7 @@ header h3
            </div>
          </div>
        </div>
-      <h1>8: JPA | Camera</h1>
+      <h1>8: JPA &amp; Maps</h1>
        <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
@@ -514,7 +513,7 @@ header h3
            </div>
          </div>
        </div>
-      <h1>9: APIs</h1>
+      <h1>9: APIs &amp; Camera</h1>
        <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
@@ -584,17 +583,17 @@ header h3
          </div>
          <div  class="ui card">
            <div class="cover">
-             <div style="background-image: url('');" class="image-thumbnail"> </div>
+             <div style="background-image: url('topic09/pdf/af-assignment-update.png');" class="image-thumbnail"> </div>
            </div>
            <div class="content">
-             <a  href="topic09/pdf/af-assignment.pdf" class="header"></a>
+             <a  href="topic09/pdf/af-assignment-update.pdf" class="header">Assignment 2</a>
            </div>
            <div class="extra content">
-             
+             <p>This the specification and grading guidelines for Assignment 2 - MyTweetService + Test + Android App.</p>
            </div>
          </div>
        </div>
-      <h1>10: REST</h1>
+      <h1>10: REST &amp; AsyncTasks</h1>
        <div class="ui cards">
          <div  class="ui card">
            <div class="cover">
@@ -641,7 +640,7 @@ header h3
            </div>
          </div>
        </div>
-      <h1>11: MyTweet</h1>
+      <h1>11: Assignment Studio</h1>
        <div class="ui cards">
        </div>
       <h1>12: Services</h1>

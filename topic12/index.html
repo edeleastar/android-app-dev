@@ -8,11 +8,11 @@
    
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css">
-     <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
-     <script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
+     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
 
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" /> 
+     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -116,7 +116,9 @@ header h3
     background-position: center;
 }
 
-
+#container .card .description {
+  min-height: 200px;
+}
 
     </style>
 
@@ -130,27 +132,24 @@ header h3
       <h1><a href="../index.html"> Android Application Development </a></h1>
       <h3> </h3>
     </div>
-    <div class="four wide column">
-       <img class="ui image" src="http://www.wit.ie/graphics/h1_text.png">
-    </div>
-    <div class="two wide column">
-      <img class="ui image" src="http://www.wit.ie/graphics/top_logo_transparent.png">
+    <div class="six wide column">
+      <img class="ui image" src="http://www.wit.ie/assets/images/wit_crest.png">
     </div>
   </header>
 <!--</div>-->  <section id="menu" id="topic" class="ui four wide column">
     <nav class="ui vertical fluid pointing menu">
       <div class="menu">
         <a class="item" href=" ../topic01/index.html"> 1: Activities & Layouts </a>
-        <a class="item" href=" ../topic02/index.html"> 2: Intents & Events </a>
+        <a class="item" href=" ../topic02/index.html"> 2: Events & Models </a>
         <a class="item" href=" ../topic03/index.html"> 3: Widgets & Callbacks </a>
-        <a class="item" href=" ../topic04/index.html"> 4: ListView, Action Bar & Dialogs </a>
-        <a class="item" href=" ../topic05/index.html"> 5: File IO, Navigation & Implicit Intents </a>
-        <a class="item" href=" ../topic06/index.html"> 6: Fragments, Maps & ViewPager </a>
-        <a class="item" href=" ../topic07/index.html"> 7: TDD | Embedded Map & Orientation </a>
-        <a class="item" href=" ../topic08/index.html"> 8: JPA | Camera </a>
-        <a class="item" href=" ../topic09/index.html"> 9: APIs </a>
-        <a class="item" href=" ../topic10/index.html"> 10: REST </a>
-        <a class="item" href=" ../topic11/index.html"> 11: MyTweet </a>
+        <a class="item" href=" ../topic04/index.html"> 4: ListView & Lifecycles </a>
+        <a class="item" href=" ../topic05/index.html"> 5: Navigation & Intents </a>
+        <a class="item" href=" ../topic06/index.html"> 6: Streams & File IO </a>
+        <a class="item" href=" ../topic07/index.html"> 7: TDD & Fragments </a>
+        <a class="item" href=" ../topic08/index.html"> 8: JPA & Maps </a>
+        <a class="item" href=" ../topic09/index.html"> 9: APIs & Camera </a>
+        <a class="item" href=" ../topic10/index.html"> 10: REST & AsyncTasks </a>
+        <a class="item" href=" ../topic11/index.html"> 11: Assignment Studio </a>
         <a class="active item" href=" ../topic12/index.html"> 12: Services </a>
           <a class="item" href=" ../topicwall.html"> All Topics </a>
           <a class="item" href=" ../labwall.html"> All Labs </a>
@@ -169,41 +168,41 @@ header h3
   </div>
   <div class="content">
     <a  href="./pdf/a-donation-v6.pdf" class="header">Donation-Android V6</a>
+    <div class="description">
+      <p>A review of the Donation-Andorid V6 app, which we completed last week. This version of the app incorporates the User-&gt;Donation relationship, as embodied in the donation-play-service app the REST patterns it provides.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>A review of the Donation-Andorid V6 app, which we completed last week. This version of the app incorporates the User-&gt;Donation relationship, as embodied in the donation-play-service app the REST patterns it provides.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/b-donation-service-ui.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/b-donation-service-ui.pdf" class="header">Donation Service UI</a>
+    <div class="description">
+      <p>The Donation Play App is given a UX based on Semantic UI. This version is 'segmented' - facilitating interesting aggregation of views with minimal effort.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>The Donation Play App is given a UX based on Semantic UI. This version is 'segmented' - facilitating interesting aggregation of views with minimal effort.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/c-donation-projects.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/c-donation-projects.pdf" class="header">Donation Projects</a>
+    <div class="description">
+      <p>A look at the full family of donation projects again - android, play and test. An examination of their similarities and differences.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>A look at the full family of donation projects again - android, play and test. An examination of their similarities and differences.</p>
-  </div>
-</div><div  class="ui card">
+ </div><div  class="ui card">
   <div class="cover">
     <div style="background-image: url('./pdf/d-intent-services.png');" class="image-thumbnail"> </div>
   </div>
   <div class="content">
     <a  href="./pdf/d-intent-services.pdf" class="header">Intent Services</a>
+    <div class="description">
+      <p>Donation Android V6 suffers one significant drawback - new tweets arriving at the server will not be propagated to android clients. Here we look at one way of solving this problem.</p>
+    </div>
   </div>
-  <div class="extra content">
-    <p>Donation Android V6 suffers one significant drawback - new tweets arriving at the server will not be propagated to android clients. Here we look at one way of solving this problem.</p>
-  </div>
-</div>      </div>
+ </div>      </div>
       <h1> Labs </h1>
       <div class="ui cards">
 <div class="ui card">
