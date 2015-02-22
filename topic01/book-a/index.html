@@ -1,23 +1,22 @@
  <!DOCTYPE html>
  <html>
    <head>
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-   
-     <title> Android-Tools-01 </title>
-   
+
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
-    <style>
+      <style>
 
 
 body 
@@ -25,128 +24,97 @@ body
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
 }
 
-#container
+figcaption
 {
-  margin :10px
+  margin-bottom: 20px;
 }
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+<style>
+
 
 code
 {
-	font-family: "Monaco";
-	font-size: 110%;
+  font-family: "Monaco";
+  font-size: 110%;
 }
 
-h1 
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
 {
   font-style:italic;
-  font-size:120%;
+  font-size:130%;
   border-bottom: thin solid black;
 }
-h2 
+h2
 {
   font-size:110%;
   border-bottom: thin solid black;
 }
-h3 
+h3
 {
   font-size:100%;
   border-bottom: thin solid black;
 }
 
-#footertext 
-{
-  font-size:70%
-}
+</style>
 
-#title 
-{
-  font-size:120%;
-  color: black;
-  text-align: right;
-  background-color : white;
-}
-
-img 
-{
-   padding:1px;
-   border:1px solid black;
-   margin-top: 10px;
-   margin-bottom: 10px;
-}
-
-header img
-{
-	 padding:1px;
-   border:0px solid black;
-}
-
-header h1
-{
-  font-style:normal;
-  font-size:120%;
-  border-bottom: 0px;
-}
-
-header h2
-{
-  font-style:normal;
-  font-size:100%;
-  border-bottom: 0px;
-}
-
-header h3
-{
-  font-style:normal;
-  font-size:90%;
-  border-bottom: 0px;
-}
-
-.cover
-{
-    width: 290px;
-    height: 290px;
-    border:1px solid lightgray;
-}
-.image-thumbnail
-{
-    height: 100%;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-position: center;
-}
-
-#container .card .description {
-  min-height: 200px;
-}
-
-    </style>
-
-  </head>
-  <body>
-  <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">1: Activities & Layouts</a></header>
-    <div class="right tab-menu menu">
-          <a class="item" data-tab="Android-Tools-01"> Android-Tools-01 </a>
-          <a class="item" data-tab="01"> 01 </a>
-          <a class="item" data-tab="02"> 02 </a>
-          <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="04"> 04 </a>
-          <a class="item" data-tab="05"> 05 </a>
-          <a class="item" data-tab="06"> 06 </a>
-          <a class="item" data-tab="07"> 07 </a>
-          <a class="item" data-tab="08"> 08 </a>
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+      <div class="navbar-brand">
+        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
+        1: Activities & Layouts
+      </div>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href= "#Android-Tools-01" data-toggle="tab"> Android-Tools-01 </a> </li>
+          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
+          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
+          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
+          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
+          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
+          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
+          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
+          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <br>
+<br><br>
 
-	  <section data-tab="Android-Tools-01" class="ui tab stacked moodle-book segment">
-	     <h1>Objectives</h1>
+<div class="tab-content">
+  <div class="tab-pane active" id="Android-Tools-01">
+    <h1>Objectives</h1>
 <p>We will then install and set up effective tools for Android application development. This will include a specially equipped version of Eclipse + an emulator. The emulator we are using - Genymotion - is a third party application not strictly part of the android build tools. However it is considerably faster and more useful than the standard emulator provided with the Android SDK.</p>
-	  </section>
-	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Android SDK</h1>
+  </div>
+
+    <div class="tab-pane fade" id="01">
+      <h1>Android SDK</h1>
 <p>This step describes how to download and install </p>
 <ul>
 <li>
@@ -176,9 +144,9 @@ header h3
 <img alt="Figure 7: Android installer" src="img/06.png">
 <img alt="Figure 8: Android installer" src="img/07.png">
 <img alt="Figure 9: Android installer" src="img/07a.png"></p>
-	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Eclipse IDE</h1>
+    </div>
+    <div class="tab-pane fade" id="02">
+      <h1>Eclipse IDE</h1>
 <p>This step describes how to download and install</p>
 <ul>
 <li>Eclipse Integrated Development Enviromnent (IDE)</li>
@@ -253,9 +221,9 @@ header h3
 </ul>
 <p><img alt="Figure 2: Android SDK Manager icon" src="img/11.png">
 <img alt="Figure 3: Android SDK Manager window" src="img/13.png"></p>
-	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Emulator</h1>
+    </div>
+    <div class="tab-pane fade" id="03">
+      <h1>Emulator</h1>
 <p>This step briefly describes how to</p>
 <ul>
 <li>Download the Genymotion emulator ensuring, in the case of Windows, you select the version that includes VirtualBox.</li>
@@ -304,9 +272,9 @@ header h3
 </li>
 </ul>
 <p><img alt="Figure 5: Installing genymotion on OSX (Mac) platform" src="img/17.png"></p>
-	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>Genymotion Plugin</h1>
+    </div>
+    <div class="tab-pane fade" id="04">
+      <h1>Genymotion Plugin</h1>
 <p>To install the Genymotion plugin in Eclipse:</p>
 <ul>
 <li>Start Eclipse, then select <em>Help &gt; Install New Software</em>.</li>
@@ -352,9 +320,9 @@ header h3
 <img alt="" src="img/19a.png">
 <img alt="" src="img/20.png">
 <img alt="" src="img/21.png"></p>
-	  </section>
-	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h1>Maps (Phone)</h1>
+    </div>
+    <div class="tab-pane fade" id="05">
+      <h1>Maps (Phone)</h1>
 <p>Connect your phone to your computer using the USB cable.</p>
 <p>The following apply to a Samsung phone and is not to be taken as applicable to all Android devices.</p>
 <p>When you first make a connection you may be presented with a message along the following lines, depending on the software on and the model of your phone:</p>
@@ -386,9 +354,9 @@ Service pack 3, Windows Media Player, version 11 or higher or USB driver for Win
 <ul>
 <li>After a few moments the application should have been installed and launched on your phone.</li>
 </ul>
-	  </section>
-	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     <h1>Install Play Store</h1>
+    </div>
+    <div class="tab-pane fade" id="06">
+      <h1>Install Play Store</h1>
 <p>Following are instructions to install Google Play Store on the emulator.</p>
 <ul>
 <li>We are working with Google Nexus 4-4.3 API 18 - 768x1280.</li>
@@ -428,13 +396,13 @@ Service pack 3, Windows Media Player, version 11 or higher or USB driver for Win
 <li>In the case of MyRent, create a new residence and enter an arbitrary geolocation, for example 52.25, - 7.19</li>
 </ul>
 <p><img alt="Figure 3: Sample map-enabled app using Google Maps application" src="img/26.png"></p>
-	  </section>
-	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     <h1>Setup summary</h1>
+    </div>
+    <div class="tab-pane fade" id="07">
+      <h1>Setup summary</h1>
 <p><img alt="" src="img/28.png"></p>
-	  </section>
-	  <section data-tab="08" class="ui tab stacked moodle-book segment">
-	     <h1>Sample Android apps</h1>
+    </div>
+    <div class="tab-pane fade" id="08">
+      <h1>Sample Android apps</h1>
 <p>Download the following apps from the local achive to a temporary folder and, in turn, drag and drop each onto the GenyMotion emulator.</p>
 <ul>
 <li>This will install the apps on the virtual device.</li>
@@ -458,56 +426,33 @@ Service pack 3, Windows Media Player, version 11 or higher or USB driver for Win
 </li>
 </ul>
 <p>Launch the apps and experiment with their functionality.</p>
-	  </section>
-<script>
+    </div>
+</div>
+<br> <br>
 
-function addCaptions() {
-  var images = $(".moodle-book img");
-  jQuery.each(images, function(i)  {
-    if((images[i].alt).length > 0) 
-    {
-      var div_img = $(document.createElement("div")).addClass("ui segment");
-      $(images[i]).wrap(div_img);
-      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
-      div_label.append(images[i].alt);
-      $(div_label).insertBefore(images[i]);
-    }
-  });
-};
 
-// Need to check if we have already been loaded
-seen = 0;
+    </div>
+
+
+<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <small>
+    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+    </a>
+    </small>
+</div>    <script>
 
 $(document).ready(function()
-{ 
-  if (seen == 0)
-  { 
-    // not loaded before - so do the restyling once (need to moodle book print)
-    $(".moodle-book img").addClass ("ui image");
-    $(".moodle-book pre").addClass ("ui segment");
-    addCaptions();
-    seen = 1;
-  }
+{
+  $("img").addClass ("img-responsive");
 
+  $(".tab-content img").each(function()
+  {
+    var title = this.alt;
+    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  });
+})    </script>
 
-})</script>
-  <br>  
-  <div class="ui fixed bottom borderless menu">'
-    <div class="ui small item"> 
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
-    </div>
-  </div>   
-    
-  <script>
-    $(document).ready(function()
-    {  
-      $('.tab-menu.menu .item').tab();
-    });
-  </script>   
   </body>
  </html>

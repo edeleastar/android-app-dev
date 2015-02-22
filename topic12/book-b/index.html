@@ -1,23 +1,22 @@
  <!DOCTYPE html>
  <html>
    <head>
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-   
-     <title> MyTweet-Assignment-02 </title>
-   
+
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
-    <style>
+      <style>
 
 
 body 
@@ -25,131 +24,100 @@ body
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
 }
 
-#container
+figcaption
 {
-  margin :10px
+  margin-bottom: 20px;
 }
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+<style>
+
 
 code
 {
-	font-family: "Monaco";
-	font-size: 110%;
+  font-family: "Monaco";
+  font-size: 110%;
 }
 
-h1 
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
 {
   font-style:italic;
-  font-size:120%;
+  font-size:130%;
   border-bottom: thin solid black;
 }
-h2 
+h2
 {
   font-size:110%;
   border-bottom: thin solid black;
 }
-h3 
+h3
 {
   font-size:100%;
   border-bottom: thin solid black;
 }
 
-#footertext 
-{
-  font-size:70%
-}
+</style>
 
-#title 
-{
-  font-size:120%;
-  color: black;
-  text-align: right;
-  background-color : white;
-}
-
-img 
-{
-   padding:1px;
-   border:1px solid black;
-   margin-top: 10px;
-   margin-bottom: 10px;
-}
-
-header img
-{
-	 padding:1px;
-   border:0px solid black;
-}
-
-header h1
-{
-  font-style:normal;
-  font-size:120%;
-  border-bottom: 0px;
-}
-
-header h2
-{
-  font-style:normal;
-  font-size:100%;
-  border-bottom: 0px;
-}
-
-header h3
-{
-  font-style:normal;
-  font-size:90%;
-  border-bottom: 0px;
-}
-
-.cover
-{
-    width: 290px;
-    height: 290px;
-    border:1px solid lightgray;
-}
-.image-thumbnail
-{
-    height: 100%;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-position: center;
-}
-
-#container .card .description {
-  min-height: 200px;
-}
-
-    </style>
-
-  </head>
-  <body>
-  <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">12: Services</a></header>
-    <div class="right tab-menu menu">
-          <a class="item" data-tab="MyTweet-Assignment-02"> MyTweet-Assignment-02 </a>
-          <a class="item" data-tab="01"> 01 </a>
-          <a class="item" data-tab="02"> 02 </a>
-          <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="04"> 04 </a>
-          <a class="item" data-tab="05"> 05 </a>
-          <a class="item" data-tab="06"> 06 </a>
-          <a class="item" data-tab="07"> 07 </a>
-          <a class="item" data-tab="08"> 08 </a>
-          <a class="item" data-tab="09"> 09 </a>
-          <a class="item" data-tab="10"> 10 </a>
-          <a class="item" data-tab="11"> 11 </a>
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+      <div class="navbar-brand">
+        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
+        12: Services
+      </div>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href= "#MyTweet-Assignment-02" data-toggle="tab"> MyTweet-Assignment-02 </a> </li>
+          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
+          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
+          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
+          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
+          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
+          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
+          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
+          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
+          <li><a href= "#09" data-toggle="tab"> 09 </a> </li>
+          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
+          <li><a href= "#11" data-toggle="tab"> 11 </a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <br>
+<br><br>
 
-	  <section data-tab="MyTweet-Assignment-02" class="ui tab stacked moodle-book segment">
-	     <h1>Introduction</h1>
+<div class="tab-content">
+  <div class="tab-pane active" id="MyTweet-Assignment-02">
+    <h1>Introduction</h1>
 <p>This is a follow-on lab to MyTweet-Assignment-01. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> (which is reasonable given that it relates to an assignment). The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
-	  </section>
-	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Preview</h1>
+  </div>
+
+    <div class="tab-pane fade" id="01">
+      <h1>Preview</h1>
 <p>The aim of the previous lab was to facilitate the creation of a walking skeleton of the baseline Android MyTweet app, the subject of the second and final Mobile Application Development assignment.</p>
 <p>In this lab we further develop MyTweet Android client and Play service by introducing a User model and establishing a many-to-one bi-directional relationship between User and Tweet models.</p>
 <ul>
@@ -197,9 +165,9 @@ play deps
 </code></pre>
 
 <p>Finally, refresh the project in the Eclipse workspace (highlight project name and press F5 or right click to reveal context menu and select <em>Refresh</em> ).</p>
-	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>MyTweetService (User)</h1>
+    </div>
+    <div class="tab-pane fade" id="02">
+      <h1>MyTweetService (User)</h1>
 <p>We shall develop a User model class in this step.</p>
 <p>We establish a relationship with the Tweet model as follows:</p>
 <pre><code>  @OneToMany(mappedBy=&quot;user&quot;,cascade = CascadeType.ALL)
@@ -273,9 +241,9 @@ public class User extends GenericModel
   } 
 }
 </code></pre>
-	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>MyTweetService (Tweet)</h1>
+    </div>
+    <div class="tab-pane fade" id="03">
+      <h1>MyTweetService (Tweet)</h1>
 <p>The only change to the Tweet model is the addition of the other side of the relationship introduced in User:</p>
 <pre><code>  @ManyToOne
   public User user;
@@ -341,9 +309,9 @@ GET     /public/                                staticDir:public
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
 </code></pre>
-	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>MyTweetService(APIs)</h1>
+    </div>
+    <div class="tab-pane fade" id="04">
+      <h1>MyTweetService(APIs)</h1>
 <h2>JsonParsers</h2>
 <p>Here is the JsonParsers file updated with User conversion code:</p>
 <pre><code>package utils;
@@ -573,9 +541,9 @@ public class TweetsAPI extends Controller
 
 }
 </code></pre>
-	  </section>
-	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h1>Deletion</h1>
+    </div>
+    <div class="tab-pane fade" id="05">
+      <h1>Deletion</h1>
 <p>You are recommended to study and understand how Tweets and Users are deleted in the API files.</p>
 <ul>
 <li>Deleting tweets is straightforward as shown here in figure 1.</li>
@@ -603,9 +571,9 @@ public class TweetsAPI extends Controller
 <p><img alt="Figure 3: Deleting all users explained" src="img/17.png"></p>
 <p>Figure 4 shows the methods to create a tweet and a user side-by-side with the deleteAllUsers method:</p>
 <p><img alt="Figure 4: createUser, createTweet and deleteAllUsers methods" src="img/18.png"></p>
-	  </section>
-	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     <h1>Routes &amp; APIs</h1>
+    </div>
+    <div class="tab-pane fade" id="06">
+      <h1>Routes &amp; APIs</h1>
 <p>Now that you have added both routes and APIs, it is worthwhile taking a moment to study how the uri-api relationship works. </p>
 <p>Consider this extract from the <em>routes</em> file:</p>
 <p><img alt="Figure 1: Extract from routes file" src="img/08.png"></p>
@@ -627,17 +595,17 @@ public class TweetsAPI extends Controller
 <p>Item number 3 shows the method TweetAPI.createTweet. Observer that there are two arguments, the first value obtained from the uri (the User uuid) and the second the JSON Tweet object.</p>
 </li>
 </ul>
-	  </section>
-	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     <h1>MyTweetApp (Welcome)</h1>
+    </div>
+    <div class="tab-pane fade" id="07">
+      <h1>MyTweetApp (Welcome)</h1>
 <p>We have completed refactoring mytweet-service Play app and now address the Android mytweetapp client.</p>
 <p>The legacy Welcome screen and its suggested replacement are shown here in Figure 1:</p>
 <p><img alt="Figure 1: Legacy Welcome screen" src="img/01.png"></p>
 <p>The refactored Welcome screen and new Login and Signup screens are depicted in Figure 2.</p>
 <p><img alt="Figure 2: Refactored Welcome" src="img/02.png"></p>
-	  </section>
-	  <section data-tab="08" class="ui tab stacked moodle-book segment">
-	     <h1>MyTweetApp(Model)</h1>
+    </div>
+    <div class="tab-pane fade" id="08">
+      <h1>MyTweetApp(Model)</h1>
 <p>The model classes used in the Android client, MyTweetApp are introduced in this step.</p>
 <h2>Tweet</h2>
 <p>The Tweet model class remains unchanged. No relationship between Tweet and User will exist in the client. </p>
@@ -680,9 +648,9 @@ public class User
 
 }
 </code></pre>
-	  </section>
-	  <section data-tab="09" class="ui tab stacked moodle-book segment">
-	     <h1>MyTweetApp(API)</h1>
+    </div>
+    <div class="tab-pane fade" id="09">
+      <h1>MyTweetApp(API)</h1>
 <p>Here are sample APIs for both User and Tweet in the Android client (MyTweetApp):</p>
 <p>File: TweetsAPI.java</p>
 <pre><code>package org.wit.mytweets.controllers;
@@ -936,9 +904,9 @@ public class JsonParsers
   }
 }
 </code></pre>
-	  </section>
-	  <section data-tab="10" class="ui tab stacked moodle-book segment">
-	     <h1>MyTweetApp (Integration)</h1>
+    </div>
+    <div class="tab-pane fade" id="10">
+      <h1>MyTweetApp (Integration)</h1>
 <p>Some changes are required to accomodate the new User class and its relationship with Tweet.</p>
 <p><strong>Signup</strong> and <strong>Login</strong></p>
 <p>It is assumed you have already introduced and fully implemented these activities.</p>
@@ -1011,9 +979,9 @@ private MyTweetApp app;
     }
   }
 </code></pre>
-	  </section>
-	  <section data-tab="11" class="ui tab stacked moodle-book segment">
-	     <h1>Test</h1>
+    </div>
+    <div class="tab-pane fade" id="11">
+      <h1>Test</h1>
 <p>As part of the assignment you will be writing and executing comprehensive JUnit tests. </p>
 <p>Here, in the meantime, are some quick checks you may perform using Postman:</p>
 <p>Create a new user.
@@ -1117,56 +1085,33 @@ public class User_Tweet_Test
 </ul>
 <p><img alt="Figure 6: List of Users" src="img/12.png"></p>
 <p><img alt="Figure 7: List of Tweets for specific user (Barney Gumble)" src="img/13.png"></p>
-	  </section>
-<script>
+    </div>
+</div>
+<br> <br>
 
-function addCaptions() {
-  var images = $(".moodle-book img");
-  jQuery.each(images, function(i)  {
-    if((images[i].alt).length > 0) 
-    {
-      var div_img = $(document.createElement("div")).addClass("ui segment");
-      $(images[i]).wrap(div_img);
-      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
-      div_label.append(images[i].alt);
-      $(div_label).insertBefore(images[i]);
-    }
-  });
-};
 
-// Need to check if we have already been loaded
-seen = 0;
+    </div>
+
+
+<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <small>
+    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+    </a>
+    </small>
+</div>    <script>
 
 $(document).ready(function()
-{ 
-  if (seen == 0)
-  { 
-    // not loaded before - so do the restyling once (need to moodle book print)
-    $(".moodle-book img").addClass ("ui image");
-    $(".moodle-book pre").addClass ("ui segment");
-    addCaptions();
-    seen = 1;
-  }
+{
+  $("img").addClass ("img-responsive");
 
+  $(".tab-content img").each(function()
+  {
+    var title = this.alt;
+    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  });
+})    </script>
 
-})</script>
-  <br>  
-  <div class="ui fixed bottom borderless menu">'
-    <div class="ui small item"> 
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
-    </div>
-  </div>   
-    
-  <script>
-    $(document).ready(function()
-    {  
-      $('.tab-menu.menu .item').tab();
-    });
-  </script>   
   </body>
  </html>

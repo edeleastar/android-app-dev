@@ -1,23 +1,22 @@
  <!DOCTYPE html>
  <html>
    <head>
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-   
-     <title> Donation-08 </title>
-   
+
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
-    <style>
+      <style>
 
 
 body 
@@ -25,125 +24,94 @@ body
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
 }
 
-#container
+figcaption
 {
-  margin :10px
+  margin-bottom: 20px;
 }
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+<style>
+
 
 code
 {
-	font-family: "Monaco";
-	font-size: 110%;
+  font-family: "Monaco";
+  font-size: 110%;
 }
 
-h1 
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
 {
   font-style:italic;
-  font-size:120%;
+  font-size:130%;
   border-bottom: thin solid black;
 }
-h2 
+h2
 {
   font-size:110%;
   border-bottom: thin solid black;
 }
-h3 
+h3
 {
   font-size:100%;
   border-bottom: thin solid black;
 }
 
-#footertext 
-{
-  font-size:70%
-}
+</style>
 
-#title 
-{
-  font-size:120%;
-  color: black;
-  text-align: right;
-  background-color : white;
-}
-
-img 
-{
-   padding:1px;
-   border:1px solid black;
-   margin-top: 10px;
-   margin-bottom: 10px;
-}
-
-header img
-{
-	 padding:1px;
-   border:0px solid black;
-}
-
-header h1
-{
-  font-style:normal;
-  font-size:120%;
-  border-bottom: 0px;
-}
-
-header h2
-{
-  font-style:normal;
-  font-size:100%;
-  border-bottom: 0px;
-}
-
-header h3
-{
-  font-style:normal;
-  font-size:90%;
-  border-bottom: 0px;
-}
-
-.cover
-{
-    width: 290px;
-    height: 290px;
-    border:1px solid lightgray;
-}
-.image-thumbnail
-{
-    height: 100%;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-position: center;
-}
-
-#container .card .description {
-  min-height: 200px;
-}
-
-    </style>
-
-  </head>
-  <body>
-  <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">10: REST & AsyncTasks</a></header>
-    <div class="right tab-menu menu">
-          <a class="item" data-tab="Donation-08"> Donation-08 </a>
-          <a class="item" data-tab="01"> 01 </a>
-          <a class="item" data-tab="02"> 02 </a>
-          <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="04"> 04 </a>
-          <a class="item" data-tab="Exercises"> Exercises </a>
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+      <div class="navbar-brand">
+        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
+        10: REST & AsyncTasks
+      </div>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href= "#Donation-08" data-toggle="tab"> Donation-08 </a> </li>
+          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
+          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
+          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
+          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
+          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <br>
+<br><br>
 
-	  <section data-tab="Donation-08" class="ui tab stacked moodle-book segment">
-	     <h1>Objectives</h1>
+<div class="tab-content">
+  <div class="tab-pane active" id="Donation-08">
+    <h1>Objectives</h1>
 <p>Rework the Donation-android activities to support signup and donate activities using the REST service.</p>
-	  </section>
-	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Welcome</h1>
+  </div>
+
+    <div class="tab-pane fade" id="01">
+      <h1>Welcome</h1>
 <p>First introduce a new  attribute in the DonationApp class:</p>
 <pre><code class="java">  public boolean         donationServiceAvailable = false;
 </code></pre>
@@ -230,9 +198,9 @@ public class Welcome extends Activity implements Response&lt;User&gt;
 </code></pre>
 
 <p>Read the above class carefully - and note how we make use of the `donationServiceAvailable' flag in DonationApp.</p>
-	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Login</h1>
+    </div>
+    <div class="tab-pane fade" id="02">
+      <h1>Login</h1>
 <p>Login can now be simplified to its original form:</p>
 <pre><code class="java">package app.activities;
 
@@ -275,9 +243,9 @@ public class Login extends Activity
 </code></pre>
 
 <p>We will only be reaching this activity if we have successfully connected to the service.</p>
-	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Signup</h1>
+    </div>
+    <div class="tab-pane fade" id="03">
+      <h1>Signup</h1>
 <p>This is a revised version of Signup, which makes use of the service:</p>
 <pre><code class="java">package app.activities;
 
@@ -344,9 +312,9 @@ public class Signup extends Activity implements Response&lt;User&gt;
 <p>Check now that you can sign up for the donation service - and that a new user is in fact created. This is most easily checked using postman, or just browse to:</p>
 <p>http://localhost:9000/api/users</p>
 <p>If you are running the app locally.</p>
-	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>Donate Support</h1>
+    </div>
+    <div class="tab-pane fade" id="04">
+      <h1>Donate Support</h1>
 <p>This takes a bit more work, and involved refactoring the donate button handler to only make the donation in the callback method.</p>
 <p>Look carefully at the following - and compare it with the current version. In particular, examine the role of the setResponse method.</p>
 <pre><code class="java">package app.activities;
@@ -458,9 +426,9 @@ public class Donate extends Activity implements Response&lt;Donation&gt;
   {}
 }
 </code></pre>
-	  </section>
-	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
-	     <h1>Exercises</h1>
+    </div>
+    <div class="tab-pane fade" id="Exercises">
+      <h1>Exercises</h1>
 <p>Archive of the lab so far:</p>
 <ul>
 <li><a href="archives/donation-android-v5.zip">donation-android-v5.zip</a></li>
@@ -474,56 +442,33 @@ public class Donate extends Activity implements Response&lt;Donation&gt;
 <h2>Exercise 3</h2>
 <p>In the Singup activity - we should really check to see if the new user email is not already taken.</p>
 <p>How would we do this?</p>
-	  </section>
-<script>
+    </div>
+</div>
+<br> <br>
 
-function addCaptions() {
-  var images = $(".moodle-book img");
-  jQuery.each(images, function(i)  {
-    if((images[i].alt).length > 0) 
-    {
-      var div_img = $(document.createElement("div")).addClass("ui segment");
-      $(images[i]).wrap(div_img);
-      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
-      div_label.append(images[i].alt);
-      $(div_label).insertBefore(images[i]);
-    }
-  });
-};
 
-// Need to check if we have already been loaded
-seen = 0;
+    </div>
+
+
+<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <small>
+    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+    </a>
+    </small>
+</div>    <script>
 
 $(document).ready(function()
-{ 
-  if (seen == 0)
-  { 
-    // not loaded before - so do the restyling once (need to moodle book print)
-    $(".moodle-book img").addClass ("ui image");
-    $(".moodle-book pre").addClass ("ui segment");
-    addCaptions();
-    seen = 1;
-  }
+{
+  $("img").addClass ("img-responsive");
 
+  $(".tab-content img").each(function()
+  {
+    var title = this.alt;
+    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  });
+})    </script>
 
-})</script>
-  <br>  
-  <div class="ui fixed bottom borderless menu">'
-    <div class="ui small item"> 
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
-    </div>
-  </div>   
-    
-  <script>
-    $(document).ready(function()
-    {  
-      $('.tab-menu.menu .item').tab();
-    });
-  </script>   
   </body>
  </html>

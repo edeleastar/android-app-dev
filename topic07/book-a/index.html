@@ -1,23 +1,22 @@
  <!DOCTYPE html>
  <html>
    <head>
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-   
-     <title> TDD-01 </title>
-   
+
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
-    <style>
+      <style>
 
 
 body 
@@ -25,126 +24,95 @@ body
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
 }
 
-#container
+figcaption
 {
-  margin :10px
+  margin-bottom: 20px;
 }
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+<style>
+
 
 code
 {
-	font-family: "Monaco";
-	font-size: 110%;
+  font-family: "Monaco";
+  font-size: 110%;
 }
 
-h1 
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
 {
   font-style:italic;
-  font-size:120%;
+  font-size:130%;
   border-bottom: thin solid black;
 }
-h2 
+h2
 {
   font-size:110%;
   border-bottom: thin solid black;
 }
-h3 
+h3
 {
   font-size:100%;
   border-bottom: thin solid black;
 }
 
-#footertext 
-{
-  font-size:70%
-}
+</style>
 
-#title 
-{
-  font-size:120%;
-  color: black;
-  text-align: right;
-  background-color : white;
-}
-
-img 
-{
-   padding:1px;
-   border:1px solid black;
-   margin-top: 10px;
-   margin-bottom: 10px;
-}
-
-header img
-{
-	 padding:1px;
-   border:0px solid black;
-}
-
-header h1
-{
-  font-style:normal;
-  font-size:120%;
-  border-bottom: 0px;
-}
-
-header h2
-{
-  font-style:normal;
-  font-size:100%;
-  border-bottom: 0px;
-}
-
-header h3
-{
-  font-style:normal;
-  font-size:90%;
-  border-bottom: 0px;
-}
-
-.cover
-{
-    width: 290px;
-    height: 290px;
-    border:1px solid lightgray;
-}
-.image-thumbnail
-{
-    height: 100%;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-position: center;
-}
-
-#container .card .description {
-  min-height: 200px;
-}
-
-    </style>
-
-  </head>
-  <body>
-  <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">7: TDD & Fragments</a></header>
-    <div class="right tab-menu menu">
-          <a class="item" data-tab="TDD-01"> TDD-01 </a>
-          <a class="item" data-tab="01"> 01 </a>
-          <a class="item" data-tab="02"> 02 </a>
-          <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="04"> 04 </a>
-          <a class="item" data-tab="05"> 05 </a>
-          <a class="item" data-tab="Exercises"> Exercises </a>
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+      <div class="navbar-brand">
+        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
+        7: TDD & Fragments
+      </div>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href= "#TDD-01" data-toggle="tab"> TDD-01 </a> </li>
+          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
+          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
+          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
+          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
+          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
+          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <br>
+<br><br>
 
-	  <section data-tab="TDD-01" class="ui tab stacked moodle-book segment">
-	     <h1>Objectives</h1>
+<div class="tab-content">
+  <div class="tab-pane active" id="TDD-01">
+    <h1>Objectives</h1>
 <p>Explore the Unit test features of Play by writing some tests to verify the current behavior of the User and Message classes for the spacebook app.</p>
-	  </section>
-	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Simple Test Harness</h1>
+  </div>
+
+    <div class="tab-pane fade" id="01">
+      <h1>Simple Test Harness</h1>
 <p>You have seen until testing in Eclipse for simple Java applications. There is an equivalent for the Play Framework. Unit testing is particularly important if you make any changes to the model, as it allows you to verify if the model is defined correctly.</p>
 <p>Using your own spacebook project - or this solution to the second assignment from last semester:</p>
 <ul>
@@ -229,9 +197,9 @@ Listening for transport dt_socket at address: 8000
 <p>Now run it again:</p>
 <p><img alt="" src="img/05.png"></p>
 <p>Note carefully the error report.</p>
-	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Users Test</h1>
+    </div>
+    <div class="tab-pane fade" id="02">
+      <h1>Users Test</h1>
 <p>Lets write some test for the classes we already have working. Before we do so, there is an occasional anomaly in play that can cause some confusion. So, open 'app/default package/BootStrap.java' and comment out the following:</p>
 <pre><code class="java">import java.util.List;
 
@@ -290,9 +258,9 @@ public class Bootstrap extends Job
 <p>Run tests again, you should see something like this:</p>
 <p><img alt="" src="img/07.png"></p>
 <p>Change it back to 'bob' and confirm that the error is now gone.</p>
-	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>More User Tests</h1>
+    </div>
+    <div class="tab-pane fade" id="03">
+      <h1>More User Tests</h1>
 <p>You may be surprised that, even if we are running in test mode, the 'admin' interface is still visible:</p>
 <ul>
 <li><a href="http://localhost:9000/@db">http://localhost:9000/@db</a></li>
@@ -326,9 +294,9 @@ public class Bootstrap extends Job
 
 <p>This is an example of a 'negative' test. We are deliberately looking for a user (alice) who we know to be not there. Run it and make sure it passes.</p>
 <p>Try to make the test deliberately fail?</p>
-	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>Message Tests</h1>
+    </div>
+    <div class="tab-pane fade" id="04">
+      <h1>Message Tests</h1>
 <p>We have another model object called Messages already defined in our project:</p>
 <pre><code class="java">public class Message extends Model
 {
@@ -421,9 +389,9 @@ public class Bootstrap extends Job
 </code></pre>
 
 <p>Read the tests and absorb what they are testing. These tests should all pass</p>
-	  </section>
-	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h1>Class Specific Tests</h1>
+    </div>
+    <div class="tab-pane fade" id="05">
+      <h1>Class Specific Tests</h1>
 <p>Our complete test case now looks like this:</p>
 <pre><code class="java">import org.junit.*;
 
@@ -632,9 +600,9 @@ public class MessageTest extends UnitTest
 <p>Just to confirm that everything is going ok - deliberately break one of the test to see the type of report:</p>
 <p><img alt="" src="img/11.png"></p>
 <p>Revert to 'green state' again by making all tests work</p>
-	  </section>
-	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
-	     <h1>Exercises</h1>
+    </div>
+    <div class="tab-pane fade" id="Exercises">
+      <h1>Exercises</h1>
 <p>The witpress app, completed during the summer school, implements a simple blogging app with comments. Here is a slightly updated version:</p>
 <ul>
 <li><a href="archives/witpressapp.zip">witpressapp.zip</a></li>
@@ -655,56 +623,33 @@ play eclipsify
 <li>Each user may have zero or more blogs</li>
 </ul>
 <p>Dont worry about the UI, just focus on the tests</p>
-	  </section>
-<script>
+    </div>
+</div>
+<br> <br>
 
-function addCaptions() {
-  var images = $(".moodle-book img");
-  jQuery.each(images, function(i)  {
-    if((images[i].alt).length > 0) 
-    {
-      var div_img = $(document.createElement("div")).addClass("ui segment");
-      $(images[i]).wrap(div_img);
-      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
-      div_label.append(images[i].alt);
-      $(div_label).insertBefore(images[i]);
-    }
-  });
-};
 
-// Need to check if we have already been loaded
-seen = 0;
+    </div>
+
+
+<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <small>
+    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+    </a>
+    </small>
+</div>    <script>
 
 $(document).ready(function()
-{ 
-  if (seen == 0)
-  { 
-    // not loaded before - so do the restyling once (need to moodle book print)
-    $(".moodle-book img").addClass ("ui image");
-    $(".moodle-book pre").addClass ("ui segment");
-    addCaptions();
-    seen = 1;
-  }
+{
+  $("img").addClass ("img-responsive");
 
+  $(".tab-content img").each(function()
+  {
+    var title = this.alt;
+    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  });
+})    </script>
 
-})</script>
-  <br>  
-  <div class="ui fixed bottom borderless menu">'
-    <div class="ui small item"> 
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
-    </div>
-  </div>   
-    
-  <script>
-    $(document).ready(function()
-    {  
-      $('.tab-menu.menu .item').tab();
-    });
-  </script>   
   </body>
  </html>

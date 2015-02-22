@@ -1,23 +1,22 @@
  <!DOCTYPE html>
  <html>
    <head>
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-   
-     <title> Donation-03 </title>
-   
+
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
-    <style>
+      <style>
 
 
 body 
@@ -25,131 +24,100 @@ body
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
 }
 
-#container
+figcaption
 {
-  margin :10px
+  margin-bottom: 20px;
 }
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+<style>
+
 
 code
 {
-	font-family: "Monaco";
-	font-size: 110%;
+  font-family: "Monaco";
+  font-size: 110%;
 }
 
-h1 
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
 {
   font-style:italic;
-  font-size:120%;
+  font-size:130%;
   border-bottom: thin solid black;
 }
-h2 
+h2
 {
   font-size:110%;
   border-bottom: thin solid black;
 }
-h3 
+h3
 {
   font-size:100%;
   border-bottom: thin solid black;
 }
 
-#footertext 
-{
-  font-size:70%
-}
+</style>
 
-#title 
-{
-  font-size:120%;
-  color: black;
-  text-align: right;
-  background-color : white;
-}
-
-img 
-{
-   padding:1px;
-   border:1px solid black;
-   margin-top: 10px;
-   margin-bottom: 10px;
-}
-
-header img
-{
-	 padding:1px;
-   border:0px solid black;
-}
-
-header h1
-{
-  font-style:normal;
-  font-size:120%;
-  border-bottom: 0px;
-}
-
-header h2
-{
-  font-style:normal;
-  font-size:100%;
-  border-bottom: 0px;
-}
-
-header h3
-{
-  font-style:normal;
-  font-size:90%;
-  border-bottom: 0px;
-}
-
-.cover
-{
-    width: 290px;
-    height: 290px;
-    border:1px solid lightgray;
-}
-.image-thumbnail
-{
-    height: 100%;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-position: center;
-}
-
-#container .card .description {
-  min-height: 200px;
-}
-
-    </style>
-
-  </head>
-  <body>
-  <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">2: Events & Models</a></header>
-    <div class="right tab-menu menu">
-          <a class="item" data-tab="Donation-03"> Donation-03 </a>
-          <a class="item" data-tab="01"> 01 </a>
-          <a class="item" data-tab="02"> 02 </a>
-          <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="04"> 04 </a>
-          <a class="item" data-tab="05"> 05 </a>
-          <a class="item" data-tab="06"> 06 </a>
-          <a class="item" data-tab="07"> 07 </a>
-          <a class="item" data-tab="08"> 08 </a>
-          <a class="item" data-tab="09"> 09 </a>
-          <a class="item" data-tab="10"> 10 </a>
-          <a class="item" data-tab="Challenges"> Challenges </a>
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+      <div class="navbar-brand">
+        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
+        2: Events & Models
+      </div>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href= "#Donation-03" data-toggle="tab"> Donation-03 </a> </li>
+          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
+          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
+          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
+          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
+          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
+          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
+          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
+          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
+          <li><a href= "#09" data-toggle="tab"> 09 </a> </li>
+          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
+          <li><a href= "#Challenges" data-toggle="tab"> Challenges </a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <br>
+<br><br>
 
-	  <section data-tab="Donation-03" class="ui tab stacked moodle-book segment">
-	     <h1>Objectives</h1>
+<div class="tab-content">
+  <div class="tab-pane active" id="Donation-03">
+    <h1>Objectives</h1>
 <p>We continue the implementation of Donation to including the welcome, sign up and login. Support these views with a User model, and validate the users on log in.</p>
-	  </section>
-	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 1</h1>
+  </div>
+
+    <div class="tab-pane fade" id="01">
+      <h1>Exercise 1</h1>
 <p>Run the app and insert amounts of varying lengths (1, 222, 23, 2323). Note that the second column - payment method -may be displayed at different positions. If this happens, fix it.</p>
 <p>Hint: each row is laid out by a row_donate.xml layout. The easiest way to fix this would be to experiment with they layout, and have the text fields aligned with the edges and not with each other.</p>
 <h1>Solution</h1>
@@ -181,18 +149,18 @@ header h3
 
 &lt;/RelativeLayout&gt;
 </code></pre>
-	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 2</h1>
+    </div>
+    <div class="tab-pane fade" id="02">
+      <h1>Exercise 2</h1>
 <p>When a donation is accepted, set the amount on screen to 0 (in both picker and text field).</p>
 <h1>Solution</h1>
 <p>Add these two lines at the end of Donate.donateButtonPressed()</p>
 <pre><code class="java">    amountText.setText(&quot;&quot;);
     amountPicker.setValue(0);
 </code></pre>
-	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 3</h1>
+    </div>
+    <div class="tab-pane fade" id="03">
+      <h1>Exercise 3</h1>
 <p>When you navigate from the Donate activity to reports, there will be no menu available. Bring in a menu, with two options 'Settings' and 'Donate' - Donate should bring you back to the donate screen.</p>
 <h1>Solution</h1>
 <p>Introduce a new string constant into strings.xml:</p>
@@ -245,9 +213,9 @@ header h3
 import android.view.MenuItem;
 import android.view.Menu;
 </code></pre>
-	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 4</h1>
+    </div>
+    <div class="tab-pane fade" id="04">
+      <h1>Exercise 4</h1>
 <p>Introduce a new welcome screen - which should display a greeting + give the user 2 options (as simple buttons)</p>
 <ul>
 <li>Signup</li>
@@ -441,9 +409,9 @@ import android.widget.Toast;
 
 <p>Launch the app again, press Login: the Donation view should open.</p>
 <p>This completes exercise 4.</p>
-	  </section>
-	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 5 - Part 1 Layout</h1>
+    </div>
+    <div class="tab-pane fade" id="05">
+      <h1>Exercise 5 - Part 1 Layout</h1>
 <p>Introduce a Signup Activity, which should present the user with:</p>
 <ul>
 <li>First Name</li>
@@ -638,9 +606,9 @@ import android.widget.Toast;
     &lt;string name=&quot;signupPassword&quot;&gt;Password&lt;/string&gt;
     &lt;string name=&quot;signupRegister&quot;&gt;Register&lt;/string&gt;
 </code></pre>
-	  </section>
-	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 5 - Part 2 Activity Class</h1>
+    </div>
+    <div class="tab-pane fade" id="06">
+      <h1>Exercise 5 - Part 2 Activity Class</h1>
 <p>(continued)</p>
 <p>Pressing Register should take you directly to "Donate" activity. Also, refactor the Welcome screen such that the 'signup' button takes you to this screen (the Donate activity).</p>
 <p>Note: we have labelled the <em>Register</em> button as <em>Signup</em> in the Welcome activity.</p>
@@ -708,9 +676,9 @@ import android.widget.Toast;
 </code></pre>
 
 <p>Run the app now, and verify that the navigation operates as expected. Also, try the 'back' button, and the menu button. Try various combination of these to see how it operates.</p>
-	  </section>
-	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 6:</h1>
+    </div>
+    <div class="tab-pane fade" id="07">
+      <h1>Exercise 6:</h1>
 <p>Introduce a Login activty, which should just look for</p>
 <ul>
 <li>email</li>
@@ -849,9 +817,9 @@ public class Login extends Activity
 </code></pre>
 
 <p>Now launch the app and verify that this route works as expected.</p>
-	  </section>
-	  <section data-tab="08" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 7</h1>
+    </div>
+    <div class="tab-pane fade" id="08">
+      <h1>Exercise 7</h1>
 <p>Bring in a new menu option - 'logout'. It should take you to the welcome screen, and should be available from the donate and report activities.</p>
 <h1>Solution</h1>
 <p>Introduce a new string resource for the menu item in strings.xml:</p>
@@ -898,9 +866,9 @@ public class Login extends Activity
 </code></pre>
 
 <p>Test this now.</p>
-	  </section>
-	  <section data-tab="09" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 8</h1>
+    </div>
+    <div class="tab-pane fade" id="09">
+      <h1>Exercise 8</h1>
 <p>Introduce a 'User' into the models package to represent the user in the usual way. Maintain a list of Users in the DonationApp object. Whenever anyone registers, then create a new User object in this list.</p>
 <h1>Solution</h1>
 <p>Bring in this new class into models:</p>
@@ -968,9 +936,9 @@ import app.main.DonationApp;
 <li>Do this as a general rule as the lab (or development) progresses.</li>
 </ul>
 <p>Test this now - There is one behavioural change from the last version - pressing 'Register' takes us back to the Welcome screen.</p>
-	  </section>
-	  <section data-tab="10" class="ui tab stacked moodle-book segment">
-	     <h1>Exercise 9</h1>
+    </div>
+    <div class="tab-pane fade" id="10">
+      <h1>Exercise 9</h1>
 <p>Implement the Login activity, to now only let users in to Donate if they are registered (i.e. a matching email + password in the list of users maintained by DonationApp)</p>
 <h1>Solution</h1>
 <p>Here is a new method for DonationApp that will validate users :</p>
@@ -1014,9 +982,9 @@ import app.main.DonationApp;
 </code></pre>
 
 <p>This completes the series of exercises based on donation lab v2.</p>
-	  </section>
-	  <section data-tab="Challenges" class="ui tab stacked moodle-book segment">
-	     <h1>Challenges</h1>
+    </div>
+    <div class="tab-pane fade" id="Challenges">
+      <h1>Challenges</h1>
 <ul>
 <li><a href="archives/donation-android-v3.zip">donation-android-v3.zip</a></li>
 </ul>
@@ -1029,56 +997,33 @@ import app.main.DonationApp;
 <p>Change the Report activity to show the name of the doner with each donation</p>
 <h2>Challenge 3:</h2>
 <p>Introduce a new activity which will display, sorted, the top three doners and the amounts they contributed.</p>
-	  </section>
-<script>
+    </div>
+</div>
+<br> <br>
 
-function addCaptions() {
-  var images = $(".moodle-book img");
-  jQuery.each(images, function(i)  {
-    if((images[i].alt).length > 0) 
-    {
-      var div_img = $(document.createElement("div")).addClass("ui segment");
-      $(images[i]).wrap(div_img);
-      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
-      div_label.append(images[i].alt);
-      $(div_label).insertBefore(images[i]);
-    }
-  });
-};
 
-// Need to check if we have already been loaded
-seen = 0;
+    </div>
+
+
+<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <small>
+    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+    </a>
+    </small>
+</div>    <script>
 
 $(document).ready(function()
-{ 
-  if (seen == 0)
-  { 
-    // not loaded before - so do the restyling once (need to moodle book print)
-    $(".moodle-book img").addClass ("ui image");
-    $(".moodle-book pre").addClass ("ui segment");
-    addCaptions();
-    seen = 1;
-  }
+{
+  $("img").addClass ("img-responsive");
 
+  $(".tab-content img").each(function()
+  {
+    var title = this.alt;
+    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  });
+})    </script>
 
-})</script>
-  <br>  
-  <div class="ui fixed bottom borderless menu">'
-    <div class="ui small item"> 
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
-    </div>
-  </div>   
-    
-  <script>
-    $(document).ready(function()
-    {  
-      $('.tab-menu.menu .item').tab();
-    });
-  </script>   
   </body>
  </html>

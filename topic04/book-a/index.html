@@ -1,23 +1,22 @@
  <!DOCTYPE html>
  <html>
    <head>
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-   
-     <title> MyRent-02 </title>
-   
+
      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.css" type='text/css'>
-     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.2.0/semantic.min.js"></script>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link  href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
+     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
-    <style>
+      <style>
 
 
 body 
@@ -25,140 +24,109 @@ body
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
 }
 
-#container
+figcaption
 {
-  margin :10px
+  margin-bottom: 20px;
 }
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+.credits
+{
+  min-height:20px;
+}
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+<style>
+
 
 code
 {
-	font-family: "Monaco";
-	font-size: 110%;
+  font-family: "Monaco";
+  font-size: 110%;
 }
 
-h1 
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
 {
   font-style:italic;
-  font-size:120%;
+  font-size:130%;
   border-bottom: thin solid black;
 }
-h2 
+h2
 {
   font-size:110%;
   border-bottom: thin solid black;
 }
-h3 
+h3
 {
   font-size:100%;
   border-bottom: thin solid black;
 }
 
-#footertext 
-{
-  font-size:70%
-}
+</style>
 
-#title 
-{
-  font-size:120%;
-  color: black;
-  text-align: right;
-  background-color : white;
-}
-
-img 
-{
-   padding:1px;
-   border:1px solid black;
-   margin-top: 10px;
-   margin-bottom: 10px;
-}
-
-header img
-{
-	 padding:1px;
-   border:0px solid black;
-}
-
-header h1
-{
-  font-style:normal;
-  font-size:120%;
-  border-bottom: 0px;
-}
-
-header h2
-{
-  font-style:normal;
-  font-size:100%;
-  border-bottom: 0px;
-}
-
-header h3
-{
-  font-style:normal;
-  font-size:90%;
-  border-bottom: 0px;
-}
-
-.cover
-{
-    width: 290px;
-    height: 290px;
-    border:1px solid lightgray;
-}
-.image-thumbnail
-{
-    height: 100%;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-position: center;
-}
-
-#container .card .description {
-  min-height: 200px;
-}
-
-    </style>
-
-  </head>
-  <body>
-  <nav class="ui fixed top pointing borderless inverted menu">
-    <header class="header item"> <a href="../index.html">4: ListView & Lifecycles</a></header>
-    <div class="right tab-menu menu">
-          <a class="item" data-tab="MyRent-02"> MyRent-02 </a>
-          <a class="item" data-tab="01"> 01 </a>
-          <a class="item" data-tab="02"> 02 </a>
-          <a class="item" data-tab="03"> 03 </a>
-          <a class="item" data-tab="04"> 04 </a>
-          <a class="item" data-tab="05"> 05 </a>
-          <a class="item" data-tab="06"> 06 </a>
-          <a class="item" data-tab="07"> 07 </a>
-          <a class="item" data-tab="08"> 08 </a>
-          <a class="item" data-tab="09"> 09 </a>
-          <a class="item" data-tab="10"> 10 </a>
-          <a class="item" data-tab="Archives"> Archives </a>
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+      <div class="navbar-brand">
+        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
+        4: ListView & Lifecycles
+      </div>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href= "#MyRent-02" data-toggle="tab"> MyRent-02 </a> </li>
+          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
+          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
+          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
+          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
+          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
+          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
+          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
+          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
+          <li><a href= "#09" data-toggle="tab"> 09 </a> </li>
+          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
+          <li><a href= "#Archives" data-toggle="tab"> Archives </a> </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-  <br>
+<br><br>
 
-	  <section data-tab="MyRent-02" class="ui tab stacked moodle-book segment">
-	     <h1>ListView</h1>
+<div class="tab-content">
+  <div class="tab-pane active" id="MyRent-02">
+    <h1>ListView</h1>
 <p>Our current version of MyRent (V01) only permits a single Residence to be entered. In this lab we seek to manage a list of residences. To do this we need to extend the model in include a new class - 'Portfolio' - to manage all our residences. We will also need a new Activity - ResidenceListActivity - to display the full portfolio of residences.</p>
-	  </section>
-	  <section data-tab="01" class="ui tab stacked moodle-book segment">
-	     <h1>Objectives</h1>
+  </div>
+
+    <div class="tab-pane fade" id="01">
+      <h1>Objectives</h1>
 <p>This lab will significantly extend the MyRent app to include a new ListView where all residences can be inspected:</p>
 <p><img alt="" src="img/01.png"></p>
 <p>Clicking on any residence will take the user to the appropriate residence detail view:</p>
 <p><img alt="" src="img/02.png"></p>
 <p>The Project will take on a different shape, which some interesting new classes and approaches:</p>
 <p><img alt="" src="img/03.png"></p>
-	  </section>
-	  <section data-tab="02" class="ui tab stacked moodle-book segment">
-	     <h1>Model</h1>
+    </div>
+    <div class="tab-pane fade" id="02">
+      <h1>Model</h1>
 <p>When introducing new features, it is often useful to start with the model. </p>
 <ul>
 <li>We would like to incorporate a collection of Residence instances as opposed to just a single Residence as previously. </li>
@@ -223,9 +191,9 @@ public class Portfolio
 </code></pre>
 
 <p>Notice that, for test purposes, we are populating residences list with a random set of Residence objects.</p>
-	  </section>
-	  <section data-tab="03" class="ui tab stacked moodle-book segment">
-	     <h1>Application</h1>
+    </div>
+    <div class="tab-pane fade" id="03">
+      <h1>Application</h1>
 <p>To manage the list of residences, we use an <code>Application</code> object. </p>
 <ul>
 <li>This is an object created when the application is launched, and we are guaranteed that there will only ever be one of them. </li>
@@ -270,9 +238,9 @@ public class MyRentApp extends Application
 
 <p>Run the app now, and place a breakpoint in the onCreate method. If the app stops at this point, then you have successfully introduced an application object.
 <img alt="" src="img/08.png"></p>
-	  </section>
-	  <section data-tab="04" class="ui tab stacked moodle-book segment">
-	     <h1>Layouts</h1>
+    </div>
+    <div class="tab-pane fade" id="04">
+      <h1>Layouts</h1>
 <p>We need two new layout resource in order to build the list view:</p>
 <ul>
 <li>activity_residencelist.xml</li>
@@ -339,9 +307,9 @@ public class MyRentApp extends Application
 
 &lt;/RelativeLayout&gt;
 </code></pre>
-	  </section>
-	  <section data-tab="05" class="ui tab stacked moodle-book segment">
-	     <h2>ResidenceListActivity</h2>
+    </div>
+    <div class="tab-pane fade" id="05">
+      <h2>ResidenceListActivity</h2>
 <p>We can now start to introduce the ResidenceListActivity class</p>
 <h2>ResidenceListActivity</h2>
 <pre><code>package org.wit.myrent.activities;
@@ -412,9 +380,9 @@ public class ResidenceListActivity extends Activity
 <p>Inspect the above closely, and note how our app now contains 2 activities, with ResidenceListActivity being the 'MAIN' one.</p>
 <p>Run the app now and verify that it runs. Drop a breakpoint in the onCreate method above, and verify that the portfolio is properly initialised. Also notice that the listView is initialised.
 <img alt="Figure 1: ResidenceListActivity.onCreate" src="img/09.png"></p>
-	  </section>
-	  <section data-tab="06" class="ui tab stacked moodle-book segment">
-	     <h2>Adapters</h2>
+    </div>
+    <div class="tab-pane fade" id="06">
+      <h2>Adapters</h2>
 <p>In order to update the list with the residence object contained in the portfolio, we need an Adapter. </p>
 <ul>
 <li>An Adapter is a special class we can append to the end of the existing ResidenceListActivity class (make sure it is outside the closing brace of ResidenceListActivity).</li>
@@ -555,9 +523,9 @@ class ResidenceAdapter extends ArrayAdapter&lt;Residence&gt;
   }
 }
 </code></pre>
-	  </section>
-	  <section data-tab="07" class="ui tab stacked moodle-book segment">
-	     <h2>Intents</h2>
+    </div>
+    <div class="tab-pane fade" id="07">
+      <h2>Intents</h2>
 <p>Currently the application just displays the list, and we do not have any way of navigating form the list to individual residences. To bind them we will first have to listen for clicks on the list in ResidenceListActivity. This requires that we implement OnItemClickListener:</p>
 <pre><code>public class ResidenceListActivity extends Activity implements OnItemClickListener
 </code></pre>
@@ -685,9 +653,9 @@ class ResidenceAdapter extends ArrayAdapter&lt;Residence&gt;
   }
 }
 </code></pre>
-	  </section>
-	  <section data-tab="08" class="ui tab stacked moodle-book segment">
-	     <h2>Activity Arguments</h2>
+    </div>
+    <div class="tab-pane fade" id="08">
+      <h2>Activity Arguments</h2>
 <p>When ResidenceActivity is started, it doesnt seem to display anything useful - and certainly not the items in the list we started it from. </p>
 <ul>
 <li>We need to be able to pass information to ResidenceActivity, so it can display the correct Residence model object - that which we have selected in the list of residences. </li>
@@ -859,9 +827,9 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 }
 
 </code></pre>
-	  </section>
-	  <section data-tab="09" class="ui tab stacked moodle-book segment">
-	     <h1>onResume</h1>
+    </div>
+    <div class="tab-pane fade" id="09">
+      <h1>onResume</h1>
 <p>You might notice that any changes you make in Residence do not seem to be appearing on the list. i.e. if you check or uncheck the rented status, it remains unchanged in the list view.</p>
 <p>We should fix this, as it is counter-intuitive. </p>
 <p>Back in ResidenceListActivity, introduce a new method into the class (ensuring that you locate it within ResidenceListActivity and not ResidenceAdapter):</p>
@@ -975,9 +943,9 @@ class ResidenceAdapter extends ArrayAdapter&lt;Residence&gt;
   }
 }
 </code></pre>
-	  </section>
-	  <section data-tab="10" class="ui tab stacked moodle-book segment">
-	     <h2>LogHelpers</h2>
+    </div>
+    <div class="tab-pane fade" id="10">
+      <h2>LogHelpers</h2>
 <p>Our final step will be to incorporate some helper classes, upon which we will build later. Create a new package called 'org.wit.android.helpers' - and introduce this class:</p>
 <pre><code>package org.wit.android.helpers;
 
@@ -1010,63 +978,40 @@ public class LogHelpers
 </code></pre>
 
 <p>You might consider introducing other log messages in the app now. THe advantage of logs is that you can quickly appreciate the health of various aspects of the app by looking at the logs.</p>
-	  </section>
-	  <section data-tab="Archives" class="ui tab stacked moodle-book segment">
-	     <h1>Archives</h1>
+    </div>
+    <div class="tab-pane fade" id="Archives">
+      <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end of this lab:</p>
 <ul>
 <li><a href="archives/MyRentV02.zip">MyRentV02</a></li>
 </ul>
-	  </section>
-<script>
+    </div>
+</div>
+<br> <br>
 
-function addCaptions() {
-  var images = $(".moodle-book img");
-  jQuery.each(images, function(i)  {
-    if((images[i].alt).length > 0) 
-    {
-      var div_img = $(document.createElement("div")).addClass("ui segment");
-      $(images[i]).wrap(div_img);
-      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
-      div_label.append(images[i].alt);
-      $(div_label).insertBefore(images[i]);
-    }
-  });
-};
 
-// Need to check if we have already been loaded
-seen = 0;
+    </div>
+
+
+<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <small>
+    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+    </a>
+    </small>
+</div>    <script>
 
 $(document).ready(function()
-{ 
-  if (seen == 0)
-  { 
-    // not loaded before - so do the restyling once (need to moodle book print)
-    $(".moodle-book img").addClass ("ui image");
-    $(".moodle-book pre").addClass ("ui segment");
-    addCaptions();
-    seen = 1;
-  }
+{
+  $("img").addClass ("img-responsive");
 
+  $(".tab-content img").each(function()
+  {
+    var title = this.alt;
+    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  });
+})    </script>
 
-})</script>
-  <br>  
-  <div class="ui fixed bottom borderless menu">'
-    <div class="ui small item"> 
-    <p id="footertext">
-    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
-    </div>
-  </div>   
-    
-  <script>
-    $(document).ready(function()
-    {  
-      $('.tab-menu.menu .item').tab();
-    });
-  </script>   
   </body>
  </html>
