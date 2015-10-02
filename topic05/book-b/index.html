@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,39 +81,34 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        5: Navigation & Intents
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#MyRent-05" data-toggle="tab"> MyRent-05 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#Archives" data-toggle="tab"> Archives </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    5: Navigation & Intents
+  </header>-->
+
+  <a class="active header item" data-tab="MyRent-05"> MyRent-05 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="Archives"> Archives </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="MyRent-05">
-    <h1>Contact list &amp; Email support</h1>
-<p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="MyRent-05">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Resources</h1>
+  <h1>Contact list &amp; Email support</h1>
+<p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Resources</h1>
 <p>In preparing for our new features, we define some strings to be used by the application. This step is not strictly necessary - but taking this approach is considered best practice, and enables the application to be internationalized more easily.</p>
 <p>These are the new strings:</p>
 <h2>res/strings.xml</h2>
@@ -147,9 +143,12 @@ h3
           android:text=&quot;@string/residence_report&quot;
         /&gt; 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Helpers</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Helpers</h1>
 <p>Our IntentHelper class is a useful location for methods that involved intents, either explicit or implicit. Here we introduce two new methods to trigger contact list and email access:</p>
 <h2>IntentHelper</h2>
 <pre><code>  public static void selectContact(Activity parent, int id)
@@ -242,9 +241,12 @@ public class ContactHelper
 </code></pre>
 
 <p>~~~</p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Residence</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Residence</h1>
 <p>The Residence model class will need to be extended to include a new field (the tennant) and also a new method - to generate a report. First introduce these imports:</p>
 <pre><code>import org.wit.myrent.R;
 import android.content.Context;
@@ -293,9 +295,12 @@ import android.content.Context;
     return report;
   }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>ResidenceActivity - Tenant</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>ResidenceActivity - Tenant</h1>
 <p>We can then start to wire up a "Select Tenant" button.</p>
 <p>The imports:</p>
 <pre><code>import static org.wit.android.helpers.ContactHelper.getContact;
@@ -348,9 +353,12 @@ import android.content.Intent;
 </code></pre>
 
 <p>Note that the above passes the data we received from the Contact List activity to our helper, which will recover the actual email address.</p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>ResidenceActivity - Email</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>ResidenceActivity - Email</h1>
 <p>Now we can engage the report button to actually send the email.</p>
 <p>The imports:</p>
 <pre><code>import static org.wit.android.helpers.IntentHelper.sendEmail;
@@ -385,38 +393,55 @@ import android.content.Intent;
 <p>Test this now. Make sure the contact you select actually has an email address in the contact info.</p>
 <p>If gmail is the default mail handling app, it may look like this:</p>
 <p><img alt="Figure 1: Sample Email" src="img/02.png"></p>
-    </div>
-    <div class="tab-pane fade" id="Archives">
-      <h1>Archives</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Archives">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV05.zip">MyRentV05</a></li>
 </ul>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

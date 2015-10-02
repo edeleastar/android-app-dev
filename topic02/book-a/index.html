@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,41 +81,36 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        2: Events & Models
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-02" data-toggle="tab"> Donation-02 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    2: Events & Models
+  </header>-->
+
+  <a class="active header item" data-tab="Donation-02"> Donation-02 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="07"> 07 </a>
+    <a class="item" data-tab="Exercises"> Exercises </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-02">
-    <h1>Objectives</h1>
-<p>Introduce a second screen to display the list of donations made by the user. In addition, enable our app its first "Model" objects, which will be used to store the individual donations made by the user. </p>
+<div class="ui bottom attached  active tab segment lab" data-tab="Donation-02">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Package Name</h1>
+  <h1>Objectives</h1>
+<p>Introduce a second screen to display the list of donations made by the user. In addition, enable our app its first "Model" objects, which will be used to store the individual donations made by the user. </p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Package Name</h1>
 <p>This is a version1 of the donation-android app:</p>
 <ul>
 <li><a href="archives/donation-android-v1.zip">donation-android-v1.zip</a></li>
@@ -146,9 +142,12 @@ h3
 <p>Once you save this - it would regenerate the correct 'gen' files. Delete the old one as we no longet need it (com.example.donation)</p>
 <p>We should also take this opportunity to change the name of the 'donation' package to 'app.activities'. Unlike Play, android does not like packages with a single 'segment'</p>
 <p><img alt="" src="img/02.png"></p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Menu</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Menu</h1>
 <p>In Donate.java, introduce the following menu event handler:</p>
 <pre><code class="java">  @Override
   public boolean onOptionsItemSelected(MenuItem item)
@@ -203,9 +202,12 @@ h3
 
 <p>Run the app and when you press the menu hardware button (or the overflow menu) and select 'Settings', you should see the toast message appear.</p>
 <p><img alt="" src="img/05.png"></p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Reports Activity</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Reports Activity</h1>
 <p>Design a new layout called Report defined within a file named activity_report.xml located in res/layout - to look something like this:</p>
 <p><img alt="" src="img/01.png"></p>
 <p>This is the layout file itself:</p>
@@ -306,9 +308,12 @@ public class Report extends Activity
 </code></pre>
 
 <p>Try it all now - it should load.</p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Application Object</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Application Object</h1>
 <p>In order to keep out application design coherent, we now bring in an 'Application' object.</p>
 <p>Create a new package called 'app.main' and incorporate this class here:</p>
 <pre><code class="java">package app.main;
@@ -339,9 +344,12 @@ public class DonationApp extends Application
 <p>Your project should now look like this:</p>
 <p><img alt="" src="img/03.png"></p>
 <p>Make sure the 'Donation App Started' appears in the logs to verify that it has actually been engaged correctly.</p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Donation Model</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Donation Model</h1>
 <p>Create a new package called 'models' and bring in this class here:</p>
 <pre><code class="java">package app.models;
 
@@ -399,9 +407,12 @@ public class DonationApp extends Application
   }
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Refactored Donate</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Refactored Donate</h1>
 <p>The Donate activity can now be completely re factored to make use of the DonationApp object.</p>
 <pre><code class="java">package app.activities;
 
@@ -488,9 +499,12 @@ public class Donate extends Activity
 
 <p>Replace your version with this and execute it.</p>
 <p>Look carefully at the changes to this version over the v1 attempt.</p>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Refactored Report</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="07">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Refactored Report</h1>
 <p>We now rework Report to render the actual donations - held in the DonationApp list.</p>
 <p>First some layout additions. Include these new string in strings.xml</p>
 <pre><code>    &lt;string name=&quot;defaultAmount&quot;&gt;00&lt;/string&gt;
@@ -601,9 +615,12 @@ public class Report extends Activity
 </code></pre>
 
 <p>If all goes well - then you should be able to make donations, and and the see a list of the in the report activity.</p>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercises</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercises</h1>
 <p>Project so far:</p>
 <ul>
 <li><a href="archives/donation-android-v2.zip">donation-android-v2</a></li>
@@ -654,31 +671,45 @@ public class Report extends Activity
 <p>Introduce a 'User' into the models package to represent the user in the usual way. Maintain a list of Users in the DonationApp object. Whenever anyone registers, then create a new User object in this list.</p>
 <h2>Exercise 9</h2>
 <p>Implement the Login activity, to now only let users in to Donate if they are registered (i.e. a matching email + password in the list of users maintained by DonationApp)</p>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

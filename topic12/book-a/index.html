@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,43 +81,38 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        12: Services
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-12" data-toggle="tab"> Donation-12 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
-          <li><a href= "#09" data-toggle="tab"> 09 </a> </li>
-          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    12: Services
+  </header>-->
+
+  <a class="active header item" data-tab="Donation-12"> Donation-12 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="07"> 07 </a>
+    <a class="item" data-tab="08"> 08 </a>
+    <a class="item" data-tab="09"> 09 </a>
+    <a class="item" data-tab="10"> 10 </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-12">
-    <h1>Donation</h1>
-<p>Refactor Donation Android client to refresh donations list using a background service in a non-blocking call, replacing the present Response interface. </p>
+<div class="ui bottom attached  active tab segment lab" data-tab="Donation-12">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Preview</h1>
+  <h1>Donation</h1>
+<p>Refactor Donation Android client to refresh donations list using a background service in a non-blocking call, replacing the present Response interface. </p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Preview</h1>
 <p>Figure 1 illustrates the legacy approach to network calls.</p>
 <ul>
 <li>All calls are made on a worker thread using the <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class.  </li>
@@ -130,9 +126,12 @@ h3
 </ul>
 <p>It is left as an exercise to repeat this approach to retrieve the list of Users.</p>
 <p><img alt="Figure 2: Service used for R(ead) calls" src="img/05.png"></p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Preview</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Preview</h1>
 <h2>Introduction</h2>
 <p>Your starter code is available to download locally as follows:</p>
 <ul>
@@ -197,9 +196,12 @@ play deps
 </li>
 <li>Include menu item to allow the refresh service to be started manually.</li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Helpers</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Helpers</h1>
 <p>Create a package android.helpers and add these classes. You have already used supersets of these classes in MyRent and MyTweet.</p>
 <pre><code>package android.helpers;
 
@@ -232,9 +234,12 @@ public class LogHelpers
 }
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>RefreshService</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>RefreshService</h1>
 <p>Here we shall create RefreshService, a subclass of Android's <a href="http://developer.android.com/reference/android/app/IntentService.html">IntentService</a>.</p>
 <p>Create a package <em>app.services</em>.</p>
 <p>In this package create a new class, RefreshService that subclasses IntentService:</p>
@@ -346,9 +351,12 @@ import app.models.JsonParsers;
 <p>[5] Throw exception if failure to retrieve list</p>
 <p>Later we shall provide code to broadcast an intent to be received by the Report activity.</p>
 <p>But first, in the next step, we shall introduce a menu item to manually start this refresh service.</p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Start service</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Start service</h1>
 <p>Intoduce a new string element in res/values/strings.xml:</p>
 <pre><code>    &lt;string name=&quot;refresh&quot;&gt;Refresh Donation List&lt;/string&gt;
 </code></pre>
@@ -400,9 +408,12 @@ import app.models.JsonParsers;
 </code></pre>
 
 <p>Without this service element the application will not route through the RefreshService.onHandleIntent method and will not give any easily detected warning of this omission.</p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Broadcast receiver</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Broadcast receiver</h1>
 <p>Here we shall add code to broadcast an intent from within RefreshService.onHandleIntent and receive this broadcast in Report.</p>
 <ul>
 <li>When the broadcast is received in Report the updated donation list is rendered by invoking:<ul>
@@ -520,9 +531,12 @@ import android.support.v4.content.LocalBroadcastManager;
 <li>Here is the refactored layout of the compilation unit (Report.java):
 <img alt="" src="img/03.png"></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Test</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="07">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Test</h1>
 <p>Test that the service works as follows:</p>
 <ul>
 <li>Method 1:<ul>
@@ -554,9 +568,12 @@ import android.support.v4.content.LocalBroadcastManager;
 </ul>
 </li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="08">
-      <h1>Receiver</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="08">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Receiver</h1>
 <p>We shall now add a BroadcastReceiver subclass that will:</p>
 <ul>
 <li>start RefreshService when the device is started</li>
@@ -636,9 +653,12 @@ public class BootReceiver extends BroadcastReceiver
 
 <p>The refresh service will start on boot the Android device and re-start indefinitely at specified intervals thereafter.</p>
 <p>Good alarm system design is essential to efficient running of an app and use of resources. Some official documentation may be accessed <a href="https://developer.android.com/training/scheduling/alarms.html">here</a>. </p>
-    </div>
-    <div class="tab-pane fade" id="09">
-      <h1>Preferences</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="09">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Preferences</h1>
 <p>Here we shall add a Preferences module and use it to store a refresh interval. </p>
 <ul>
 <li>this will be useful for testing, for example.</li>
@@ -821,40 +841,57 @@ public class BootReceiver extends BroadcastReceiver
 </code></pre>
 
 <p>You can now test this code by placing a breakpoint in the method <strong>before</strong> launching Donation app in a device or emulator.</p>
-    </div>
-    <div class="tab-pane fade" id="10">
-      <h1>Exercise</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="10">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercise</h1>
 <p>Retrieve the list of users using a service:</p>
 <ul>
 <li>Modify RefreshService to retrieve the list of users from the server (in addition to the list of donations).</li>
 <li>Remove the DonationServiceAPI.getUsers call in Welcome, replacing it with other appropriate code (should any such be necessary).</li>
 </ul>
 <p>The completed project <em>donation-android-v7</em> is available to download <a href="archives/donation-android-v7.zip">here</a></p>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

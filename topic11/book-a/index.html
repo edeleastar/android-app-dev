@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,45 +81,40 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        11: Assignment Studio
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#MyTweet-Assignment-01" data-toggle="tab"> MyTweet-Assignment-01 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
-          <li><a href= "#09" data-toggle="tab"> 09 </a> </li>
-          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
-          <li><a href= "#11" data-toggle="tab"> 11 </a> </li>
-          <li><a href= "#12" data-toggle="tab"> 12 </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    11: Assignment Studio
+  </header>-->
+
+  <a class="active header item" data-tab="MyTweet-Assignment-01"> MyTweet-Assignment-01 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="07"> 07 </a>
+    <a class="item" data-tab="08"> 08 </a>
+    <a class="item" data-tab="09"> 09 </a>
+    <a class="item" data-tab="10"> 10 </a>
+    <a class="item" data-tab="11"> 11 </a>
+    <a class="item" data-tab="12"> 12 </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="MyTweet-Assignment-01">
-    <h1>Objectives</h1>
-<p>The aim of this lab is to facilitate the creation of a <a href="http://alistair.cockburn.us/Walking+skeleton">walking skeleton</a> of the baseline  Android <strong>MyTweet</strong> assignment 2 app. </p>
+<div class="ui bottom attached  active tab segment lab" data-tab="MyTweet-Assignment-01">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Client-Server</h1>
+  <h1>Objectives</h1>
+<p>The aim of this lab is to facilitate the creation of a <a href="http://alistair.cockburn.us/Walking+skeleton">walking skeleton</a> of the baseline  Android <strong>MyTweet</strong> assignment 2 app. </p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Client-Server</h1>
 <p>The information provided should help you to:</p>
 <ul>
 <li>Develop the Android client-side app, working from a stripped-down version of your assignment 1 MyTweet app.</li>
@@ -188,9 +184,12 @@ h3
 <p><img alt="Figure 1: Example of Play app" src="img/02.png"></p>
 <p><img alt="Figure 2: Example of Android app" src="img/01.png"></p>
 <p><img alt="Figure 3: Example of Android client-side and Play server-side apps" src="img/03.png"></p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Development</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Development</h1>
 <p>You are required to develop three apps:</p>
 <ul>
 <li>Client-side  MyTweetTest app </li>
@@ -245,9 +244,12 @@ h3
 <li>Modify MyTweet to run agains Heroku and test.</li>
 <li>Repeat these steps in subsequent iterations.</li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Service</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Service</h1>
 <p>Below are the outline steps to develop the server side Play app.</p>
 <p>It is worth noting that whereas in this lab we send requests only from a native Android app and a JUnit test app, any network-enabled app that uses a compatible api can engage in request-response sessions with MyTweetService.</p>
 <p><img alt="Figure 1: MyTweetService cloud-based network" src="img/19.png"></p>
@@ -441,9 +443,12 @@ public class MyTweetServiceAPI extends Controller
   }  
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Test App</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Test App</h1>
 <p>A walking skeleton test app is available to download from <a href="archives/mytweet-service-test.zip">here</a>.</p>
 <p>Here is the expanded project structure:</p>
 <p><img alt="" src="img/09.png"></p>
@@ -561,9 +566,12 @@ public class MyTweetServiceAPI
 <li>We will address this issue when we look at the Android client.</li>
 </ul>
 <p>None of the tests has been completed but the skeleton of a small number of tests is provided as a guide.</p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Android client</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Android client</h1>
 <p>We now address the refactoring of assignment 1 app into an Android client capable of interacting with the server-side Play app (MyTweetService).</p>
 <p>The steps outline below comprise one of many possible approaches to developing MyTweet native Android client.</p>
 <p>The stripped-down or baseline version of MyTweet is shown here:</p>
@@ -577,9 +585,12 @@ public class MyTweetServiceAPI
 </ul>
 <p>Figure 2 illustrates this lab's completed version.</p>
 <p><img alt="Figure 2: Refactored MyTweet retrieves tweets on launch" src="img/11.png"></p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Android Client (Read)</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Android Client (Read)</h1>
 <p>We will retrieve the list of tweets from the server in the WelcomeActivity class, the code for which is provided below.</p>
 <ul>
 <li>The design of the associated layout xml file is left to you to do (<em>activity_welcome.xml</em>). See Figure 1:</li>
@@ -697,9 +708,12 @@ public class WelcomeActivity extends Activity implements Response&lt;Tweet&gt;, 
 }
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Android Client (API)</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="07">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Android Client (API)</h1>
 <p>We are including a screenshot of the folder structure used in preparing this lab. It is appreciated that yours will likely vary considerably from this. Nevertheless the figure may be of some help.</p>
 <p><img alt="Figure 1: MyTweet source code file structure" src="img/17.png"></p>
 <p>Here is the code for the http module classes: Request, Response, Rest followed by the MyTweetServiceAPI class.</p>
@@ -969,9 +983,12 @@ class DeleteTweet extends Request
 }
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="08">
-      <h1>MyTweetFragment (Create)</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="08">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>MyTweetFragment (Create)</h1>
 <p>The MyTweetFragment layout is shown here in Figure 1:</p>
 <p><img alt="Figure 1: Detail view" src="img/13.png"></p>
 <p>We require that when the Tweet button is clicked, a Tweet object is created and sent to the server-side app across the network (MyTweetService).</p>
@@ -1031,9 +1048,12 @@ class DeleteTweet extends Request
     }
   }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="09">
-      <h1>TimelineFragment (Delete)</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="09">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>TimelineFragment (Delete)</h1>
 <p>Recall that one may delete a set of list items (one or more) in the list view.</p>
 <p>Here we have created a selection of tweet. We can view them, for example, in <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">PostMan</a> as shown in Figure 1:</p>
 <p><img alt="Figure 1: Postman used to show tweets on server app" src="img/14.png">.</p>
@@ -1104,9 +1124,12 @@ class DeleteTweet extends Request
     LogHelpers.info(this, msg + &quot; : &quot; + e.getMessage());
   }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="10">
-      <h1>Android Client (Model)</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="10">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Android Client (Model)</h1>
 <p>Here is the code for Tweet.java, the model class.</p>
 <ul>
 <li>This differs from the code used in preparing this lab in that the serialization-related code has been removed in the interest of clarity.</li>
@@ -1188,9 +1211,12 @@ public class Tweet
 }
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="11">
-      <h1>Miscellaneous</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="11">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Miscellaneous</h1>
 <h2>Generating the Tweet database table <strong>id</strong> in the client</h2>
 <p>Default Play framework behaviour is to generate a default Long id primary key.</p>
 <p>Let's explore why this would be problematical for us.</p>
@@ -1237,9 +1263,12 @@ public class Tweet
 </li>
 </ul>
 <p><img alt="" src="img/18.png"></p>
-    </div>
-    <div class="tab-pane fade" id="12">
-      <h1>Downloads</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="12">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Downloads</h1>
 <p>The apk file, MyTweet, on which this lab is based, is available to download <a href="archives/MyTweet.apk">here</a>.</p>
 <p>You may also download the <a href="archives/MyYamba.apk">MyYamba</a> apk file which was developed using code from Learning Adroid 2nd Edition (Garenta &amp; Nakamura).</p>
 <p>These apps may be installed by dragging and dropping onto the Genymotion emulator.</p>
@@ -1254,31 +1283,45 @@ public class Tweet
 </ul>
 </li>
 </ul>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

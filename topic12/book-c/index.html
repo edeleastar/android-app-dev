@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,41 +81,36 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        12: Services
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-11" data-toggle="tab"> Donation-11 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    12: Services
+  </header>-->
+
+  <a class="active header item" data-tab="Donation-11"> Donation-11 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="07"> 07 </a>
+    <a class="item" data-tab="Exercises"> Exercises </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-11">
-    <h1>Donation UI</h1>
-<p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="Donation-11">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Semantic UI</h1>
+  <h1>Donation UI</h1>
+<p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Semantic UI</h1>
 <p>SInstead do downloading and incorporating the Semantic UI libraries into our application - as we have donw heretofore - it may be more effective to load the semantic assets from a content delivery network. This one is popular:</p>
 <ul>
 <li><a href="https://cdnjs.com/about">https://cdnjs.com/about</a></li>
@@ -191,9 +187,12 @@ h3
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Routes</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Routes</h1>
 <p>We already have out REST routes in place. These are additional routes to service the UI:</p>
 <pre><code># Home page
 GET      /                                   Accounts.index
@@ -232,9 +231,12 @@ GET    /donation/report                      DonationController.renderReport
 ![](img/homer4.jpeg)
 ![](img/homer5.jpg)
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Controllers</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Controllers</h1>
 <p>We have controllers to service the API. These two controllers will service the conventional web UI:</p>
 <h2>DonationController</h2>
 <pre><code>package controllers;
@@ -366,9 +368,12 @@ public class Accounts extends Controller
   }
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Account Segment Views</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Account Segment Views</h1>
 <p>We will break up the UI into more fine grained components. In the App/views folder, create a new folder called 'segments' and introduce these files:</p>
 <h1>views/segments/welcome.html</h1>
 <pre><code>&lt;section class=&quot;ui stacked segment&quot;&gt;
@@ -457,9 +462,12 @@ public class Accounts extends Controller
 </code></pre>
 
 <p>These are all Html 5 semantic elements that we will build the Accounts UX from.</p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Donation Segment Views</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Donation Segment Views</h1>
 <p>Here are Html5 semantic elements to service the Donation Controller's views:</p>
 <h2>Views/segments/donate.html</h2>
 <pre><code>&lt;section class=&quot;ui raised segment&quot;&gt;
@@ -528,9 +536,12 @@ public class Accounts extends Controller
   &lt;/div&gt;
 &lt;/section&gt;
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Accounts Views</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Accounts Views</h1>
 <p>With the segment building blocks in place, we can switch our attention to the Controllers - and the views they will be rendering.</p>
 <p>Here are the templates for views/Accounts:</p>
 <h2>views/Accounts/index.html</h2>
@@ -564,9 +575,12 @@ public class Accounts extends Controller
 <li><a href="http://localhost:9000/signup">http://localhost:9000/signup</a></li>
 <li><a href="http://localhost:9000/login">http://localhost:9000/login</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>DonationController Views</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="07">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>DonationController Views</h1>
 <p>And the final pieces - the templates for  views/DonationController:</p>
 <h2>views/DonationController/index.html</h2>
 <pre><code>#{extends 'main.html' /}
@@ -613,9 +627,12 @@ public class Accounts extends Controller
 
 <p>Again, note how we are including the segments we need.</p>
 <p>The app should run now as expected. Make sure the progress bar behaves correctly.</p>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercises</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercises</h1>
 <p>Archive of the completed project:</p>
 <p>-<a href="archives/donation-service-play.zip">dontion-service-play.zip</a></p>
 <h2>Exercise 1</h2>
@@ -626,31 +643,45 @@ public class Accounts extends Controller
 <p>This is a revised 'dashboard' style interface for the Donation play service:</p>
 <p><img alt="" src="img/01.png"></p>
 <p>It doesnt make much sense. However, as we have 'segmented' the UI, you should be able to build this UX by just introducing a single new view. (Hint - the html template is in the slides!)</p>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,41 +81,36 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        3: Widgets & Callbacks
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#MyRent-01" data-toggle="tab"> MyRent-01 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#Archives" data-toggle="tab"> Archives </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    3: Widgets & Callbacks
+  </header>-->
+
+  <a class="active header item" data-tab="MyRent-01"> MyRent-01 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="07"> 07 </a>
+    <a class="item" data-tab="Archives"> Archives </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="MyRent-01">
-    <h1>Objectives</h1>
-<p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="MyRent-01">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Preview</h1>
+  <h1>Objectives</h1>
+<p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Preview</h1>
 <p>At the end of this topic our goal is to have a screen looking something like this:</p>
 <p><img alt="" src="img/01.png"></p>
 <p>We will have added: </p>
@@ -148,9 +144,12 @@ h3
 </ul>
 </li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Restructure MyRent</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Restructure MyRent</h1>
 <p>Before we start to expand the project, we need to perform some rearranging so it can be extended in an orderly manner.</p>
 <p>This is our current application workspace (ignore the 'V00' in the project name):</p>
 <p><img alt="" src="img/24.png"></p>
@@ -162,9 +161,12 @@ h3
 <li>org.wit.myrent.models</li>
 </ul>
 <p>and make sure the classes are relocated (using drag/drop) to these packages.</p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h2>Layout</h2>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h2>Layout</h2>
 <p>The previous iteration has one UI control, an EditText.</p>
 <p>This iteration shall introduce:</p>
 <ul>
@@ -305,9 +307,12 @@ h3
 <p>The result is shown in Figure 6.</p>
 <p><img alt="Figure 6: Status section label and separator added" src="img/10.png"></p>
 <p>We shall continue with the development of the layout in the following steps.</p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Add Widgets</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Add Widgets</h1>
 <p>We shall now complete remaining work on the layout using the Graphical Layout and the Outline panel.</p>
 <p>Here is the the layout at this stage of development.</p>
 <pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
@@ -391,9 +396,12 @@ This concludes the layout design and implementation in this step. </p>
 <li>Notice that the LinearLayout orientation is vertical thus creating a stack of xml nodes comprising the various UI widgets.</li>
 </ul>
 <p><img alt="Figure 5: Hierarchical arrangement of UI components" src="img/13.png"></p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Activity &amp; Model Updates</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Activity &amp; Model Updates</h1>
 <h2>Residence</h2>
 <p>Replace your Residence class with the following:</p>
 <pre><code>package org.wit.myrent.models;
@@ -527,9 +535,12 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
   }
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Test</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Test</h1>
 <p>Run the app and check that the date string is correctly represented on the date button: see Figure 1.</p>
 <p><img alt="Figure 1: Menus populated" src="img/01.png"></p>
 <p>Run the app and use the debugger to ensure data is being transmitted to and from the Residence object.</p>
@@ -543,9 +554,12 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 </ul>
 <p>Repeat for the checkbox as illustrated in Figure 3.</p>
 <p><img alt="Figure 3: Using debugger to verify data input transmitted to model object" src="img/21.png"></p>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Summary</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="07">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Summary</h1>
 <p>Here is what we have achieved in this topic:</p>
 <ul>
 <li>Explored various ways of modifying layout working with the Graphical Layout editor, the XML editor and the Outline view.</li>
@@ -567,38 +581,55 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 <p>Described how to conduct a simple test using the debugger to verify that the listeners operate correctly and that UI data transmission takes place successfully in both directions between model and UI.</p>
 </li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="Archives">
-      <h1>Archives</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Archives">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV01.zip">MyRentV01</a></li>
 </ul>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

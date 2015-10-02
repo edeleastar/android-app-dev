@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,49 +81,47 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        9: APIs & Camera
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-06" data-toggle="tab"> Donation-06 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    9: APIs & Camera
+  </header>-->
+
+  <a class="active header item" data-tab="Donation-06"> Donation-06 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="Exercises"> Exercises </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-06">
-    <h1>Objectives</h1>
-<p>Deploy the donation-service app to Heroku. This will require a heroku account + a locally installed git tool set.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="Donation-06">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Git Bash</h1>
+  <h1>Objectives</h1>
+<p>Deploy the donation-service app to Heroku. This will require a heroku account + a locally installed git tool set.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Git Bash</h1>
 <p>Download and install <a href="http://git-scm.com/downloads">Git for Windows</a>.</p>
 <ul>
 <li>This will be used in this lab. We shall refer to as <em>Git Bash</em>.</li>
 </ul>
 <p><img alt="Figure 1: Installation Wizard Git Bash" src="img/heroku_022.png"></p>
 <p>All the following commands should be run within the Git Bash terminal, not the standard windows terminal (Command Prompt).</p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>SSH Keys</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>SSH Keys</h1>
 <p>This section applies only if you do not have SSH keys on your computer. We shall explain shortly how you can check whether or not keys are present.</p>
 <p>Official Heroku documentation on managing SSH keys is available <a href="https://devcenter.heroku.com/articles/keys#adding-keys-to-heroku">here</a></p>
 <p>Your computer will communicate with Heroku using <a href="http://en.wikipedia.org/wiki/Secure_Shell">Secure Shell</a> (SSH).</p>
@@ -149,9 +148,12 @@ h3
 <li>That is: do <strong>not</strong> password protect the keys.</li>
 </ul>
 <p>Confirm that keys have been successfully generated by checking the contents of the <em>.ssh</em> folder which should be similar that shown in Figure 3 above.</p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Local Repository</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Local Repository</h1>
 <ul>
 <li>
 <p>Delete the file Bootstrap.java (if it exists).</p>
@@ -224,9 +226,12 @@ git commit -m 'first commit'
 
 <p>The response should as follow:</p>
 <p><img alt="" src="img/heroku_016.png"></p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Heroku repository</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Heroku repository</h1>
 <p>Create an account on <a href="http://www.heroku.com">Heroku</a>. Note carefully your login and password.</p>
 <p>Download and install <a href="https://toolbelt.heroku.com">Heroku Toolbelt for Windows</a>. Close and reopen Git Bash following installation of Toolbelt. </p>
 <p>Once installed, verify installation ok by typing </p>
@@ -282,9 +287,12 @@ git commit -m 'first commit'
 
 <p>A typical response is shown in Figure 5:</p>
 <p><img alt="Figure 5: Changing name of Heroku app from command line" src="img/heroku_007.png"></p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Heroku Database</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Heroku Database</h1>
 <p>You created a Heroku app in an earlier step (using the command <em>heroku create</em>) </p>
 <ul>
 <li>A database was made available as part of the app creation process.</li>
@@ -364,9 +372,12 @@ git push heroku master
 <p><img alt="Figure 8: Resetting the database" src="img/heroku_013.png"></p>
 <p><strong>References</strong></p>
 <p><a href="https://devcenter.heroku.com/articles/git">Deploying with Git</a></p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Remote Repository</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Remote Repository</h1>
 <p>This step is optional - and you can safely skip it for the moment.</p>
 <p>Your app is now stored in a remote repository on heroku. You can regenerate it on another mahcine / folder if you wish:</p>
 <ul>
@@ -415,9 +426,12 @@ git remote add heroku git@heroku.com:org-wit-donation-service-id.git
 <p>Then, push with the following command:</p>
 <pre><code>git push heroku master
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercises</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercises</h1>
 <p>Archive of donation-service as used in this lab</p>
 <ul>
 <li><a href="archives/org-wit-donation-service-id.zip">donation-service</a></li>
@@ -426,31 +440,45 @@ git remote add heroku git@heroku.com:org-wit-donation-service-id.git
 <p>Using postman, create a few Users and Donations on the app hosted in heroku. Verify that the creation/deleting proceeds as expected</p>
 <h2>Exercise 2:</h2>
 <p>You have some tests in the donation-service-test project, which currently tests the app running on localhost. Change this app such that it will test the application you have now deployed to heroku.  A one line change to the Rest class should be sufficient.</p>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

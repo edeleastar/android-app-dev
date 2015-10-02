@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,44 +81,39 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        8: JPA & Maps
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#JPA-01" data-toggle="tab"> JPA-01 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
-          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
-          <li><a href= "#11" data-toggle="tab"> 11 </a> </li>
-          <li><a href= "#12" data-toggle="tab"> 12 </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    8: JPA & Maps
+  </header>-->
+
+  <a class="active header item" data-tab="JPA-01"> JPA-01 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="07"> 07 </a>
+    <a class="item" data-tab="08"> 08 </a>
+    <a class="item" data-tab="10"> 10 </a>
+    <a class="item" data-tab="11"> 11 </a>
+    <a class="item" data-tab="12"> 12 </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="JPA-01">
-    <h1>Objectives</h1>
-<p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="JPA-01">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Exercises</h1>
+  <h1>Objectives</h1>
+<p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercises</h1>
 <p>The witpress-v2 app, completed during the summer school, implements a simple blogging app with comments. You may have this app in your workspace. If not, this is the archive here:</p>
 <ul>
 <li><a href="archives/witpressapp.zip">witpressapp.zip</a></li>
@@ -151,9 +147,12 @@ h3
 <li>Tests which verify this model change</li>
 <li>UI, sufficient changes have been made to the UI to enable it to function using the revised model.</li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>JPA Model Project</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>JPA Model Project</h1>
 <p>Create a brand new Play project. Do this by navigating to the correct folder folder (most likely your workspace) and running a command prompt. Then type:</p>
 <pre><code>play new jpamodel
 </code></pre>
@@ -274,9 +273,12 @@ public class PlayerTest extends UnitTest
 <ul>
 <li><a href="http://localhost:9000/@db">http://localhost:9000/@db</a></li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Initial Tests for Player and Club</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Initial Tests for Player and Club</h1>
 <h2>PlayerTest</h2>
 <p>In PlayerTest introduce a fixture and create some test objects:</p>
 <pre><code class="java">public class PlayerTest extends UnitTest 
@@ -416,9 +418,12 @@ public class ClubTest extends UnitTest
 </code></pre>
 
 <p>These tests should run successfully. Experiment with commenting out the @After annotation and seeing the actual objects in the database.</p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Modeling a Player / Club Relationship</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Modeling a Player / Club Relationship</h1>
 <p>Currently there is no relationship between player and club - which can be modeled like this:</p>
 <p><img alt="" src="img/14.png"></p>
 <p>We can now implement this relationship. Modify the Club class as follows:</p>
@@ -509,9 +514,12 @@ public class ClubTest extends UnitTest
 
 <p>Read and absorb the logic of this test. As an experiment, comment out the final line (deleting mike). Then look to the database interface and note that mike is still in the database after the test have run. </p>
 <p>Note also that if we leave the deletion of mike commented out, and re-run the tests - then other tests start to fail. The only cure now will be to restart the application.</p>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h2>Bidirectional Club / Player Relationship</h2>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h2>Bidirectional Club / Player Relationship</h2>
 <p>We might like each player to also 'know' which club he/she belongs to. In fact this is probably a more natural relationship for these model elements:</p>
 <p><img alt="" src="img/17.png"></p>
 <p>Contrast this with the earlier version:</p>
@@ -547,9 +555,12 @@ public class ClubTest extends UnitTest
 </code></pre>
 
 <p>Make sure this passes.</p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Division + Sponsor</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Division + Sponsor</h1>
 <p>We would now like to extend the model to include the following extra classes:</p>
 <p><img alt="" src="img/19.png"></p>
 <p>These are the new classes for Division &amp; Sponsor:</p>
@@ -661,9 +672,12 @@ public class Sponsor extends Model
   }
 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Tests</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="07">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Tests</h1>
 <p>We can significantly simplify aspects of the testing if we invest some time in setting up test objects in yaml first.</p>
 <p>Open 'data.yaml' and replace its contents with the following:</p>
 <pre><code>Club(dunmore):
@@ -878,9 +892,12 @@ public class ComprehensiveTest extends UnitTest
 
 <p>Run the app in test mode, and run this new test suite. All of these tests should run.</p>
 <p>Note carefully how we have 'manually' loaded the sponsorship relationships after the model has been loaded.</p>
-    </div>
-    <div class="tab-pane fade" id="08">
-      <h1>Controllers/View</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="08">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Controllers/View</h1>
 <p>Incorporate all of these controllers so we can interact with the model via the UI:</p>
 <h2>Players</h2>
 <pre><code class="java">package controllers;
@@ -1101,9 +1118,12 @@ public class Division extends Controller
   &lt;/table&gt;
 &lt;/section&gt;
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="10">
-      <h1>Routes + Test Data</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="10">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Routes + Test Data</h1>
 <p>Now incorporate the following routes:</p>
 <pre><code># Home page
 GET     /                                       Divisions.index
@@ -1142,9 +1162,12 @@ public class Bootstrap extends Job
 </code></pre>
 
 <p>Run the app again, and you should start to see some data.</p>
-    </div>
-    <div class="tab-pane fade" id="11">
-      <h1>Showing Division/Club/Player Relationships</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="11">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Showing Division/Club/Player Relationships</h1>
 <p>Currently UI for the model if read only - and we can only see each model in isolation (we cant see relationships).</p>
 <p>First, we tackle the relationships. Update the <code>&lt;table&gt;</code> element of the following views with this version:</p>
 <h2>views/Players/index.html</h2>
@@ -1238,9 +1261,12 @@ public class Bootstrap extends Job
 </code></pre>
 
 <p>See if you can make sense of the above templates. Save everything and reload. You should be able to see what players belong to which clubs, and also what divisions the clubs are in.</p>
-    </div>
-    <div class="tab-pane fade" id="12">
-      <h1>Delete Player Feature</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="12">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Delete Player Feature</h1>
 <p>Introduce the following method into the controllers/Players:</p>
 <pre><code class="java">  public static void delete(Long id)
   {
@@ -1282,31 +1308,45 @@ public class Bootstrap extends Job
 </code></pre>
 
 <p>And try again. You should be able to delete players.</p>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

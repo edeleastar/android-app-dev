@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,44 +81,39 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        3: Widgets & Callbacks
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#MyRent-00" data-toggle="tab"> MyRent-00 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#07" data-toggle="tab"> 07 </a> </li>
-          <li><a href= "#08" data-toggle="tab"> 08 </a> </li>
-          <li><a href= "#09" data-toggle="tab"> 09 </a> </li>
-          <li><a href= "#10" data-toggle="tab"> 10 </a> </li>
-          <li><a href= "#Archives" data-toggle="tab"> Archives </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    3: Widgets & Callbacks
+  </header>-->
+
+  <a class="active header item" data-tab="MyRent-00"> MyRent-00 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="07"> 07 </a>
+    <a class="item" data-tab="08"> 08 </a>
+    <a class="item" data-tab="09"> 09 </a>
+    <a class="item" data-tab="10"> 10 </a>
+    <a class="item" data-tab="Archives"> Archives </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="MyRent-00">
-    <h1>Objectives</h1>
-<p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="MyRent-00">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Create Project</h1>
+  <h1>Objectives</h1>
+<p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Create Project</h1>
 <ul>
 <li>Launch Eclipse and switch to <em>workspaceAndroid</em></li>
 <li>From the Eclipse menu run the command:<ul>
@@ -176,9 +172,12 @@ h3
 <img alt="Figure 5: activity_myrent.xml" src="img/07a.png"></p>
 <p>The directory structure, viewable in Eclipse Package Explorer, is depicted in Figure 6.
 <img alt="Figure 6: MyRent Android application directory structure" src="img/07.png"></p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Layout XML</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Layout XML</h1>
 <p>Some of the key files of the application are identified in the screenshot of the Package Explorer as illustrated in Figure 1.</p>
 <p><img alt="Figure 1: Key Application Files" src="img/14.png"></p>
 <p><strong>Layout XML Code</strong></p>
@@ -223,9 +222,12 @@ The textual content of the file is as follows:</p>
 <p>Were the TextView attribute <em>android:layout_width</em> set to <em>fill_parent</em> the situation would be as represented in Figure 5.
 <img alt="Figure 5: TextView width attribute value set to &quot;fill_parent&quot;" src="img/18.png"></p>
 <p>A short tutorial is available is available <a href="http://www.mkyong.com/android/android-wrap_content-and-fill_parent-example/">here</a> that demonstrates the effect of different values for <em>layout_width</em> and <em>layout_height</em> attributes.</p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Strings</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Strings</h1>
 <p>The file <em>strings.xml</em>, located in <em>res/values</em>, contains all the text that <em>MyRent</em> application uses.
 <img alt="" src="img/27.png">
 This arrangement, rather than hard-coding strings when and where required in the code, greatly facilites any changes to the strings, such as for example adapting your application to a new language.</p>
@@ -245,9 +247,12 @@ This arrangement, rather than hard-coding strings when and where required in the
 <p><img alt="Figure 3: AndroidManifest.xml" src="img/24.png">
 <img alt="Figure 4: res/layout/activity_myrent.xml" src="img/25.png">
 <img alt="Figure 5: res/menu/my_rent.xml" src="img/26.png"></p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>R File</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>R File</h1>
 <p><img alt="" src="img/28.png"></p>
 <p>All auto-generated files are located in the <em>gen</em> folder and should not be modified by the developer.</p>
 <ul>
@@ -260,9 +265,12 @@ This arrangement, rather than hard-coding strings when and where required in the
 </ul>
 </li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Java</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Java</h1>
 <p><img alt="" src="img/29.png"></p>
 <p><strong>MyRentActivity</strong></p>
 <ul>
@@ -298,9 +306,12 @@ This arrangement, rather than hard-coding strings when and where required in the
 <p><img alt="Figure 1: MyRentActivity.java" src="img/30.png"></p>
 <p><img alt="Figure 2: MyRent menu item on Action bar" src="img/31.png"></p>
 <p><img alt="Figure 3: Program halts at breakpoint in when menu selected" src="img/32.png"></p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Run App</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Run App</h1>
 <p><strong>Start the Genymotion emulator</strong></p>
 <ul>
 <li>Press the Genymotion icon on the tool bar</li>
@@ -342,9 +353,12 @@ This arrangement, rather than hard-coding strings when and where required in the
 <p><img alt="Figure 3: Run application" src="img/10.png">
 <img alt="Figure 4: Android Device Chooser" src="img/11.png">
 <img alt="Figure 5: Hello world" src="img/12.png"></p>
-    </div>
-    <div class="tab-pane fade" id="07">
-      <h1>Model</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="07">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Model</h1>
 <p>We first begin with a new model class: Residence.</p>
 <ul>
 <li>Create the file in the package <em>org.wit.myrent</em>.</li>
@@ -387,9 +401,12 @@ public class Residence
   }
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="08">
-      <h1>Layout</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="08">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Layout</h1>
 <p>A general note on layout development: Android Development Kit (ADK) provides two ways to to create a user interface (UI):</p>
 <ul>
 <li>
@@ -497,9 +514,12 @@ public class Residence
 </code></pre>
 
 <p><img alt="Figure 7: Using color in layout" src="img/34.png"></p>
-    </div>
-    <div class="tab-pane fade" id="09">
-      <h1>Listeners</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="09">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Listeners</h1>
 <p>We shall now inject code into the MyRentActivity class that shall:</p>
 <ul>
 <li>Listen for changes to the Geolocation input control</li>
@@ -624,9 +644,12 @@ import android.text.TextWatcher;
 </li>
 </ul>
 <p><img alt="Figure 3: Analysis of listener code" src="img/37.png"></p>
-    </div>
-    <div class="tab-pane fade" id="10">
-      <h1>Summary</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="10">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Summary</h1>
 <p>Here is what we have done in this topic:</p>
 <ul>
 <li>
@@ -655,38 +678,55 @@ import android.text.TextWatcher;
 <p>Added a listener to the Activity class to capture any changes in input (the geolocation) and transmit these changes to the Residence object for storage.</p>
 </li>
 </ul>
-    </div>
-    <div class="tab-pane fade" id="Archives">
-      <h1>Archives</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Archives">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV00.zip">MyRentV00</a></li>
 </ul>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

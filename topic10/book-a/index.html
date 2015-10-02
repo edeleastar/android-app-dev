@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,40 +81,35 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        10: REST & AsyncTasks
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-07" data-toggle="tab"> Donation-07 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    10: REST & AsyncTasks
+  </header>-->
+
+  <a class="active header item" data-tab="Donation-07"> Donation-07 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="Exercises"> Exercises </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-07">
-    <h1>Objectives</h1>
-<p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="Donation-07">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Donation-android app</h1>
+  <h1>Objectives</h1>
+<p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Donation-android app</h1>
 <p>This is the donation android app as we left it with Donation-03 lab:</p>
 <p><a href="archives/donation-android-v3.zip">donation-android-v3.zip</a></p>
 <p>Import this into your eclipse environment and make sure it compiles and launches successfully.</p>
@@ -123,9 +119,12 @@ h3
 <li><a href="archives/flexjson-2.1.jar">flexjson-2.1.jar</a></li>
 </ul>
 <p>and he add it to build path (right click and add to build path in Eclipse)</p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>app.http</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>app.http</h1>
 <p>Create a new package in the android app called app.http, and introduce these classes:</p>
 <h2>Response</h2>
 <pre><code class="java">package app.http;
@@ -296,9 +295,12 @@ public class Rest
   }
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Models - API Classes</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Models - API Classes</h1>
 <p>We already have a models package - introduce these new classes into this package:</p>
 <h2>JsonParsers</h2>
 <pre><code class="java">package app.models;
@@ -452,9 +454,12 @@ class CreateDonation extends Request
   }
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Models - User &amp; Donation</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Models - User &amp; Donation</h1>
 <p>The curret User and Donation classes need some minor adjustments. Specifically, we need to include the following in both:</p>
 <ul>
 <li>id</li>
@@ -508,9 +513,12 @@ public class Donation
   }
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Login Activity</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Login Activity</h1>
 <p>This is a restructuring of Login to fetch the users from the donation-service as soon as the activity starts, and then to handle the response appropriately.</p>
 <pre><code class="java">package app.activities;
 
@@ -583,9 +591,12 @@ public class Login extends Activity implements Response&lt;User&gt;
 </code></pre>
 
 <p>Try the app now (make sure donation-service play app is running). It should let you log in with user credentials download from the service (try homer@simpson.com, secret - without registering).</p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>Report</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Report</h1>
 <p>Finally, the report activity:</p>
 <pre><code class="java">package app.activities;
 
@@ -710,9 +721,12 @@ class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
 </code></pre>
 
 <p>When this starts - it requests the donations from the service. When they arrive, they are displayed in the list view.</p>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercises</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercises</h1>
 <p>Archive of project so far:</p>
 <ul>
 <li><a href="archives/donation-android-v4.zip">donation-android-v4.zip</a></li>
@@ -743,31 +757,45 @@ class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
 <ul>
 <li><a href="http://localhost/@db">http://localhost/@db</a></li>
 </ul>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,40 +81,35 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        8: JPA & Maps
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#JPA-02" data-toggle="tab"> JPA-02 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    8: JPA & Maps
+  </header>-->
+
+  <a class="active header item" data-tab="JPA-02"> JPA-02 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="Exercises"> Exercises </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="JPA-02">
-    <h1>Objectives</h1>
-<p>Explore the model developed in the last lab a little further by attaching a Semantic UI. Experiment with UI elements that change the model.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="JPA-02">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Semantic UI</h1>
+  <h1>Objectives</h1>
+<p>Explore the model developed in the last lab a little further by attaching a Semantic UI. Experiment with UI elements that change the model.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Semantic UI</h1>
 <p>Using your project form the last lab, or this one here if you did'nt complete it:</p>
 <ul>
 <li><a href="archives/jpamodel-lab08.zip">jpamodel.zip</a></li>
@@ -172,9 +168,12 @@ h3
 </code></pre>
 
 <p>Try out these styles now.</p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Delete Club</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Delete Club</h1>
 <p>First introduce the delete button in the clubs view:</p>
 <pre><code class="html">          &lt;td&gt; 
             &lt;a class=&quot;ui ui icon button&quot; href=&quot;/clubs/delete/${club.id}&quot;&gt;
@@ -211,9 +210,12 @@ h3
 </code></pre>
 
 <p>Try deleting clubs now.</p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Delete Divisions</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Delete Divisions</h1>
 <h2>New routes:</h2>
 <pre><code>GET    /divisions/delete/{id}                   Divisions.delete
 </code></pre>
@@ -237,9 +239,12 @@ h3
 
 <p>When you delete a division, pay close attention to the clubs and players tables. </p>
 <p>Can you explain what is happening?</p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Show Sponsors</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Show Sponsors</h1>
 <p>Currently the Spnosor table is incomplete - it only lists the sponsor names, and not the club being sponsored:</p>
 <pre><code class="html">  &lt;table class=&quot;ui table&quot;&gt;
     &lt;thead&gt;
@@ -395,9 +400,12 @@ Sponsor(pub):
     support:
          - tramore
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Delete Sponsors</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Delete Sponsors</h1>
 <h1>New route:</h1>
 <pre><code>GET    /sponsors/delete/{id}                    Sponsors.delete
 </code></pre>
@@ -427,9 +435,12 @@ Sponsor(pub):
 </code></pre>
 
 <p>Look carefully at the delete method. Can you make sense of it?</p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>New Player</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>New Player</h1>
 <p>We would like a way of adding a new player via the UI.</p>
 <p>First, bring in a new button on the player view to trigger the creating of a player:</p>
 <pre><code class="html">  &lt;a class=&quot;ui blue button&quot; href=&quot;/players/addplayer&quot;&gt;
@@ -484,9 +495,12 @@ POST   /players/newplayer                       Players.newPlayer
 
 <p>There is a very small difference. This is using a <code>null-safe</code> operator <code>?</code> when trying to access the clubs name. If the club is null (i.e. there is no club), we will not attempt to reach into the name field.</p>
 <p>Make sure this works now as expected.</p>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercises</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercises</h1>
 <p>Archive of project so far:</p>
 <ul>
 <li><a href="archives/jpamodel.zip">jpamodel.zip</a></li>
@@ -498,31 +512,45 @@ POST   /players/newplayer                       Players.newPlayer
 <h2>Exercise 3</h2>
 <p>We still dont have a way of enabling the user to establish associations between the different models. E.g. have new player belong to a club, or clubs be in a division etc..</p>
 <p>How would you approach this?</p>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

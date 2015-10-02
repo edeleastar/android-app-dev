@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,39 +81,34 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        11: Assignment Studio
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-09" data-toggle="tab"> Donation-09 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    11: Assignment Studio
+  </header>-->
+
+  <a class="active header item" data-tab="Donation-09"> Donation-09 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="Exercises"> Exercises </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-09">
-    <h1>Objectives</h1>
-<p>Refactor the the Donation Play Service to capture a OneToMany relationship from User-&gt;Donation. Then, reflect this relationship in the API.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="Donation-09">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Routes</h1>
+  <h1>Objectives</h1>
+<p>Refactor the the Donation Play Service to capture a OneToMany relationship from User-&gt;Donation. Then, reflect this relationship in the API.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Routes</h1>
 <p>We will start with the routes. In the previous version the User and Donations APIs were independent. In the revised routes below, not carefully how the Donations routes are structured.</p>
 <pre><code># API - Users
 
@@ -130,18 +126,24 @@ DELETE  /api/users/{userId}/donations/{id}   DonationsAPI.deleteDonation
 </code></pre>
 
 <p>As you can see, the users ID is required in order to reach the donations. The returned (or created) donations will be associated with the given user id.</p>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>User Model</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>User Model</h1>
 <p>The User Model can now incorporate the relationship:</p>
 <pre><code>  @OneToMany(cascade = CascadeType.ALL)
   public List&lt;Donation&gt; donations = new ArrayList&lt;Donation&gt;();
 </code></pre>
 
 <p>We can keep it unidirectional for the moment.</p>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>Controllers</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Controllers</h1>
 <p>We can get rid of the current controller, and introduce these two new controllers instead.</p>
 <p>This one looks after the User model:</p>
 <h2>UsersAPI</h2>
@@ -274,9 +276,12 @@ public class DonationsAPI extends Controller
 </code></pre>
 
 <p>In the above you will see we are always using the user ID.</p>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Test Project - DonationServiceAPI</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Test Project - DonationServiceAPI</h1>
 <p>We have just completed a significant overhaul to the service API - so the tests will need to change to reflect this.</p>
 <p>Open the donation-service-test project - and we can extend the API to accommodate the donations:</p>
 <h2>DonationServiceAPI</h2>
@@ -298,9 +303,12 @@ public class DonationsAPI extends Controller
     Rest.delete (&quot;/api/users/&quot; + user.id + &quot;/donations/&quot; + donation.id);
   } 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Test Project - DonationTest</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Test Project - DonationTest</h1>
 <p>The existing user tests should still work. </p>
 <p>However, we can introduce this new DonationTest class to exhaustively test the revised Donations API:</p>
 <h2>DonationTest</h2>
@@ -391,9 +399,12 @@ public class DonationTest
 </code></pre>
 
 <p>All tests should pass.</p>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercises</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercises</h1>
 <p>This is an archive of the two projects so far:</p>
 <ul>
 <li><a href="./archives/donation-service-play.zip">donation-service-play</a></li>
@@ -409,31 +420,45 @@ public class DonationTest
 <li>Delete all donations for a specific user</li>
 <li>Delete all donations for all users</li>
 </ul>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 

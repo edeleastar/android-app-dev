@@ -7,11 +7,12 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-     <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/solarized_light.min.css" rel="stylesheet" />
 
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
@@ -45,7 +46,7 @@ figcaption
 
   <body>
 
-    <div class="container">
+  <div class="ui container">
 <style>
 
 
@@ -80,40 +81,35 @@ h3
 
 </style>
 
-<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-      <div class="navbar-brand">
-        <a onclick="window.history.back()" href="#"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> </a>
-        9: APIs & Camera
-      </div>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href= "#Donation-04" data-toggle="tab"> Donation-04 </a> </li>
-          <li><a href= "#01" data-toggle="tab"> 01 </a> </li>
-          <li><a href= "#02" data-toggle="tab"> 02 </a> </li>
-          <li><a href= "#03" data-toggle="tab"> 03 </a> </li>
-          <li><a href= "#04" data-toggle="tab"> 04 </a> </li>
-          <li><a href= "#05" data-toggle="tab"> 05 </a> </li>
-          <li><a href= "#06" data-toggle="tab"> 06 </a> </li>
-          <li><a href= "#Exercises" data-toggle="tab"> Exercises </a> </li>
-      </ul>
-    </div>
-  </div>
+
+<div class="ui fixed top pointing inverted borderless compact menu labmenu">
+ <!-- <header class="header item">
+    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
+    9: APIs & Camera
+  </header>-->
+
+  <a class="active header item" data-tab="Donation-04"> Donation-04 </a>
+    <a class="item" data-tab="01"> 01 </a>
+    <a class="item" data-tab="02"> 02 </a>
+    <a class="item" data-tab="03"> 03 </a>
+    <a class="item" data-tab="04"> 04 </a>
+    <a class="item" data-tab="05"> 05 </a>
+    <a class="item" data-tab="06"> 06 </a>
+    <a class="item" data-tab="Exercises"> Exercises </a>
 </div>
 
-<br><br>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="Donation-04">
-    <h1>Objectives</h1>
-<p>Create a version of the the donation app as a play project. Expose an 'API' from this app to enable other programmes to use it. Try to access the API from a browser, and also from a special purpose browser extension.</p>
+<div class="ui bottom attached  active tab segment lab" data-tab="Donation-04">
+  <div class "ui segment">
+    <br>
   </div>
-
-    <div class="tab-pane fade" id="01">
-      <h1>Play Donation App</h1>
+  <h1>Objectives</h1>
+<p>Create a version of the the donation app as a play project. Expose an 'API' from this app to enable other programmes to use it. Try to access the API from a browser, and also from a special purpose browser extension.</p>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="01">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Play Donation App</h1>
 <p>Before starting this lab, it might be a good idea to download a fresh version of Eclipse - without any Android tools installed - and use this version just for the apps we are about to build in this lab. Select the 'Eclipse for Java EE Developers' distribution</p>
 <p>Using Play, create  new app in the usual way:</p>
 <pre><code>play new donation-service-play
@@ -179,9 +175,12 @@ public class User extends Model
   } 
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="02">
-      <h1>Utils</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="02">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Utils</h1>
 <p>Create a new package called 'utils', and bring in these classes:</p>
 <pre><code class="java">package utils;
 
@@ -250,9 +249,12 @@ public class JsonParsers
   }  
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="03">
-      <h1>API</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="03">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>API</h1>
 <p>Into the controllers package, create a new controller called 'DonationServiceAPI':</p>
 <pre><code class="java">package controllers;
 
@@ -350,9 +352,12 @@ public class DonationServiceAPI extends Controller
   }  
 }
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="04">
-      <h1>Config</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="04">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Config</h1>
 <p>Enable our in-memory database by uncommenting the usual setting in 'application.conf'</p>
 <pre><code>db=mem
 </code></pre>
@@ -442,9 +447,12 @@ Donation(d):
     amount : 10
     method : paypal 
 </code></pre>
-    </div>
-    <div class="tab-pane fade" id="05">
-      <h1>Exploring the API</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="05">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exploring the API</h1>
 <p>The project should build without error. Launch it and browse to the database in the usual way.</p>
 <p>Also, in a browser, explore these urls:</p>
 <ul>
@@ -467,9 +475,12 @@ Donation(d):
 <p>Entering one of the URLs above, you should see the response formatted as follows:</p>
 <p><img alt="" src="./img/04.png"></p>
 <p>Try a few other urls from the above list. Also, try a few unrecognised urls - and explore the raw and preview display options.</p>
-    </div>
-    <div class="tab-pane fade" id="06">
-      <h1>POST and DELETE</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="06">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>POST and DELETE</h1>
 <p>So far you have experimented with GET commands. THe API we have developed also supports POST and DELETE. This is declared in the routes file:</p>
 <pre><code>GET     /api/users                           DonationServiceAPI.users
 GET     /api/users/{id}                      DonationServiceAPI.user
@@ -509,9 +520,12 @@ DELETE  /api/donations/{id}                  DonationServiceAPI.deleteDonation
 <p>This time we have no parameters, just the ID of the user we want to delete. If it works (and a user with ID 1 exists), then we should get a 'success' response:</p>
 <p><img alt="" src="img/14.png"></p>
 <p>Verify, via a GET, that this user is in fact deleted.</p>
-    </div>
-    <div class="tab-pane fade" id="Exercises">
-      <h1>Exercises</h1>
+</div>
+<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
+    <div class "ui segment">
+    <br>
+  </div>
+  <h1>Exercises</h1>
 <p>Archive of projects  so far:</p>
 <ul>
 <li><a href="archives/donation-service-play.zip">donation-service-play.zip</a></li>
@@ -526,31 +540,45 @@ DELETE  /api/donations/{id}                  DonationServiceAPI.deleteDonation
 <p>Explore the 'Collections' feature of Postman. This will enable you to archive and recover various requests - which can be useful for test purposes.</p>
 <h2>Exercise 4:</h2>
 <p>Se if you can figure out how to run the play application in debug mode. Place a breakpoint in one of the api calls. see if you can follow the logic associated with recovering or returning the user and Donation objects.</p>
-    </div>
 </div>
-<br> <br>
+<script>
+$('.ui.menu .item')
+  .tab({
+    history: true,
+    historyType: 'hash'
+  })
+;
+</script>
+   </div>
 
 
+
+  <br><br>
+  <div class="ui bottom fixed borderless menu">
+    <div class="ui small item">
+    <p id="footertext">
+    Prepared by  Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
     </div>
-
-
-<div class="credits navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <small>
-    Prepared by Eamonn de Leastar (edeleastar@tssg.wit.ie) & John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a
-    <a href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-        target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-    </a>
-    </small>
-</div>    <script>
+  </div>    <script>
 
 $(document).ready(function()
 {
-  $("img").addClass ("img-responsive");
+  $("img").addClass ("ui image");
 
-  $(".tab-content img").each(function()
-  {
-    var title = this.alt;
-    $(this).after('<figcaption class="caption"> <em>'+ title +'</em></figcaption>');
+  var images = $(".lab img");
+  jQuery.each(images, function(i)  {
+    if((images[i].alt).length > 0)
+    {
+      var div_img = $(document.createElement("div")).addClass("ui segment");
+      $(images[i]).wrap(div_img);
+      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
+      div_label.append(images[i].alt);
+      $(div_label).insertBefore(images[i]);
+    }
   });
 })    </script>
 
