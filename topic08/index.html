@@ -47,152 +47,146 @@ figcaption
   <body>
 
   <div class="ui container">
-  <header class="ui middle aligned stackable grid segment">
-    <div class="eight wide column">
-      <h2>
-        <a href="../index.html"> <i class="chevron left icon"></i> </a> 8: JPA & Maps
-      </h2>
+  <header class="ui middle aligned center aligned stackable grid segment">
+    <div class="seven wide  column">
+      <h2> 8: JPA & Maps </h2>
+      <!--<h3> () </h3>-->
     </div>
     <div class="one wide column sitemap">
       <div class="popup" data-content="Top Level Topic View">
-        <a href="index.html"> <i class="big sitemap icon"></i></a>
+        <a href="../index.html"> <i class="big sitemap icon"></i></a>
+        topics
       </div>
     </div>
     <div class="one wide column">
       <div class="popup" data-content="All Presentations">
-        <a href="talkwall.html"> <i class="big film icon"></i></a>
+        <a href="../talkwall.html"> <i class="big film icon"></i></a>
+        slides
       </div>
     </div>
     <div class="one wide column">
       <div class="popup" data-content="All Labs">
-        <a href="labwall.html"> <i class="big lab icon"></i></a>
+        <a href="../labwall.html"> <i class="big lab icon"></i></a>
+        labs
       </div>
     </div>
-    <div class="five wide column">
-      <img class="ui image" src="http://www.wit.ie/assets/images/wit_crest.png">
+    <div class="six wide column">
+      <img class="ui centered medium image" src="http://www.wit.ie/assets/images/wit_crest.png">
     </div>
   </header>
 
+<script>
+  $('.popup')
+  .popup()
+;
+</script>
 
-<div class="ui link cards">
-      <div class="ui card">
+
+<div class="ui four doubling stackable cards">
+      <a class="ui card" target="_blank" href="./talk-1/aa-jpa-1.pdf">
     <div class="content">
       <div class="right floated meta"> <i class="film large icon"></i></div>
-      <a class="header" href="./talk-1/aa-jpa-1.pdf"> JPA I - OneToMany, ManyToOne </a>
+      <div class="header"> JPA I - OneToMany, ManyToOne </div>
     </div>
-    <div class="image">
-      <a class="image" href="./talk-1/aa-jpa-1.pdf">
-        <img src="./talk-1/aa-jpa-1.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./talk-1/aa-jpa-1.png">
     </div>
     <div class="content">
       <div class="description">
          <p>The simplest relationship to model in JPA in OneToMany, and an associated ManyToOne in the reverse directions. Here we explore this via a simple example, including an examination of the generated database tables.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="./talk-2/ab-jpa-2.pdf">
     <div class="content">
       <div class="right floated meta"> <i class="film large icon"></i></div>
-      <a class="header" href="./talk-2/ab-jpa-2.pdf"> JPA II - ManyToMany </a>
+      <div class="header"> JPA II - ManyToMany </div>
     </div>
-    <div class="image">
-      <a class="image" href="./talk-2/ab-jpa-2.pdf">
-        <img src="./talk-2/ab-jpa-2.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./talk-2/ab-jpa-2.png">
     </div>
     <div class="content">
       <div class="description">
          <p>ManyToMany relationships need to be carefully created and removed. They generated an extra database table. Removal is particularly tricky, and must be done in an orderly manner.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="./talk-3/ac-jpa-3.pdf">
     <div class="content">
       <div class="right floated meta"> <i class="film large icon"></i></div>
-      <a class="header" href="./talk-3/ac-jpa-3.pdf"> JPA UI </a>
+      <div class="header"> JPA UI </div>
     </div>
-    <div class="image">
-      <a class="image" href="./talk-3/ac-jpa-3.pdf">
-        <img src="./talk-3/ac-jpa-3.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./talk-3/ac-jpa-3.png">
     </div>
     <div class="content">
       <div class="description">
          <p>The models developed in JPA I and II can be usefully explored either in the database admin interface, or via a simple bolt-on UI. Here we explore both.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="./talk-4/ba-android_maps.pdf">
     <div class="content">
       <div class="right floated meta"> <i class="film large icon"></i></div>
-      <a class="header" href="./talk-4/ba-android_maps.pdf"> Android Map </a>
+      <div class="header"> Android Map </div>
     </div>
-    <div class="image">
-      <a class="image" href="./talk-4/ba-android_maps.pdf">
-        <img src="./talk-4/ba-android_maps.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./talk-4/ba-android_maps.png">
     </div>
     <div class="content">
       <div class="description">
          
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="book-a/index.html">
     <div class="content">
       <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <a class="header" href="book-a/index.html"> JPA-01 </a>
+      <div class="header"> JPA-01 </div>
     </div>
-    <div class="image">
-      <a class="image" href="book-a/index.html">
-        <img src="./book-a/img/main.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./book-a/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="book-b/index.html">
     <div class="content">
       <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <a class="header" href="book-b/index.html"> JPA-02 </a>
+      <div class="header"> JPA-02 </div>
     </div>
-    <div class="image">
-      <a class="image" href="book-b/index.html">
-        <img src="./book-b/img/main.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./book-b/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Explore the model developed in the last lab a little further by attaching a Semantic UI. Experiment with UI elements that change the model.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="book-c/index.html">
     <div class="content">
       <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <a class="header" href="book-c/index.html"> MyRent-09 </a>
+      <div class="header"> MyRent-09 </div>
     </div>
-    <div class="image">
-      <a class="image" href="book-c/index.html">
-        <img src="./book-c/img/main.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./book-c/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Make use of the device camera to take a photo go display as thumbnail a single-photo gallery. Also, support saving the photo</p>
       </div>
     </div>
-  </div>
+  </a>
 
   </div>
    </div>

@@ -47,169 +47,161 @@ figcaption
   <body>
 
   <div class="ui container">
-  <header class="ui middle aligned stackable grid segment">
-    <div class="eight wide column">
-      <h2>
-        <a href="../index.html"> <i class="chevron left icon"></i> </a> 12: Services
-      </h2>
+  <header class="ui middle aligned center aligned stackable grid segment">
+    <div class="seven wide  column">
+      <h2> 12: Services </h2>
+      <!--<h3> () </h3>-->
     </div>
     <div class="one wide column sitemap">
       <div class="popup" data-content="Top Level Topic View">
-        <a href="index.html"> <i class="big sitemap icon"></i></a>
+        <a href="../index.html"> <i class="big sitemap icon"></i></a>
+        topics
       </div>
     </div>
     <div class="one wide column">
       <div class="popup" data-content="All Presentations">
-        <a href="talkwall.html"> <i class="big film icon"></i></a>
+        <a href="../talkwall.html"> <i class="big film icon"></i></a>
+        slides
       </div>
     </div>
     <div class="one wide column">
       <div class="popup" data-content="All Labs">
-        <a href="labwall.html"> <i class="big lab icon"></i></a>
+        <a href="../labwall.html"> <i class="big lab icon"></i></a>
+        labs
       </div>
     </div>
-    <div class="five wide column">
-      <img class="ui image" src="http://www.wit.ie/assets/images/wit_crest.png">
+    <div class="six wide column">
+      <img class="ui centered medium image" src="http://www.wit.ie/assets/images/wit_crest.png">
     </div>
   </header>
 
+<script>
+  $('.popup')
+  .popup()
+;
+</script>
 
-<div class="ui link cards">
-      <div class="ui card">
+
+<div class="ui four doubling stackable cards">
+      <a class="ui card" target="_blank" href="./talk-1/a-donation-v6.pdf">
     <div class="content">
       <div class="right floated meta"> <i class="film large icon"></i></div>
-      <a class="header" href="./talk-1/a-donation-v6.pdf"> Donation-Android V6 </a>
+      <div class="header"> Donation-Android V6 </div>
     </div>
-    <div class="image">
-      <a class="image" href="./talk-1/a-donation-v6.pdf">
-        <img src="./talk-1/a-donation-v6.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./talk-1/a-donation-v6.png">
     </div>
     <div class="content">
       <div class="description">
          <p>A review of the Donation-Andorid V6 app, which we completed last week. This version of the app incorporates the User-&gt;Donation relationship, as embodied in the donation-play-service app the REST patterns it provides.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="./talk-2/b-donation-service-ui.pdf">
     <div class="content">
       <div class="right floated meta"> <i class="film large icon"></i></div>
-      <a class="header" href="./talk-2/b-donation-service-ui.pdf"> Donation Service UI </a>
+      <div class="header"> Donation Service UI </div>
     </div>
-    <div class="image">
-      <a class="image" href="./talk-2/b-donation-service-ui.pdf">
-        <img src="./talk-2/b-donation-service-ui.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./talk-2/b-donation-service-ui.png">
     </div>
     <div class="content">
       <div class="description">
          <p>The Donation Play App is given a UX based on Semantic UI. This version is 'segmented' - facilitating interesting aggregation of views with minimal effort.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="./talk-3/c-donation-projects.pdf">
     <div class="content">
       <div class="right floated meta"> <i class="film large icon"></i></div>
-      <a class="header" href="./talk-3/c-donation-projects.pdf"> Donation Projects </a>
+      <div class="header"> Donation Projects </div>
     </div>
-    <div class="image">
-      <a class="image" href="./talk-3/c-donation-projects.pdf">
-        <img src="./talk-3/c-donation-projects.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./talk-3/c-donation-projects.png">
     </div>
     <div class="content">
       <div class="description">
          <p>A look at the full family of donation projects again - android, play and test. An examination of their similarities and differences.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="./talk-4/d-intent-services.pdf">
     <div class="content">
       <div class="right floated meta"> <i class="film large icon"></i></div>
-      <a class="header" href="./talk-4/d-intent-services.pdf"> Intent Services </a>
+      <div class="header"> Intent Services </div>
     </div>
-    <div class="image">
-      <a class="image" href="./talk-4/d-intent-services.pdf">
-        <img src="./talk-4/d-intent-services.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./talk-4/d-intent-services.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Donation Android V6 suffers one significant drawback - new tweets arriving at the server will not be propagated to android clients. Here we look at one way of solving this problem.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="book-a/index.html">
     <div class="content">
       <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <a class="header" href="book-a/index.html"> Donation-12 </a>
+      <div class="header"> Donation-12 </div>
     </div>
-    <div class="image">
-      <a class="image" href="book-a/index.html">
-        <img src="./book-a/img/main.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./book-a/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Refactor Donation Android client to refresh donations list using a background service in a non-blocking call, replacing the present Response interface. </p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="book-b/index.html">
     <div class="content">
       <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <a class="header" href="book-b/index.html"> MyTweet-Assignment-02 </a>
+      <div class="header"> MyTweet-Assignment-02 </div>
     </div>
-    <div class="image">
-      <a class="image" href="book-b/index.html">
-        <img src="./book-b/img/main.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./book-b/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>This is a follow-on lab to MyTweet-Assignment-01. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> (which is reasonable given that it relates to an assignment). The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="book-c/index.html">
     <div class="content">
       <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <a class="header" href="book-c/index.html"> Donation-11 </a>
+      <div class="header"> Donation-11 </div>
     </div>
-    <div class="image">
-      <a class="image" href="book-c/index.html">
-        <img src="./book-c/img/main.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./book-c/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
       </div>
     </div>
-  </div>
+  </a>
 
-      <div class="ui card">
+      <a class="ui card" target="_blank" href="book-d/index.html">
     <div class="content">
       <div class="right floated meta"> <i class="lab large icon"></i></div>
-      <a class="header" href="book-d/index.html"> MyTweet-Assignment-03 </a>
+      <div class="header"> MyTweet-Assignment-03 </div>
     </div>
-    <div class="image">
-      <a class="image" href="book-d/index.html">
-        <img src="./book-d/img/main.png">
-      </a>
+    <div class="ui bordered rounded image">
+      <img src="./book-d/img/main.png">
     </div>
     <div class="content">
       <div class="description">
          <p>This lab has been developed to assist in the preparation of the current assignment, which comprises the development of a MyTweet suite of apps. The lab explains how to capture geolocations using map markers and also how to display a user's list of residences as markers on a map. A version of MyRent has been refactored to include sample features since MyRent structure closely resembles that of MyTweet.</p>
       </div>
     </div>
-  </div>
+  </a>
 
   </div>
    </div>

@@ -81,38 +81,55 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless compact menu labmenu">
- <!-- <header class="header item">
-    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
-    7: TDD & Fragments
-  </header>-->
-
-  <a class="active header item" data-tab="MyRent-08"> MyRent-08 </a>
-    <a class="item" data-tab="01"> 01 </a>
-    <a class="item" data-tab="02"> 02 </a>
-    <a class="item" data-tab="03"> 03 </a>
-    <a class="item" data-tab="04"> 04 </a>
-    <a class="item" data-tab="05"> 05 </a>
-    <a class="item" data-tab="06"> 06 </a>
-    <a class="item" data-tab="07"> 07 </a>
-    <a class="item" data-tab="08"> 08 </a>
-    <a class="item" data-tab="09"> 09 </a>
-    <a class="item" data-tab="10"> 10 </a>
-    <a class="item" data-tab="Archives"> Archives </a>
+<div class="ui fixed sticky top attached tabular menu labmenu">
+   <header class="header item">
+    <a href="../index.html">7: TDD & Fragments </a>
+  </header>
+    <a class="active header item" data-tab="MyRent-08">
+        MyRent-08
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
+      <a class="item" data-tab="09">
+        09
+      </a>
+      <a class="item" data-tab="10">
+        10
+      </a>
+      <a class="item" data-tab="Archives">
+        Archives
+      </a>
 </div>
 
-<div class="ui bottom attached  active tab segment lab" data-tab="MyRent-08">
-  <div class "ui segment">
-    <br>
-  </div>
+<br><br><br>
+
+<div class="ui bottom attached tab segment lab" data-tab="MyRent-08">
   <h1>Embedded Map &amp; Orientation</h1>
 <p>Introduce a Google Map including necessary supporting resources such as Google Play Services Library and a personal API key. Additionally, support a landscape layout, validation of geolocation input, immediate mirroring any changes in this input in the view title and support for smaller small factor devices.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="01">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Preview</h1>
 <p>Here we shall embed a Google map in the ResidenceFragment class. This entails using:</p>
 <ul>
@@ -131,10 +148,7 @@ h3
 <p><img alt="Figure 2: Landscape mode added. Landscape and Portrait scrollable" src="img/27.png"></p>
 <p>The instructions in this lab refer to development in <em>debug mode</em>. This means that the application you develop will not be suitable to publish on Play. Further information is available about this topic is available <a href="http://developer.android.com/tools/publishing/app-signing.html">here</a> and <a href="http://developer.android.com/distribute/tools/launch-checklist.html">here</a>.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="02">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Google Play</h1>
 <p>It is necessary to add Google Play Services to the project.</p>
 <ul>
@@ -195,10 +209,7 @@ Google Maps Android API v2</a> page.</p>
 <p><strong>Important note:</strong> as an aid to portability it would help were you to locate the <em>google-play-services_lib</em> folder in the same containing folder as the MyRent project as shown here:
 <img alt="" src="img/21.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="03">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="03">
   <h1>API Key</h1>
 <p>We recommend that you become familiar with the official documentation for <a href="https://developers.google.com/maps/documentation/android/start#overview">Google Maps Android API v2</a>.</p>
 <p>It is necessary to obtain an API key before using the Google Maps API. This can be achieved as follows:</p>
@@ -263,10 +274,7 @@ Google Maps Android API v2</a> page.</p>
 <li>The API keys</li>
 </ul>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="04">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Resources (Manifest)</h1>
 <p>In AndroidManifest.xml:</p>
 <ul>
@@ -356,10 +364,7 @@ Google Maps Android API v2</a> page.</p>
 &lt;/manifest&gt;
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="05">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Resources (Layout)</h1>
 <p>Refactor the layout of the detail view:</p>
 <p><img alt="Figure 1: ResidenceFragment layout" src="img/17.png"></p>
@@ -477,10 +482,7 @@ Google Maps Android API v2</a> page.</p>
 <p>Figure 2 should help you to understand the changes made here.</p>
 <p><img alt="Figure 2: Refactored layout" src="img/23.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="06">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Model</h1>
 <p>Before we introduce the map code we shall modify the Residence model class allowing it to store the current zoom level of the map.</p>
 <ul>
@@ -518,10 +520,7 @@ Google Maps Android API v2</a> page.</p>
   }
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="07">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Helpers</h1>
 <p>Add this helper class to the <em>org.wit.android.helpers</em> package:</p>
 <pre><code>package org.wit.android.helpers;
@@ -560,10 +559,7 @@ public class MapHelper
 <p><a href="https://developer.android.com/reference/com/google/android/gms/maps/model/LatLng.html">LatLng</a> is a Google class representing a pair of latitude and longitude coordinates stored as degrees.</p>
 <p>Please note that the use of a Context type as an argument above is not necessary at this time. We are including it here because it will be required later when we introduce validation and wish to generate Toast messages.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="08">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="08">
   <h1>ResidenceFragment</h1>
 <p>Add imports</p>
 <pre><code>import com.google.android.gms.maps.CameraUpdateFactory;
@@ -812,10 +808,7 @@ import android.widget.Toast;
 <li>The EditText input box display changes dynamically as the marker is dragged.</li>
 </ul>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="09">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="09">
   <h1>Scrollable (portrait)</h1>
 <p>Make the data-input portion of the details view scrollable.</p>
 <p>Official documentation on ScrollView is available <a href="http://developer.android.com/reference/android/widget/ScrollView.html">here</a>:</p>
@@ -950,10 +943,7 @@ import android.widget.Toast;
 <p>Figure 1 should help you to understand the changes made here.</p>
 <p><img alt="Figure 1: Refactored layout includes ScrollView" src="img/24.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="10">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="10">
   <h1>Landscape</h1>
 <p>We shall now add a landscape layout.</p>
 <ul>
@@ -1084,10 +1074,7 @@ import android.widget.Toast;
 <li>It may be necessary to do so on a physical device (phone) as the scrollable feature is only evident when the screen size demands it.</li>
 </ul>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="Archives">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="Archives">
   <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>

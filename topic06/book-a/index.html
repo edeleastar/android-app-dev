@@ -81,36 +81,49 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless compact menu labmenu">
- <!-- <header class="header item">
-    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
-    6: Streams & File IO
-  </header>-->
-
-  <a class="active header item" data-tab="MyRent-06"> MyRent-06 </a>
-    <a class="item" data-tab="01"> 01 </a>
-    <a class="item" data-tab="02"> 02 </a>
-    <a class="item" data-tab="03"> 03 </a>
-    <a class="item" data-tab="04"> 04 </a>
-    <a class="item" data-tab="05"> 05 </a>
-    <a class="item" data-tab="06"> 06 </a>
-    <a class="item" data-tab="07"> 07 </a>
-    <a class="item" data-tab="08"> 08 </a>
-    <a class="item" data-tab="Archives"> Archives </a>
+<div class="ui fixed sticky top attached tabular menu labmenu">
+   <header class="header item">
+    <a href="../index.html">6: Streams & File IO </a>
+  </header>
+    <a class="active header item" data-tab="MyRent-06">
+        MyRent-06
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
+      <a class="item" data-tab="Archives">
+        Archives
+      </a>
 </div>
 
-<div class="ui bottom attached  active tab segment lab" data-tab="MyRent-06">
-  <div class "ui segment">
-    <br>
-  </div>
+<br><br><br>
+
+<div class="ui bottom attached tab segment lab" data-tab="MyRent-06">
   <h1>Fragments &amp; Maps</h1>
 <p>Modern Android Activities tend to be composed of one or more Fragments - as opposed to consisting of a single layouts. This introduces a slightly more complicated creation process. However, using fragments opens up other opportunities we will explore in later labs.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="01">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Preview</h1>
 <p>This lab comprises the following:</p>
 <ul>
@@ -130,10 +143,7 @@ h3
 </ul>
 <p><img alt="Figure 2: Using external Maps application to identify residence's geolocation" src="img/06.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="02">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="02">
   <h1>ResidenceActivity</h1>
 <p>Much of the content of ResidenceActivity inherited from the previous version is being moved to its associated new fragment class, ResidenceFragment.</p>
 <p>We now begin refactoring:</p>
@@ -177,10 +187,7 @@ public class ResidenceActivity extends FragmentActivity
   /&gt;
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="03">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="03">
   <h1>ResidenceFragment</h1>
 <p>Here is the new ResidenceFragment class which comprises, mostly, code migrated from ResidencyActivity in the previous version of MyRent:</p>
 <pre><code>package org.wit.myrent.activities;
@@ -376,10 +383,7 @@ public class ResidenceFragment extends Fragment implements TextWatcher,
 
 <p>Rename res/layout/activity_residence.xml to the more appropriate name: <em>fragment_residence.xml</em>. </p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="04">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="04">
   <h1>ResidenceListActivity</h1>
 <p>As is the case with ResidenceActivity, much of ResidenceListActivity's code is also moved to its new associated fragment class - ResidenceListFragment.</p>
 <p>Here is the refactored ResidenceListActivity:</p>
@@ -412,10 +416,7 @@ public class ResidenceListActivity extends FragmentActivity
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="05">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="05">
   <h1>ResidenceListFragment</h1>
 <p>Here is the ResidenceListFragment class which comprises, mostly, code migrated from ResidencyListActivity in the previous version of MyRent:</p>
 <pre><code>package org.wit.myrent.activities;
@@ -561,10 +562,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 <p>Build and install the app on a device and verify that it functions correctly.</p>
 <p>Next we shall engage an external maps application.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="06">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Resources (Layout &amp; Strings)</h1>
 <ul>
 <li>Add a string resource for the Map button to <em>values/strings.xml</em></li>
@@ -686,10 +684,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 </ul>
 <p><img alt="Figure 1: Layout before and following refactoring" src="img/04.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="07">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Map</h1>
 <p>Add the following method to IntentHelper:</p>
 <pre><code>  public static void openPreferredLocationInMap(Activity parent, String location)
@@ -742,10 +737,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 <pre><code>import org.wit.android.helpers.IntentHelper;
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="08">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="08">
   <h1>Test</h1>
 <p>Build and install the app on a phsical device or emulator:</p>
 <ul>
@@ -758,10 +750,7 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 </ul>
 <p><img alt="Figure 1: Test map functionality" src="img/03.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="Archives">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="Archives">
   <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>

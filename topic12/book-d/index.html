@@ -81,35 +81,46 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless compact menu labmenu">
- <!-- <header class="header item">
-    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
-    12: Services
-  </header>-->
-
-  <a class="active header item" data-tab="MyTweet-Assignment-03"> MyTweet-Assignment-03 </a>
-    <a class="item" data-tab="01"> 01 </a>
-    <a class="item" data-tab="02"> 02 </a>
-    <a class="item" data-tab="03"> 03 </a>
-    <a class="item" data-tab="04"> 04 </a>
-    <a class="item" data-tab="05"> 05 </a>
-    <a class="item" data-tab="06"> 06 </a>
-    <a class="item" data-tab="07"> 07 </a>
-    <a class="item" data-tab="08"> 08 </a>
+<div class="ui fixed sticky top attached tabular menu labmenu">
+   <header class="header item">
+    <a href="../index.html">12: Services </a>
+  </header>
+    <a class="active header item" data-tab="MyTweet-Assignment-03">
+        MyTweet-Assignment-03
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
 </div>
 
-<div class="ui bottom attached  active tab segment lab" data-tab="MyTweet-Assignment-03">
-  <div class "ui segment">
-    <br>
-  </div>
+<br><br><br>
+
+<div class="ui bottom attached tab segment lab" data-tab="MyTweet-Assignment-03">
   <h1>MyTweet Assignment 03</h1>
 <p>This lab has been developed to assist in the preparation of the current assignment, which comprises the development of a MyTweet suite of apps. The lab explains how to capture geolocations using map markers and also how to display a user's list of residences as markers on a map. A version of MyRent has been refactored to include sample features since MyRent structure closely resembles that of MyTweet.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="01">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Preview</h1>
 <p>This is a brief description of the lab:</p>
 <ul>
@@ -141,10 +152,7 @@ h3
 <p><a href="archives/myrent-map-demo-service.zip">myrent-map-demo-service</a></p>
 <p><a href="archives/myrent-map-demo-test.zip">myrent-map-demo-test</a></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="02">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Setup</h1>
 <p>You may encounter initial errors on importing the archives:</p>
 <ul>
@@ -179,20 +187,14 @@ play deps
 <p>Add the play services library to the project:</p>
 <p><img alt="" src="img/14.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="03">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Markers</h1>
 <p>Maps Live: Getting Started with Markers on Android</p>
 <p><a href="http://youtu.be/l3bw8Senjmg">viewable here</a></p>
 <p>An archive of the programme is available <a href="archives/Maps_Live_Getting_Started_with_Markers_on_Android..flv.zip">to download</a>.</p>
 <p><img alt="Figure 1: Array of markers" src="img/01.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="04">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Map (source)</h1>
 <p>MapActivity.java</p>
 <pre><code>package org.wit.myrent.map;
@@ -462,10 +464,7 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="05">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Map (analysis)</h1>
 <p>Here are some of the features of the fragment:</p>
 <p>Fields include a map, marker and current marker position</p>
@@ -515,10 +514,7 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="06">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Map (Launch)</h1>
 <p>The map may be launched from a menu item in the sample app (myrent-map-demo-app).</p>
 <ul>
@@ -546,10 +542,7 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 <p><img alt="" src="img/08.png"></p>
 <p>Notice that in the case of the intent sent from ResidenceFragment, we chose the last residence in the list to send as an intent extra.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="07">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Map(Geolocation)</h1>
 <p>Undoubtedly more efficient and elegant methods exist for transmitting the marker coordinates to the model layer. But this is how it's done in this prototypal app:</p>
 <ul>
@@ -578,10 +571,7 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 <li>We have also added the necessary functionality to the APIs to support updating.</li>
 </ul>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="08">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="08">
   <h1>Map(Integration)</h1>
 <p>Integrating the Map activity|fragment pair into a project is straightforward.</p>
 <p>MapActivity simply requires the presence of the <em>fragment_container.xml</em> file:</p>

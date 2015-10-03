@@ -81,43 +81,51 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless compact menu labmenu">
- <!-- <header class="header item">
-    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
-    6: Streams & File IO
-  </header>-->
-
-  <a class="active header item" data-tab="MyRent-07"> MyRent-07 </a>
-    <a class="item" data-tab="01"> 01 </a>
-    <a class="item" data-tab="02"> 02 </a>
-    <a class="item" data-tab="03"> 03 </a>
-    <a class="item" data-tab="04"> 04 </a>
-    <a class="item" data-tab="05"> 05 </a>
-    <a class="item" data-tab="06"> 06 </a>
-    <a class="item" data-tab="07"> 07 </a>
-    <a class="item" data-tab="Archives"> Archives </a>
+<div class="ui fixed sticky top attached tabular menu labmenu">
+   <header class="header item">
+    <a href="../index.html">6: Streams & File IO </a>
+  </header>
+    <a class="active header item" data-tab="MyRent-07">
+        MyRent-07
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="Archives">
+        Archives
+      </a>
 </div>
 
-<div class="ui bottom attached  active tab segment lab" data-tab="MyRent-07">
-  <div class "ui segment">
-    <br>
-  </div>
+<br><br><br>
+
+<div class="ui bottom attached tab segment lab" data-tab="MyRent-07">
   <h1>Residence List Deletion &amp; ViewPager</h1>
 <p>In this lab we introduce a facility to select and delete a subset of residences in the list view. The selected items need not be contiguous. Also, introduce a new feature to support 'swipe' interaction. This allows a user to swipe left/right to page through the residence list.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="01">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Preview</h1>
 <p><img alt="Figure 1: Long press to engage contextual menu to delete selection from list" src="img/02.png"></p>
 <p><img alt="Figure 2: Use ViewPager to introduce swipe facility" src="img/19.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="02">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Resources (Contextual Menu)</h1>
 <p>Add a new context menu resource.</p>
 <p>Filename: res/menu/residence_list_context.xml</p>
@@ -197,10 +205,7 @@ h3
 
 <p><img alt="Press and hold trash can to display menu label" src="img/03.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="03">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="03">
   <h1>ResidenceListFragment</h1>
 <p>Add imports:</p>
 <pre><code>import android.view.ActionMode;
@@ -286,10 +291,7 @@ import android.widget.AbsListView.MultiChoiceModeListener;
   }
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="04">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="04">
   <h1>ViewPager</h1>
 <p>Here we shall refactor MyRent by incorporating a ViewPager.</p>
 <ul>
@@ -299,10 +301,7 @@ import android.widget.AbsListView.MultiChoiceModeListener;
 <p>The refactoring is shown in Figure 2 where the changes are highlighted: compare this object diagram to that in the previous step and you will see that the main change is the replacement of ResidenceActivity with a new class ResidencePagerActivity. </p>
 <p><img alt="Figure 2: Object diagram following introduction of ViewPager" src="img/20.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="05">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Resources (ViewPager)</h1>
 <p>Create a new file <em>ids.xml</em> in res/values folder which will be used to store viewPager id numbers:</p>
 <p>Filename: ids.xml</p>
@@ -324,10 +323,7 @@ import android.widget.AbsListView.MultiChoiceModeListener;
     &lt;/activity&gt;
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="06">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Create ResidencePagerActivity</h1>
 <p>Note: not all import statements are included: </p>
 <ul>
@@ -486,10 +482,7 @@ public class ResidencePagerActivity extends FragmentActivity
 
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="07">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Integrate ResidencePagerActivity</h1>
 <p>To date in ResidenceListActivity.onListItemClick:</p>
 <ul>
@@ -588,10 +581,7 @@ import static org.wit.android.helpers.LogHelpers.info;
 </ul>
 <p>Build and lauch the app on an emulator or device and check the functionality we have introduced in this lab.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="Archives">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="Archives">
   <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>

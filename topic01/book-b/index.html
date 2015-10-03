@@ -81,36 +81,49 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless compact menu labmenu">
- <!-- <header class="header item">
-    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
-    1: Activities & Layouts
-  </header>-->
-
-  <a class="active header item" data-tab="Donation-01"> Donation-01 </a>
-    <a class="item" data-tab="01"> 01 </a>
-    <a class="item" data-tab="02"> 02 </a>
-    <a class="item" data-tab="03"> 03 </a>
-    <a class="item" data-tab="04"> 04 </a>
-    <a class="item" data-tab="05"> 05 </a>
-    <a class="item" data-tab="06"> 06 </a>
-    <a class="item" data-tab="07"> 07 </a>
-    <a class="item" data-tab="08"> 08 </a>
-    <a class="item" data-tab="Exercises"> Exercises </a>
+<div class="ui fixed sticky top attached tabular menu labmenu">
+   <header class="header item">
+    <a href="../index.html">1: Activities & Layouts </a>
+  </header>
+    <a class="active header item" data-tab="Donation-01">
+        Donation-01
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="08">
+        08
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
 </div>
 
-<div class="ui bottom attached  active tab segment lab" data-tab="Donation-01">
-  <div class "ui segment">
-    <br>
-  </div>
+<br><br><br>
+
+<div class="ui bottom attached tab segment lab" data-tab="Donation-01">
   <h1>Objectives</h1>
 <p>Here we proceed to explore in detail the creating of a simple activity class + the associated layout. This process will seem quite complex on first contact - but as we proceed through the labs over the next few sessions the deep structure should start to emerge.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="01">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Create Project</h1>
 <p>Create a new Android application, with the following properties:</p>
 <p><img alt="" src="img/00.png"></p>
@@ -130,10 +143,7 @@ h3
 <p><img alt="" src="img/06.png"></p>
 <p>These views are closely related - and you will need to monitor the information displayed there continually as you evolve the appearance of your activities screens.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="02">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Layout Donation Activity</h1>
 <p>For this lab, out objective is to reproduce in Android this feature from the web app:</p>
 <p><img alt="" src="img/07.png"></p>
@@ -239,10 +249,7 @@ h3
 &lt;/resources&gt;
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="03">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Donate Button</h1>
 <p>Place a button directly on to the activity - attached to the bottom of the screen as shown:</p>
 <p><img alt="" src="img/13.png"></p>
@@ -394,10 +401,7 @@ public class Donate extends Activity
 
 <p>Run the app again, and verify the above message appears.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="04">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Documentation</h1>
 <p>The android documentation is particularly helpful and well designed. These are the two key starting points:</p>
 <ul>
@@ -438,10 +442,7 @@ public class Donate extends Activity
 <p><img alt="" src="img/19.png"></p>
 <p>We now have our first interaction working!</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="05">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Research + New Control Layout</h1>
 <p>Recall the UI we are trying to implement:</p>
 <p><img alt="" src="img/20.png"></p>
@@ -624,10 +625,7 @@ public class Donate extends Activity
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="06">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="06">
   <h1>NumberPicker</h1>
 <p>This is our reference documentation:</p>
 <ul>
@@ -667,10 +665,7 @@ public class Donate extends Activity
 
 <p>Run this now - and verify that it operates as expected (see the actual amounts in the log file).</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="07">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Radio Button</h1>
 <p>In donateButtonPressed we need to discover which payment method has been selected. Our RadioGroup documentation is here:</p>
 <ul>
@@ -761,10 +756,7 @@ public class Donate extends Activity
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="08">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="08">
   <h1>Progress</h1>
 <p>The progress bar documentation:</p>
 <ul>
@@ -925,10 +917,7 @@ public class Donate extends Activity
 
 <p>Android code can become very verbose and complex. Carefully formatting is essential if you are not to be overwhelmed.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="Exercises">
   <h1>Exercises</h1>
 <p>Archive of lab so far:</p>
 <ul>

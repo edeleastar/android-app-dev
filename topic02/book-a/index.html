@@ -81,35 +81,46 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless compact menu labmenu">
- <!-- <header class="header item">
-    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
-    2: Events & Models
-  </header>-->
-
-  <a class="active header item" data-tab="Donation-02"> Donation-02 </a>
-    <a class="item" data-tab="01"> 01 </a>
-    <a class="item" data-tab="02"> 02 </a>
-    <a class="item" data-tab="03"> 03 </a>
-    <a class="item" data-tab="04"> 04 </a>
-    <a class="item" data-tab="05"> 05 </a>
-    <a class="item" data-tab="06"> 06 </a>
-    <a class="item" data-tab="07"> 07 </a>
-    <a class="item" data-tab="Exercises"> Exercises </a>
+<div class="ui fixed sticky top attached tabular menu labmenu">
+   <header class="header item">
+    <a href="../index.html">2: Events & Models </a>
+  </header>
+    <a class="active header item" data-tab="Donation-02">
+        Donation-02
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="07">
+        07
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
 </div>
 
-<div class="ui bottom attached  active tab segment lab" data-tab="Donation-02">
-  <div class "ui segment">
-    <br>
-  </div>
+<br><br><br>
+
+<div class="ui bottom attached tab segment lab" data-tab="Donation-02">
   <h1>Objectives</h1>
 <p>Introduce a second screen to display the list of donations made by the user. In addition, enable our app its first "Model" objects, which will be used to store the individual donations made by the user. </p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="01">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Package Name</h1>
 <p>This is a version1 of the donation-android app:</p>
 <ul>
@@ -143,10 +154,7 @@ h3
 <p>We should also take this opportunity to change the name of the 'donation' package to 'app.activities'. Unlike Play, android does not like packages with a single 'segment'</p>
 <p><img alt="" src="img/02.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="02">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Menu</h1>
 <p>In Donate.java, introduce the following menu event handler:</p>
 <pre><code class="java">  @Override
@@ -203,10 +211,7 @@ h3
 <p>Run the app and when you press the menu hardware button (or the overflow menu) and select 'Settings', you should see the toast message appear.</p>
 <p><img alt="" src="img/05.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="03">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Reports Activity</h1>
 <p>Design a new layout called Report defined within a file named activity_report.xml located in res/layout - to look something like this:</p>
 <p><img alt="" src="img/01.png"></p>
@@ -309,10 +314,7 @@ public class Report extends Activity
 
 <p>Try it all now - it should load.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="04">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Application Object</h1>
 <p>In order to keep out application design coherent, we now bring in an 'Application' object.</p>
 <p>Create a new package called 'app.main' and incorporate this class here:</p>
@@ -345,10 +347,7 @@ public class DonationApp extends Application
 <p><img alt="" src="img/03.png"></p>
 <p>Make sure the 'Donation App Started' appears in the logs to verify that it has actually been engaged correctly.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="05">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Donation Model</h1>
 <p>Create a new package called 'models' and bring in this class here:</p>
 <pre><code class="java">package app.models;
@@ -408,10 +407,7 @@ public class DonationApp extends Application
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="06">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Refactored Donate</h1>
 <p>The Donate activity can now be completely re factored to make use of the DonationApp object.</p>
 <pre><code class="java">package app.activities;
@@ -500,10 +496,7 @@ public class Donate extends Activity
 <p>Replace your version with this and execute it.</p>
 <p>Look carefully at the changes to this version over the v1 attempt.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="07">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Refactored Report</h1>
 <p>We now rework Report to render the actual donations - held in the DonationApp list.</p>
 <p>First some layout additions. Include these new string in strings.xml</p>
@@ -616,10 +609,7 @@ public class Report extends Activity
 
 <p>If all goes well - then you should be able to make donations, and and the see a list of the in the report activity.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="Exercises">
   <h1>Exercises</h1>
 <p>Project so far:</p>
 <ul>

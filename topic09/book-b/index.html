@@ -81,34 +81,43 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless compact menu labmenu">
- <!-- <header class="header item">
-    <a onclick="window.history.back()" href="#"> <i class="chevron left icon"></i> </a>
-    9: APIs & Camera
-  </header>-->
-
-  <a class="active header item" data-tab="Donation-05"> Donation-05 </a>
-    <a class="item" data-tab="01"> 01 </a>
-    <a class="item" data-tab="02"> 02 </a>
-    <a class="item" data-tab="03"> 03 </a>
-    <a class="item" data-tab="04"> 04 </a>
-    <a class="item" data-tab="05"> 05 </a>
-    <a class="item" data-tab="06"> 06 </a>
-    <a class="item" data-tab="Exercises"> Exercises </a>
+<div class="ui fixed sticky top attached tabular menu labmenu">
+   <header class="header item">
+    <a href="../index.html">9: APIs & Camera </a>
+  </header>
+    <a class="active header item" data-tab="Donation-05">
+        Donation-05
+    </a>
+      <a class="item" data-tab="01">
+        01
+      </a>
+      <a class="item" data-tab="02">
+        02
+      </a>
+      <a class="item" data-tab="03">
+        03
+      </a>
+      <a class="item" data-tab="04">
+        04
+      </a>
+      <a class="item" data-tab="05">
+        05
+      </a>
+      <a class="item" data-tab="06">
+        06
+      </a>
+      <a class="item" data-tab="Exercises">
+        Exercises
+      </a>
 </div>
 
-<div class="ui bottom attached  active tab segment lab" data-tab="Donation-05">
-  <div class "ui segment">
-    <br>
-  </div>
+<br><br><br>
+
+<div class="ui bottom attached tab segment lab" data-tab="Donation-05">
   <h1>Objectives</h1>
 <p>Create a new standard java project specifically to test the API we have developed in donation-service-play project.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="01">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="01">
   <h1>donation-service-test</h1>
 <p>Create a new Java Project in eclipse - this time neither a play nor an Android app, just a simple Java Application. Call the Project donation-service-play-test"</p>
 <p><img alt="" src="./img/05.png"></p>
@@ -128,10 +137,7 @@ h3
 <p>The project should now be configured thus:</p>
 <p><img alt="" src="./img/10.png"></p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="02">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Model Classes</h1>
 <h2>app.models</h2>
 <p>In donation-service-test, create a new package called 'app.models'. Incorporate the following two classes into this package:</p>
@@ -238,10 +244,7 @@ public class Donation
 
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="03">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="03">
   <h2>API Classes</h2>
 <p>In donation-service-test, create a new package called 'app.api'. Incorporate the following three classes into this package:</p>
 <p>Note: we will explore the structure of these classes in the lectures.</p>
@@ -422,10 +425,7 @@ public class DonationServiceAPI
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="04">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Unit Tests</h1>
 <p>Create another folder called 'app.test', and incorporate this class:</p>
 <pre><code>package app.test;
@@ -462,10 +462,7 @@ public class UserTest
 <li>The returned list is displayed on the console.</li>
 </ul>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="05">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="05">
   <h1>User Tests</h1>
 <p>Exploring DonationServiceAPI, we can see there are several methods in here that may be useful:</p>
 <pre><code>public class DonationServiceAPI
@@ -529,10 +526,7 @@ public class UserTest
 </ul>
 <p>You should be able to see a new user created by the tests. You will also perhaps see duplicates if you run the test a few times.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="06">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Structured User Tests</h1>
 <p>In the play app, comment our or delete the Bootstrap task that loads the yaml data. We would like the application to start with a blank database (otherwise the tests will be hard to manage)</p>
 <p>In our UserTest class, put some fixtures in the class we will use to exercise the API:</p>
@@ -606,10 +600,7 @@ public class UserTest
 <p>Theses tests should all pass.</p>
 <p>Examine closely the last test.</p>
 </div>
-<div class="ui bottom attached tab  segment lab" data-tab="Exercises">
-    <div class "ui segment">
-    <br>
-  </div>
+<div class="ui bottom attached tab segment lab" data-tab="Exercises">
   <h1>Exercises</h1>
 <p>Archive of the two projects so far:</p>
 <ul>
