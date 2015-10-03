@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">5: Navigation & Intents </a>
   </header>
-    <a class="active  item" data-tab="MyRent-05">
+    <a class="active item" data-tab="MyRent-05">
         MyRent-05
     </a>
       <a class="item" data-tab="01">
@@ -108,13 +108,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="MyRent-05">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyRent-05">
   <h1>Contact list &amp; Email support</h1>
 <p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Resources</h1>
 <p>In preparing for our new features, we define some strings to be used by the application. This step is not strictly necessary - but taking this approach is considered best practice, and enables the application to be internationalized more easily.</p>
 <p>These are the new strings:</p>
@@ -151,7 +150,7 @@ h3
         /&gt; 
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Helpers</h1>
 <p>Our IntentHelper class is a useful location for methods that involved intents, either explicit or implicit. Here we introduce two new methods to trigger contact list and email access:</p>
 <h2>IntentHelper</h2>
@@ -246,7 +245,7 @@ public class ContactHelper
 
 <p>~~~</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Residence</h1>
 <p>The Residence model class will need to be extended to include a new field (the tennant) and also a new method - to generate a report. First introduce these imports:</p>
 <pre><code>import org.wit.myrent.R;
@@ -297,7 +296,7 @@ import android.content.Context;
   }
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>ResidenceActivity - Tenant</h1>
 <p>We can then start to wire up a "Select Tenant" button.</p>
 <p>The imports:</p>
@@ -352,7 +351,7 @@ import android.content.Intent;
 
 <p>Note that the above passes the data we received from the Contact List activity to our helper, which will recover the actual email address.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="05">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
   <h1>ResidenceActivity - Email</h1>
 <p>Now we can engage the report button to actually send the email.</p>
 <p>The imports:</p>
@@ -389,7 +388,7 @@ import android.content.Intent;
 <p>If gmail is the default mail handling app, it may look like this:</p>
 <p><img alt="Figure 1: Sample Email" src="img/02.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="Archives">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
   <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
@@ -401,6 +400,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

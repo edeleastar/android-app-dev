@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">9: APIs & Camera </a>
   </header>
-    <a class="active  item" data-tab="Donation-04">
+    <a class="active item" data-tab="Donation-04">
         Donation-04
     </a>
       <a class="item" data-tab="01">
@@ -111,13 +111,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="Donation-04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Donation-04">
   <h1>Objectives</h1>
 <p>Create a version of the the donation app as a play project. Expose an 'API' from this app to enable other programmes to use it. Try to access the API from a browser, and also from a special purpose browser extension.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Play Donation App</h1>
 <p>Before starting this lab, it might be a good idea to download a fresh version of Eclipse - without any Android tools installed - and use this version just for the apps we are about to build in this lab. Select the 'Eclipse for Java EE Developers' distribution</p>
 <p>Using Play, create  new app in the usual way:</p>
@@ -185,7 +184,7 @@ public class User extends Model
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Utils</h1>
 <p>Create a new package called 'utils', and bring in these classes:</p>
 <pre><code class="java">package utils;
@@ -256,7 +255,7 @@ public class JsonParsers
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h1>API</h1>
 <p>Into the controllers package, create a new controller called 'DonationServiceAPI':</p>
 <pre><code class="java">package controllers;
@@ -356,7 +355,7 @@ public class DonationServiceAPI extends Controller
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Config</h1>
 <p>Enable our in-memory database by uncommenting the usual setting in 'application.conf'</p>
 <pre><code>db=mem
@@ -448,7 +447,7 @@ Donation(d):
     method : paypal 
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="05">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Exploring the API</h1>
 <p>The project should build without error. Launch it and browse to the database in the usual way.</p>
 <p>Also, in a browser, explore these urls:</p>
@@ -473,7 +472,7 @@ Donation(d):
 <p><img alt="" src="./img/04.png"></p>
 <p>Try a few other urls from the above list. Also, try a few unrecognised urls - and explore the raw and preview display options.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="06">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
   <h1>POST and DELETE</h1>
 <p>So far you have experimented with GET commands. THe API we have developed also supports POST and DELETE. This is declared in the routes file:</p>
 <pre><code>GET     /api/users                           DonationServiceAPI.users
@@ -515,7 +514,7 @@ DELETE  /api/donations/{id}                  DonationServiceAPI.deleteDonation
 <p><img alt="" src="img/14.png"></p>
 <p>Verify, via a GET, that this user is in fact deleted.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="Exercises">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
   <h1>Exercises</h1>
 <p>Archive of projects  so far:</p>
 <ul>
@@ -537,6 +536,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

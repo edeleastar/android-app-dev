@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">11: Assignment Studio </a>
   </header>
-    <a class="active  item" data-tab="Donation-10">
+    <a class="active item" data-tab="Donation-10">
         Donation-10
     </a>
       <a class="item" data-tab="01">
@@ -105,13 +105,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="Donation-10">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Donation-10">
   <h1>Objectives</h1>
 <p>With the revised service implemented and deployed, upgrade donation-android to use this new API.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>App &amp; Welcome</h1>
 <p>First some improvements in the way we are initializing the connection to the donation service.</p>
 <p>In the DonationApp class, we need to keep track of the currently logged in user:</p>
@@ -147,7 +146,7 @@ h3
 
 <p>This means the app effectively logs out if it goes into the background.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>DonationServiceAPI</h1>
 <p>In the models package, we will must introduce new methods for retrieving and creating donations:</p>
 <pre><code>  public static void getDonations(Context context, User user, Response&lt;Donation&gt; response, String dialogMesssage)
@@ -202,7 +201,7 @@ h3
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Donate</h1>
 <p>We can now rework this method on the Donate activity:</p>
 <pre><code>  public void donateButtonPressed (View view) 
@@ -224,7 +223,7 @@ h3
 
 <p>There is only one small change - the call to createDonation will require the currently logged in user.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Report</h1>
 <p>Similarly for the Report Activity:</p>
 <pre><code>  @Override
@@ -247,7 +246,7 @@ h3
 <p>Getting donations will require the current user as well.</p>
 <p>This should all compile and run now. Make sure the play service is running.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="Exercises">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
   <h1>Exercises</h1>
 <p>This is an archive of the two projects so far:</p>
 <ul>
@@ -268,6 +267,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

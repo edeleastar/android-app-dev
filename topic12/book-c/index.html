@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">12: Services </a>
   </header>
-    <a class="active  item" data-tab="Donation-11">
+    <a class="active item" data-tab="Donation-11">
         Donation-11
     </a>
       <a class="item" data-tab="01">
@@ -114,13 +114,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="Donation-11">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Donation-11">
   <h1>Donation UI</h1>
 <p>Using the latest Semantic UI, introduce a simple but well structured User Interface into the donation-service-play application.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Semantic UI</h1>
 <p>SInstead do downloading and incorporating the Semantic UI libraries into our application - as we have donw heretofore - it may be more effective to load the semantic assets from a content delivery network. This one is popular:</p>
 <ul>
@@ -199,7 +198,7 @@ h3
 &lt;/html&gt;
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Routes</h1>
 <p>We already have out REST routes in place. These are additional routes to service the UI:</p>
 <pre><code># Home page
@@ -240,7 +239,7 @@ GET    /donation/report                      DonationController.renderReport
 ![](img/homer5.jpg)
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Controllers</h1>
 <p>We have controllers to service the API. These two controllers will service the conventional web UI:</p>
 <h2>DonationController</h2>
@@ -374,7 +373,7 @@ public class Accounts extends Controller
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Account Segment Views</h1>
 <p>We will break up the UI into more fine grained components. In the App/views folder, create a new folder called 'segments' and introduce these files:</p>
 <h1>views/segments/welcome.html</h1>
@@ -465,7 +464,7 @@ public class Accounts extends Controller
 
 <p>These are all Html 5 semantic elements that we will build the Accounts UX from.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="05">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Donation Segment Views</h1>
 <p>Here are Html5 semantic elements to service the Donation Controller's views:</p>
 <h2>Views/segments/donate.html</h2>
@@ -536,7 +535,7 @@ public class Accounts extends Controller
 &lt;/section&gt;
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="06">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Accounts Views</h1>
 <p>With the segment building blocks in place, we can switch our attention to the Controllers - and the views they will be rendering.</p>
 <p>Here are the templates for views/Accounts:</p>
@@ -572,7 +571,7 @@ public class Accounts extends Controller
 <li><a href="http://localhost:9000/login">http://localhost:9000/login</a></li>
 </ul>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="07">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
   <h1>DonationController Views</h1>
 <p>And the final pieces - the templates for  views/DonationController:</p>
 <h2>views/DonationController/index.html</h2>
@@ -621,7 +620,7 @@ public class Accounts extends Controller
 <p>Again, note how we are including the segments we need.</p>
 <p>The app should run now as expected. Make sure the progress bar behaves correctly.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="Exercises">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
   <h1>Exercises</h1>
 <p>Archive of the completed project:</p>
 <p>-<a href="archives/donation-service-play.zip">dontion-service-play.zip</a></p>
@@ -639,6 +638,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

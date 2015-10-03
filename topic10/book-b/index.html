@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">10: REST & AsyncTasks </a>
   </header>
-    <a class="active  item" data-tab="Donation-08">
+    <a class="active item" data-tab="Donation-08">
         Donation-08
     </a>
       <a class="item" data-tab="01">
@@ -105,13 +105,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="Donation-08">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Donation-08">
   <h1>Objectives</h1>
 <p>Rework the Donation-android activities to support signup and donate activities using the REST service.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Welcome</h1>
 <p>First introduce a new  attribute in the DonationApp class:</p>
 <pre><code class="java">  public boolean         donationServiceAvailable = false;
@@ -200,7 +199,7 @@ public class Welcome extends Activity implements Response&lt;User&gt;
 
 <p>Read the above class carefully - and note how we make use of the `donationServiceAvailable' flag in DonationApp.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Login</h1>
 <p>Login can now be simplified to its original form:</p>
 <pre><code class="java">package app.activities;
@@ -245,7 +244,7 @@ public class Login extends Activity
 
 <p>We will only be reaching this activity if we have successfully connected to the service.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Signup</h1>
 <p>This is a revised version of Signup, which makes use of the service:</p>
 <pre><code class="java">package app.activities;
@@ -314,7 +313,7 @@ public class Signup extends Activity implements Response&lt;User&gt;
 <p>http://localhost:9000/api/users</p>
 <p>If you are running the app locally.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Donate Support</h1>
 <p>This takes a bit more work, and involved refactoring the donate button handler to only make the donation in the callback method.</p>
 <p>Look carefully at the following - and compare it with the current version. In particular, examine the role of the setResponse method.</p>
@@ -428,7 +427,7 @@ public class Donate extends Activity implements Response&lt;Donation&gt;
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="Exercises">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
   <h1>Exercises</h1>
 <p>Archive of the lab so far:</p>
 <ul>
@@ -449,6 +448,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

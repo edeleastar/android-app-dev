@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">3: Widgets & Callbacks </a>
   </header>
-    <a class="active  item" data-tab="Event-Handling-Solution">
+    <a class="active item" data-tab="Event-Handling-Solution">
         Event-Handling-Solution
     </a>
       <a class="item" data-tab="01">
@@ -99,13 +99,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="Event-Handling-Solution">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Event-Handling-Solution">
   <h1>Event handling solution</h1>
 <p>This is a solution to the event handling lab.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Exercise 1</h1>
 <p>Modify the the Delegate callback method as follows:</p>
 <ul>
@@ -235,7 +234,7 @@ public class Keypress extends TextView
 <p>Here are suggested class diagrams for the solution.</p>
 <p><img alt="" src="img/14.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Exercise 1 Solution</h1>
 <p>Create a new package <strong>org.wit.callbackexercise</strong> in the project <strong>event_handling</strong>.</p>
 <ul>
@@ -364,7 +363,7 @@ public interface KeyBoardListener extends TextWatcher
 </ul>
 <p>A complete project containing the solution may be downloaded using a link in the next step.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="Archives">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
   <h1>Archives</h1>
 <p>This is downloadable archive of the solution event handling code:</p>
 <ul>
@@ -376,6 +375,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

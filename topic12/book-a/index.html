@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">12: Services </a>
   </header>
-    <a class="active  item" data-tab="Donation-12">
+    <a class="active item" data-tab="Donation-12">
         Donation-12
     </a>
       <a class="item" data-tab="01">
@@ -120,13 +120,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="Donation-12">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Donation-12">
   <h1>Donation</h1>
 <p>Refactor Donation Android client to refresh donations list using a background service in a non-blocking call, replacing the present Response interface. </p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Preview</h1>
 <p>Figure 1 illustrates the legacy approach to network calls.</p>
 <ul>
@@ -142,7 +141,7 @@ h3
 <p>It is left as an exercise to repeat this approach to retrieve the list of Users.</p>
 <p><img alt="Figure 2: Service used for R(ead) calls" src="img/05.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Preview</h1>
 <h2>Introduction</h2>
 <p>Your starter code is available to download locally as follows:</p>
@@ -209,7 +208,7 @@ play deps
 <li>Include menu item to allow the refresh service to be started manually.</li>
 </ul>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Helpers</h1>
 <p>Create a package android.helpers and add these classes. You have already used supersets of these classes in MyRent and MyTweet.</p>
 <pre><code>package android.helpers;
@@ -244,7 +243,7 @@ public class LogHelpers
 
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>RefreshService</h1>
 <p>Here we shall create RefreshService, a subclass of Android's <a href="http://developer.android.com/reference/android/app/IntentService.html">IntentService</a>.</p>
 <p>Create a package <em>app.services</em>.</p>
@@ -358,7 +357,7 @@ import app.models.JsonParsers;
 <p>Later we shall provide code to broadcast an intent to be received by the Report activity.</p>
 <p>But first, in the next step, we shall introduce a menu item to manually start this refresh service.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="05">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Start service</h1>
 <p>Intoduce a new string element in res/values/strings.xml:</p>
 <pre><code>    &lt;string name=&quot;refresh&quot;&gt;Refresh Donation List&lt;/string&gt;
@@ -412,7 +411,7 @@ import app.models.JsonParsers;
 
 <p>Without this service element the application will not route through the RefreshService.onHandleIntent method and will not give any easily detected warning of this omission.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="06">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Broadcast receiver</h1>
 <p>Here we shall add code to broadcast an intent from within RefreshService.onHandleIntent and receive this broadcast in Report.</p>
 <ul>
@@ -532,7 +531,7 @@ import android.support.v4.content.LocalBroadcastManager;
 <img alt="" src="img/03.png"></li>
 </ul>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="07">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Test</h1>
 <p>Test that the service works as follows:</p>
 <ul>
@@ -566,7 +565,7 @@ import android.support.v4.content.LocalBroadcastManager;
 </li>
 </ul>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="08">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="08">
   <h1>Receiver</h1>
 <p>We shall now add a BroadcastReceiver subclass that will:</p>
 <ul>
@@ -648,7 +647,7 @@ public class BootReceiver extends BroadcastReceiver
 <p>The refresh service will start on boot the Android device and re-start indefinitely at specified intervals thereafter.</p>
 <p>Good alarm system design is essential to efficient running of an app and use of resources. Some official documentation may be accessed <a href="https://developer.android.com/training/scheduling/alarms.html">here</a>. </p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="09">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="09">
   <h1>Preferences</h1>
 <p>Here we shall add a Preferences module and use it to store a refresh interval. </p>
 <ul>
@@ -833,7 +832,7 @@ public class BootReceiver extends BroadcastReceiver
 
 <p>You can now test this code by placing a breakpoint in the method <strong>before</strong> launching Donation app in a device or emulator.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="10">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="10">
   <h1>Exercise</h1>
 <p>Retrieve the list of users using a service:</p>
 <ul>
@@ -847,6 +846,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

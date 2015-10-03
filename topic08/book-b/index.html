@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">8: JPA & Maps </a>
   </header>
-    <a class="active  item" data-tab="JPA-02">
+    <a class="active item" data-tab="JPA-02">
         JPA-02
     </a>
       <a class="item" data-tab="01">
@@ -111,13 +111,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="JPA-02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="JPA-02">
   <h1>Objectives</h1>
 <p>Explore the model developed in the last lab a little further by attaching a Semantic UI. Experiment with UI elements that change the model.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Semantic UI</h1>
 <p>Using your project form the last lab, or this one here if you did'nt complete it:</p>
 <ul>
@@ -178,7 +177,7 @@ h3
 
 <p>Try out these styles now.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Delete Club</h1>
 <p>First introduce the delete button in the clubs view:</p>
 <pre><code class="html">          &lt;td&gt; 
@@ -217,7 +216,7 @@ h3
 
 <p>Try deleting clubs now.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Delete Divisions</h1>
 <h2>New routes:</h2>
 <pre><code>GET    /divisions/delete/{id}                   Divisions.delete
@@ -243,7 +242,7 @@ h3
 <p>When you delete a division, pay close attention to the clubs and players tables. </p>
 <p>Can you explain what is happening?</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Show Sponsors</h1>
 <p>Currently the Spnosor table is incomplete - it only lists the sponsor names, and not the club being sponsored:</p>
 <pre><code class="html">  &lt;table class=&quot;ui table&quot;&gt;
@@ -401,7 +400,7 @@ Sponsor(pub):
          - tramore
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="05">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Delete Sponsors</h1>
 <h1>New route:</h1>
 <pre><code>GET    /sponsors/delete/{id}                    Sponsors.delete
@@ -433,7 +432,7 @@ Sponsor(pub):
 
 <p>Look carefully at the delete method. Can you make sense of it?</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="06">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
   <h1>New Player</h1>
 <p>We would like a way of adding a new player via the UI.</p>
 <p>First, bring in a new button on the player view to trigger the creating of a player:</p>
@@ -490,7 +489,7 @@ POST   /players/newplayer                       Players.newPlayer
 <p>There is a very small difference. This is using a <code>null-safe</code> operator <code>?</code> when trying to access the clubs name. If the club is null (i.e. there is no club), we will not attempt to reach into the name field.</p>
 <p>Make sure this works now as expected.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="Exercises">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
   <h1>Exercises</h1>
 <p>Archive of project so far:</p>
 <ul>
@@ -509,6 +508,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

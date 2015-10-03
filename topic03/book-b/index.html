@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">3: Widgets & Callbacks </a>
   </header>
-    <a class="active  item" data-tab="MyRent-01">
+    <a class="active item" data-tab="MyRent-01">
         MyRent-01
     </a>
       <a class="item" data-tab="01">
@@ -114,13 +114,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="MyRent-01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyRent-01">
   <h1>Objectives</h1>
 <p>In this version of MyRent, we introduce a range of UI Widgits to evolve the UX into something more useful. These widgits will be 'active', meaning that the host Activity will be intercepting and responding to events the user may generate when interacting with the application.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Preview</h1>
 <p>At the end of this topic our goal is to have a screen looking something like this:</p>
 <p><img alt="" src="img/01.png"></p>
@@ -156,7 +155,7 @@ h3
 </li>
 </ul>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Restructure MyRent</h1>
 <p>Before we start to expand the project, we need to perform some rearranging so it can be extended in an orderly manner.</p>
 <p>This is our current application workspace (ignore the 'V00' in the project name):</p>
@@ -170,7 +169,7 @@ h3
 </ul>
 <p>and make sure the classes are relocated (using drag/drop) to these packages.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h2>Layout</h2>
 <p>The previous iteration has one UI control, an EditText.</p>
 <p>This iteration shall introduce:</p>
@@ -313,7 +312,7 @@ h3
 <p><img alt="Figure 6: Status section label and separator added" src="img/10.png"></p>
 <p>We shall continue with the development of the layout in the following steps.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Add Widgets</h1>
 <p>We shall now complete remaining work on the layout using the Graphical Layout and the Outline panel.</p>
 <p>Here is the the layout at this stage of development.</p>
@@ -399,7 +398,7 @@ This concludes the layout design and implementation in this step. </p>
 </ul>
 <p><img alt="Figure 5: Hierarchical arrangement of UI components" src="img/13.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="05">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Activity &amp; Model Updates</h1>
 <h2>Residence</h2>
 <p>Replace your Residence class with the following:</p>
@@ -535,7 +534,7 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 }
 </code></pre>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="06">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Test</h1>
 <p>Run the app and check that the date string is correctly represented on the date button: see Figure 1.</p>
 <p><img alt="Figure 1: Menus populated" src="img/01.png"></p>
@@ -551,7 +550,7 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 <p>Repeat for the checkbox as illustrated in Figure 3.</p>
 <p><img alt="Figure 3: Using debugger to verify data input transmitted to model object" src="img/21.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="07">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Summary</h1>
 <p>Here is what we have achieved in this topic:</p>
 <ul>
@@ -575,7 +574,7 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 </li>
 </ul>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="Archives">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
   <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
@@ -587,6 +586,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>

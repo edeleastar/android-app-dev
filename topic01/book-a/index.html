@@ -85,7 +85,7 @@ h3
    <header class="header item">
     <a href="../index.html">1: Activities & Layouts </a>
   </header>
-    <a class="active  item" data-tab="Android-Tools-01">
+    <a class="active item" data-tab="Android-Tools-01">
         Android-Tools-01
     </a>
       <a class="item" data-tab="01">
@@ -114,13 +114,12 @@ h3
       </a>
 </div>
 
-<br><br><br>
 
-<div class="ui bottom attached tab segment lab" data-tab="Android-Tools-01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Android-Tools-01">
   <h1>Objectives</h1>
 <p>We will then install and set up effective tools for Android application development. This will include a specially equipped version of Eclipse + an emulator. The emulator we are using - Genymotion - is a third party application not strictly part of the android build tools. However it is considerably faster and more useful than the standard emulator provided with the Android SDK.</p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="01">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
   <h1>Android SDK</h1>
 <p>This step describes how to download and install </p>
 <ul>
@@ -152,7 +151,7 @@ h3
 <img alt="Figure 8: Android installer" src="img/07.png">
 <img alt="Figure 9: Android installer" src="img/07a.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="02">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
   <h1>Eclipse IDE</h1>
 <p>This step describes how to download and install</p>
 <ul>
@@ -229,7 +228,7 @@ h3
 <p><img alt="Figure 2: Android SDK Manager icon" src="img/11.png">
 <img alt="Figure 3: Android SDK Manager window" src="img/13.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="03">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
   <h1>Emulator</h1>
 <p>This step briefly describes how to</p>
 <ul>
@@ -280,7 +279,7 @@ h3
 </ul>
 <p><img alt="Figure 5: Installing genymotion on OSX (Mac) platform" src="img/17.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="04">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
   <h1>Genymotion Plugin</h1>
 <p>To install the Genymotion plugin in Eclipse:</p>
 <ul>
@@ -328,7 +327,7 @@ h3
 <img alt="" src="img/20.png">
 <img alt="" src="img/21.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="05">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
   <h1>Maps (Phone)</h1>
 <p>Connect your phone to your computer using the USB cable.</p>
 <p>The following apply to a Samsung phone and is not to be taken as applicable to all Android devices.</p>
@@ -362,7 +361,7 @@ Service pack 3, Windows Media Player, version 11 or higher or USB driver for Win
 <li>After a few moments the application should have been installed and launched on your phone.</li>
 </ul>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="06">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
   <h1>Install Play Store</h1>
 <p>Following are instructions to install Google Play Store on the emulator.</p>
 <ul>
@@ -404,11 +403,11 @@ Service pack 3, Windows Media Player, version 11 or higher or USB driver for Win
 </ul>
 <p><img alt="Figure 3: Sample map-enabled app using Google Maps application" src="img/26.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="07">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
   <h1>Setup summary</h1>
 <p><img alt="" src="img/28.png"></p>
 </div>
-<div class="ui bottom attached tab segment lab" data-tab="08">
+<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="08">
   <h1>Sample Android apps</h1>
 <p>Download the following apps from the local achive to a temporary folder and, in turn, drag and drop each onto the GenyMotion emulator.</p>
 <ul>
@@ -439,6 +438,12 @@ $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
+  })
+;
+  $('.ui.sticky')
+  .sticky({
+    bottomOffset : 50,
+    context      : '#labcontent'
   })
 ;
 </script>
