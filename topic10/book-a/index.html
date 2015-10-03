@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">10: REST & AsyncTasks </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      10: REST & AsyncTasks
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="Donation-07">
         Donation-07
     </a>
@@ -109,15 +114,18 @@ h3
       <a class="item" data-tab="Exercises">
         Exercises
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Donation-07">
-  <h1>Objectives</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="Donation-07">
+    <h1>Objectives</h1>
 <p>Reintroduce the Donation Android app, refactor it to interact with the donation-play-service</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Donation-android app</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Donation-android app</h1>
 <p>This is the donation android app as we left it with Donation-03 lab:</p>
 <p><a href="archives/donation-android-v3.zip">donation-android-v3.zip</a></p>
 <p>Import this into your eclipse environment and make sure it compiles and launches successfully.</p>
@@ -127,9 +135,9 @@ h3
 <li><a href="archives/flexjson-2.1.jar">flexjson-2.1.jar</a></li>
 </ul>
 <p>and he add it to build path (right click and add to build path in Eclipse)</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>app.http</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>app.http</h1>
 <p>Create a new package in the android app called app.http, and introduce these classes:</p>
 <h2>Response</h2>
 <pre><code class="java">package app.http;
@@ -300,9 +308,9 @@ public class Rest
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Models - API Classes</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Models - API Classes</h1>
 <p>We already have a models package - introduce these new classes into this package:</p>
 <h2>JsonParsers</h2>
 <pre><code class="java">package app.models;
@@ -456,9 +464,9 @@ class CreateDonation extends Request
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>Models - User &amp; Donation</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>Models - User &amp; Donation</h1>
 <p>The curret User and Donation classes need some minor adjustments. Specifically, we need to include the following in both:</p>
 <ul>
 <li>id</li>
@@ -512,9 +520,9 @@ public class Donation
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>Login Activity</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>Login Activity</h1>
 <p>This is a restructuring of Login to fetch the users from the donation-service as soon as the activity starts, and then to handle the response appropriately.</p>
 <pre><code class="java">package app.activities;
 
@@ -587,9 +595,9 @@ public class Login extends Activity implements Response&lt;User&gt;
 </code></pre>
 
 <p>Try the app now (make sure donation-service play app is running). It should let you log in with user credentials download from the service (try homer@simpson.com, secret - without registering).</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
-  <h1>Report</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="06">
+    <h1>Report</h1>
 <p>Finally, the report activity:</p>
 <pre><code class="java">package app.activities;
 
@@ -714,9 +722,9 @@ class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
 </code></pre>
 
 <p>When this starts - it requests the donations from the service. When they arrive, they are displayed in the list view.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
-  <h1>Exercises</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
 <p>Archive of project so far:</p>
 <ul>
 <li><a href="archives/donation-android-v4.zip">donation-android-v4.zip</a></li>
@@ -747,18 +755,12 @@ class DonationAdapter extends ArrayAdapter&lt;Donation&gt;
 <ul>
 <li><a href="http://localhost/@db">http://localhost/@db</a></li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">12: Services </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      12: Services
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="MyTweet-Assignment-03">
         MyTweet-Assignment-03
     </a>
@@ -112,15 +117,18 @@ h3
       <a class="item" data-tab="08">
         08
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyTweet-Assignment-03">
-  <h1>MyTweet Assignment 03</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="MyTweet-Assignment-03">
+    <h1>MyTweet Assignment 03</h1>
 <p>This lab has been developed to assist in the preparation of the current assignment, which comprises the development of a MyTweet suite of apps. The lab explains how to capture geolocations using map markers and also how to display a user's list of residences as markers on a map. A version of MyRent has been refactored to include sample features since MyRent structure closely resembles that of MyTweet.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Preview</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Preview</h1>
 <p>This is a brief description of the lab:</p>
 <ul>
 <li>Began with baseline MyRentV06 (downloadable <a href="archives/MyRentV06.zip">here</a>)</li>
@@ -150,9 +158,9 @@ h3
 <p><a href="archives/myrent-map-demo-app.zip">myrent-map-demo-app</a></p>
 <p><a href="archives/myrent-map-demo-service.zip">myrent-map-demo-service</a></p>
 <p><a href="archives/myrent-map-demo-test.zip">myrent-map-demo-test</a></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>Setup</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>Setup</h1>
 <p>You may encounter initial errors on importing the archives:</p>
 <ul>
 <li>
@@ -185,16 +193,16 @@ play deps
 <p><img alt="" src="img/15.png"></p>
 <p>Add the play services library to the project:</p>
 <p><img alt="" src="img/14.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Markers</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Markers</h1>
 <p>Maps Live: Getting Started with Markers on Android</p>
 <p><a href="http://youtu.be/l3bw8Senjmg">viewable here</a></p>
 <p>An archive of the programme is available <a href="archives/Maps_Live_Getting_Started_with_Markers_on_Android..flv.zip">to download</a>.</p>
 <p><img alt="Figure 1: Array of markers" src="img/01.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>Map (source)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>Map (source)</h1>
 <p>MapActivity.java</p>
 <pre><code>package org.wit.myrent.map;
 
@@ -462,9 +470,9 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>Map (analysis)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>Map (analysis)</h1>
 <p>Here are some of the features of the fragment:</p>
 <p>Fields include a map, marker and current marker position</p>
 <p><img alt="" src="img/04.png">
@@ -512,9 +520,9 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 &lt;/LinearLayout&gt;
 
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
-  <h1>Map (Launch)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="06">
+    <h1>Map (Launch)</h1>
 <p>The map may be launched from a menu item in the sample app (myrent-map-demo-app).</p>
 <ul>
 <li>From residence list view<ul>
@@ -540,9 +548,9 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 </ul>
 <p><img alt="" src="img/08.png"></p>
 <p>Notice that in the case of the intent sent from ResidenceFragment, we chose the last residence in the list to send as an intent extra.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
-  <h1>Map(Geolocation)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="07">
+    <h1>Map(Geolocation)</h1>
 <p>Undoubtedly more efficient and elegant methods exist for transmitting the marker coordinates to the model layer. But this is how it's done in this prototypal app:</p>
 <ul>
 <li>We create a residence object in ResidenceListFragment and store a reference to it in <em>portfolio</em>.</li>
@@ -569,9 +577,9 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 <li>To support this feature we have used a boolean flag to distinguish beteween a residence details view being rendered as part of creating a new residence or making changes to an existing residence.</li>
 <li>We have also added the necessary functionality to the APIs to support updating.</li>
 </ul>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="08">
-  <h1>Map(Integration)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="08">
+    <h1>Map(Integration)</h1>
 <p>Integrating the Map activity|fragment pair into a project is straightforward.</p>
 <p>MapActivity simply requires the presence of the <em>fragment_container.xml</em> file:</p>
 <ul>
@@ -627,18 +635,12 @@ public class MapFragment extends SupportMapFragment implements  GoogleMap.OnMark
 <p><img alt="" src="img/24.png">
 <img alt="" src="img/23.png"></p>
 <p>There may be some further dependencies but should these exist they should be easily identifiable at compile time.</p>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

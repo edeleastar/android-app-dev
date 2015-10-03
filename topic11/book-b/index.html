@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">11: Assignment Studio </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      11: Assignment Studio
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="Donation-09">
         Donation-09
     </a>
@@ -106,15 +111,18 @@ h3
       <a class="item" data-tab="Exercises">
         Exercises
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Donation-09">
-  <h1>Objectives</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="Donation-09">
+    <h1>Objectives</h1>
 <p>Refactor the the Donation Play Service to capture a OneToMany relationship from User-&gt;Donation. Then, reflect this relationship in the API.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Routes</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Routes</h1>
 <p>We will start with the routes. In the previous version the User and Donations APIs were independent. In the revised routes below, not carefully how the Donations routes are structured.</p>
 <pre><code># API - Users
 
@@ -132,18 +140,18 @@ DELETE  /api/users/{userId}/donations/{id}   DonationsAPI.deleteDonation
 </code></pre>
 
 <p>As you can see, the users ID is required in order to reach the donations. The returned (or created) donations will be associated with the given user id.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>User Model</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>User Model</h1>
 <p>The User Model can now incorporate the relationship:</p>
 <pre><code>  @OneToMany(cascade = CascadeType.ALL)
   public List&lt;Donation&gt; donations = new ArrayList&lt;Donation&gt;();
 </code></pre>
 
 <p>We can keep it unidirectional for the moment.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Controllers</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Controllers</h1>
 <p>We can get rid of the current controller, and introduce these two new controllers instead.</p>
 <p>This one looks after the User model:</p>
 <h2>UsersAPI</h2>
@@ -276,9 +284,9 @@ public class DonationsAPI extends Controller
 </code></pre>
 
 <p>In the above you will see we are always using the user ID.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>Test Project - DonationServiceAPI</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>Test Project - DonationServiceAPI</h1>
 <p>We have just completed a significant overhaul to the service API - so the tests will need to change to reflect this.</p>
 <p>Open the donation-service-test project - and we can extend the API to accommodate the donations:</p>
 <h2>DonationServiceAPI</h2>
@@ -300,9 +308,9 @@ public class DonationsAPI extends Controller
     Rest.delete (&quot;/api/users/&quot; + user.id + &quot;/donations/&quot; + donation.id);
   } 
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>Test Project - DonationTest</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>Test Project - DonationTest</h1>
 <p>The existing user tests should still work. </p>
 <p>However, we can introduce this new DonationTest class to exhaustively test the revised Donations API:</p>
 <h2>DonationTest</h2>
@@ -393,9 +401,9 @@ public class DonationTest
 </code></pre>
 
 <p>All tests should pass.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
-  <h1>Exercises</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
 <p>This is an archive of the two projects so far:</p>
 <ul>
 <li><a href="./archives/donation-service-play.zip">donation-service-play</a></li>
@@ -411,18 +419,12 @@ public class DonationTest
 <li>Delete all donations for a specific user</li>
 <li>Delete all donations for all users</li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

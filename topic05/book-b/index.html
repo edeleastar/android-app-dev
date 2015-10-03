@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">5: Navigation & Intents </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      5: Navigation & Intents
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="MyRent-05">
         MyRent-05
     </a>
@@ -106,15 +111,18 @@ h3
       <a class="item" data-tab="Archives">
         Archives
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyRent-05">
-  <h1>Contact list &amp; Email support</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="MyRent-05">
+    <h1>Contact list &amp; Email support</h1>
 <p>Activities within an application can reach out to activities in other applications to perform specific tasks. In this lab we introduce two new features - selecting a contact from the phone's contact lists, and sending an email to the selected user. Both of these features require the usage of 'implicit' intents.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Resources</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Resources</h1>
 <p>In preparing for our new features, we define some strings to be used by the application. This step is not strictly necessary - but taking this approach is considered best practice, and enables the application to be internationalized more easily.</p>
 <p>These are the new strings:</p>
 <h2>res/strings.xml</h2>
@@ -149,9 +157,9 @@ h3
           android:text=&quot;@string/residence_report&quot;
         /&gt; 
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>Helpers</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>Helpers</h1>
 <p>Our IntentHelper class is a useful location for methods that involved intents, either explicit or implicit. Here we introduce two new methods to trigger contact list and email access:</p>
 <h2>IntentHelper</h2>
 <pre><code>  public static void selectContact(Activity parent, int id)
@@ -244,9 +252,9 @@ public class ContactHelper
 </code></pre>
 
 <p>~~~</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Residence</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Residence</h1>
 <p>The Residence model class will need to be extended to include a new field (the tennant) and also a new method - to generate a report. First introduce these imports:</p>
 <pre><code>import org.wit.myrent.R;
 import android.content.Context;
@@ -295,9 +303,9 @@ import android.content.Context;
     return report;
   }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>ResidenceActivity - Tenant</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>ResidenceActivity - Tenant</h1>
 <p>We can then start to wire up a "Select Tenant" button.</p>
 <p>The imports:</p>
 <pre><code>import static org.wit.android.helpers.ContactHelper.getContact;
@@ -350,9 +358,9 @@ import android.content.Intent;
 </code></pre>
 
 <p>Note that the above passes the data we received from the Contact List activity to our helper, which will recover the actual email address.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>ResidenceActivity - Email</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>ResidenceActivity - Email</h1>
 <p>Now we can engage the report button to actually send the email.</p>
 <p>The imports:</p>
 <pre><code>import static org.wit.android.helpers.IntentHelper.sendEmail;
@@ -387,25 +395,19 @@ import android.content.Intent;
 <p>Test this now. Make sure the contact you select actually has an email address in the contact info.</p>
 <p>If gmail is the default mail handling app, it may look like this:</p>
 <p><img alt="Figure 1: Sample Email" src="img/02.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
-  <h1>Archives</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Archives">
+    <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV05.zip">MyRentV05</a></li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

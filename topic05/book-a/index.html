@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">5: Navigation & Intents </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      5: Navigation & Intents
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="MyRent-04">
         MyRent-04
     </a>
@@ -115,15 +120,18 @@ h3
       <a class="item" data-tab="Archives">
         Archives
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyRent-04">
-  <h1>File IO &amp; Menu Up Navigation</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="MyRent-04">
+    <h1>File IO &amp; Menu Up Navigation</h1>
 <p>Introduce into MyRent a serialization mechanism to save/restore the residence list to a file. The app will load the contents of this file on launch, and update the file if residence data is updates. In addition, continue to evolve the navigation support in the app, enabling a 'up' navigation in the action bar from the ResidenceActivity to the ResidenceListActivity.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Residence</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Residence</h1>
 <p>The residence class will need an ability to save and restore itself to some external format. A convenient choice for this format is JSON:</p>
 <ul>
 <li><a href="http://json.org/">http://json.org/</a></li>
@@ -216,9 +224,9 @@ public class Residence
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>PortfolioSerializer</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>PortfolioSerializer</h1>
 <p>In order to perform the actual serialization - we provide a new class to save / restore a list of Residences:</p>
 <pre><code>package org.wit.myrent.models;
 
@@ -310,9 +318,9 @@ public class PortfolioSerializer
 </code></pre>
 
 <p>Place this complete class in the 'models' package.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Portfolio</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Portfolio</h1>
 <p>The portfolio class will now be equipped with the capability to use the serializer to save / restore the Residences it is managing. It will use the Serializee we just developed to do this.</p>
 <p>First, introduce the serializer as a members of the Portfolio class:</p>
 <pre><code>  private PortfolioSerializer   serializer;
@@ -425,9 +433,9 @@ public class Portfolio
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>MyRentApp</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>MyRentApp</h1>
 <p>The entire loading process is initially triggered by the application object, which is the entry point for our application.</p>
 <p>First introduce a field to hold the file name we will use to store the portfolio:</p>
 <pre><code>  private static final String FILENAME = &quot;portfolio.json&quot;;
@@ -472,9 +480,9 @@ public class MyRentApp extends Application
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>ResidenceActivity</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>ResidenceActivity</h1>
 <p>One method of ensuring the data is in fact saved, will be to trigger a save when the user leaves the ResidenceActivity:</p>
 <pre><code>  public void onPause() 
   {
@@ -615,9 +623,9 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 }
 
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
-  <h1>IntentHelper</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="06">
+    <h1>IntentHelper</h1>
 <p>In order to support enhanced navigation, we define an additional Helper method in the IntentHeloer class:</p>
 <pre><code>  public static void navigateUp(Activity parent)
   {
@@ -667,9 +675,9 @@ public class IntentHelper
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
-  <h1>ResidenceActivity</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="07">
+    <h1>ResidenceActivity</h1>
 <p>New we can make use of the helper we just introduced. We wish to support the 'up' style navigation:</p>
 <p><img alt="Figure 1: New Residence menu item &amp; Up button" src="img/01.png"></p>
 <p>First introduce the helper method into ResidenceActivity:</p>
@@ -843,9 +851,9 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 }
 
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="08">
-  <h1>AndroidManifest</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="08">
+    <h1>AndroidManifest</h1>
 <p>The final piece of the puzzle is to layout in the manifest the parent/child relationship between the ResidenceListActivity and ResidenceActivity classes:</p>
 <pre><code>    &lt;activity
       android:name=&quot;.activities.ResidenceActivity&quot;
@@ -891,25 +899,19 @@ public class ResidenceActivity extends Activity implements TextWatcher, OnChecke
 
 &lt;/manifest&gt;
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
-  <h1>Archives</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Archives">
+    <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV04.zip">MyRentV04</a></li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

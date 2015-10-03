@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">1: Activities & Layouts </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      1: Activities & Layouts
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="Donation-01">
         Donation-01
     </a>
@@ -115,15 +120,18 @@ h3
       <a class="item" data-tab="Exercises">
         Exercises
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Donation-01">
-  <h1>Objectives</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="Donation-01">
+    <h1>Objectives</h1>
 <p>Here we proceed to explore in detail the creating of a simple activity class + the associated layout. This process will seem quite complex on first contact - but as we proceed through the labs over the next few sessions the deep structure should start to emerge.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Create Project</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Create Project</h1>
 <p>Create a new Android application, with the following properties:</p>
 <p><img alt="" src="img/00.png"></p>
 <p>Note the 'Minimum Required SDK' which may be different from the default.</p>
@@ -141,9 +149,9 @@ h3
 <h2>Properties</h2>
 <p><img alt="" src="img/06.png"></p>
 <p>These views are closely related - and you will need to monitor the information displayed there continually as you evolve the appearance of your activities screens.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>Layout Donation Activity</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>Layout Donation Activity</h1>
 <p>For this lab, out objective is to reproduce in Android this feature from the web app:</p>
 <p><img alt="" src="img/07.png"></p>
 <p>In eclipse, delete the current 'Hello World' text, and drag and drop a new'LargeText' form widget onto the canvas. Look closely at the following:</p>
@@ -247,9 +255,9 @@ h3
 
 &lt;/resources&gt;
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Donate Button</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Donate Button</h1>
 <p>Place a button directly on to the activity - attached to the bottom of the screen as shown:</p>
 <p><img alt="" src="img/13.png"></p>
 <p>Rename the button in the Outline view:</p>
@@ -399,9 +407,9 @@ public class Donate extends Activity
 </code></pre>
 
 <p>Run the app again, and verify the above message appears.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>Documentation</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>Documentation</h1>
 <p>The android documentation is particularly helpful and well designed. These are the two key starting points:</p>
 <ul>
 <li><a href="http://developer.android.com/guide/components/index.html">http://developer.android.com/guide/components/index.html</a></li>
@@ -440,9 +448,9 @@ public class Donate extends Activity
 <p>Save everything and execute the app, and monitor the log as you press the button:</p>
 <p><img alt="" src="img/19.png"></p>
 <p>We now have our first interaction working!</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>Research + New Control Layout</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>Research + New Control Layout</h1>
 <p>Recall the UI we are trying to implement:</p>
 <p><img alt="" src="img/20.png"></p>
 <p>We need a Radio Buttons, some sort of selection/combo box + a progress bar. These can be found in various locations in the pallette:</p>
@@ -623,9 +631,9 @@ public class Donate extends Activity
    }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
-  <h1>NumberPicker</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="06">
+    <h1>NumberPicker</h1>
 <p>This is our reference documentation:</p>
 <ul>
 <li><a href="http://developer.android.com/reference/android/widget/NumberPicker.html">http://developer.android.com/reference/android/widget/NumberPicker.html</a></li>
@@ -663,9 +671,9 @@ public class Donate extends Activity
 </code></pre>
 
 <p>Run this now - and verify that it operates as expected (see the actual amounts in the log file).</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
-  <h1>Radio Button</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="07">
+    <h1>Radio Button</h1>
 <p>In donateButtonPressed we need to discover which payment method has been selected. Our RadioGroup documentation is here:</p>
 <ul>
 <li><a href="http://developer.android.com/reference/android/widget/RadioGroup.html">http://developer.android.com/reference/android/widget/RadioGroup.html</a></li>
@@ -754,9 +762,9 @@ public class Donate extends Activity
    }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="08">
-  <h1>Progress</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="08">
+    <h1>Progress</h1>
 <p>The progress bar documentation:</p>
 <ul>
 <li><a href="http://developer.android.com/reference/android/widget/ProgressBar.html">http://developer.android.com/reference/android/widget/ProgressBar.html</a></li>
@@ -915,9 +923,9 @@ public class Donate extends Activity
 </code></pre>
 
 <p>Android code can become very verbose and complex. Carefully formatting is essential if you are not to be overwhelmed.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
-  <h1>Exercises</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
 <p>Archive of lab so far:</p>
 <ul>
 <li><a href="archives/donation-android-v1.zip">donation-android-v1.zip</a></li>
@@ -965,18 +973,12 @@ public class Donate extends Activity
 </ul>
 <p>You already have a number of these on screen. Your layout could be revised to look like this:</p>
 <p><img alt="" src="img/27.png"></p>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

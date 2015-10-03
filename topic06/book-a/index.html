@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">6: Streams & File IO </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      6: Streams & File IO
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="MyRent-06">
         MyRent-06
     </a>
@@ -115,15 +120,18 @@ h3
       <a class="item" data-tab="Archives">
         Archives
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyRent-06">
-  <h1>Fragments &amp; Maps</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="MyRent-06">
+    <h1>Fragments &amp; Maps</h1>
 <p>Modern Android Activities tend to be composed of one or more Fragments - as opposed to consisting of a single layouts. This introduces a slightly more complicated creation process. However, using fragments opens up other opportunities we will explore in later labs.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Preview</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Preview</h1>
 <p>This lab comprises the following:</p>
 <ul>
 <li>
@@ -141,9 +149,9 @@ h3
 </li>
 </ul>
 <p><img alt="Figure 2: Using external Maps application to identify residence's geolocation" src="img/06.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>ResidenceActivity</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>ResidenceActivity</h1>
 <p>Much of the content of ResidenceActivity inherited from the previous version is being moved to its associated new fragment class, ResidenceFragment.</p>
 <p>We now begin refactoring:</p>
 <ul>
@@ -185,9 +193,9 @@ public class ResidenceActivity extends FragmentActivity
   android:layout_height=&quot;match_parent&quot;
   /&gt;
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>ResidenceFragment</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>ResidenceFragment</h1>
 <p>Here is the new ResidenceFragment class which comprises, mostly, code migrated from ResidencyActivity in the previous version of MyRent:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -381,9 +389,9 @@ public class ResidenceFragment extends Fragment implements TextWatcher,
 </code></pre>
 
 <p>Rename res/layout/activity_residence.xml to the more appropriate name: <em>fragment_residence.xml</em>. </p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>ResidenceListActivity</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>ResidenceListActivity</h1>
 <p>As is the case with ResidenceActivity, much of ResidenceListActivity's code is also moved to its new associated fragment class - ResidenceListFragment.</p>
 <p>Here is the refactored ResidenceListActivity:</p>
 <pre><code>package org.wit.myrent.activities;
@@ -414,9 +422,9 @@ public class ResidenceListActivity extends FragmentActivity
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>ResidenceListFragment</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>ResidenceListFragment</h1>
 <p>Here is the ResidenceListFragment class which comprises, mostly, code migrated from ResidencyListActivity in the previous version of MyRent:</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -560,9 +568,9 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 
 <p>Build and install the app on a device and verify that it functions correctly.</p>
 <p>Next we shall engage an external maps application.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
-  <h1>Resources (Layout &amp; Strings)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="06">
+    <h1>Resources (Layout &amp; Strings)</h1>
 <ul>
 <li>Add a string resource for the Map button to <em>values/strings.xml</em></li>
 </ul>
@@ -682,9 +690,9 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 <li>Note that the registration date is not displayed: the reason for this is that the contents of Figure 1 are formed from screenshots of the Graphical Layout which does not display dynamically generated data (such as the registration dates).</li>
 </ul>
 <p><img alt="Figure 1: Layout before and following refactoring" src="img/04.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
-  <h1>Map</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="07">
+    <h1>Map</h1>
 <p>Add the following method to IntentHelper:</p>
 <pre><code>  public static void openPreferredLocationInMap(Activity parent, String location)
   {
@@ -735,9 +743,9 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 <p>The following import statement will be necessary:</p>
 <pre><code>import org.wit.android.helpers.IntentHelper;
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="08">
-  <h1>Test</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="08">
+    <h1>Test</h1>
 <p>Build and install the app on a phsical device or emulator:</p>
 <ul>
 <li>Create a new residence</li>
@@ -748,25 +756,19 @@ public class ResidenceListFragment extends ListFragment implements OnItemClickLi
 </li>
 </ul>
 <p><img alt="Figure 1: Test map functionality" src="img/03.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
-  <h1>Archives</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Archives">
+    <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV06.zip">MyRentV06</a></li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

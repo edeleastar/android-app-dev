@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">3: Widgets & Callbacks </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      3: Widgets & Callbacks
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="MyRent-00">
         MyRent-00
     </a>
@@ -121,15 +126,18 @@ h3
       <a class="item" data-tab="Archives">
         Archives
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyRent-00">
-  <h1>Objectives</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="MyRent-00">
+    <h1>Objectives</h1>
 <p>We start a new application in this lab, which will be succeeded by numerous version over the next few topics. In this lab the focus is on explaining the essential 'plumbing' of the app, and introducing the first Interface based listener you may have encountered.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Create Project</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Create Project</h1>
 <ul>
 <li>Launch Eclipse and switch to <em>workspaceAndroid</em></li>
 <li>From the Eclipse menu run the command:<ul>
@@ -188,9 +196,9 @@ h3
 <img alt="Figure 5: activity_myrent.xml" src="img/07a.png"></p>
 <p>The directory structure, viewable in Eclipse Package Explorer, is depicted in Figure 6.
 <img alt="Figure 6: MyRent Android application directory structure" src="img/07.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>Layout XML</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>Layout XML</h1>
 <p>Some of the key files of the application are identified in the screenshot of the Package Explorer as illustrated in Figure 1.</p>
 <p><img alt="Figure 1: Key Application Files" src="img/14.png"></p>
 <p><strong>Layout XML Code</strong></p>
@@ -235,9 +243,9 @@ The textual content of the file is as follows:</p>
 <p>Were the TextView attribute <em>android:layout_width</em> set to <em>fill_parent</em> the situation would be as represented in Figure 5.
 <img alt="Figure 5: TextView width attribute value set to &quot;fill_parent&quot;" src="img/18.png"></p>
 <p>A short tutorial is available is available <a href="http://www.mkyong.com/android/android-wrap_content-and-fill_parent-example/">here</a> that demonstrates the effect of different values for <em>layout_width</em> and <em>layout_height</em> attributes.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Strings</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Strings</h1>
 <p>The file <em>strings.xml</em>, located in <em>res/values</em>, contains all the text that <em>MyRent</em> application uses.
 <img alt="" src="img/27.png">
 This arrangement, rather than hard-coding strings when and where required in the code, greatly facilites any changes to the strings, such as for example adapting your application to a new language.</p>
@@ -257,9 +265,9 @@ This arrangement, rather than hard-coding strings when and where required in the
 <p><img alt="Figure 3: AndroidManifest.xml" src="img/24.png">
 <img alt="Figure 4: res/layout/activity_myrent.xml" src="img/25.png">
 <img alt="Figure 5: res/menu/my_rent.xml" src="img/26.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>R File</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>R File</h1>
 <p><img alt="" src="img/28.png"></p>
 <p>All auto-generated files are located in the <em>gen</em> folder and should not be modified by the developer.</p>
 <ul>
@@ -272,9 +280,9 @@ This arrangement, rather than hard-coding strings when and where required in the
 </ul>
 </li>
 </ul>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>Java</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>Java</h1>
 <p><img alt="" src="img/29.png"></p>
 <p><strong>MyRentActivity</strong></p>
 <ul>
@@ -310,9 +318,9 @@ This arrangement, rather than hard-coding strings when and where required in the
 <p><img alt="Figure 1: MyRentActivity.java" src="img/30.png"></p>
 <p><img alt="Figure 2: MyRent menu item on Action bar" src="img/31.png"></p>
 <p><img alt="Figure 3: Program halts at breakpoint in when menu selected" src="img/32.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
-  <h1>Run App</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="06">
+    <h1>Run App</h1>
 <p><strong>Start the Genymotion emulator</strong></p>
 <ul>
 <li>Press the Genymotion icon on the tool bar</li>
@@ -354,9 +362,9 @@ This arrangement, rather than hard-coding strings when and where required in the
 <p><img alt="Figure 3: Run application" src="img/10.png">
 <img alt="Figure 4: Android Device Chooser" src="img/11.png">
 <img alt="Figure 5: Hello world" src="img/12.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
-  <h1>Model</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="07">
+    <h1>Model</h1>
 <p>We first begin with a new model class: Residence.</p>
 <ul>
 <li>Create the file in the package <em>org.wit.myrent</em>.</li>
@@ -399,9 +407,9 @@ public class Residence
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="08">
-  <h1>Layout</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="08">
+    <h1>Layout</h1>
 <p>A general note on layout development: Android Development Kit (ADK) provides two ways to to create a user interface (UI):</p>
 <ul>
 <li>
@@ -509,9 +517,9 @@ public class Residence
 </code></pre>
 
 <p><img alt="Figure 7: Using color in layout" src="img/34.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="09">
-  <h1>Listeners</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="09">
+    <h1>Listeners</h1>
 <p>We shall now inject code into the MyRentActivity class that shall:</p>
 <ul>
 <li>Listen for changes to the Geolocation input control</li>
@@ -636,9 +644,9 @@ import android.text.TextWatcher;
 </li>
 </ul>
 <p><img alt="Figure 3: Analysis of listener code" src="img/37.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="10">
-  <h1>Summary</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="10">
+    <h1>Summary</h1>
 <p>Here is what we have done in this topic:</p>
 <ul>
 <li>
@@ -667,25 +675,19 @@ import android.text.TextWatcher;
 <p>Added a listener to the Activity class to capture any changes in input (the geolocation) and transmit these changes to the Residence object for storage.</p>
 </li>
 </ul>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
-  <h1>Archives</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Archives">
+    <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV00.zip">MyRentV00</a></li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

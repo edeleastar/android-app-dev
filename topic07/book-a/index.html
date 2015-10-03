@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">7: TDD & Fragments </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      7: TDD & Fragments
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="TDD-01">
         TDD-01
     </a>
@@ -106,15 +111,18 @@ h3
       <a class="item" data-tab="Exercises">
         Exercises
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="TDD-01">
-  <h1>Objectives</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="TDD-01">
+    <h1>Objectives</h1>
 <p>Explore the Unit test features of Play by writing some tests to verify the current behavior of the User and Message classes for the spacebook app.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Simple Test Harness</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Simple Test Harness</h1>
 <p>You have seen until testing in Eclipse for simple Java applications. There is an equivalent for the Play Framework. Unit testing is particularly important if you make any changes to the model, as it allows you to verify if the model is defined correctly.</p>
 <p>Using your own spacebook project - or this solution to the second assignment from last semester:</p>
 <ul>
@@ -199,9 +207,9 @@ Listening for transport dt_socket at address: 8000
 <p>Now run it again:</p>
 <p><img alt="" src="img/05.png"></p>
 <p>Note carefully the error report.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>Users Test</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>Users Test</h1>
 <p>Lets write some test for the classes we already have working. Before we do so, there is an occasional anomaly in play that can cause some confusion. So, open 'app/default package/BootStrap.java' and comment out the following:</p>
 <pre><code class="java">import java.util.List;
 
@@ -260,9 +268,9 @@ public class Bootstrap extends Job
 <p>Run tests again, you should see something like this:</p>
 <p><img alt="" src="img/07.png"></p>
 <p>Change it back to 'bob' and confirm that the error is now gone.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>More User Tests</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>More User Tests</h1>
 <p>You may be surprised that, even if we are running in test mode, the 'admin' interface is still visible:</p>
 <ul>
 <li><a href="http://localhost:9000/@db">http://localhost:9000/@db</a></li>
@@ -296,9 +304,9 @@ public class Bootstrap extends Job
 
 <p>This is an example of a 'negative' test. We are deliberately looking for a user (alice) who we know to be not there. Run it and make sure it passes.</p>
 <p>Try to make the test deliberately fail?</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>Message Tests</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>Message Tests</h1>
 <p>We have another model object called Messages already defined in our project:</p>
 <pre><code class="java">public class Message extends Model
 {
@@ -391,9 +399,9 @@ public class Bootstrap extends Job
 </code></pre>
 
 <p>Read the tests and absorb what they are testing. These tests should all pass</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>Class Specific Tests</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>Class Specific Tests</h1>
 <p>Our complete test case now looks like this:</p>
 <pre><code class="java">import org.junit.*;
 
@@ -602,9 +610,9 @@ public class MessageTest extends UnitTest
 <p>Just to confirm that everything is going ok - deliberately break one of the test to see the type of report:</p>
 <p><img alt="" src="img/11.png"></p>
 <p>Revert to 'green state' again by making all tests work</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
-  <h1>Exercises</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Exercises">
+    <h1>Exercises</h1>
 <p>The witpress app, completed during the summer school, implements a simple blogging app with comments. Here is a slightly updated version:</p>
 <ul>
 <li><a href="archives/witpressapp.zip">witpressapp.zip</a></li>
@@ -625,18 +633,12 @@ play eclipsify
 <li>Each user may have zero or more blogs</li>
 </ul>
 <p>Dont worry about the UI, just focus on the tests</p>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

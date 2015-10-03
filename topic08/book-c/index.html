@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">8: JPA & Maps </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      8: JPA & Maps
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="MyRent-09">
         MyRent-09
     </a>
@@ -115,15 +120,18 @@ h3
       <a class="item" data-tab="Archives">
         Archives
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyRent-09">
-  <h1>Camera</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="MyRent-09">
+    <h1>Camera</h1>
 <p>Make use of the device camera to take a photo go display as thumbnail a single-photo gallery. Also, support saving the photo</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Preview</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Preview</h1>
 <p>In this lab you will use the device camera to take a photo.</p>
 <ul>
 <li>The photo may be saved to a file</li>
@@ -135,9 +143,9 @@ h3
 <p><img alt="Figure 2: Start the picture-taking process" src="img/05.png"></p>
 <p><img alt="Figure 3: Take and save photo" src="img/06.png"></p>
 <p><img alt="Figure 4: Long-press thumbnail opens gallery" src="img/07.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>Resources</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>Resources</h1>
 <p>We will add two activities:</p>
 <ul>
 <li>ResidenceCameraActivity<ul>
@@ -245,9 +253,9 @@ h3
 </code></pre>
 
 <p><img alt="" src="img/02.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Model</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Model</h1>
 <p>The model Residence class requires a new field to represent the photo filename:</p>
 <ul>
 <li>Add this field and its json counterpart:</li>
@@ -279,9 +287,9 @@ public Residence(JSONObject json) throws JSONException
   json.put(JSON_PHOTO , photo);
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>Helpers</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>Helpers</h1>
 <p>We will now add a helper class, CameraHelper.</p>
 <ul>
 <li>This class has 2 methods:<ul>
@@ -367,9 +375,9 @@ public class CameraHelper
 
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>Camera Activity</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>Camera Activity</h1>
 <p>Create a new activity ResidenceCameraActivity in the package <em>org.wit.myrent.activities</em>.</p>
 <pre><code>package org.wit.myrent.activities;
 
@@ -565,9 +573,9 @@ import static org.wit.android.helpers.FileIOHelper.writeBitmap;
 <p>Import the Toast class:</p>
 <pre><code>import android.widget.Toast;
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
-  <h1>Fragments</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="06">
+    <h1>Fragments</h1>
 <p>Integrate camera module into ResidenceFragment.</p>
 <p>Add imports:</p>
 <pre><code>import static org.wit.android.helpers.CameraHelper.showPhoto;
@@ -634,9 +642,9 @@ private ImageView photoView;
                                        break;
 
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="07">
-  <h1>Gallery</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="07">
+    <h1>Gallery</h1>
 <p>Add a new layout file for the gallery:</p>
 <p>File: res/layout/residence_gallery.xml</p>
 <pre><code>&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
@@ -748,9 +756,9 @@ Here are the necessary changes to ResidenceFragment:</p>
     return true;
   }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="08">
-  <h1>Test</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="08">
+    <h1>Test</h1>
 <p>Test the app as follows:</p>
 <ul>
 <li>Build and install on device or emulator</li>
@@ -765,25 +773,19 @@ Here are the necessary changes to ResidenceFragment:</p>
 <li>Switch to residence list and back to details view: is picture still displayed?</li>
 <li>Shutdown the app and relaunch: is picture still displayed in thumbnail?</li>
 </ul>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
-  <h1>Archives</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Archives">
+    <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV09.zip">MyRentV09</a></li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

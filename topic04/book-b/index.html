@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">4: ListView & Lifecycles </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      4: ListView & Lifecycles
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="MyRent-03">
         MyRent-03
     </a>
@@ -109,15 +114,18 @@ h3
       <a class="item" data-tab="Archives">
         Archives
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="MyRent-03">
-  <h1>Action Bar &amp; Dialogs</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="MyRent-03">
+    <h1>Action Bar &amp; Dialogs</h1>
 <p>In a significant update to the app, we introduce navigation within the app using an Action Bar. This will allow us to create new residences, or navigate to existing ones. Additionally, we will explore a simple date picker dialog to all the user to select a registration date for the residence.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>Overview</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>Overview</h1>
 <p>At the end of this session the following features will have been added:</p>
 <ul>
 <li>
@@ -129,9 +137,9 @@ h3
 <img alt="Figure 2: Date picker to facilitate setting registration date" src="img/01.png"></p>
 </li>
 </ul>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>Resources</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>Resources</h1>
 <p>Create a new folder <em>res/menu</em>.</p>
 <p>Create a new file <em>res/menu/residencelist.xml</em>.</p>
 <p>Here is the file content:</p>
@@ -166,9 +174,9 @@ h3
 
 <p>Figure 1 shows the relationship between the xml and display.</p>
 <p><img alt="Figure 1: Action Bar &amp; Menu" src="img/14.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Helpers</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Helpers</h1>
 <p>Add a new class named <em>IntentHelper</em> to <em>org.wit.android.helpers</em>.</p>
 <p>Filename: IntentHelper.java</p>
 <pre><code>package org.wit.android.helpers;
@@ -201,9 +209,9 @@ public class IntentHelper
 }
 
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>Activities (ResidenceListActivity)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>Activities (ResidenceListActivity)</h1>
 <p>Here we shall provide the coding to respond to menu selection:</p>
 <p>Import the helpers provided in the previous step:</p>
 <pre><code>import static org.wit.android.helpers.IntentHelper.startActivityWithData;
@@ -286,9 +294,9 @@ import android.view.MenuItem;
 </ul>
 <p>You should be presented with something similar to that shown in Figure 1.</p>
 <p><img alt="Figure 1: Using menu to add new residence" src="img/15.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="05">
-  <h1>Dialog</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="05">
+    <h1>Dialog</h1>
 <p>The dialog in Figure 1 is an instance of <a href="http://developer.android.com/reference/android/app/DatePickerDialog.html"><strong>DatePickerDialog</strong></a> which is a simple dialog containing a <a href="http://developer.android.com/reference/android/widget/DatePicker.html"><strong>DatePicker</strong></a>.</p>
 <ul>
 <li>A DatePicker is a widget for selecting a date.</li>
@@ -298,9 +306,9 @@ import android.view.MenuItem;
 <li>As shown in Figure 2, the DatePicker is contained in <em>ResidenceActivity</em>.</li>
 </ul>
 <p><img alt="Figure 2: Object diagram showing DatePickerDialog" src="img/03.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="06">
-  <h1>Activities (ResidenceActivity)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="06">
+    <h1>Activities (ResidenceActivity)</h1>
 <p>We shall now implement the code to allow a user to set the registration date of a residence.</p>
 <p>In <em>org.wit.myrent.activities.ResidenceActivity</em> add these import statements:</p>
 <pre><code>import java.util.Calendar;
@@ -362,25 +370,19 @@ import android.view.View.OnClickListener;
 <li>Return to the list view and create a further residence.</li>
 <li>Return to the list view, click on the first residence, which opens its detail view, and observe that it retains the modified date.</li>
 </ul>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
-  <h1>Archives</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Archives">
+    <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/MyRentV03.zip">MyRentV03</a></li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>

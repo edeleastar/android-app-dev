@@ -81,10 +81,15 @@ h3
 
 </style>
 
-<div class="ui fixed sticky top attached tabular menu labmenu">
-   <header class="header item">
-    <a href="../index.html">3: Widgets & Callbacks </a>
+
+<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+  <header class="header item">
+    <a href="../index.html">
+      <i class="sitemap icon"></i>
+      3: Widgets & Callbacks
+    </a>
   </header>
+  <div class="right tab-menu menu">
     <a class="active item" data-tab="Event-Handling">
         Event-Handling
     </a>
@@ -106,15 +111,18 @@ h3
       <a class="item" data-tab="Archives">
         Archives
       </a>
+    </div>
 </div>
 
 
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Event-Handling">
-  <h1>Objectives</h1>
+<br><br>
+
+  <div  class="ui tab  segment lab" data-tab="Event-Handling">
+    <h1>Objectives</h1>
 <p>This is a short lab whose aim is to provide a detailed explanation of event handling via a simple standalone non-android application</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="01">
-  <h1>MyRentFragment</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="01">
+    <h1>MyRentFragment</h1>
 <p>Here is an extract from MyRentFragment.java:</p>
 <pre><code>  EditText geolocation;
   ...
@@ -149,9 +157,9 @@ h3
 <p><img alt="Figure 1: Analysis of callback and listener code" src="img/01.png"></p>
 <p>In the following steps we shall develop short programs that will, hopefully, explain more fully how the pattern in this method, <em>geolocation</em>, works.</p>
 <p>We shall select names for classes, interface and methods that, where appropriate, are the same as in <em>geolocation</em>.</p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="02">
-  <h1>Callback (Standalone method)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="02">
+    <h1>Callback (Standalone method)</h1>
 <p>This approach is for the purpose of instruction only and is unlikely to be used in practice.</p>
 <ul>
 <li>Create a project in Eclipse named <em>callbacks</em>.</li>
@@ -296,9 +304,9 @@ public class EventLoop
 </ul>
 <p>Run the application and observe the output:</p>
 <p><img alt="Figure 1: Callback in action" src="img/02.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="03">
-  <h1>Callback (Anonymous class method)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="03">
+    <h1>Callback (Anonymous class method)</h1>
 <p>We shall now dispense with the <em>Callback</em> class</p>
 <ul>
 <li>Create a new package in the <em>callbacks</em> project named <em>org.wit.callbackanon</em>.</li>
@@ -382,9 +390,9 @@ public class EventLoop
 
 <p>Figure 1 below presents a flow diagram of the program.</p>
 <p><img alt="Figure 1: Flow diagram of callback program" src="img/07.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="04">
-  <h1>Callback (Delegated method)</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="04">
+    <h1>Callback (Delegated method)</h1>
 <ul>
 <li>Create a package in <em>callbacks</em> project named <em>org.wit.callbackimpl</em>.</li>
 <li>
@@ -556,9 +564,9 @@ public class EventLoop implements TextWatcher
   }
 }
 </code></pre>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Exercises">
-  <h1>Exercise 1</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Exercises">
+    <h1>Exercise 1</h1>
 <p>Modify the the Delegate callback method as follows:</p>
 <ul>
 <li>Introduce a new interface, KeyBoardListener, inherited from the existing interface TextWatcher.<ul>
@@ -686,25 +694,19 @@ public class Keypress extends TextView
 
 <p>Here are suggested class diagrams for the solution.</p>
 <p><img alt="" src="img/14.png"></p>
-</div>
-<div id="labcontent" class="ui bottom attached tab segment lab" data-tab="Archives">
-  <h1>Archives</h1>
+  </div>
+  <div  class="ui tab  segment lab" data-tab="Archives">
+    <h1>Archives</h1>
 <p>This is downloadable archive of the event handling code complete to the end if this lab:</p>
 <ul>
 <li><a href="archives/event_handling.zip">Event_handling</a></li>
 </ul>
-</div>
+  </div>
 <script>
 $('.ui.menu .item')
   .tab({
     history: true,
     historyType: 'hash'
-  })
-;
-  $('.ui.sticky')
-  .sticky({
-    bottomOffset : 50,
-    context      : '#labcontent'
   })
 ;
 </script>
