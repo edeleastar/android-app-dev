@@ -81,8 +81,7 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+<div class="ui fixed top pointing  menu labmenu">
   <header class="header item">
     <a href="../index.html">
       <i class="sitemap icon"></i>
@@ -129,14 +128,13 @@ h3
     </div>
 </div>
 
-
 <br><br>
 
-  <div  class="ui tab  segment lab" data-tab="MyTweet-Assignment-02">
+  <div  class="ui tab segment lab" data-tab="MyTweet-Assignment-02">
     <h1>Introduction</h1>
 <p>This is a follow-on lab to MyTweet-Assignment-01. The lab provides guidance but <span style="color:red">not comprehensive instructions</span> (which is reasonable given that it relates to an assignment). The guidance addesses issues that might otherwise prove quite difficult to resolve.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="01">
+  <div  class="ui tab segment lab" data-tab="01">
     <h1>Preview</h1>
 <p>The aim of the previous lab was to facilitate the creation of a walking skeleton of the baseline Android MyTweet app, the subject of the second and final Mobile Application Development assignment.</p>
 <p>In this lab we further develop MyTweet Android client and Play service by introducing a User model and establishing a many-to-one bi-directional relationship between User and Tweet models.</p>
@@ -186,7 +184,7 @@ play deps
 
 <p>Finally, refresh the project in the Eclipse workspace (highlight project name and press F5 or right click to reveal context menu and select <em>Refresh</em> ).</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="02">
+  <div  class="ui tab segment lab" data-tab="02">
     <h1>MyTweetService (User)</h1>
 <p>We shall develop a User model class in this step.</p>
 <p>We establish a relationship with the Tweet model as follows:</p>
@@ -262,7 +260,7 @@ public class User extends GenericModel
 }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="03">
+  <div  class="ui tab segment lab" data-tab="03">
     <h1>MyTweetService (Tweet)</h1>
 <p>The only change to the Tweet model is the addition of the other side of the relationship introduced in User:</p>
 <pre><code>  @ManyToOne
@@ -330,7 +328,7 @@ GET     /public/                                staticDir:public
 *       /{controller}/{action}                  {controller}.{action}
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="04">
+  <div  class="ui tab segment lab" data-tab="04">
     <h1>MyTweetService(APIs)</h1>
 <h2>JsonParsers</h2>
 <p>Here is the JsonParsers file updated with User conversion code:</p>
@@ -562,7 +560,7 @@ public class TweetsAPI extends Controller
 }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="05">
+  <div  class="ui tab segment lab" data-tab="05">
     <h1>Deletion</h1>
 <p>You are recommended to study and understand how Tweets and Users are deleted in the API files.</p>
 <ul>
@@ -592,7 +590,7 @@ public class TweetsAPI extends Controller
 <p>Figure 4 shows the methods to create a tweet and a user side-by-side with the deleteAllUsers method:</p>
 <p><img alt="Figure 4: createUser, createTweet and deleteAllUsers methods" src="img/18.png"></p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="06">
+  <div  class="ui tab segment lab" data-tab="06">
     <h1>Routes &amp; APIs</h1>
 <p>Now that you have added both routes and APIs, it is worthwhile taking a moment to study how the uri-api relationship works. </p>
 <p>Consider this extract from the <em>routes</em> file:</p>
@@ -616,7 +614,7 @@ public class TweetsAPI extends Controller
 </li>
 </ul>
   </div>
-  <div  class="ui tab  segment lab" data-tab="07">
+  <div  class="ui tab segment lab" data-tab="07">
     <h1>MyTweetApp (Welcome)</h1>
 <p>We have completed refactoring mytweet-service Play app and now address the Android mytweetapp client.</p>
 <p>The legacy Welcome screen and its suggested replacement are shown here in Figure 1:</p>
@@ -624,7 +622,7 @@ public class TweetsAPI extends Controller
 <p>The refactored Welcome screen and new Login and Signup screens are depicted in Figure 2.</p>
 <p><img alt="Figure 2: Refactored Welcome" src="img/02.png"></p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="08">
+  <div  class="ui tab segment lab" data-tab="08">
     <h1>MyTweetApp(Model)</h1>
 <p>The model classes used in the Android client, MyTweetApp are introduced in this step.</p>
 <h2>Tweet</h2>
@@ -669,7 +667,7 @@ public class User
 }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="09">
+  <div  class="ui tab segment lab" data-tab="09">
     <h1>MyTweetApp(API)</h1>
 <p>Here are sample APIs for both User and Tweet in the Android client (MyTweetApp):</p>
 <p>File: TweetsAPI.java</p>
@@ -925,7 +923,7 @@ public class JsonParsers
 }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="10">
+  <div  class="ui tab segment lab" data-tab="10">
     <h1>MyTweetApp (Integration)</h1>
 <p>Some changes are required to accomodate the new User class and its relationship with Tweet.</p>
 <p><strong>Signup</strong> and <strong>Login</strong></p>
@@ -1000,7 +998,7 @@ private MyTweetApp app;
   }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="11">
+  <div  class="ui tab segment lab" data-tab="11">
     <h1>Test</h1>
 <p>As part of the assignment you will be writing and executing comprehensive JUnit tests. </p>
 <p>Here, in the meantime, are some quick checks you may perform using Postman:</p>

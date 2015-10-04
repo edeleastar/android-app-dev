@@ -81,8 +81,7 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+<div class="ui fixed top pointing  menu labmenu">
   <header class="header item">
     <a href="../index.html">
       <i class="sitemap icon"></i>
@@ -114,14 +113,13 @@ h3
     </div>
 </div>
 
-
 <br><br>
 
-  <div  class="ui tab  segment lab" data-tab="TDD-01">
+  <div  class="ui tab segment lab" data-tab="TDD-01">
     <h1>Objectives</h1>
 <p>Explore the Unit test features of Play by writing some tests to verify the current behavior of the User and Message classes for the spacebook app.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="01">
+  <div  class="ui tab segment lab" data-tab="01">
     <h1>Simple Test Harness</h1>
 <p>You have seen until testing in Eclipse for simple Java applications. There is an equivalent for the Play Framework. Unit testing is particularly important if you make any changes to the model, as it allows you to verify if the model is defined correctly.</p>
 <p>Using your own spacebook project - or this solution to the second assignment from last semester:</p>
@@ -208,7 +206,7 @@ Listening for transport dt_socket at address: 8000
 <p><img alt="" src="img/05.png"></p>
 <p>Note carefully the error report.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="02">
+  <div  class="ui tab segment lab" data-tab="02">
     <h1>Users Test</h1>
 <p>Lets write some test for the classes we already have working. Before we do so, there is an occasional anomaly in play that can cause some confusion. So, open 'app/default package/BootStrap.java' and comment out the following:</p>
 <pre><code class="java">import java.util.List;
@@ -269,7 +267,7 @@ public class Bootstrap extends Job
 <p><img alt="" src="img/07.png"></p>
 <p>Change it back to 'bob' and confirm that the error is now gone.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="03">
+  <div  class="ui tab segment lab" data-tab="03">
     <h1>More User Tests</h1>
 <p>You may be surprised that, even if we are running in test mode, the 'admin' interface is still visible:</p>
 <ul>
@@ -305,7 +303,7 @@ public class Bootstrap extends Job
 <p>This is an example of a 'negative' test. We are deliberately looking for a user (alice) who we know to be not there. Run it and make sure it passes.</p>
 <p>Try to make the test deliberately fail?</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="04">
+  <div  class="ui tab segment lab" data-tab="04">
     <h1>Message Tests</h1>
 <p>We have another model object called Messages already defined in our project:</p>
 <pre><code class="java">public class Message extends Model
@@ -400,7 +398,7 @@ public class Bootstrap extends Job
 
 <p>Read the tests and absorb what they are testing. These tests should all pass</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="05">
+  <div  class="ui tab segment lab" data-tab="05">
     <h1>Class Specific Tests</h1>
 <p>Our complete test case now looks like this:</p>
 <pre><code class="java">import org.junit.*;
@@ -611,7 +609,7 @@ public class MessageTest extends UnitTest
 <p><img alt="" src="img/11.png"></p>
 <p>Revert to 'green state' again by making all tests work</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="Exercises">
+  <div  class="ui tab segment lab" data-tab="Exercises">
     <h1>Exercises</h1>
 <p>The witpress app, completed during the summer school, implements a simple blogging app with comments. Here is a slightly updated version:</p>
 <ul>

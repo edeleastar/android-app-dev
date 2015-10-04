@@ -81,8 +81,7 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+<div class="ui fixed top pointing  menu labmenu">
   <header class="header item">
     <a href="../index.html">
       <i class="sitemap icon"></i>
@@ -132,14 +131,13 @@ h3
     </div>
 </div>
 
-
 <br><br>
 
-  <div  class="ui tab  segment lab" data-tab="MyTweet-Assignment-01">
+  <div  class="ui tab segment lab" data-tab="MyTweet-Assignment-01">
     <h1>Objectives</h1>
 <p>The aim of this lab is to facilitate the creation of a <a href="http://alistair.cockburn.us/Walking+skeleton">walking skeleton</a> of the baseline  Android <strong>MyTweet</strong> assignment 2 app. </p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="01">
+  <div  class="ui tab segment lab" data-tab="01">
     <h1>Client-Server</h1>
 <p>The information provided should help you to:</p>
 <ul>
@@ -211,7 +209,7 @@ h3
 <p><img alt="Figure 2: Example of Android app" src="img/01.png"></p>
 <p><img alt="Figure 3: Example of Android client-side and Play server-side apps" src="img/03.png"></p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="02">
+  <div  class="ui tab segment lab" data-tab="02">
     <h1>Development</h1>
 <p>You are required to develop three apps:</p>
 <ul>
@@ -268,7 +266,7 @@ h3
 <li>Repeat these steps in subsequent iterations.</li>
 </ul>
   </div>
-  <div  class="ui tab  segment lab" data-tab="03">
+  <div  class="ui tab segment lab" data-tab="03">
     <h1>Service</h1>
 <p>Below are the outline steps to develop the server side Play app.</p>
 <p>It is worth noting that whereas in this lab we send requests only from a native Android app and a JUnit test app, any network-enabled app that uses a compatible api can engage in request-response sessions with MyTweetService.</p>
@@ -464,7 +462,7 @@ public class MyTweetServiceAPI extends Controller
 }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="04">
+  <div  class="ui tab segment lab" data-tab="04">
     <h1>Test App</h1>
 <p>A walking skeleton test app is available to download from <a href="archives/mytweet-service-test.zip">here</a>.</p>
 <p>Here is the expanded project structure:</p>
@@ -584,7 +582,7 @@ public class MyTweetServiceAPI
 </ul>
 <p>None of the tests has been completed but the skeleton of a small number of tests is provided as a guide.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="05">
+  <div  class="ui tab segment lab" data-tab="05">
     <h1>Android client</h1>
 <p>We now address the refactoring of assignment 1 app into an Android client capable of interacting with the server-side Play app (MyTweetService).</p>
 <p>The steps outline below comprise one of many possible approaches to developing MyTweet native Android client.</p>
@@ -600,7 +598,7 @@ public class MyTweetServiceAPI
 <p>Figure 2 illustrates this lab's completed version.</p>
 <p><img alt="Figure 2: Refactored MyTweet retrieves tweets on launch" src="img/11.png"></p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="06">
+  <div  class="ui tab segment lab" data-tab="06">
     <h1>Android Client (Read)</h1>
 <p>We will retrieve the list of tweets from the server in the WelcomeActivity class, the code for which is provided below.</p>
 <ul>
@@ -720,7 +718,7 @@ public class WelcomeActivity extends Activity implements Response&lt;Tweet&gt;, 
 
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="07">
+  <div  class="ui tab segment lab" data-tab="07">
     <h1>Android Client (API)</h1>
 <p>We are including a screenshot of the folder structure used in preparing this lab. It is appreciated that yours will likely vary considerably from this. Nevertheless the figure may be of some help.</p>
 <p><img alt="Figure 1: MyTweet source code file structure" src="img/17.png"></p>
@@ -992,7 +990,7 @@ class DeleteTweet extends Request
 
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="08">
+  <div  class="ui tab segment lab" data-tab="08">
     <h1>MyTweetFragment (Create)</h1>
 <p>The MyTweetFragment layout is shown here in Figure 1:</p>
 <p><img alt="Figure 1: Detail view" src="img/13.png"></p>
@@ -1054,7 +1052,7 @@ class DeleteTweet extends Request
   }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="09">
+  <div  class="ui tab segment lab" data-tab="09">
     <h1>TimelineFragment (Delete)</h1>
 <p>Recall that one may delete a set of list items (one or more) in the list view.</p>
 <p>Here we have created a selection of tweet. We can view them, for example, in <a href="https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en">PostMan</a> as shown in Figure 1:</p>
@@ -1127,7 +1125,7 @@ class DeleteTweet extends Request
   }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="10">
+  <div  class="ui tab segment lab" data-tab="10">
     <h1>Android Client (Model)</h1>
 <p>Here is the code for Tweet.java, the model class.</p>
 <ul>
@@ -1211,7 +1209,7 @@ public class Tweet
 
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="11">
+  <div  class="ui tab segment lab" data-tab="11">
     <h1>Miscellaneous</h1>
 <h2>Generating the Tweet database table <strong>id</strong> in the client</h2>
 <p>Default Play framework behaviour is to generate a default Long id primary key.</p>
@@ -1260,7 +1258,7 @@ public class Tweet
 </ul>
 <p><img alt="" src="img/18.png"></p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="12">
+  <div  class="ui tab segment lab" data-tab="12">
     <h1>Downloads</h1>
 <p>The apk file, MyTweet, on which this lab is based, is available to download <a href="archives/MyTweet.apk">here</a>.</p>
 <p>You may also download the <a href="archives/MyYamba.apk">MyYamba</a> apk file which was developed using code from Learning Adroid 2nd Edition (Garenta &amp; Nakamura).</p>

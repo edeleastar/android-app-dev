@@ -81,8 +81,7 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+<div class="ui fixed top pointing  menu labmenu">
   <header class="header item">
     <a href="../index.html">
       <i class="sitemap icon"></i>
@@ -114,14 +113,13 @@ h3
     </div>
 </div>
 
-
 <br><br>
 
-  <div  class="ui tab  segment lab" data-tab="Donation-09">
+  <div  class="ui tab segment lab" data-tab="Donation-09">
     <h1>Objectives</h1>
 <p>Refactor the the Donation Play Service to capture a OneToMany relationship from User-&gt;Donation. Then, reflect this relationship in the API.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="01">
+  <div  class="ui tab segment lab" data-tab="01">
     <h1>Routes</h1>
 <p>We will start with the routes. In the previous version the User and Donations APIs were independent. In the revised routes below, not carefully how the Donations routes are structured.</p>
 <pre><code># API - Users
@@ -141,7 +139,7 @@ DELETE  /api/users/{userId}/donations/{id}   DonationsAPI.deleteDonation
 
 <p>As you can see, the users ID is required in order to reach the donations. The returned (or created) donations will be associated with the given user id.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="02">
+  <div  class="ui tab segment lab" data-tab="02">
     <h1>User Model</h1>
 <p>The User Model can now incorporate the relationship:</p>
 <pre><code>  @OneToMany(cascade = CascadeType.ALL)
@@ -150,7 +148,7 @@ DELETE  /api/users/{userId}/donations/{id}   DonationsAPI.deleteDonation
 
 <p>We can keep it unidirectional for the moment.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="03">
+  <div  class="ui tab segment lab" data-tab="03">
     <h1>Controllers</h1>
 <p>We can get rid of the current controller, and introduce these two new controllers instead.</p>
 <p>This one looks after the User model:</p>
@@ -285,7 +283,7 @@ public class DonationsAPI extends Controller
 
 <p>In the above you will see we are always using the user ID.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="04">
+  <div  class="ui tab segment lab" data-tab="04">
     <h1>Test Project - DonationServiceAPI</h1>
 <p>We have just completed a significant overhaul to the service API - so the tests will need to change to reflect this.</p>
 <p>Open the donation-service-test project - and we can extend the API to accommodate the donations:</p>
@@ -309,7 +307,7 @@ public class DonationsAPI extends Controller
   } 
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="05">
+  <div  class="ui tab segment lab" data-tab="05">
     <h1>Test Project - DonationTest</h1>
 <p>The existing user tests should still work. </p>
 <p>However, we can introduce this new DonationTest class to exhaustively test the revised Donations API:</p>
@@ -402,7 +400,7 @@ public class DonationTest
 
 <p>All tests should pass.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="Exercises">
+  <div  class="ui tab segment lab" data-tab="Exercises">
     <h1>Exercises</h1>
 <p>This is an archive of the two projects so far:</p>
 <ul>

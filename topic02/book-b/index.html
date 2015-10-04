@@ -81,8 +81,7 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+<div class="ui fixed top pointing  menu labmenu">
   <header class="header item">
     <a href="../index.html">
       <i class="sitemap icon"></i>
@@ -129,14 +128,13 @@ h3
     </div>
 </div>
 
-
 <br><br>
 
-  <div  class="ui tab  segment lab" data-tab="Donation-03">
+  <div  class="ui tab segment lab" data-tab="Donation-03">
     <h1>Objectives</h1>
 <p>We continue the implementation of Donation to including the welcome, sign up and login. Support these views with a User model, and validate the users on log in.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="01">
+  <div  class="ui tab segment lab" data-tab="01">
     <h1>Exercise 1</h1>
 <p>Run the app and insert amounts of varying lengths (1, 222, 23, 2323). Note that the second column - payment method -may be displayed at different positions. If this happens, fix it.</p>
 <p>Hint: each row is laid out by a row_donate.xml layout. The easiest way to fix this would be to experiment with they layout, and have the text fields aligned with the edges and not with each other.</p>
@@ -170,7 +168,7 @@ h3
 &lt;/RelativeLayout&gt;
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="02">
+  <div  class="ui tab segment lab" data-tab="02">
     <h1>Exercise 2</h1>
 <p>When a donation is accepted, set the amount on screen to 0 (in both picker and text field).</p>
 <h1>Solution</h1>
@@ -179,7 +177,7 @@ h3
     amountPicker.setValue(0);
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="03">
+  <div  class="ui tab segment lab" data-tab="03">
     <h1>Exercise 3</h1>
 <p>When you navigate from the Donate activity to reports, there will be no menu available. Bring in a menu, with two options 'Settings' and 'Donate' - Donate should bring you back to the donate screen.</p>
 <h1>Solution</h1>
@@ -234,7 +232,7 @@ import android.view.MenuItem;
 import android.view.Menu;
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="04">
+  <div  class="ui tab segment lab" data-tab="04">
     <h1>Exercise 4</h1>
 <p>Introduce a new welcome screen - which should display a greeting + give the user 2 options (as simple buttons)</p>
 <ul>
@@ -430,7 +428,7 @@ import android.widget.Toast;
 <p>Launch the app again, press Login: the Donation view should open.</p>
 <p>This completes exercise 4.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="05">
+  <div  class="ui tab segment lab" data-tab="05">
     <h1>Exercise 5 - Part 1 Layout</h1>
 <p>Introduce a Signup Activity, which should present the user with:</p>
 <ul>
@@ -627,7 +625,7 @@ import android.widget.Toast;
     &lt;string name=&quot;signupRegister&quot;&gt;Register&lt;/string&gt;
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="06">
+  <div  class="ui tab segment lab" data-tab="06">
     <h1>Exercise 5 - Part 2 Activity Class</h1>
 <p>(continued)</p>
 <p>Pressing Register should take you directly to "Donate" activity. Also, refactor the Welcome screen such that the 'signup' button takes you to this screen (the Donate activity).</p>
@@ -697,7 +695,7 @@ import android.widget.Toast;
 
 <p>Run the app now, and verify that the navigation operates as expected. Also, try the 'back' button, and the menu button. Try various combination of these to see how it operates.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="07">
+  <div  class="ui tab segment lab" data-tab="07">
     <h1>Exercise 6:</h1>
 <p>Introduce a Login activty, which should just look for</p>
 <ul>
@@ -838,7 +836,7 @@ public class Login extends Activity
 
 <p>Now launch the app and verify that this route works as expected.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="08">
+  <div  class="ui tab segment lab" data-tab="08">
     <h1>Exercise 7</h1>
 <p>Bring in a new menu option - 'logout'. It should take you to the welcome screen, and should be available from the donate and report activities.</p>
 <h1>Solution</h1>
@@ -887,7 +885,7 @@ public class Login extends Activity
 
 <p>Test this now.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="09">
+  <div  class="ui tab segment lab" data-tab="09">
     <h1>Exercise 8</h1>
 <p>Introduce a 'User' into the models package to represent the user in the usual way. Maintain a list of Users in the DonationApp object. Whenever anyone registers, then create a new User object in this list.</p>
 <h1>Solution</h1>
@@ -957,7 +955,7 @@ import app.main.DonationApp;
 </ul>
 <p>Test this now - There is one behavioural change from the last version - pressing 'Register' takes us back to the Welcome screen.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="10">
+  <div  class="ui tab segment lab" data-tab="10">
     <h1>Exercise 9</h1>
 <p>Implement the Login activity, to now only let users in to Donate if they are registered (i.e. a matching email + password in the list of users maintained by DonationApp)</p>
 <h1>Solution</h1>
@@ -1003,7 +1001,7 @@ import app.main.DonationApp;
 
 <p>This completes the series of exercises based on donation lab v2.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="Challenges">
+  <div  class="ui tab segment lab" data-tab="Challenges">
     <h1>Challenges</h1>
 <ul>
 <li><a href="archives/donation-android-v3.zip">donation-android-v3.zip</a></li>

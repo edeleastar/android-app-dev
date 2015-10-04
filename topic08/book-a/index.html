@@ -81,8 +81,7 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+<div class="ui fixed top pointing  menu labmenu">
   <header class="header item">
     <a href="../index.html">
       <i class="sitemap icon"></i>
@@ -129,14 +128,13 @@ h3
     </div>
 </div>
 
-
 <br><br>
 
-  <div  class="ui tab  segment lab" data-tab="JPA-01">
+  <div  class="ui tab segment lab" data-tab="JPA-01">
     <h1>Objectives</h1>
 <p>Build  new project to explore JPA relationships in more depth. in particular, define a model with OneToMany, MnyToOne and ManyToMany relations - and test each of the relationships via unit tests in order to ensure they are correctly implemented.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="01">
+  <div  class="ui tab segment lab" data-tab="01">
     <h1>Exercises</h1>
 <p>The witpress-v2 app, completed during the summer school, implements a simple blogging app with comments. You may have this app in your workspace. If not, this is the archive here:</p>
 <ul>
@@ -172,7 +170,7 @@ h3
 <li>UI, sufficient changes have been made to the UI to enable it to function using the revised model.</li>
 </ul>
   </div>
-  <div  class="ui tab  segment lab" data-tab="02">
+  <div  class="ui tab segment lab" data-tab="02">
     <h1>JPA Model Project</h1>
 <p>Create a brand new Play project. Do this by navigating to the correct folder folder (most likely your workspace) and running a command prompt. Then type:</p>
 <pre><code>play new jpamodel
@@ -295,7 +293,7 @@ public class PlayerTest extends UnitTest
 <li><a href="http://localhost:9000/@db">http://localhost:9000/@db</a></li>
 </ul>
   </div>
-  <div  class="ui tab  segment lab" data-tab="03">
+  <div  class="ui tab segment lab" data-tab="03">
     <h1>Initial Tests for Player and Club</h1>
 <h2>PlayerTest</h2>
 <p>In PlayerTest introduce a fixture and create some test objects:</p>
@@ -437,7 +435,7 @@ public class ClubTest extends UnitTest
 
 <p>These tests should run successfully. Experiment with commenting out the @After annotation and seeing the actual objects in the database.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="04">
+  <div  class="ui tab segment lab" data-tab="04">
     <h1>Modeling a Player / Club Relationship</h1>
 <p>Currently there is no relationship between player and club - which can be modeled like this:</p>
 <p><img alt="" src="img/14.png"></p>
@@ -530,7 +528,7 @@ public class ClubTest extends UnitTest
 <p>Read and absorb the logic of this test. As an experiment, comment out the final line (deleting mike). Then look to the database interface and note that mike is still in the database after the test have run. </p>
 <p>Note also that if we leave the deletion of mike commented out, and re-run the tests - then other tests start to fail. The only cure now will be to restart the application.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="05">
+  <div  class="ui tab segment lab" data-tab="05">
     <h2>Bidirectional Club / Player Relationship</h2>
 <p>We might like each player to also 'know' which club he/she belongs to. In fact this is probably a more natural relationship for these model elements:</p>
 <p><img alt="" src="img/17.png"></p>
@@ -568,7 +566,7 @@ public class ClubTest extends UnitTest
 
 <p>Make sure this passes.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="06">
+  <div  class="ui tab segment lab" data-tab="06">
     <h1>Division + Sponsor</h1>
 <p>We would now like to extend the model to include the following extra classes:</p>
 <p><img alt="" src="img/19.png"></p>
@@ -682,7 +680,7 @@ public class Sponsor extends Model
 
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="07">
+  <div  class="ui tab segment lab" data-tab="07">
     <h1>Tests</h1>
 <p>We can significantly simplify aspects of the testing if we invest some time in setting up test objects in yaml first.</p>
 <p>Open 'data.yaml' and replace its contents with the following:</p>
@@ -899,7 +897,7 @@ public class ComprehensiveTest extends UnitTest
 <p>Run the app in test mode, and run this new test suite. All of these tests should run.</p>
 <p>Note carefully how we have 'manually' loaded the sponsorship relationships after the model has been loaded.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="08">
+  <div  class="ui tab segment lab" data-tab="08">
     <h1>Controllers/View</h1>
 <p>Incorporate all of these controllers so we can interact with the model via the UI:</p>
 <h2>Players</h2>
@@ -1122,7 +1120,7 @@ public class Division extends Controller
 &lt;/section&gt;
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="10">
+  <div  class="ui tab segment lab" data-tab="10">
     <h1>Routes + Test Data</h1>
 <p>Now incorporate the following routes:</p>
 <pre><code># Home page
@@ -1163,7 +1161,7 @@ public class Bootstrap extends Job
 
 <p>Run the app again, and you should start to see some data.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="11">
+  <div  class="ui tab segment lab" data-tab="11">
     <h1>Showing Division/Club/Player Relationships</h1>
 <p>Currently UI for the model if read only - and we can only see each model in isolation (we cant see relationships).</p>
 <p>First, we tackle the relationships. Update the <code>&lt;table&gt;</code> element of the following views with this version:</p>
@@ -1259,7 +1257,7 @@ public class Bootstrap extends Job
 
 <p>See if you can make sense of the above templates. Save everything and reload. You should be able to see what players belong to which clubs, and also what divisions the clubs are in.</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="12">
+  <div  class="ui tab segment lab" data-tab="12">
     <h1>Delete Player Feature</h1>
 <p>Introduce the following method into the controllers/Players:</p>
 <pre><code class="java">  public static void delete(Long id)

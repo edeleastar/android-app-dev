@@ -81,8 +81,7 @@ h3
 
 </style>
 
-
-<div class="ui fixed top pointing inverted borderless center aligned menu labmenu">
+<div class="ui fixed top pointing  menu labmenu">
   <header class="header item">
     <a href="../index.html">
       <i class="sitemap icon"></i>
@@ -123,14 +122,13 @@ h3
     </div>
 </div>
 
-
 <br><br>
 
-  <div  class="ui tab  segment lab" data-tab="MyRent-09">
+  <div  class="ui tab segment lab" data-tab="MyRent-09">
     <h1>Camera</h1>
 <p>Make use of the device camera to take a photo go display as thumbnail a single-photo gallery. Also, support saving the photo</p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="01">
+  <div  class="ui tab segment lab" data-tab="01">
     <h1>Preview</h1>
 <p>In this lab you will use the device camera to take a photo.</p>
 <ul>
@@ -144,7 +142,7 @@ h3
 <p><img alt="Figure 3: Take and save photo" src="img/06.png"></p>
 <p><img alt="Figure 4: Long-press thumbnail opens gallery" src="img/07.png"></p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="02">
+  <div  class="ui tab segment lab" data-tab="02">
     <h1>Resources</h1>
 <p>We will add two activities:</p>
 <ul>
@@ -254,7 +252,7 @@ h3
 
 <p><img alt="" src="img/02.png"></p>
   </div>
-  <div  class="ui tab  segment lab" data-tab="03">
+  <div  class="ui tab segment lab" data-tab="03">
     <h1>Model</h1>
 <p>The model Residence class requires a new field to represent the photo filename:</p>
 <ul>
@@ -288,7 +286,7 @@ public Residence(JSONObject json) throws JSONException
 }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="04">
+  <div  class="ui tab segment lab" data-tab="04">
     <h1>Helpers</h1>
 <p>We will now add a helper class, CameraHelper.</p>
 <ul>
@@ -376,7 +374,7 @@ public class CameraHelper
 }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="05">
+  <div  class="ui tab segment lab" data-tab="05">
     <h1>Camera Activity</h1>
 <p>Create a new activity ResidenceCameraActivity in the package <em>org.wit.myrent.activities</em>.</p>
 <pre><code>package org.wit.myrent.activities;
@@ -574,7 +572,7 @@ import static org.wit.android.helpers.FileIOHelper.writeBitmap;
 <pre><code>import android.widget.Toast;
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="06">
+  <div  class="ui tab segment lab" data-tab="06">
     <h1>Fragments</h1>
 <p>Integrate camera module into ResidenceFragment.</p>
 <p>Add imports:</p>
@@ -643,7 +641,7 @@ private ImageView photoView;
 
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="07">
+  <div  class="ui tab segment lab" data-tab="07">
     <h1>Gallery</h1>
 <p>Add a new layout file for the gallery:</p>
 <p>File: res/layout/residence_gallery.xml</p>
@@ -757,7 +755,7 @@ Here are the necessary changes to ResidenceFragment:</p>
   }
 </code></pre>
   </div>
-  <div  class="ui tab  segment lab" data-tab="08">
+  <div  class="ui tab segment lab" data-tab="08">
     <h1>Test</h1>
 <p>Test the app as follows:</p>
 <ul>
@@ -774,7 +772,7 @@ Here are the necessary changes to ResidenceFragment:</p>
 <li>Shutdown the app and relaunch: is picture still displayed in thumbnail?</li>
 </ul>
   </div>
-  <div  class="ui tab  segment lab" data-tab="Archives">
+  <div  class="ui tab segment lab" data-tab="Archives">
     <h1>Archives</h1>
 <p>This is a version of MyRent complete to the end if this lab:</p>
 <ul>
